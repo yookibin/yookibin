@@ -1,4 +1,4 @@
-package com.java.date.memberService;
+package com.java.date.member.service;
 
 public interface MemberService {
 

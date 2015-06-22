@@ -1,4 +1,4 @@
-package com.java.date.memberDto;
+package com.java.date.member.dto;
 
 import java.util.Date;
 

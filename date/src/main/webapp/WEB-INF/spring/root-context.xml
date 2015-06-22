@@ -8,7 +8,7 @@
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
   			<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
   			<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
-  			<property name="username" value="jsp"/>
+  			<property name="username" value="date3"/>
   			<property name="password" value="1234"/>
   			<property name="maxActive" value="30"/>
   			<property name="maxIdle" value="30"/>
@@ -21,7 +21,7 @@
 	<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="mapperLocations">
 			<list>
-				<value>classpath:com/java/date/mapper/BoardMapper.xml</value>
+				<value>classpath:com/java/date/member/mapper/MemberMapper.xml</value>
 			</list>
 		</property>
 		

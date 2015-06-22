@@ -1,11 +1,11 @@
-package com.java.date.memberController;
+package com.java.date.member.controller;
 
 import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import com.java.date.memberService.MemberService;
+import com.java.date.member.service.MemberService;
 
 
 @Controller
@@ -14,8 +14,5 @@ public class MemberController {
 	
 	@Autowired
 	private MemberService memberService;
-	
-	
-	
 	
 }
