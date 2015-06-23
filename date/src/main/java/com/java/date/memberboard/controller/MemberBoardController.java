@@ -75,4 +75,6 @@ public class MemberBoardController {
 		
 		return mav;
 	}
+	
+	/*public modelAndView boardList*/
 }

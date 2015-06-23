@@ -43,7 +43,7 @@
 		<div class="line" style="width:598px; border-width:2px; text-align:center;">
 			<input type="submit" value="확인"/>
 			<input type="reset" value="다시작성"/>
-			<input type="button" value="목록보기" onclick="location.href='${root}/board/list.do'"/> 
+			<input type="button" value="목록보기" onclick="location.href='${root}/memberboard/list.do'"/> 
 		</div>
 		
 	</form>
