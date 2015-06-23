@@ -61,7 +61,7 @@ public class MemberBoardController {
 	 * @description : 글쓰기 완료여부 확인 및 서비스로 값을 주고받기 위한 함수
 	 */
 	@RequestMapping(value="/memberboard/write.do", method=RequestMethod.POST)
-	public ModelAndView boardWrite(MultipartHttpServletRequest request, MemberBoardDto memberBoard){
+	public ModelAndView boardWrite(HttpServletRequest request, MemberBoardDto memberBoard){
 		logger.info("write POST입니다.---------------------");
 		ModelAndView mav=new ModelAndView();
 		
@@ -73,6 +73,6 @@ public class MemberBoardController {
 		mav.addObject("memberBoard", memberBoard);
 		service.boardWriteOk(mav);
 		
-		return null;
+		return mav;
 	}
 }

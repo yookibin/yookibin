@@ -16,7 +16,7 @@
 		<script type="text/javascript">
 			alert("비밀번호가 틀립니다. 다시 입력해주세요.");
 			//location.href="${root}/member/delete.jsp";
-			$(location).attr("href", "${root/member/delete.do}");
+			$(location).attr("href", "${root}/member/delete.do");
 		</script>	
 	</c:if>
 	

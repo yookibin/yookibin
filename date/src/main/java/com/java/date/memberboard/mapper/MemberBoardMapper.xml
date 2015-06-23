@@ -2,6 +2,9 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="dao.BoardMapper">
-	
+<mapper namespace="dao.memberBoardMapper">
+	<insert id="boardWrite" parameterType="com.java.date.member.dto.MemberBoardDto">
+		insert into board(board_num, board_content, board_date, board_count, board_title, board_recom, board_writer)
+		values(board_board_num_sql.nextval, #{board_content}, #{board_date}, #{board_count}, #{board_title}, #{board_recom}, #{board_writer})
+	</insert>
 </mapper>

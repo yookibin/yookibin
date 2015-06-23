@@ -45,10 +45,21 @@ public class MemberBoardServiceImpl implements MemberBoardService {
 	public void boardWriteOk(ModelAndView mav) {
 		Map<String, Object> map=mav.getModelMap();
 		MemberBoardDto memberBoard=(MemberBoardDto)map.get("memberBoard");
-		MultipartHttpServletRequest request=(MultipartHttpServletRequest)map.get("request");
+		HttpServletRequest request=(HttpServletRequest)map.get("request");
+		String pageNumber=request.getParameter("pageNumber");
+		logger.info("memberBoard:"+memberBoard);
 		
 		memberBoard.setBoard_date(new Date());
 		memberBoard.setBoard_count(0);
+		memberBoard.setBoard_recom(0);
+		/*memberBoardDto 파일 추가시 글에 같이 뿌려줄때 사용할 변수3개 넣어줘야함.*/
+		
+		int check=memberBoardDao.insert(memberBoard);
+		logger.info("check:"+check);
+		
+		mav.addObject("check", check);
+		mav.addObject("pageNumber", pageNumber);
+		mav.addObject("memberboard/writeOk");
 		
 		
 	}

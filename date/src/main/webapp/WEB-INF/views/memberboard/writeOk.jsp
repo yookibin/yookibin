@@ -9,18 +9,20 @@
 <title>Insert title here</title>
 </head>
 <body>
+<!-- 현재상태: 디비에는 들어가고 mav에 담기전에도 check값 1이 찍힘/ 자바스크립트가 안먹는듯 ..? -->
 	<c:set var="root" value="${pageContext.request.contextPath }"/>
 	<c:if test="${check>0 }">
 		<script type="text/javascript">
-			alert("글쓰기를 성공하였습니다.");
-			location.href="${root}/board/list.do?pageNumber=${pageNumber}";
+			alert("니나니뇨");
+			location.href="${root}/start.jsp";
+			// 나중에 read로 이동하게 해야함.
 		</script>
 	</c:if>
 	
 	<c:if test="${check==0 }">
 		<script type="text/javascript">
-			alert("글쓰기를 실패하였습니다.");
-			location.href="${root}/board/write.do?pageNumber=${pageNumber}";
+			alert("ㅠㅠ");
+			location.href="${root}/memberboard/write.do?pageNumber=${pageNumber}";
 		</script>
 	</c:if>
 
