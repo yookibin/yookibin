@@ -1,7 +1,7 @@
 package com.java.date.member.dto;
 
-import java.util.Date;
-
+/*import java.util.Date;
+*/
 public class MemberDto {
 	private String id;
 	private String pw;
@@ -9,7 +9,7 @@ public class MemberDto {
 	private String nickName;
 	private String phone;
 	private String addr;
-	private Date birthday;
+	private String birthday;
 	
 	public String getId() {
 		return id;
@@ -47,10 +47,16 @@ public class MemberDto {
 	public void setAddr(String addr) {
 		this.addr = addr;
 	}
-	public Date getBirthday() {
+	/*public Date getBirthday() {
 		return birthday;
 	}
 	public void setBirthday(Date birthday) {
+		this.birthday = birthday;
+	}*/
+	public String getBirthday() {
+		return birthday;
+	}
+	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
 	

@@ -3,5 +3,35 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.memberMapper">
+	<insert id="memberInsert" parameterType="com.java.date.member.dto.MemberDto">
+		<![CDATA[insert into member values(#{id}, #{pw}, #{age}, #{nickName}, #{phone}, #{addr}, #{birthday})]]>
+	</insert>
 	
+	<select id="idCheck" parameterType="String" resultType="String">
+		select * from member where id=#{id}
+	</select>
+	
+	<select id="nickNameCheck" parameterType="String" resultType="String">
+		select * from member where nickName=#{nickName}
+	</select>
+	
+	<select id="zipcode" parameterType="String" resultType="com.java.date.member.dto.MemberZipcodeDto">
+	<![CDATA[select * from zip where dong=#{dong}]]>
+	</select>
+	
+	<select id="login" parameterType="java.util.HashMap" resultType="com.java.date.member.dto.MemberDto">
+		<![CDATA[select * from member where id=#{id} and pw=#{password}]]>
+	</select>
+	
+	<delete id="delete" parameterType="java.util.HashMap">
+		<![CDATA[delete from member where id=#{id} and pw=#{password}]]>
+	</delete>
+	
+	<select id="select" parameterType="String" resultType="com.java.date.member.dto.MemberDto">
+		select * from member where id=#{id}
+	</select>
+	
+	<!-- <update id="update" parameterType="com.java.member.dto.MemberDto">
+		<![CDATA[update member set id=#{id}, pw=#{password}, age=#{age}, nickName=#{nickName}, phone=#{phone}, addr=#{addr}, birthday=#{birthday}]]>
+	</update> -->
 </mapper>
