@@ -1,6 +1,7 @@
 package com.java.date.memberboard.service;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
@@ -63,4 +64,54 @@ public class MemberBoardServiceImpl implements MemberBoardService {
 		
 		
 	}
+
+	@Override
+	public void boardList(ModelAndView mav) {
+		// TODO Auto-generated method stub
+		Map<String, Object> map=mav.getModelMap();
+		HttpServletRequest request=(HttpServletRequest)map.get("request");
+		
+		String pageNumber=request.getParameter("pageNumber");
+		if(pageNumber==null) pageNumber="1";
+		
+		int boardSize=3;
+		int currentPage=Integer.parseInt(pageNumber);
+		int startRow=(currentPage-1)*boardSize+1;
+		int endRow=currentPage*boardSize;
+		
+		int count=memberBoardDao.getBoardCount();
+		logger.info("count"+count);
+		
+		List<MemberBoardDto> boardList=null;
+		if(count>0){
+			boardList=memberBoardDao.getBoardList(startRow, endRow);
+		}
+		
+		logger.info("boardList"+boardList.size());
+		
+		mav.addObject("memberboardList", boardList);
+		mav.addObject("boardSize", boardSize);
+		mav.addObject("currentPage", currentPage);
+		mav.addObject("count", count);
+		mav.setViewName("memberboard/list");
+		
+	}
+
+	@Override
+	public void boardRead(ModelAndView mav) {
+		Map<String, Object> map=mav.getModelMap();
+		HttpServletRequest request=(HttpServletRequest)map.get("request");
+		
+		int board_num=Integer.parseInt(request.getParameter("board_num"));
+		String pageNumber=request.getParameter("pageNumber");
+		logger.info("board_num:"+board_num+","+pageNumber);
+		
+		MemberBoardDto memberBoard=memberBoardDao.boardRead(board_num);
+		logger.info("memberBoard:"+memberBoard);
+		
+		mav.addObject("pageNumber", pageNumber);
+		mav.addObject("memberBoard", memberBoard);
+		mav.setViewName("memberboard/read");
+	}
 }
+

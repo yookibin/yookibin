@@ -76,5 +76,34 @@ public class MemberBoardController {
 		return mav;
 	}
 	
-	/*public modelAndView boardList*/
+	/**
+	 * @name : boardList
+	 * @date : 2015. 6. 23.
+	 * @author : 유기빈
+	 * @description :글목록 가져오기.
+	 */
+	@RequestMapping(value="/memberboard/list.do", method=RequestMethod.GET)
+	public ModelAndView boardList(HttpServletRequest request){
+		logger.info("boardList입니다.");
+		ModelAndView mav=new ModelAndView();
+		
+		mav.addObject("request", request);
+		service.boardList(mav);
+		return mav;
+	}
+	
+	/**
+	 * @name : boardRead
+	 * @date : 2015. 6. 23.
+	 * @author : 유기빈
+	 * @description : 글내용 보기위한 함수.
+	 */
+	@RequestMapping(value="/memberboard/read.do", method=RequestMethod.GET)
+	public ModelAndView boardRead(HttpServletRequest request){
+		logger.info("boardRead입니당.");
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("request", request);
+		service.boardRead(mav);
+		return mav;
+	}
 }

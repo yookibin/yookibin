@@ -7,4 +7,19 @@
 		insert into board(board_num, board_content, board_date, board_count, board_title, board_recom, board_writer)
 		values(board_board_num_sql.nextval, #{board_content}, #{board_date}, #{board_count}, #{board_title}, #{board_recom}, #{board_writer})
 	</insert>
+	
+	<select id="getCount" resultType="int">
+		select count(*) from board
+	</select>
+	
+	<select id="boardList" parameterType="java.util.HashMap" resultType="com.java.date.member.dto.MemberBoardDto">
+		<![CDATA[select *from
+					(select rownum rnum, a.* from
+						(select * from board)a)
+				where rnum >=#{startRow} and rnum <=#{endRow}]]>
+	</select>
+	
+	<select id="boardRead" parameterType="int" resultType="com.java.date.member.dto.MemberBoardDto">
+		select * from board where board_num=#{board_num}
+	</select>
 </mapper>

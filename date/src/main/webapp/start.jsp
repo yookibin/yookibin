@@ -14,8 +14,12 @@
 <a href="${root }/memberboard/write.do">글쓰기</a>
 <a href="${root }/memberboard/list.do">글목록</a>
 
+<a href="${root }/eventBoard/wirte.do">이벤트 추가하기(운영자만 가능한 기능)</a><br/><br/>
 
-<c:if test="${id==null}">
+<a href="${root }/eventBoard/list.do">이벤트 목록보기</a><br/><br/>
+
+
+	<c:if test="${id==null}">
 		<a href="${root }/member/register.do">회원가입</a>
 		<a href="${root }/member/login.do">로그인</a>
 	</c:if>
