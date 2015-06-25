@@ -52,14 +52,27 @@
 		</tr>
 		
 		<tr>
+			<td align="center"  height="20" width="125">차감포인트</td>
+			<td align="center"  height="20" width="125">${eventBoard.event_point }</td>
+			
+			<td align="center"  height="20" width="125">경품</td>
+			<td align="center"  height="20" width="125">${eventBoard.event_giveaway }</td>
+		</tr>
+		
+		<tr>
 			<td align="center"  height="20" width="125">제목</td>
 			<td align="center"  height="20" width="125">${eventBoard.event_title }</td>
+			<td align="center"  height="20" width="125">진행상황</td>
+			<td align="center"  height="20" width="125">${eventBoard.event_progress }</td>
 		</tr>
 		
 		<tr>
 			<td align="center"  height="200" width="125">글내용</td>
 			<td valign="top"  height="200" colspan="3" align="center">
-				<img src="${root}/resources/eventBoard/${eventBoard.event_filePath}" width="200" height="200"/><br/>
+				<c:if test="${eventBoard.event_fileSize!=0 }">												
+					<img src="${root}/resources/eventBoard/${eventBoard.event_filePath }" width="200" height="200"/><br/>						
+					${eventBoard.event_filePath }														
+				</c:if>	<br/>			
 				${eventBoard.event_content }
 			</td>
 		</tr>
@@ -76,7 +89,9 @@
 		<tr>
 			<td height="30" colspan="4" align="center">
 				<input type="button" value="글수정(운영자만 가능)" onclick="updateFun('${root}','${eventBoard.event_code }','${pageNumber }')" />
-				<input type="button" value="글삭제(운영자만 가능)" onclick="delFun('${root}','${eventBoard.event_code }','${pageNumber }')"/><br/>
+				<input type="button" value="글삭제(운영자만 가능)" onclick="delFun('${root}','${eventBoard.event_code }','${pageNumber }')"/>
+				<input type="button" value="응모회원관리(운영자만 가능)" onclick="manageFun('${root}','${eventBoard.event_code }','${pageNumber }')"/><br/>
+				
 				<input type="button" value="참가하기" onclick="location.href='${root}/eventBoard/join.do?event_code=${eventBoard.event_code }&pageNumber=${pageNumber }'"/>
 				<input type="button" value="글목록" onclick="location.href='${root}/eventBoard/list.do?pageNumber=${pageNumber }'"/>
 			</td>

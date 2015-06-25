@@ -18,7 +18,7 @@ public interface EventBoardDao {
 	
 	public int boardDelete(int event_code);
 	
-	public EventBoardDto boardUpdate(int event_code);
+	public EventBoardDto boardUpdateRead(int event_code);
 	
 	public int boardUpdate(EventBoardDto eventBoard);
 }

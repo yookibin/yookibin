@@ -34,42 +34,51 @@
 	</c:if>
 
 	<c:if test="${count!=0 }">
-		<table border="1" width="530" cellpadding="2" cellspacing="0" align="center">
+		<table border="1" width="600" cellpadding="2" cellspacing="0" align="center">
 			<tr> 
 				<td align="center" width="30">번호</td>
-				<td align="center" width="150">이미지</td>
+				<td align="center" width="60">이미지</td>
 				<td align="center" width="130">제목</td>
 				<td align="center" width="100">기간</td>
-				<td align="center" width="70">작성자</td>
+				<td align="center" width="100">작성자</td>
 				<td align="center" width="50">조회수</td>
+				<td align="center" width="50">진행상황</td>
+				<td align="center" width="50">차감포인트</td>
+				<td align="center" width="50">경품</td>
 			</tr>
 			
 			<!-- Board List -->
 			<c:forEach var="eventBoard" items="${list }">
 				<tr>
 					<td>${eventBoard.event_code }</td>
-					<td>						
-						<img src="${root}/resources/eventBoard/${eventBoard.event_filePath }" width="150" height="150"/>
-						<%-- ${eventBoard.event_fileName } --%>
-						<!-- ServiceImpl에서 filePath에서 timeName만 짤라서 이리로 보내 -->
-						<!-- 그 다음에 ${root}/resources/eventBoard/${timeName} -->
-						<%-- ${eventBoard.event_filePath } src="${eventBoard.event_filePath }" --%>
-						<!-- /date/src/main/webapp/resources/eventBoard/1435141590720_Koala.jpg -->		
-						${eventBoard.event_filePath }			
-						
-					</td>
+					
+					<c:if test="${eventBoard.event_fileSize!=0 }">
+						<td>						
+						<img src="${root}/resources/eventBoard/${eventBoard.event_filePath }" width="150" height="150"/>						
+						${eventBoard.event_filePath }									
+						</td>
+					</c:if>
+					<c:if test="${eventBoard.event_fileSize==0 }">
+						<td>						
+													
+						</td>
+					</c:if>
+					
 					<td>
 						<a href="${root }/eventBoard/read.do?event_code=${eventBoard.event_code}&pageNumber=${currentPage}">${eventBoard.event_title }</a>				
 					</td>
 					<td>${eventBoard.event_period }</td>				
 					<td>${eventBoard.writer }</td>
-					<td>${eventBoard.read_count }</td>					
+					<td>${eventBoard.read_count }</td>		
+					<td>${eventBoard.event_progress }</td>		
+					<td>${eventBoard.event_point }</td>
+					<td>${eventBoard.event_giveaway }</td>	
 				</tr>
 			</c:forEach>
 		</table>
 		<br/>
 	</c:if>
-	
+		
 	<!-- 페이지 번호 -->
 	<center>
 		<c:if test="${count>0 }">

@@ -51,6 +51,16 @@
 		</div>
 		
 		<div class="line">
+			<label class="title">이벤트 차감 포인트</label>
+			<span class="content"><input type="text" size="50" name="event_point" value="${eventBoard.event_point }"/></span>			
+		</div>
+		
+		<div class="line">
+			<label class="title">이벤트 경품</label>
+			<span class="content"><input type="text" size="50" name="event_giveaway" value="${eventBoard.event_giveaway }"/></span>			
+		</div>
+		
+		<div class="line">
 			<label class="title">파일명</label>
 			<span class="content">		
 				<c:if test="${eventBoard.event_fileName==null }">

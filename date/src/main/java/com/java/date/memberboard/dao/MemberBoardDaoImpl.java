@@ -18,8 +18,15 @@ public class MemberBoardDaoImpl implements MemberBoardDao {
 
 	@Override
 	public int insert(MemberBoardDto memberBoard) {
+		int value=0;
 		
-		return sqlSession.insert("dao.memberBoardMapper.boardWrite", memberBoard);
+		if(memberBoard.getBoard_fileName()!=null){
+			value=sqlSession.insert("dao.memberBoardMapper.boardWriteFile", memberBoard);
+		}else{
+			value=sqlSession.insert("dao.memberBoardMapper.boardWrite", memberBoard);
+		}
+		return value;
+		//return sqlSession.insert("dao.memberBoardMapper.boardWrite", memberBoard);
 	}
 
 	@Override

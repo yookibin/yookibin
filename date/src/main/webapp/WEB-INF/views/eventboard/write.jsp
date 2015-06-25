@@ -45,12 +45,22 @@
 		</div>
 		
 		<div class="line">
+			<label class="title">이벤트 차감 포인트</label>
+			<span class="content"><input type="text" size="50" name="event_point"/></span>			
+		</div>
+		
+		<div class="line">
+			<label class="title">이벤트 경품</label>
+			<span class="content"><input type="text" size="50" name="event_giveaway"/></span>			
+		</div>
+		
+		<div class="line">
 			<label class="title">이벤트 사진 파일</label>
 			<span class="content">
 				<input type="file" name="file"/>
 			</span>
 		</div>
-				
+						
 		<div class="line" style="width:598px; border-width:2px; text-align:center;">
 			<input type="submit" value="글쓰기"/>
 			<input type="reset" value="다시작성"/>
