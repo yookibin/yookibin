@@ -29,7 +29,7 @@
 		<a href="${root }/member/update.do?id=${id}">회원수정</a>
 		<a href="${root }/member/delete.do">회원탈퇴</a>
 		
-		<c:if test="${memberLevel=='AA' }">
+		<c:if test="${memberLevel=='AA'}">
 			<a href="${root }/eventBoard/wirte.do">이벤트 추가하기(운영자만 가능한 기능)</a><br/><br/>
 		</c:if>
 	</c:if>
