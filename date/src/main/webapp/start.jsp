@@ -33,5 +33,7 @@
 			<a href="${root }/eventBoard/wirte.do">이벤트 추가하기(운영자만 가능한 기능)</a><br/><br/>
 		</c:if>
 	</c:if>
+	
+	<a href="${root }/placesearch/choice.do">서울시 전체지도</a>
 </body>
 </html>
