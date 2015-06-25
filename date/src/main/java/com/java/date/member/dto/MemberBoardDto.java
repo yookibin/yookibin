@@ -9,7 +9,7 @@ public class MemberBoardDto {
 	private int board_count;
 	private String board_title;
 	private int board_recom;
-	private int board_fileSize;
+	private long board_fileSize;
 	private String board_fileName;
 	private String board_fileRoot;
 	private String board_writer;
@@ -50,10 +50,10 @@ public class MemberBoardDto {
 	public void setBoard_recom(int board_recom) {
 		this.board_recom = board_recom;
 	}
-	public int getBoard_fileSize() {
+	public long getBoard_fileSize() {
 		return board_fileSize;
 	}
-	public void setBoard_fileSize(int board_fileSize) {
+	public void setBoard_fileSize(long board_fileSize) {
 		this.board_fileSize = board_fileSize;
 	}
 	public String getBoard_fileName() {
@@ -74,6 +74,5 @@ public class MemberBoardDto {
 	public void setBoard_writer(String board_writer) {
 		this.board_writer = board_writer;
 	}
-	
 	
 }

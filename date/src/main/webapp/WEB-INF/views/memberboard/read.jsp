@@ -50,7 +50,10 @@
 		
 		<tr>
 			<td align="center"  height="200" width="125">글내용</td>
-			<td valign="top"  height="200" colspan="3">${memberBoard.board_content }</td>
+			<td valign="top"  height="200" colspan="3">
+				<img src="${root}/resources/board/${memberBoard.board_fileRoot}" width="200" height="200"/><br/>
+				${memberBoard.board_content }
+			</td>
 		</tr>
 		
 		
