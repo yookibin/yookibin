@@ -10,7 +10,14 @@ public class MemberDto {
 	private String phone;
 	private String addr;
 	private String birthday;
+	private String member_level;
 	
+	public String getMember_level() {
+		return member_level;
+	}
+	public void setMember_level(String member_level) {
+		this.member_level = member_level;
+	}
 	public String getId() {
 		return id;
 	}

@@ -14,7 +14,7 @@
 <a href="${root }/memberboard/write.do">글쓰기</a>
 <a href="${root }/memberboard/list.do">글목록</a>
 
-<a href="${root }/eventBoard/wirte.do">이벤트 추가하기(운영자만 가능한 기능)</a><br/><br/>
+
 
 <a href="${root }/eventBoard/list.do">이벤트 목록보기</a><br/><br/>
 
@@ -29,9 +29,9 @@
 		<a href="${root }/member/update.do?id=${id}">회원수정</a>
 		<a href="${root }/member/delete.do">회원탈퇴</a>
 		
-		<%-- <c:if test="${memberLevel=='AA' }">
-			<a href="">회원관리</a>
-		</c:if> --%>
+		<c:if test="${memberLevel=='AA' }">
+			<a href="${root }/eventBoard/wirte.do">이벤트 추가하기(운영자만 가능한 기능)</a><br/><br/>
+		</c:if>
 	</c:if>
 </body>
 </html>

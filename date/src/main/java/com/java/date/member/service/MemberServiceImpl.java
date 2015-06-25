@@ -106,6 +106,9 @@ public class MemberServiceImpl implements MemberService {
 			//mav.addObject("memberLevel", member.getMemberLevel());
 			mav.addObject("id", member.getId());
 			mav.addObject("nickName", member.getNickName());
+			if(member.getMember_level()!=null){
+				mav.addObject("memberLevel", member.getMember_level());
+			}
 			mav.setViewName("member/loginOk");
 			
 		}
