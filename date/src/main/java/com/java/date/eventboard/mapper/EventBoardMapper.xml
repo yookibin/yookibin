@@ -32,11 +32,11 @@
 	</delete>
 	
 	<update id="boardUpdate" parameterType="com.java.date.member.dto.EventBoardDto">
-		<![CDATA[ update event_board set event_period=#{event_period}, event_title=#{event_title}, event_content=#{event_content}, writer=#{writer} ]]>
+		<![CDATA[ update event_board set event_period=#{event_period}, event_title=#{event_title}, event_content=#{event_content}, writer=#{writer} where event_code=#{event_code} ]]>
 	</update>
 	
 	<update id="boardUpdateFile" parameterType="com.java.date.member.dto.EventBoardDto">
-		<![CDATA[ update event_board set event_period=#{event_period}, event_title=#{event_title}, event_content=#{event_content}, writer=#{writer}, event_fileName=#{event_fileName}, event_fileSize=#{event_fileSize}, event_filePath=#{event_filePath} ]]>
+		<![CDATA[ update event_board set event_period=#{event_period}, event_title=#{event_title}, event_content=#{event_content}, writer=#{writer}, event_fileName=#{event_fileName}, event_fileSize=#{event_fileSize}, event_filePath=#{event_filePath} where event_code=#{event_code} ]]>
 	</update>
 	
 </mapper>
