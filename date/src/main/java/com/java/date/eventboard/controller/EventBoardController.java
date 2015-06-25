@@ -135,7 +135,7 @@ public class EventBoardController {
 	@RequestMapping(value="/eventBoard/join.do", method=RequestMethod.GET)
 	public ModelAndView join(HttpServletRequest request){
 		//${root}/eventBoard/join.do?event_code=${eventBoard.event_code }&pageNumber=${pageNumber }
-		logger.info("join----------");
+		logger.info("join----------------");
 		
 		ModelAndView mav=new ModelAndView();
 		

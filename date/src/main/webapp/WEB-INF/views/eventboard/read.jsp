@@ -36,10 +36,10 @@
 	
 	<table border="1" width="510" cellpadding="2"  cellspacing="0" align="center">
 		<tr>
-			<td align="center"  height="20" width="125">글번호</td>
+			<td align="center"  height="20" width="125">글번호:ㅇ</td>
 			<td align="center"  height="20" width="125">${eventBoard.event_code }</td>
 			
-			<td align="center"  height="20" width="125">조회수</td>
+			<td align="center"  height="20" width="125">조회수:P</td>
 			<td align="center"  height="20" width="125">${eventBoard.read_count }</td>
 		</tr>
 		

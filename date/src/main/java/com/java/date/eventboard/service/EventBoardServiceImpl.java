@@ -384,7 +384,7 @@ public class EventBoardServiceImpl implements EventBoardService {
 				
 			}
 			
-			logger.info("=====================================================");
+			logger.info("=========================================================");
 			logger.info("updateOk filepath: "+eventBoard.getEvent_filePath());
 			logger.info("updateOk filename: "+eventBoard.getEvent_fileName());
 			logger.info("updateOk filesize: "+eventBoard.getEvent_fileSize());
