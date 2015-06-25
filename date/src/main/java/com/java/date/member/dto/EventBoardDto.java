@@ -10,6 +10,9 @@ public class EventBoardDto {
 	private String event_fileName;
 	private long event_fileSize;
 	private String event_filePath;
+	private String event_progress;
+	private int event_point;
+	private String event_giveaway;
 	
 	public int getEvent_code() {
 		return event_code;
@@ -64,6 +67,23 @@ public class EventBoardDto {
 	}
 	public void setEvent_filePath(String event_filePath) {
 		this.event_filePath = event_filePath;
+	}
+	public String getEvent_progress() {
+		return event_progress;
+	}
+	public void setEvent_progress(String event_progress) {
+		this.event_progress = event_progress;
+	}
+	public int getEvent_point() {
+		return event_point;
+	}
+	public void setEvent_point(int event_point) {
+		this.event_point = event_point;
+	}
+	public String getEvent_giveaway() {
+		return event_giveaway;
+	}
+	public void setEvent_giveaway(String event_giveaway) {
+		this.event_giveaway = event_giveaway;
 	}	
-	
 }

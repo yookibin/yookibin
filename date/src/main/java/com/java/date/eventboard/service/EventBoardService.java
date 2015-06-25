@@ -19,4 +19,6 @@ public interface EventBoardService {
 	
 	public void eventUpdateOk(ModelAndView mav);
 	
+	public void eventJoin(ModelAndView mav);
+	
 }

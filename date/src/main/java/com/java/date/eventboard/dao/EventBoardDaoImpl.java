@@ -54,7 +54,7 @@ public class EventBoardDaoImpl implements EventBoardDao {
 	}
 
 	@Override
-	public EventBoardDto boardUpdate(int event_code) {
+	public EventBoardDto boardUpdateRead(int event_code) {
 		
 		return sqlSession.selectOne("dao.eventBoardMapper.boardRead",event_code);
 	}

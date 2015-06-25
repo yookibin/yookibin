@@ -1,6 +1,10 @@
 package com.java.date.eventboard.service;
 
 import java.io.File;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -53,6 +57,7 @@ public class EventBoardServiceImpl implements EventBoardService {
 		EventBoardDto eventBoard=(EventBoardDto)map.get("eventBoard");
 		
 		eventBoard.setRead_count(0);
+		eventBoard.setEvent_progress("진행");
 		
 		MultipartFile upFile=request.getFile("file");
 		String fileName=upFile.getOriginalFilename();
@@ -139,22 +144,60 @@ public class EventBoardServiceImpl implements EventBoardService {
 		List<EventBoardDto> list=eventBoardDao.boardList(hMap);
 		logger.info("list listSize:"+list.size());		
 		
-		String timeName[]=null;
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+		
 		//logger.info("list[0] filePath: "+list.get(0).getEvent_filePath());
 		for(int i=0;i<list.size();i++){
-			logger.info("list["+i+"] filfPath: "+list.get(i).getEvent_filePath());
-			logger.info(list.get(i).getEvent_filePath().substring(dir.length()+1));
-			list.get(i).setEvent_filePath(list.get(i).getEvent_filePath().substring(dir.length()+1));	
-			logger.info("list["+i+"] filfPath: "+list.get(i).getEvent_filePath());
-			
+			if(list.get(i).getEvent_fileSize()!=0){
+				logger.info("list["+i+"] filfPath: "+list.get(i).getEvent_filePath());
+				logger.info(list.get(i).getEvent_filePath().substring(dir.length()+1));
+				list.get(i).setEvent_filePath(list.get(i).getEvent_filePath().substring(dir.length()+1));	
+				logger.info("list["+i+"] filfPath: "+list.get(i).getEvent_filePath());
+			}
+			///////////////////////////////////////////////////////////////////////
+			//list를 뿌려줄 때 마다 이벤트 기간과 서버의 시간을 비교해서
+			//진행상황을 변경한다.
+			String event_period=list.get(i).getEvent_period();
+			String period[]=event_period.split("~");
+			String lastPeriod=period[1].trim();
+			logger.info("lastPeriod: "+lastPeriod);
+						
+			if(lastPeriod!=null){
+				
+				Calendar calendar=Calendar.getInstance();	//자기 자신의 객체를 못 만들어
+				int year=calendar.get(Calendar.YEAR);		//Date클래스에서 안되던 2000년이후year이 가능하다.
+				int month=calendar.get(Calendar.MONTH)+1;	//그냥 MONTH하면 개월수 반환
+				int date=calendar.get(Calendar.DATE);
+				
+				String today=Integer.toString(year)+"-"+Integer.toString(month)+"-"+Integer.toString(date);
+				logger.info("today: "+today);
+				
+				Date lastEvent=null;
+				Date realToday=null;
+				try {
+					lastEvent = sdf.parse(lastPeriod);
+					realToday=sdf.parse(today);
+				} catch (ParseException e) {
+					System.out.println("EventBoardServiceImpl eventList Date Error");
+					e.printStackTrace();
+				}
+				
+				if(lastEvent.after(realToday)||lastEvent.equals(realToday)){
+					list.get(i).setEvent_progress("진행");
+					logger.info("진행");
+				}else{
+					list.get(i).setEvent_progress("종료");
+					logger.info("종료");
+				}
+			}			
+			//////////////////////////////////////////////////////////////////////			
 		}
 				
 		// list, count, boardSize, currentPage을 list.jsp에 넘겨줘야 한다.
 		mav.addObject("list",list);
 		mav.addObject("count",count);
 		mav.addObject("boardSize",boardSize);
-		mav.addObject("currentPage",currentPage);		
-		mav.addObject("timeName",timeName);
+		mav.addObject("currentPage",currentPage);	
 		
 		mav.setViewName("eventboard/list");
 	}
@@ -176,7 +219,43 @@ public class EventBoardServiceImpl implements EventBoardService {
 		if(check==1) eventBoard=eventBoardDao.boardRead(event_code);
 		logger.info("eventBoard: "+eventBoard);
 		
-		eventBoard.setEvent_filePath(eventBoard.getEvent_filePath().substring(dir.length()+1));
+		if(eventBoard.getEvent_fileSize()!=0) eventBoard.setEvent_filePath(eventBoard.getEvent_filePath().substring(dir.length()+1));
+		
+		String event_period=eventBoard.getEvent_period();
+		String period[]=event_period.split("~");
+		String lastPeriod=period[1].trim();
+		logger.info("lastPeriod: "+lastPeriod);
+		
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+					
+		if(lastPeriod!=null){
+			
+			Calendar calendar=Calendar.getInstance();	//자기 자신의 객체를 못 만들어
+			int year=calendar.get(Calendar.YEAR);		//Date클래스에서 안되던 2000년이후year이 가능하다.
+			int month=calendar.get(Calendar.MONTH)+1;	//그냥 MONTH하면 개월수 반환
+			int date=calendar.get(Calendar.DATE);
+			
+			String today=Integer.toString(year)+"-"+Integer.toString(month)+"-"+Integer.toString(date);
+			logger.info("today: "+today);
+			
+			Date lastEvent=null;
+			Date realToday=null;
+			try {
+				lastEvent = sdf.parse(lastPeriod);
+				realToday=sdf.parse(today);
+			} catch (ParseException e) {
+				System.out.println("EventBoardServiceImpl eventList Date Error");
+				e.printStackTrace();
+			}
+			
+			if(lastEvent.after(realToday)||lastEvent.equals(realToday)){
+				eventBoard.setEvent_progress("진행");
+				logger.info("진행");
+			}else{
+				eventBoard.setEvent_progress("종료");
+				logger.info("종료");
+			}
+		}	
 		
 		mav.addObject("eventBoard",eventBoard);
 		mav.addObject("pageNumber",pageNumber);
@@ -240,7 +319,7 @@ public class EventBoardServiceImpl implements EventBoardService {
 		int event_code=Integer.parseInt(request.getParameter("event_code"));
 		String pageNumber=request.getParameter("pageNumber");
 		
-		EventBoardDto eventBoard=eventBoardDao.boardUpdate(event_code);
+		EventBoardDto eventBoard=eventBoardDao.boardUpdateRead(event_code);
 		logger.info("eventBoard: "+eventBoard);
 		
 		mav.addObject("eventBoard",eventBoard);
@@ -252,17 +331,17 @@ public class EventBoardServiceImpl implements EventBoardService {
 
 	@Override
 	public void eventUpdateOk(ModelAndView mav) {
-		// event_code, pageNumber, event_fileName(기존), event_filePath(기존), event_fileSize(기존), writer, event_period, event_title, event_content, file
+		// event_code, pageNumber, event_fileName(기존), event_filePath(기존), event_fileSize(기존), writer, event_period, event_title, event_content, file, event_point, event_giveaway
 			Map<String,Object> map=mav.getModelMap();
 			MultipartHttpServletRequest request=(MultipartHttpServletRequest)map.get("request");
 			EventBoardDto eventBoard=(EventBoardDto)map.get("eventBoard");
 			//pageNumber,event_fileName,event_filePath,event_fileSize, file
-			//event_code, writer, event_period, event_title, event_content
+			//event_code, writer, event_period, event_title, event_content, event_point, event_giveaway
 			
 			String pageNumber=request.getParameter("pageNumber");
 			//String boardFileName=request.getParameter("boardFileName");
-			String event_filePath=request.getParameter("event_filePath");
-			long event_fileSize=Long.parseLong(request.getParameter("event_fileSize"));
+			String event_filePath=request.getParameter("event_filePath");	//기존
+			long event_fileSize=Long.parseLong(request.getParameter("event_fileSize"));	 //기존
 			
 			MultipartFile upFile=request.getFile("file");
 			String fileName=upFile.getOriginalFilename();
@@ -309,6 +388,8 @@ public class EventBoardServiceImpl implements EventBoardService {
 			logger.info("updateOk filepath: "+eventBoard.getEvent_filePath());
 			logger.info("updateOk filename: "+eventBoard.getEvent_fileName());
 			logger.info("updateOk filesize: "+eventBoard.getEvent_fileSize());
+			logger.info("updateOk filepoint: "+eventBoard.getEvent_point());
+			logger.info("updateOk filegiveaway: "+eventBoard.getEvent_giveaway());
 			
 			int check=eventBoardDao.boardUpdate(eventBoard);
 			logger.info("updateOk check: "+check);
@@ -319,6 +400,19 @@ public class EventBoardServiceImpl implements EventBoardService {
 			mav.addObject("event_code",eventBoard.getEvent_code());
 			
 			mav.setViewName("eventboard/updateOk");
+		
+	}
+
+	@Override
+	public void eventJoin(ModelAndView mav) {
+		//${root}/eventBoard/join.do?event_code=${eventBoard.event_code }&pageNumber=${pageNumber }		
+		Map<String,Object> map=mav.getModelMap();
+		HttpServletRequest request=(HttpServletRequest)map.get("request");
+		
+		int event_code=Integer.parseInt(request.getParameter("event_code"));
+		String pageNumber=request.getParameter("pageNumber");
+		
+		
 		
 	}
 	

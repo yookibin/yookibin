@@ -131,5 +131,20 @@ public class EventBoardController {
 		
 		return mav;
 	}
+	
+	@RequestMapping(value="/eventBoard/join.do", method=RequestMethod.GET)
+	public ModelAndView join(HttpServletRequest request){
+		//${root}/eventBoard/join.do?event_code=${eventBoard.event_code }&pageNumber=${pageNumber }
+		logger.info("join----------");
+		
+		ModelAndView mav=new ModelAndView();
+		
+		mav.addObject("request",request);
+		
+		eventBoardService.eventJoin(mav);
+		
+		return mav;
+	}
+	
 }
 
