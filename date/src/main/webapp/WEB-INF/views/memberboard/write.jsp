@@ -22,8 +22,8 @@
 	               reader.onload = function (e) { 
 	               //파일 읽어들이기를 성공했을때 호출되는 이벤트 핸들러
 	                img.setAttribute("src", e.target.result);
-	                img.setAttribute("width", "50");
-	                img.setAttribute("height", "50");
+	                img.setAttribute("width", "100");
+	                img.setAttribute("height", "100");
 	               	//alert(img.src); //이미지소스
 	               	
 	                   //$('#blah').attr('src', e.target.result);
@@ -34,12 +34,13 @@
 	             //File내용을 읽어 dataURL형식의 문자열로 저장
 	               div.appendChild(img);
 	               
+	               
 	           }
 	       }//readURL()--
 	
 	       //file 양식으로 이미지를 선택(값이 변경) 되었을때 처리하는 코드
 	       $("#imgInp").change(function(){
-	           alert(this.value); //선택한 이미지 경로 표시
+	           //alert(this.value); //선택한 이미지 경로 표시
 	           readURL(this);
 	       });
 	    });
@@ -69,7 +70,7 @@
 		<div class="line">
 			<label class="title">파일 첨부</label>
 			<span class="content">
-				<input type="file" name="file" id="imgInp" />
+				<input type="file" name="file" id="imgInp"/>
 			</span>
 		</div>
 		

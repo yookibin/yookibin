@@ -25,47 +25,44 @@
 		location.href=url;
 	}
 </script>
+<script type="text/javascript" src="${root }/css/board/script.js"></script>
+<script type="text/javascript" src="${root }/css/jquery.js"></script>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>게시판 읽기</title>
 	<link rel="stylesheet" type="text/css" href="${root }/css/board/style.css">
 </head>
 <body>
-	<table border="1" width="510" cellpadding="2"  cellspacing="0" align="center">
-		<tr>
-			<td align="center"  height="20" width="125">글제목</td>
-			<td align="center"  height="20" width="125" >${memberBoard.board_title }</td>
+	
+			글제목
+			${memberBoard.board_title }
 			
-			<td align="center"  height="20" width="125">조회수</td>
-			<td align="center"  height="20" width="125" >${memberBoard.board_count }</td>
-		</tr>
+			조회수
+			${memberBoard.board_count }
 		
-		<tr>
-			<td align="center"  height="20" width="125">작성자</td>
-			<td align="center"  height="20" width="125" >${memberBoard.board_writer }</td>
+			작성자
+			${memberBoard.board_writer }
 			
-			<td align="center"  height="20" width="125">작성일</td>
-			<td align="center"  height="20" width="125"><fmt:formatDate value="${memberBoard.board_date }" type="date"/></td>
-		</tr>
+			작성일
+			<fmt:formatDate value="${memberBoard.board_date }" type="date"/>
 		
-		<tr>
-			<td align="center"  height="200" width="125">글내용</td>
-			<td valign="top"  height="200" colspan="3">
+			<p>글내용</p>
+			
 				<img src="${root}/resources/board/${memberBoard.board_fileRoot}" width="200" height="200"/><br/>
 				${memberBoard.board_content }
-			</td>
-		</tr>
-		
-		
-		<tr>
-			<td height="30" colspan="4" align="center">
+			
 			<c:if test="${memberBoard.board_writer==nickName}">
 				<input type="button" value="글수정" onclick="updateFun('${root}','${memberBoard.board_num }', '${pageNumber}')" />
 				<input type="button" value="글삭제" onclick="deleteFun('${root}','${memberBoard.board_num }', '${pageNumber}')"/>
 			</c:if>
 				<input type="button" value="글목록" onclick="location.href='${root}/memberboard/list.do?pageNumber=${pageNumber}'"/>
-			</td>
-		</tr>
-	</table>
+			
+	
+			<div>
+				<input type="text" name="reply" id="reply"/>
+				<input type="button" value="댓글작성" onclick="writeReply('${root}','${memberBoard.board_num}')"/>
+			</div>
+			
+	
 </body>
 </html>
