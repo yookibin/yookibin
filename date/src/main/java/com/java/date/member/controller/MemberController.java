@@ -15,18 +15,12 @@ import com.java.date.member.dto.MemberDto;
 import com.java.date.member.service.MemberService;
 
 
-
-/**
- * @name : MemberController
- * @date : 2015. 6. 23.
- * @author : 유기빈
- * @description :
- */
 /**
  * @name : MemberController
  * @date : 2015. 6. 22.
  * @author : 유기빈
- * @description :
+ * @description : 회원에 대한 Controller, 세션으로 넘겨줘서 하기위해 만든 것으로 아직 미완성.
+ * 				   회원 수정, 비밀번호찾기, 아이디찾기를 만들어줘야함.
  */
 @Controller
 public class MemberController {
@@ -51,7 +45,8 @@ public class MemberController {
 	 * @name : register
 	 * @date : 2015. 6. 22.
 	 * @author : 유기빈
-	 * @description :회원가입창에서 받은 정보를 service로 전달.
+	 * @description :회원가입창에서 받은 정보(MemberDto)를 service로 넘기는 함수.
+	 *               select로 받은 생년월일을 그냥 string으로 넣을지 date로 넣을지 정한 후 그 부분만 고치면 됨.
 	 */
 	@RequestMapping(value="/member/register.do", method=RequestMethod.POST)
 	public ModelAndView register(HttpServletRequest request, MemberDto memberDto){
@@ -67,7 +62,7 @@ public class MemberController {
 	 * @name : idCheck
 	 * @date : 2015. 6. 22.
 	 * @author : 유기빈
-	 * @description : 아이디중복체크를 위해 service로 request에서 받은 id값을 넘김.
+	 * @description : 아이디중복체크를 위해 service로 request정보를 넘기는 함수.
 	 */
 	@RequestMapping(value="/member/idCheck.do", method=RequestMethod.GET)
 	public ModelAndView idCheck(HttpServletRequest request, HttpServletResponse response){
@@ -83,7 +78,7 @@ public class MemberController {
 	 * @name : nickNameCheck
 	 * @date : 2015. 6. 22.
 	 * @author : 유기빈
-	 * @description : 아이디중복체크를 위해 service로 request에서 받은 nickName값을 넘김.
+	 * @description : 아이디중복체크를 위해 service로 request를 넘겨주는 함수
 	 */
 	@RequestMapping(value="/member/nickNameCheck.do", method=RequestMethod.GET)
 	public ModelAndView nickNameCheck(HttpServletRequest request, HttpServletResponse response){
@@ -99,7 +94,7 @@ public class MemberController {
 	 * @name : zipcode
 	 * @date : 2015. 6. 22.
 	 * @author : 유기빈
-	 * @description :우편번호 검색해서 검색한 내용을 service로 전달.
+	 * @description :우편번호 검색 함수
 	 */
 	@RequestMapping(value="/member/zipcodeCheck.do")
 	public ModelAndView zipcode(HttpServletRequest request, HttpServletResponse response){
@@ -197,7 +192,8 @@ public class MemberController {
 	 * @name : update
 	 * @date : 2015. 6. 22.
 	 * @author : 유기빈
-	 * @description : 수정이 성공했는지 여부를 service에 전달하고 이동하기 위한 함수.
+	 * @description : 수정이 성공했는지 여부를 service에 전달하고 이동하기 위한 함수. 
+	 * 				  select로 받은 생년월일을 그냥 string으로 넣을지 date로 넣을지 정한 후 그 부분만 고치면 됨.
 	 */
 	/*@RequestMapping(value="/member/update.do", method=RequestMethod.POST)
 	public ModelAndView update(HttpServletRequest request, HttpServletResponse response, MemberDto member){

@@ -38,9 +38,10 @@ public class MemberBoardController {
 	
 	/**
 	 * @name : boardWrite
-	 * @date : 2015. 6. 22.
+	 * @date : 2015. 6. 23.
 	 * @author : 유기빈
 	 * @description :회원추천 게시판 글쓰기
+	 * write 글내용부분 수정중.
 	 */
 	@RequestMapping(value="/memberboard/write.do", method=RequestMethod.GET)
 	public ModelAndView boardWrite(HttpServletRequest request, HttpServletResponse response){
@@ -95,7 +96,8 @@ public class MemberBoardController {
 	 * @name : boardRead
 	 * @date : 2015. 6. 23.
 	 * @author : 유기빈
-	 * @description : 글내용 보기위한 함수.
+	 * @description : 글내용 보기위한 함수. 
+	 * 이 부분은 write 글내용넣기 수정한 후에 다시 해야함.
 	 */
 	@RequestMapping(value="/memberboard/read.do", method=RequestMethod.GET)
 	public ModelAndView boardRead(HttpServletRequest request){

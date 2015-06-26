@@ -2,6 +2,14 @@ package com.java.date.member.dto;
 
 /*import java.util.Date;
 */
+
+
+/**
+ * @name : MemberDto
+ * @date : 2015. 6. 22.
+ * @author : 유기빈
+ * @description : 회원 DB
+ */
 public class MemberDto {
 	private String id;
 	private String pw;
