@@ -38,9 +38,10 @@ public class MemberBoardController {
 	
 	/**
 	 * @name : boardWrite
-	 * @date : 2015. 6. 22.
+	 * @date : 2015. 6. 23.
 	 * @author : 유기빈
 	 * @description :회원추천 게시판 글쓰기
+	 * write 글내용부분 수정중.
 	 */
 	@RequestMapping(value="/memberboard/write.do", method=RequestMethod.GET)
 	public ModelAndView boardWrite(HttpServletRequest request, HttpServletResponse response){
@@ -53,7 +54,6 @@ public class MemberBoardController {
 		return mav;
 	}
 	
-	
 	/**
 	 * @name : boardWrite
 	 * @date : 2015. 6. 23.
@@ -61,7 +61,7 @@ public class MemberBoardController {
 	 * @description : 글쓰기 완료여부 확인 및 서비스로 값을 주고받기 위한 함수
 	 */
 	@RequestMapping(value="/memberboard/write.do", method=RequestMethod.POST)
-	public ModelAndView boardWrite(HttpServletRequest request, MemberBoardDto memberBoard){
+	public ModelAndView boardWrite(MultipartHttpServletRequest request, MemberBoardDto memberBoard){
 		logger.info("write POST입니다.---------------------");
 		ModelAndView mav=new ModelAndView();
 		
@@ -76,5 +76,35 @@ public class MemberBoardController {
 		return mav;
 	}
 	
-	/*public modelAndView boardList*/
+	/**
+	 * @name : boardList
+	 * @date : 2015. 6. 23.
+	 * @author : 유기빈
+	 * @description :글목록 가져오기.
+	 */
+	@RequestMapping(value="/memberboard/list.do", method=RequestMethod.GET)
+	public ModelAndView boardList(HttpServletRequest request){
+		logger.info("boardList입니다.");
+		ModelAndView mav=new ModelAndView();
+		
+		mav.addObject("request", request);
+		service.boardList(mav);
+		return mav;
+	}
+	
+	/**
+	 * @name : boardRead
+	 * @date : 2015. 6. 23.
+	 * @author : 유기빈
+	 * @description : 글내용 보기위한 함수. 
+	 * 이 부분은 write 글내용넣기 수정한 후에 다시 해야함.
+	 */
+	@RequestMapping(value="/memberboard/read.do", method=RequestMethod.GET)
+	public ModelAndView boardRead(HttpServletRequest request){
+		logger.info("boardRead입니당.");
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("request", request);
+		service.boardRead(mav);
+		return mav;
+	}
 }

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.eventBoardMapper">	
+	<insert id="boardInsert" parameterType="com.java.date.member.dto.EventBoardDto">
+		<![CDATA[ insert into event_board(event_code,event_period,event_title,event_content,writer,read_count,event_progress,event_point,event_giveaway) values(event_board_event_code_seq.nextval,#{event_period},#{event_title},#{event_content},#{writer},#{read_count},#{event_progress},#{event_point},#{event_giveaway}) ]]>		
+	</insert>
+	
+	<insert id="boardInsertFile" parameterType="com.java.date.member.dto.EventBoardDto">
+		<![CDATA[ insert into event_board values(event_board_event_code_seq.nextval,#{event_period},#{event_title},#{event_content},#{writer},#{read_count},#{event_fileName},#{event_fileSize},#{event_filePath},#{event_progress},#{event_point},#{event_giveaway}) ]]>		
+	</insert>
+	
+	<select id="boardCount" resultType="int">
+		<![CDATA[ select count(*) from event_board ]]>
+	</select>
+	
+	<select id="boardList" parameterType="java.util.HashMap" resultType="com.java.date.member.dto.EventBoardDto">
+		<![CDATA[ select * from (select rownum rnum, a.* from(select * from event_board order by event_code desc)a) where rnum>=#{startRow} and rnum<=#{endRow} ]]>
+	</select>
+	
+	<update id="readCount" parameterType="int">
+		<![CDATA[ update event_board set read_count=read_count+1 where event_code=#{event_code} ]]>
+	</update>
+	
+	<select id="boardRead" parameterType="int" resultType="com.java.date.member.dto.EventBoardDto">
+		<![CDATA[ select * from event_board where event_code=#{event_code} ]]>
+	</select>
+	
+	<delete id="boardDelete" parameterType="int">
+		<![CDATA[ delete from event_board where event_code=#{event_code} ]]>
+	</delete>
+	
+	<update id="boardUpdate" parameterType="com.java.date.member.dto.EventBoardDto">
+		<![CDATA[ update event_board set event_period=#{event_period}, event_title=#{event_title}, event_content=#{event_content}, writer=#{writer},event_point=#{event_point},event_giveaway=#{event_giveaway} where event_code=#{event_code} ]]>
+	</update>
+	
+	<update id="boardUpdateFile" parameterType="com.java.date.member.dto.EventBoardDto">
+		<![CDATA[ update event_board set event_period=#{event_period}, event_title=#{event_title}, event_content=#{event_content}, writer=#{writer}, event_fileName=#{event_fileName}, event_fileSize=#{event_fileSize}, event_filePath=#{event_filePath}, event_point=#{event_point},event_giveaway=#{event_giveaway} where event_code=#{event_code} ]]>
+	</update>
+		
+</mapper>

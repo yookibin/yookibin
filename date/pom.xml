@@ -172,6 +172,21 @@
 	      <artifactId>ojdbc14</artifactId>
 	      <version>10.2.0.4.0</version>
     	</dependency>
+    	
+    	<!-- Commons FileUpload -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.2.1</version>
+		</dependency>
+		
+		<!-- dom 한번추가해봄 -->
+		<dependency>
+			<groupId>org.jvnet.hudson.dom4j</groupId>
+			<artifactId>dom4j</artifactId>
+			<version>1.6.1-hudson-3</version>
+		</dependency>
+		
  
 	</dependencies>
     <build>

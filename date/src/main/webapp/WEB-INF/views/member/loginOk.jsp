@@ -15,7 +15,7 @@
 	<%-- <c:if test="${memberLevel !=null }"> --%>
 		<c:set var="id" value="${id }" scope="session"/>
 		<c:set var="nickName" value="${nickName}" scope="session"/>
-		<%-- <c:set var="memberLevel" value="${memberLevel }" scope="session"/> --%>
+		<c:set var="memberLevel" value="${memberLevel }" scope="session"/>
 		
 		<script type="text/javascript">
 			alert("로그인 성공");

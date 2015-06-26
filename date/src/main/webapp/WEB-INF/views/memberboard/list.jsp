@@ -14,7 +14,7 @@
 	
 		<table width="530" align="center">
 			<tr>
-				<td align="right" bgcolor="D1DBDB"><a href="${root }/board/write.do">글쓰기</a></td>
+				<td align="right" bgcolor="D1DBDB"><a href="${root }/memberboard/write.do">글쓰기</a></td>
 			</tr>
 		</table>
 		
@@ -37,23 +37,17 @@
 			</tr>
 			
 			<!-- Board List -->
-		<c:forEach var="memberBoard" items="${memberBoardList }">
+		<c:forEach var="memberBoard" items="${memberboardList }">
 			<tr>
-				<td>${board.boardNumber }</td>
+				<td>${memberBoard.board_num }</td>
 				<td>
-					<c:if test="${board.sequenceLevel>0 }">
-						<c:forEach begin="0" end="${board.sequenceLevel }" step="1">
-							&nbsp;&nbsp;
-						</c:forEach>
-					</c:if>
-					<a href="${root }/board/read.do?boardNumber=${board.boardNumber}&pageNumber=${currentPage }">${board.subject }</a>
+					<a href="${root }/memberboard/read.do?board_num=${memberBoard.board_num}&pageNumber=${currentPage }">${memberBoard.board_title }</a>
 				</td> 
-				<td>${board.writer }</td>
+				<td>${memberBoard.board_writer }</td>
 				<td>
-					<fmt:formatDate value="${board.writeDate }" type="date"/>
+					<fmt:formatDate value="${memberBoard.board_date }" type="date"/>
 				</td>
-				<td>${board.readCount }</td>
-				<td>${board.ip }</td>
+				<td>${memberBoard.board_count }</td>
 			</tr>
 		</c:forEach>
 		</table>
@@ -74,15 +68,15 @@
 				</c:if>
 				
 				<c:if test="${startPage>pageBlock }">
-					<a href="${root }/board/list.do?pageNumber=${startPage-pageBlock}">[이전]</a>
+					<a href="${root }/memberboard/list.do?pageNumber=${startPage-pageBlock}">[이전]</a>
 				</c:if>
 				
 				<c:forEach var="i" begin="${startPage }" end="${endPage }">
-					<a href="${root }/board/list.do?pageNumber=${i}">[${i}]</a>
+					<a href="${root }/memberboard/list.do?pageNumber=${i}">[${i}]</a>
 				</c:forEach>
 				
 				<c:if test="${endPage<pageCount }">
-					<a href="${root }/board/list.do?pageNumber=${startPage+pageBlock}">[다음]</a>
+					<a href="${root }/memberboard/list.do?pageNumber=${startPage+pageBlock}">[다음]</a>
 				</c:if>
 			</c:if>
 		</center>

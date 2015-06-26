@@ -2,6 +2,14 @@ package com.java.date.member.dto;
 
 /*import java.util.Date;
 */
+
+
+/**
+ * @name : MemberDto
+ * @date : 2015. 6. 22.
+ * @author : 유기빈
+ * @description : 회원 DB
+ */
 public class MemberDto {
 	private String id;
 	private String pw;
@@ -10,7 +18,14 @@ public class MemberDto {
 	private String phone;
 	private String addr;
 	private String birthday;
+	private String member_level;
 	
+	public String getMember_level() {
+		return member_level;
+	}
+	public void setMember_level(String member_level) {
+		this.member_level = member_level;
+	}
 	public String getId() {
 		return id;
 	}
