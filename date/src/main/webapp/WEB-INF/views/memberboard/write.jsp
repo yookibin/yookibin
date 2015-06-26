@@ -22,14 +22,18 @@
 	               reader.onload = function (e) { 
 	               //파일 읽어들이기를 성공했을때 호출되는 이벤트 핸들러
 	                img.setAttribute("src", e.target.result);
-	               	alert(img.src);
+	                img.setAttribute("width", "50");
+	                img.setAttribute("height", "50");
+	               	//alert(img.src); //이미지소스
+	               	
 	                   //$('#blah').attr('src', e.target.result);
 	                   //이미지 Tag의 SRC속성에 읽어들인 File내용을 지정
 	                   //(아래 코드에서 읽어들인 dataURL형식)
 	               }                    
 	               reader.readAsDataURL(input.files[0]);
+	             //File내용을 읽어 dataURL형식의 문자열로 저장
 	               div.appendChild(img);
-	               //File내용을 읽어 dataURL형식의 문자열로 저장
+	               
 	           }
 	       }//readURL()--
 	
@@ -72,8 +76,8 @@
 		<div class="line" style="height:230px;">
 			<label class="title" style="height:230px;">내용</label>
 			<div id="toress">
-				<!-- <textarea rows="14" cols="58" name="board_content"></textarea>
-				<img id="blah" src="#" alt="your image" width="50" height="50" /> -->
+				<textarea rows="1" cols="58" name="board_content"></textarea><br/>
+				<!-- <img id="blah" src="#" alt="your image" width="50" height="50" /> -->
 			</div>
 		</div>
 		
