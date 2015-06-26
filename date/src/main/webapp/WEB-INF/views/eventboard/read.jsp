@@ -26,6 +26,10 @@
 		
 		location.href=url;
 	}
+	
+	function joinFun(root, event_code, pageNumber){
+		window.open(root+"/eventBoard/join.do?event_code="+event_code+"&pageNumber="+pageNumber,"join","width=500,height=500");
+	}
 
 </script>
 </head>
@@ -88,11 +92,13 @@
 		 --%>
 		<tr>
 			<td height="30" colspan="4" align="center">
-				<input type="button" value="글수정(운영자만 가능)" onclick="updateFun('${root}','${eventBoard.event_code }','${pageNumber }')" />
-				<input type="button" value="글삭제(운영자만 가능)" onclick="delFun('${root}','${eventBoard.event_code }','${pageNumber }')"/>
-				<input type="button" value="응모회원관리(운영자만 가능)" onclick="manageFun('${root}','${eventBoard.event_code }','${pageNumber }')"/><br/>
+				<c:if test="${memberLevel=='AA' }">
+					<input type="button" value="글수정(운영자만 가능)" onclick="updateFun('${root}','${eventBoard.event_code }','${pageNumber }')" />
+					<input type="button" value="글삭제(운영자만 가능)" onclick="delFun('${root}','${eventBoard.event_code }','${pageNumber }')"/>
+					<input type="button" value="응모회원관리(운영자만 가능)" onclick="manageFun('${root}','${eventBoard.event_code }','${pageNumber }')"/><br/>
+				</c:if>
 				
-				<input type="button" value="참가하기" onclick="location.href='${root}/eventBoard/join.do?event_code=${eventBoard.event_code }&pageNumber=${pageNumber }'"/>
+				<input type="button" value="참가하기" onclick="joinFun('${root}','${eventBoard.event_code }','${pageNumber }')"/>
 				<input type="button" value="글목록" onclick="location.href='${root}/eventBoard/list.do?pageNumber=${pageNumber }'"/>
 			</td>
 		</tr>

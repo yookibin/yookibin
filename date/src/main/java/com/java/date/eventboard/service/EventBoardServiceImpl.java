@@ -21,6 +21,12 @@ import org.springframework.web.servlet.ModelAndView;
 import com.java.date.eventboard.dao.EventBoardDao;
 import com.java.date.member.dto.EventBoardDto;
 
+/**
+ * @name : EventBoardServiceImpl
+ * @date : 2015. 6. 22.
+ * @author : JeongSuhyun
+ * @description : EventBoardController클래스의 함수들로부터 요청된 함수를 실행한다.
+ */
 @Component
 public class EventBoardServiceImpl implements EventBoardService {
 	
@@ -29,7 +35,7 @@ public class EventBoardServiceImpl implements EventBoardService {
 	
 	private Logger logger=Logger.getLogger(this.getClass().getName());
 	private String dir="C:\\Users\\KOSTA\\date\\date\\src\\main\\webapp\\resources\\eventBoard";
-
+	
 	@Override
 	public void eventWrite(ModelAndView mav) {
 		Map<String, Object> map=mav.getModelMap();
@@ -319,7 +325,7 @@ public class EventBoardServiceImpl implements EventBoardService {
 		int event_code=Integer.parseInt(request.getParameter("event_code"));
 		String pageNumber=request.getParameter("pageNumber");
 		
-		EventBoardDto eventBoard=eventBoardDao.boardUpdateRead(event_code);
+		EventBoardDto eventBoard=eventBoardDao.boardRead(event_code);
 		logger.info("eventBoard: "+eventBoard);
 		
 		mav.addObject("eventBoard",eventBoard);
@@ -412,8 +418,14 @@ public class EventBoardServiceImpl implements EventBoardService {
 		int event_code=Integer.parseInt(request.getParameter("event_code"));
 		String pageNumber=request.getParameter("pageNumber");
 		
+		mav.addObject("event_code",event_code);
+		//로그인 후 세션으로 등록된 id를 통해 그 회원의 포인트를 가져와야한다.
+		//그 포인트를 mav.addObject할 것
 		
+		mav.addObject("pageNumber",pageNumber);
 		
+		mav.setViewName("eventboard/join");		
 	}
+
 	
 }

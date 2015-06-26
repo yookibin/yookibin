@@ -20,7 +20,9 @@
 	<table width="530" align="center">
 		<tr>
 			<td align="right" bgcolor="D1DBDB">
-				<a href="${root }/eventBoard/wirte.do">글쓰기(운영자만)</a>
+				<c:if test="${memberLevel=='AA' }">
+					<a href="${root }/eventBoard/wirte.do">글쓰기(운영자만)</a>
+				</c:if>
 			</td>
 		</tr>
 	</table>

@@ -9,6 +9,12 @@ import org.springframework.stereotype.Component;
 
 import com.java.date.member.dto.EventBoardDto;
 
+/**
+ * @name : EventBoardDaoImpl
+ * @date : 2015. 6. 22.
+ * @author : JeongSuhyun
+ * @description : SqlSessionTemplate클래스의 변수를 통해 mapper.xml의 쿼리문으로 연결시킨다.
+ */
 @Component
 public class EventBoardDaoImpl implements EventBoardDao {
 	
@@ -51,12 +57,6 @@ public class EventBoardDaoImpl implements EventBoardDao {
 	public int boardDelete(int event_code) {
 		
 		return sqlSession.delete("dao.eventBoardMapper.boardDelete",event_code);
-	}
-
-	@Override
-	public EventBoardDto boardUpdateRead(int event_code) {
-		
-		return sqlSession.selectOne("dao.eventBoardMapper.boardRead",event_code);
 	}
 
 	@Override

@@ -1,5 +1,11 @@
 package com.java.date.member.dto;
 
+/**
+ * @name : EventBoardDto
+ * @date : 2015. 6. 22.
+ * @author : JeongSuhyun
+ * @description : event_board테이블의 필드와 같은 이름의 변수들을 생성. get함수와 set함수를 통해 데이터 값을 가져오고 변경한다.
+ */
 public class EventBoardDto {
 	private int event_code;
 	private String event_period;
