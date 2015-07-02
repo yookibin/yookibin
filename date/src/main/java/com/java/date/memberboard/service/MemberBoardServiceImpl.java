@@ -1,6 +1,11 @@
 package com.java.date.memberboard.service;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -15,7 +20,9 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.java.date.member.dto.MemberBoardDto;
+import com.java.date.member.dto.MemberReplyDto;
 import com.java.date.memberboard.dao.MemberBoardDao;
+
 
 
 
@@ -105,6 +112,7 @@ public class MemberBoardServiceImpl implements MemberBoardService {
 		HttpServletRequest request=(HttpServletRequest)map.get("request");
 		
 		String pageNumber=request.getParameter("pageNumber");
+		
 		if(pageNumber==null) pageNumber="1";
 		
 		int boardSize=3;
@@ -131,19 +139,105 @@ public class MemberBoardServiceImpl implements MemberBoardService {
 	}
 
 	@Override
-	public void boardRead(ModelAndView mav) {
+	public void boardRead(ModelAndView mav){
 		Map<String, Object> map=mav.getModelMap();
 		HttpServletRequest request=(HttpServletRequest)map.get("request");
+		MemberReplyDto memberReply=(MemberReplyDto)map.get("memberReply");
 		
+		/*String nickName=request.getParameter("reply_writer");*/
+		logger.info("nickName:"+memberReply.getReply_writer());
 		int board_num=Integer.parseInt(request.getParameter("board_num"));
 		String pageNumber=request.getParameter("pageNumber");
+
+		
+			int replySize=4;
+			int startRow=replySize-4;
+			int endRow=(startRow+1)*replySize;
+			
+			mav.addObject("startRow", startRow);
+			mav.addObject("endRow", endRow);
+		
+		// ajax로 보내는거 생각점 해봅세
+		/*response.setContentType("application/html;charset=utf-8");
+		PrintWriter out;
+		try {
+			out = response.getWriter();
+			out.print(str);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+		mav.addObject("memberReply", memberReply);*/
+		
+		
 		logger.info("board_num:"+board_num+","+pageNumber);
+		
+		logger.info(memberReply.getReply_content());
 		
 		MemberBoardDto memberBoard=memberBoardDao.boardRead(board_num);
 		logger.info("memberBoard:"+memberBoard);
 		
 		if(memberBoard.getBoard_fileSize()!=0){
 			memberBoard.setBoard_fileRoot(memberBoard.getBoard_fileRoot().substring(dir.length()+1));
+		}
+		
+		//해당 board_num의 reply들을 가져오기.
+		int count=memberBoardDao.replyCount(board_num);
+		logger.info("댓글개수"+count);
+		
+		
+		
+		//reply 가져오기.
+		if(count>0){
+			List<MemberReplyDto> memberReplyList=memberBoardDao.replyList(board_num);
+			
+			logger.info("사이즈:"+memberReplyList.size());
+			mav.addObject("memberReplyList", memberReplyList);
+			
+		}	
+		
+		if(memberReply.getReply_content()!=null){
+			/*SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+            Calendar calendar=Calendar.getInstance();   //자기 자신의 객체를 못 만들어
+            int year=calendar.get(Calendar.YEAR);      //Date클래스에서 안되던 2000년이후year이 가능하다.
+            int month=calendar.get(Calendar.MONTH)+1;   //그냥 MONTH하면 개월수 반환
+            int date=calendar.get(Calendar.DATE);
+            //int hour=0;
+            
+            if (calendar.get(Calendar.AM_PM) == Calendar.PM){
+               // Calendar.PM이면 12를 더한다
+               hour = calendar.get(Calendar.HOUR)+12;
+            }else{
+            	hour=calendar.get(Calendar.HOUR);
+            }
+            int minute = calendar.get(Calendar.MINUTE);
+            
+            String today=Integer.toString(year)+"-"+Integer.toString(month)+"-"+Integer.toString(date)+" "+Integer.toString(hour)+":"+Integer.toString(minute);
+            
+            String today=Integer.toString(year)+"-"+Integer.toString(month)+"-"+Integer.toString(date);
+            logger.info("today:"+today);
+
+            Date realToday = null;
+            
+			try {
+				realToday=sdf.parse(today);
+				logger.info("realToday:"+realToday);
+				
+				memberReply.setReply_time(realToday);
+				logger.info("댓글시간:"+memberReply.getReply_time());
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}*/
+			
+			// 댓글 db에 넣기.
+			
+			
+			
+			/*memberReply.setReply_time(new Date());
+			memberBoardDao.replyInsert(memberReply);*/
+			/*mav.addObject("memberReply", memberReply);*/
 		}
 		
 		

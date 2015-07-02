@@ -26,4 +26,23 @@
 	<select id="boardRead" parameterType="int" resultType="com.java.date.member.dto.MemberBoardDto">
 		select * from board where board_num=#{board_num}
 	</select>
+	
+	<!-- 댓글 달기 -->
+	<insert id="replyInsert" parameterType="com.java.date.member.dto.MemberReplyDto">
+		insert into reply values(reply_reply_num_seq.nextval, #{board_num}, #{reply_time}, #{reply_content}, #{reply_writer})
+	</insert>
+	
+	<!-- 댓글 가져오기 전 해당 게시글의 댓글들 개수 가져오기. -->
+	<select id="replyCount" parameterType="int" resultType="int">
+		select count(*) from reply where board_num=#{board_num}
+	</select>
+	
+	<select id="replyList" parameterType="int" resultType="com.java.date.member.dto.MemberReplyDto">
+		<![CDATA[select * from reply where board_num=#{board_num} order by reply_num desc ]]>
+	</select>
 </mapper>
+
+
+
+
+
