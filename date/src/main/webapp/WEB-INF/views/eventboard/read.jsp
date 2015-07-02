@@ -5,6 +5,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<c:set var="root" value="${pageContext.request.contextPath }"/>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -27,23 +28,33 @@
 		location.href=url;
 	}
 	
-	function joinFun(root, event_code, pageNumber){
-		window.open(root+"/eventBoard/join.do?event_code="+event_code+"&pageNumber="+pageNumber,"join","width=500,height=500");
+	function enterFun(root, event_code, pageNumber,event_point){
+		var url=root+"/eventBoard/enter.do?event_code="+event_code+"&pageNumber="+pageNumber+"&event_point="+event_point;
+		//alert(url);
+		
+		location.href=url;
+	}
+	
+	function manageFun(root, event_code,group_number,sequence_number,sequence_level,pageNumber){
+		var url=root+"/eventBoard/managerList.do?event_code="+event_code+"&group_number="+group_number+"&sequence_number="+sequence_number+"&sequence_level="+sequence_level+"&pageNumber="+pageNumber;
+		//alert(url);
+		
+		location.href=url;
 	}
 
 </script>
 </head>
 
 <body>
-<!-- eventBoard와 pageNumber를 넘겨줌 -->
+	<!-- eventBoard와 pageNumber를 넘겨줌 -->
 	<c:set var="root" value="${pageContext.request.contextPath }"/>
 	
 	<table border="1" width="510" cellpadding="2"  cellspacing="0" align="center">
 		<tr>
-			<td align="center"  height="20" width="125">글번호:ㅇ</td>
+			<td align="center"  height="20" width="125">글번호</td>
 			<td align="center"  height="20" width="125">${eventBoard.event_code }</td>
 			
-			<td align="center"  height="20" width="125">조회수:P</td>
+			<td align="center"  height="20" width="125">조회수</td>
 			<td align="center"  height="20" width="125">${eventBoard.read_count }</td>
 		</tr>
 		
@@ -93,12 +104,19 @@
 		<tr>
 			<td height="30" colspan="4" align="center">
 				<c:if test="${memberLevel=='AA' }">
-					<input type="button" value="글수정(운영자만 가능)" onclick="updateFun('${root}','${eventBoard.event_code }','${pageNumber }')" />
-					<input type="button" value="글삭제(운영자만 가능)" onclick="delFun('${root}','${eventBoard.event_code }','${pageNumber }')"/>
-					<input type="button" value="응모회원관리(운영자만 가능)" onclick="manageFun('${root}','${eventBoard.event_code }','${pageNumber }')"/><br/>
+					<input type="button" value="글수정" onclick="updateFun('${root}','${eventBoard.event_code }','${pageNumber }')" />
+					<input type="button" value="글삭제" onclick="delFun('${root}','${eventBoard.event_code }','${pageNumber }')"/>
+					<input type="button" value="응모회원관리" onclick="manageFun('${root}','${eventBoard.event_code }','${eventBoard.group_number }','${eventBoard.sequence_number }','${eventBoard.sequence_level }','${pageNumber }')"/><br/>
+					
 				</c:if>
 				
-				<input type="button" value="참가하기" onclick="joinFun('${root}','${eventBoard.event_code }','${pageNumber }')"/>
+		 		<c:if test="${eventBoard.event_progress=='진행' }">
+					<input type="button" value="참가하기" onclick="enterFun('${root}','${eventBoard.event_code }','${pageNumber }','${eventBoard.event_point }')"/>
+				</c:if>
+				<c:if test="${eventBoard.event_progress=='종료' }">
+					<input type="text" value="기간이 지난 이벤트 입니다."/>
+				</c:if>
+				
 				<input type="button" value="글목록" onclick="location.href='${root}/eventBoard/list.do?pageNumber=${pageNumber }'"/>
 			</td>
 		</tr>

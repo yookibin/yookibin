@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.java.date.member.dto.MemberBoardDto;
+import com.java.date.member.dto.MemberReplyDto;
 import com.java.date.memberboard.service.MemberBoardService;
 
 
@@ -100,10 +101,12 @@ public class MemberBoardController {
 	 * 이 부분은 write 글내용넣기 수정한 후에 다시 해야함.
 	 */
 	@RequestMapping(value="/memberboard/read.do", method=RequestMethod.GET)
-	public ModelAndView boardRead(HttpServletRequest request){
+	public ModelAndView boardRead(HttpServletRequest request, MemberReplyDto memberReply){
+		
 		logger.info("boardRead입니당.");
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("request", request);
+		mav.addObject("memberReply", memberReply);
 		service.boardRead(mav);
 		return mav;
 	}

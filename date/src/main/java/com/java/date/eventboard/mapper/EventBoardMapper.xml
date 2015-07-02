@@ -4,11 +4,11 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.eventBoardMapper">	
 	<insert id="boardInsert" parameterType="com.java.date.member.dto.EventBoardDto">
-		<![CDATA[ insert into event_board(event_code,event_period,event_title,event_content,writer,read_count,event_progress,event_point,event_giveaway) values(event_board_event_code_seq.nextval,#{event_period},#{event_title},#{event_content},#{writer},#{read_count},#{event_progress},#{event_point},#{event_giveaway}) ]]>		
+		<![CDATA[ insert into event_board(event_code,event_period,event_title,event_content,writer,read_count,event_progress,event_point,event_giveaway,group_number,sequence_number,sequence_level) values(event_board_event_code_seq.nextval,#{event_period},#{event_title},#{event_content},#{writer},#{read_count},#{event_progress},#{event_point},#{event_giveaway},#{group_number},#{sequence_number},#{sequence_level}) ]]>		
 	</insert>
 	
 	<insert id="boardInsertFile" parameterType="com.java.date.member.dto.EventBoardDto">
-		<![CDATA[ insert into event_board values(event_board_event_code_seq.nextval,#{event_period},#{event_title},#{event_content},#{writer},#{read_count},#{event_fileName},#{event_fileSize},#{event_filePath},#{event_progress},#{event_point},#{event_giveaway}) ]]>		
+		<![CDATA[ insert into event_board values(event_board_event_code_seq.nextval,#{event_period},#{event_title},#{event_content},#{writer},#{read_count},#{event_fileName},#{event_fileSize},#{event_filePath},#{event_progress},#{event_point},#{event_giveaway},#{group_number},#{sequence_number},#{sequence_level}) ]]>		
 	</insert>
 	
 	<select id="boardCount" resultType="int">
@@ -16,7 +16,7 @@
 	</select>
 	
 	<select id="boardList" parameterType="java.util.HashMap" resultType="com.java.date.member.dto.EventBoardDto">
-		<![CDATA[ select * from (select rownum rnum, a.* from(select * from event_board order by event_code desc)a) where rnum>=#{startRow} and rnum<=#{endRow} ]]>
+		<![CDATA[ select * from (select rownum rnum, a.* from(select * from event_board order by group_number desc, sequence_number asc)a) where rnum>=#{startRow} and rnum<=#{endRow} ]]>
 	</select>
 	
 	<update id="readCount" parameterType="int">
@@ -38,5 +38,52 @@
 	<update id="boardUpdateFile" parameterType="com.java.date.member.dto.EventBoardDto">
 		<![CDATA[ update event_board set event_period=#{event_period}, event_title=#{event_title}, event_content=#{event_content}, writer=#{writer}, event_fileName=#{event_fileName}, event_fileSize=#{event_fileSize}, event_filePath=#{event_filePath}, event_point=#{event_point},event_giveaway=#{event_giveaway} where event_code=#{event_code} ]]>
 	</update>
+	
+	<select id="getMember" parameterType="String" resultType="com.java.date.member.dto.MemberDto">
+		<![CDATA[ select * from member where id=#{id} ]]>
+	</select>
+	
+	<select id="getPoint" parameterType="String" resultType="int">
+		<![CDATA[ select point_total from point where id=#{id} and point_code=(select max(point_code) from point where id=#{id})  ]]>
+	</select>
+	
+	<insert id="joinWriteFile" parameterType="java.util.HashMap">
+		<![CDATA[ insert into event values(event_join_code_seq.nextval,#{event_code},#{id},#{join_title},#{join_writer},#{join_content},#{join_fileName},#{join_fileSize},#{join_filePath}) ]]>
+	</insert>
+	
+	<insert id="joinWrite" parameterType="java.util.HashMap">
+		<![CDATA[ insert into event(join_code, event_code, id, join_title, join_writer, join_content) values(event_join_code_seq.nextval,#{event_code},#{id},#{join_title},#{join_writer},#{join_content}) ]]>
+	</insert>
 		
+	<insert id="pointWrite" parameterType="java.util.HashMap">	
+		<![CDATA[ insert into point values(POINT_POINT_CODE_SEQ.nextval,#{id},-#{event_point},#{afterPoint},'이벤트 참가') ]]>
+	</insert>
+	
+	<select id="eventManagerCount" parameterType="int" resultType="int">
+		<![CDATA[ select count(*) from event where event_code=#{event_code} ]]>
+	</select>
+	
+	<select id="eventManagerList" parameterType="java.util.HashMap" resultType="com.java.date.member.dto.EventMemberDto">
+		<![CDATA[ select * from (select rownum rnum, a.* from(select * from event where event_code=#{event_code} order by join_code desc)a) where rnum>=#{startRow} and rnum<=#{endRow}  ]]>
+	</select>
+	
+	<select id="eventManagerRead" parameterType="int" resultType="com.java.date.member.dto.EventMemberDto">
+		<![CDATA[ select * from event where join_code=#{join_code} ]]>
+	</select>
+	
+	<delete id="eventManagerDel" parameterType="int">
+		<![CDATA[ delete from event where join_code=#{join_code} ]]>
+	</delete>
+	
+	<select id="boardGroupNumberMax" resultType="int">
+		<![CDATA[select nvl(max(group_number), 0) from event_board]]>
+	</select>
+	
+	<update id="boardGroupNumberUpdate" parameterType="java.util.HashMap">
+		<![CDATA[update event_board set sequence_number=sequence_number+1 where group_number=#{group_number} and sequence_level>#{sequence_level}]]> 
+	</update>
+	
+	<select id="getEventMembers" parameterType="int" resultType="com.java.date.member.dto.EventMemberDto">
+		<![CDATA[ select * from event where event_code=#{event_code} ]]>
+	</select>
 </mapper>

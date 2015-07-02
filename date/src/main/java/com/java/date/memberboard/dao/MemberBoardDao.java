@@ -3,6 +3,7 @@ package com.java.date.memberboard.dao;
 import java.util.List;
 
 import com.java.date.member.dto.MemberBoardDto;
+import com.java.date.member.dto.MemberReplyDto;
 
 
 public interface MemberBoardDao {
@@ -37,4 +38,13 @@ public interface MemberBoardDao {
 	 * @description : 해당 글 목록을 읽기위한 함수
 	 */
 	public MemberBoardDto boardRead(int board_num);
+	
+	
+	public void replyInsert(MemberReplyDto memberReply);
+	
+	public int replyCount(int board_num);
+	
+	public List<MemberReplyDto> replyList(int board_num);
+	
+	
 }

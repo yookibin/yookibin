@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.replyMapper">
+	
+	<!-- 댓글 달기 -->
+	<insert id="replyInsert" parameterType="com.java.date.member.dto.MemberReplyDto">
+		insert into reply values(reply_reply_num_seq.nextval, #{board_num}, #{reply_time}, #{reply_content}, #{reply_writer} )
+	</insert>
+	
+	<!-- 댓글 가져오기 전 해당 게시글의 댓글들 개수 가져오기. -->
+	<select id="replyCount" parameterType="int" resultType="int">
+		select count(*) from reply where board_num=#{board_num}
+	</select>
+	
+	<select id="replyList" parameterType="int" resultType="com.java.date.member.dto.MemberReplyDto">
+		select * from reply where board_num=#{board_num}
+	</select>
+	
+	<select id="replyBunho" resultType="int">
+		<![CDATA[select nvl(max(reply_num), 0) from reply]]>
+	</select>
+	
+	<delete id="replyDelete" parameterType="int">
+		delete from reply where reply_num=#{reply_num}
+	</delete>
+	
+	<select id="replySelect" parameterType="int" resultType="com.java.date.member.dto.MemberReplyDto">
+		select * from reply where reply_num=#{reply_num}
+	</select>
+	
+	<update id="updateReply" parameterType="java.util.HashMap">
+		update reply set reply_content=#{reply_content} where reply_num=#{reply_num}
+	</update>
+</mapper>
+
+
+
+
+

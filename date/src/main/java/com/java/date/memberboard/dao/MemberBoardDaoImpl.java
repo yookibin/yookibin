@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.java.date.member.dto.MemberBoardDto;
+import com.java.date.member.dto.MemberReplyDto;
 
 
 @Component
@@ -47,4 +48,23 @@ public class MemberBoardDaoImpl implements MemberBoardDao {
 	public MemberBoardDto boardRead(int board_num) {
 		return sqlSession.selectOne("dao.memberBoardMapper.boardRead", board_num);
 	}
+
+	@Override
+	public void replyInsert(MemberReplyDto memberReply) {
+		
+		sqlSession.insert("dao.memberBoardMapper.replyInsert", memberReply);
+	}
+
+	@Override
+	public int replyCount(int board_num) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("dao.memberBoardMapper.replyCount", board_num);
+	}
+
+	@Override
+	public List<MemberReplyDto> replyList(int board_num) {
+		return sqlSession.selectList("dao.memberBoardMapper.replyList", board_num);
+	}
+
+
 }

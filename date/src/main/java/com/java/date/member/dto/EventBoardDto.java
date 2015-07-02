@@ -20,6 +20,11 @@ public class EventBoardDto {
 	private int event_point;
 	private String event_giveaway;
 	
+	private int group_number;
+	private int sequence_number;
+	private int sequence_level;
+	
+	
 	public int getEvent_code() {
 		return event_code;
 	}
@@ -91,5 +96,23 @@ public class EventBoardDto {
 	}
 	public void setEvent_giveaway(String event_giveaway) {
 		this.event_giveaway = event_giveaway;
+	}
+	public int getGroup_number() {
+		return group_number;
+	}
+	public void setGroup_number(int group_number) {
+		this.group_number = group_number;
+	}
+	public int getSequence_number() {
+		return sequence_number;
+	}
+	public void setSequence_number(int sequence_number) {
+		this.sequence_number = sequence_number;
+	}
+	public int getSequence_level() {
+		return sequence_level;
+	}
+	public void setSequence_level(int sequence_level) {
+		this.sequence_level = sequence_level;
 	}	
 }
