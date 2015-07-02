@@ -10,81 +10,66 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>게시판 목록보기</title>
-<link rel="stylesheet" type="text/css" href="${root }/css/eventboard/style.css">
 </head>
-
-
-
 <body>	
+	<c:if test="${memberLevel=='AA' }">
+		<a href="${root }/eventBoard/write.do">글쓰기(운영자만)</a>
+	</c:if>
 	
-	<table width="530" align="center">
-		<tr>
-			<td align="right" bgcolor="D1DBDB">
-				<c:if test="${memberLevel=='AA' }">
-					<a href="${root }/eventBoard/wirte.do">글쓰기(운영자만)</a>
-				</c:if>
-			</td>
-		</tr>
-	</table>
 	
 	<c:if test="${count==0 }">
-		<table border="1" width="530" cellpadding="2" cellspacing="0" align="center">
-			<tr>
-				<td align="center">게시판에 저장된 글이 없습니다.</td>
-			</tr>
-		</table>
+		<center>게시판에 저장된 글이 없습니다.</center>
 	</c:if>
 
 	<c:if test="${count!=0 }">
-		<table border="1" width="600" cellpadding="2" cellspacing="0" align="center">
-			<tr> 
-				<td align="center" width="30">번호</td>
-				<td align="center" width="60">이미지</td>
-				<td align="center" width="130">제목</td>
-				<td align="center" width="100">기간</td>
-				<td align="center" width="100">작성자</td>
-				<td align="center" width="50">조회수</td>
-				<td align="center" width="50">진행상황</td>
-				<td align="center" width="50">차감포인트</td>
-				<td align="center" width="50">경품</td>
-			</tr>
+			<span>번호</span>
+			<span style="width: 150px">이미지</span>
+			<span>제목</span>
+			<span>기간</span>
+			<span>작성자</span>
+			<span>조회수</span>
+			<span>진행상황</span>
+			<span>차감포인트</span>
+			<span>경품</span>
+			<br/><br/>
 			
 			<!-- Board List -->
 			<c:forEach var="eventBoard" items="${list }">
-				<tr>
-					<td>${eventBoard.event_code }</td>
+				
+					${eventBoard.event_code }
 					
 					<c:if test="${eventBoard.event_fileSize!=0 }">
-						<td>						
+						<span>					
 						<img src="${root}/resources/eventBoard/${eventBoard.event_filePath }" width="150" height="150"/>						
 						${eventBoard.event_filePath }									
-						</td>
-					</c:if>
-					<c:if test="${eventBoard.event_fileSize==0 }">
-						<td>						
-													
-						</td>
+						</span>
 					</c:if>
 					
-					<td>
+					<c:if test="${eventBoard.event_fileSize==0 }">
+						<span style="width: 150px">
+							이미지가 없네요
+						</span>
+					</c:if>
+					
+					<span>
 						<a href="${root }/eventBoard/read.do?event_code=${eventBoard.event_code}&pageNumber=${currentPage}">${eventBoard.event_title }</a>				
-					</td>
-					<td>${eventBoard.event_period }</td>				
-					<td>${eventBoard.writer }</td>
-					<td>${eventBoard.read_count }</td>		
-					<td>${eventBoard.event_progress }</td>		
-					<td>${eventBoard.event_point }</td>
-					<td>${eventBoard.event_giveaway }</td>	
-				</tr>
+					</span>
+					<span>${eventBoard.event_period }</span>				
+					<span>${eventBoard.writer }</span>
+					<span>${eventBoard.read_count }</span>		
+					<span>${eventBoard.event_progress }</span>		
+					<span>${eventBoard.event_point }</span>
+					<span>${eventBoard.event_giveaway }</span>	
+				<br/>
 			</c:forEach>
-		</table>
+		
 		<br/>
 	</c:if>
 		
 	<!-- 페이지 번호 -->
 	<center>
 		<c:if test="${count>0 }">
-			<c:set var="pageBlock" value="${5 }"/>
+			<c:set var="pageBlock" value="${2 }"/>
 			
 			<c:set var="pageCount" value="${count/boardSize+(count%boardSize==0?0:1) }"/>
 			

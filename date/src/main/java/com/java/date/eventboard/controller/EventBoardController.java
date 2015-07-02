@@ -3,6 +3,7 @@ package com.java.date.eventboard.controller;
 import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.java.date.eventboard.service.EventBoardService;
 import com.java.date.member.dto.EventBoardDto;
+import com.java.date.member.dto.EventMemberDto;
 
 /**
  * @name : EventBoardController
@@ -34,7 +36,7 @@ public class EventBoardController {
 	 * @author : JeongSuhyun
 	 * @description : request를 담은 mav를 가지고 eventWrite함수를 실행한다.
 	 */
-	@RequestMapping(value="/eventBoard/wirte.do", method=RequestMethod.GET)
+	@RequestMapping(value="/eventBoard/write.do", method=RequestMethod.GET)
 	public ModelAndView eventWrite(HttpServletRequest request){
 		logger.info("event write");
 		
@@ -53,7 +55,7 @@ public class EventBoardController {
 	 * @author : JeongSuhyun
 	 * @description : write.jsp로부터 받은 정보들을 담은 mav를 가지고 eventWriteOk함수를 실행한다.
 	 */
-	@RequestMapping(value="/eventBoard/wirte.do", method=RequestMethod.POST)
+	@RequestMapping(value="/eventBoard/write.do", method=RequestMethod.POST)
 	public ModelAndView eventWrite(MultipartHttpServletRequest request, EventBoardDto eventBoard){
 		logger.info("event writeOk");
 		
@@ -167,13 +169,13 @@ public class EventBoardController {
 	}
 	
 	/**
-	 * @name : update
+	 * @name : eventUpdate
 	 * @date : 2015. 6. 24.
 	 * @author : JeongSuhyun
 	 * @description : update.jsp로부터 전달받은 수정할 데이터들을 mav에 담아 eventUpdateOk함수를 실행한다.
 	 */
 	@RequestMapping(value="/eventBoard/update.do", method=RequestMethod.POST)
-	public ModelAndView update(MultipartHttpServletRequest request,EventBoardDto eventBoard){
+	public ModelAndView eventUpdate(HttpServletRequest request,EventBoardDto eventBoard){
 		logger.info("update----------");
 				
 		ModelAndView mav=new ModelAndView();
@@ -187,6 +189,26 @@ public class EventBoardController {
 	}
 	
 	/**
+	 * @name : enter
+	 * @date : 2015. 6. 26.
+	 * @author : JeongSuhyun
+	 * @description : eventBoardService의 eventEnter함수를 실행한다. 
+	 */
+	@RequestMapping(value="/eventBoard/enter.do", method=RequestMethod.GET)
+	public ModelAndView enter(HttpServletRequest request){
+		//root+"/eventBoard/enter.do?event_code="+event_code+"&pageNumber="+pageNumber
+		logger.info("enter----------------");
+		
+		ModelAndView mav=new ModelAndView();
+		
+		mav.addObject("request",request);
+		
+		eventBoardService.eventEnter(mav);
+		
+		return mav;
+	}
+	
+	/**
 	 * @name : join
 	 * @date : 2015. 6. 25.
 	 * @author : JeongSuhyun
@@ -194,7 +216,7 @@ public class EventBoardController {
 	 */
 	@RequestMapping(value="/eventBoard/join.do", method=RequestMethod.GET)
 	public ModelAndView join(HttpServletRequest request){
-		//${root}/eventBoard/join.do?event_code=${eventBoard.event_code }&pageNumber=${pageNumber }
+		//root+"/eventBoard/join.do?event_code="+event_code+"&pageNumber="+pageNumber+"&id="+id+"&event_point="+event_point+"&form="+form
 		logger.info("join----------------");
 		
 		ModelAndView mav=new ModelAndView();
@@ -205,7 +227,107 @@ public class EventBoardController {
 		
 		return mav;
 	}
+	
+	/**
+	 * @name : enter
+	 * @date : 2015. 6. 26.
+	 * @author : JeongSuhyun
+	 * @description : 
+	 */
+	@RequestMapping(value="/eventBoard/enter.do", method=RequestMethod.POST)
+	public ModelAndView enter(MultipartHttpServletRequest request, EventMemberDto eventMember){
+		//root+"/eventBoard/enter.do?event_code="+event_code+"&pageNumber="+pageNumber
+		logger.info("enterOk?----------------");
+		
+		ModelAndView mav=new ModelAndView();
+		
+		mav.addObject("request",request);
+		mav.addObject("eventMember",eventMember);
+		
+		eventBoardService.eventEnterOk(mav);
+		
+		return mav;
+	}
+	
+	/**
+	 * @name : eventManagerList
+	 * @date : 2015. 6. 30.
+	 * @author : JeongSuhyun
+	 * @description : 
+	 */
+	@RequestMapping(value="/eventBoard/managerList.do",method=RequestMethod.GET)
+	public ModelAndView eventManagerList(HttpServletRequest request){
+		//root+"/eventBoard/managerList.do?event_code="+event_code+"&pageNumber="+pageNumber;
+		logger.info("eventManagerList----------------");
+		
+		ModelAndView mav=new ModelAndView();
+		
+		mav.addObject("request",request);
+		
+		eventBoardService.eventManagerList(mav);
+		
+		return mav;
+	}
 
+	/**
+	 * @name : eventManagerRead
+	 * @date : 2015. 6. 30.
+	 * @author : JeongSuhyun
+	 * @description : 
+	 */
+	@RequestMapping(value="/eventBoard/managerRead.do",method=RequestMethod.GET)
+	public ModelAndView eventManagerRead(HttpServletRequest request){
+		//${root }/eventBoard/managerRead.do?join_code=${eventMember.join_code }&eventPageNumber=${eventPageNumber}&event_code=${eventMember.event_code}&pageNumber=${pageNumber}
+		logger.info("eventManagerRead----------------");
+		
+		ModelAndView mav=new ModelAndView();
+		
+		mav.addObject("request",request);
+		
+		eventBoardService.eventManagerRead(mav);
+		
+		return mav;
+	}
+
+	/**
+	 * @name : eventManagerDel
+	 * @date : 2015. 7. 01.
+	 * @author : JeongSuhyun
+	 * @description : 
+	 */
+	@RequestMapping(value="/eventBoard/managerDel.do", method=RequestMethod.GET)
+	public ModelAndView eventManagerDel(HttpServletRequest request){
+		//root+"/eventBoard/managerDel.do?join_code="+join_code+"&event_code="+event_code+"&eventPageNumber="+eventPageNumber+"&pageNumber="+pageNumber;
+		logger.info("eventManagerDel-----------------");
+		
+		ModelAndView mav=new ModelAndView();
+		
+		mav.addObject("request", request);
+		
+		eventBoardService.eventManagerDel(mav);
+		
+		return mav;
+	}
+	
+	/**
+	 * @name : eventManagerDel
+	 * @date : 2015. 7. 01.
+	 * @author : JeongSuhyun
+	 * @description : 
+	 */
+	@RequestMapping(value="/eventBoard/managerDel.do", method=RequestMethod.POST)
+	public ModelAndView eventManagerDel(HttpServletRequest request, HttpServletResponse response){
+		
+		logger.info("eventManagerDelOk-----------------");
+		
+		ModelAndView mav=new ModelAndView();
+		
+		mav.addObject("request", request);
+		
+		eventBoardService.eventManagerDelOk(mav);
+		
+		return mav;
+	}
 	
 }
 
