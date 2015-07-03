@@ -7,6 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>이벤트 등록하기</title>
+<script type="text/javascript" src="${root }/smarteditor/js/HuskyEZCreator.js"></script>
 <script type="text/javascript" src="${root }/css/eventBoard/script.js"></script>
 <link rel="stylesheet" type="text/css" href="${root }/css/eventBoard/style.css">
 </head>
