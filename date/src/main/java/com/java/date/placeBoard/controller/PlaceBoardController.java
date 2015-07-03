@@ -58,6 +58,27 @@ public class PlaceBoardController{
 		
 		placeBoardService.placeBoardSearch(mav);
 		
-		return null;
+		return mav;
+	}
+	
+	/**
+	 * @name : reviewBoard
+	 * @date : 2015. 6. 29.
+	 * @author : 정희준
+	 * @description : '평가하기' 하이퍼링크를 클릭시 리뷰게시판으로 이동함
+	 */
+	
+	@RequestMapping(value="placeBoard/reviewBoard.do")
+	public ModelAndView reviewBoard(HttpServletRequest request,HttpServletResponse reponse){
+		
+		logger.info("---------------------reviewBoard Ok");
+		
+		ModelAndView mav=new ModelAndView();
+	
+		mav.addObject("request",request);
+		
+		placeBoardService.reviewBoard(mav);
+		
+		return mav;
 	}
 }

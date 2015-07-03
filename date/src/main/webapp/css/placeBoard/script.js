@@ -13,7 +13,7 @@ function placeListForm(form){
 			check=true;
 		}
 	}
-		alert(place);
+	//	alert(place);
 		
 		if(check==false){
 			alert("하나라도 체크해주세요");
@@ -24,4 +24,20 @@ function placeListForm(form){
 		
 		form.location.value=place;
 			alert(form.location.value);
+}
+
+function mouseOver(place_star,index,place_code){
+//	alert(place_star);
+//	alert(index);
+	$(function (){
+		$("#"+index).css("opacity","0.4");
+		$("#"+place_code).append("&nbsp;"+"&nbsp;"+"&nbsp;"+"&nbsp;"+"&nbsp;"+"★★★★★"+"&nbsp;"+place_star);	
+	});
+}
+
+function mouseOut(index, place_code){
+	$(function (){
+		$("#"+index).css("opacity","1.0");
+		$("#"+place_code).empty();
+	});
 }
