@@ -70,9 +70,8 @@
 		
 		
 		<div class="line" style="height:400px;">
-			<label class="title" style="height:400px;">내용</label>
-			<span class="content" style="height:230px;">
-				<textarea name="content" id="content" rows="22" style="width:640px;"></textarea>
+			<span class="content" style="height:230px; width:700px;">
+				<textarea name="content" id="content" rows="22" style="width:650px;"></textarea>
 			</span>
 		</div>
 		
