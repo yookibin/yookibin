@@ -10,8 +10,11 @@
 	<script type="text/javascript" src="${root}/css/board/script.js"></script>
 	<link rel="stylesheet" type="text/css" href="${root}/css/board/style.css"/>
 	
+	<!-- 에디터 -->
+	<script type="text/javascript" src="${root }/smarteditor/js/HuskyEZCreator.js"></script>
+	
 	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <script>
+  <script>
 	   $(document).ready(function(){
 	       function readURL(input) {
 	           if (input.files && input.files[0]) {
@@ -46,7 +49,6 @@
 	    });
 
   </script>
-	
 </head>
 <body>
 	${nickName}
@@ -67,19 +69,11 @@
 		</div>
 		
 		
-		<div class="line">
-			<label class="title">파일 첨부</label>
-			<span class="content">
-				<input type="file" name="file" id="imgInp"/>
+		<div class="line" style="height:400px;">
+			<label class="title" style="height:400px;">내용</label>
+			<span class="content" style="height:230px;">
+				<textarea name="content" id="content" rows="22" style="width:640px;"></textarea>
 			</span>
-		</div>
-		
-		<div class="line" style="height:230px;">
-			<label class="title" style="height:230px;">내용</label>
-			<div id="toress">
-				<textarea rows="1" cols="58" name="board_content"></textarea><br/>
-				<!-- <img id="blah" src="#" alt="your image" width="50" height="50" /> -->
-			</div>
 		</div>
 		
 		<div class="line" style="width:598px; border-width:2px; text-align:center;">
@@ -89,4 +83,23 @@
 		</div>
 	</form>
 </body>
+<script type="text/javascript">
+var oEditors = [];
+nhn.husky.EZCreator.createInIFrame({
+    oAppRef: oEditors,
+    elPlaceHolder: "content", //textarea ID
+    sSkinURI: "${root }/smarteditor/SmartEditor2Skin.html",
+    htParams : {
+      bUseToolbar : true,	// 툴바 사용 여부 (true:사용/ false:사용하지 않음[default:true] )
+      bUseVerticalResizer : true,	// 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음[default:true])
+      bUseModeChanger : true	// 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음[default:true])
+    },
+    //Editor 로딩이 완료된 후 처리될 내용 ex) 수정시 입력한글 내용 삽입가능
+    fOnAppLoad : function(){
+       //예제 코드
+       //oEditors.getById["bbsContent"].exec("PASTE_HTML", ["로딩이 완료된 후에 본문에 삽입되는 text입니다."]);
+    },
+    fCreator: "createSEditor2"
+});
+</script>
 </html>

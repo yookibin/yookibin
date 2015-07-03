@@ -15,6 +15,18 @@
   			<property name="maxWait" value="1000"/>
   			<property name="defaultAutoCommit" value="true"/>  		
   	</bean>
+  	
+  <bean id="jacksonMessageConverter"
+      class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"></bean>
+
+   <bean
+      class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+      <property name="messageConverters">
+         <list>
+            <ref bean="jacksonMessageConverter" />
+         </list>
+      </property>
+   </bean>
 
 
 	<!-- SqlSessionFactoryBean (mapper.xml) -->
@@ -29,5 +41,7 @@
 	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="sqlSessionFactoryBean"/>
 	</bean>
+	
+	
 		
 </beans>
