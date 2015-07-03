@@ -155,6 +155,7 @@ function update(root, reply_num, reply_content){
 				//alert("span:"+span);
 				$(span).text(reply_content);
 				$(updateDiv).remove();
+				
 			}
 		},
 		error:function(xhr,status,error){

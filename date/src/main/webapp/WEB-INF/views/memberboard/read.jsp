@@ -8,14 +8,14 @@
 <script type="text/javascript" src="${root }/css/board/script.js"></script>
 <script type="text/javascript" src="${root }/css/jquery.js"></script>
 <script type="text/javascript">
-	function deleteFun(root, boardNumber, pageNumber){
-		var url=root + "/board/delete.do?boardNumber="+boardNumber+"&pageNumber="+pageNumber;
+	function deleteFun(root, board_num, pageNumber){
+		var url=root + "/memberboard/delete.do?board_num="+board_num+"&pageNumber="+pageNumber;
 		//alert(url);
 		location.href=url;
 	}
 	
 	function updateFun(root, boardNumber, pageNumber){
-		var url=root + "/board/update.do?boardNumber="+boardNumber+"&pageNumber="+pageNumber;
+		var url=root + "/memberboard/update.do?board_num="+board_num+"&pageNumber="+pageNumber;
 		//alert(url);
 		location.href=url;
 	}

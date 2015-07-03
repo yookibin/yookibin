@@ -46,5 +46,7 @@ public interface MemberBoardDao {
 	
 	public List<MemberReplyDto> replyList(int board_num);
 	
+	public int deleteBoard(int board_num, String pw);
+	
 	
 }

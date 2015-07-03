@@ -150,12 +150,12 @@ public class MemberBoardServiceImpl implements MemberBoardService {
 		String pageNumber=request.getParameter("pageNumber");
 
 		
-			int replySize=4;
+			/*int replySize=4;
 			int startRow=replySize-4;
 			int endRow=(startRow+1)*replySize;
 			
 			mav.addObject("startRow", startRow);
-			mav.addObject("endRow", endRow);
+			mav.addObject("endRow", endRow);*/
 		
 		// ajax로 보내는거 생각점 해봅세
 		/*response.setContentType("application/html;charset=utf-8");
@@ -244,6 +244,36 @@ public class MemberBoardServiceImpl implements MemberBoardService {
 		mav.addObject("pageNumber", pageNumber);
 		mav.addObject("memberBoard", memberBoard);
 		mav.setViewName("memberboard/read");
+	}
+
+	@Override
+	public void boardDelete(ModelAndView mav) {
+		// TODO Auto-generated method stub
+		Map<String, Object> map=mav.getModelMap();
+		HttpServletRequest request=(HttpServletRequest)map.get("request");
+		int board_num=Integer.parseInt(request.getParameter("board_num"));
+		String pageNumber=request.getParameter("pageNumber");
+		logger.info("delete --board_num:"+board_num);
+		mav.addObject("board_num", board_num);
+		mav.addObject("pageNumber", pageNumber);
+		mav.setViewName("memberboard/delete");
+		
+	}
+
+	@Override
+	public void boardDeleteOk(ModelAndView mav) {
+		Map<String, Object> map=mav.getModelMap();
+		HttpServletRequest request=(HttpServletRequest)map.get("request");
+		int board_num=Integer.parseInt(request.getParameter("board_num"));
+		String pageNumber=request.getParameter("pageNumber");
+		String pw=request.getParameter("password");
+		logger.info(board_num+","+pageNumber+","+pw);
+		
+		int check=memberBoardDao.deleteBoard(board_num, pw);
+		
+		mav.addObject("check", check);
+		mav.setViewName("memberboard/deleteOk");
+		
 	}
 }
 

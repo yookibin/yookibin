@@ -36,4 +36,8 @@ public interface MemberBoardService {
 	 */
 	public void boardRead(ModelAndView mav);
 	
+	public void boardDelete(ModelAndView mav);
+	
+	public void boardDeleteOk(ModelAndView mav);
+	
 }

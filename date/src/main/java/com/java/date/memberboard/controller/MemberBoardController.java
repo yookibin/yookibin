@@ -110,4 +110,25 @@ public class MemberBoardController {
 		service.boardRead(mav);
 		return mav;
 	}
+	
+	@RequestMapping(value="/memberboard/delete.do", method=RequestMethod.GET)
+	public ModelAndView boardDelete(HttpServletRequest request){
+		logger.info("boardDelete GET입니당");
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("request", request);
+		
+		service.boardDelete(mav);
+		
+		return mav;
+	}
+	@RequestMapping(value="/board/deleteOk.do", method=RequestMethod.POST)
+	public ModelAndView boardDelete(HttpServletRequest request, HttpServletResponse response){
+		logger.info("boardDelete POST입니당");
+		logger.info(request.getParameter("board_num"));
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("request", request);
+		
+		service.boardDeleteOk(mav);
+		return mav;
+	}
 }

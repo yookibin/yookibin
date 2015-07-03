@@ -46,7 +46,15 @@ public class MemberBoardDaoImpl implements MemberBoardDao {
 
 	@Override
 	public MemberBoardDto boardRead(int board_num) {
-		return sqlSession.selectOne("dao.memberBoardMapper.boardRead", board_num);
+		MemberBoardDto member=null;
+		try{
+			sqlSession.update("dao.memberBoardMapper.readCount", board_num);
+			member=sqlSession.selectOne("dao.memberBoardMapper.boardRead", board_num);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return member;
 	}
 
 	@Override
@@ -64,6 +72,14 @@ public class MemberBoardDaoImpl implements MemberBoardDao {
 	@Override
 	public List<MemberReplyDto> replyList(int board_num) {
 		return sqlSession.selectList("dao.memberBoardMapper.replyList", board_num);
+	}
+
+	@Override
+	public int deleteBoard(int board_num, String pw) {
+		HashMap<String, Object> hMap=new HashMap<String, Object>();
+		hMap.put("board_num", board_num);
+		hMap.put("pw", pw);
+		return sqlSession.delete("dao.memberBoardMapper.deleteBoard", hMap);
 	}
 
 
