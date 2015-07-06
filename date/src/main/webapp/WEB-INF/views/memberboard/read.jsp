@@ -74,8 +74,10 @@
 	
 		<p>글내용</p>
 		
-			<img src="${root}/resources/board/${memberBoard.board_fileRoot}" width="200" height="200"/><br/>
 			${memberBoard.board_content }
+			
+			${memberBoard.board_recom}
+			<input type="button" value="추천" onclick="recommend('${root }', '${memberBoard.board_num}', '${memberBoard.board_recom}', '${pageNumber}')"/>
 		
 		<c:if test="${memberBoard.board_writer==nickName}">
 			<input type="button" value="글수정" onclick="updateFun('${root}','${memberBoard.board_num }', '${pageNumber}')" />

@@ -61,7 +61,9 @@ public class MemberBoardServiceImpl implements MemberBoardService {
 		MemberBoardDto memberBoard=(MemberBoardDto)map.get("memberBoard");
 		
 		String pageNumber=request.getParameter("pageNumber");
-		/*logger.info(memberBoard.getBoard_content());*/
+		String content=request.getParameter("content");
+		logger.info("content:"+content);
+		logger.info("memberBoard:"+memberBoard.getBoard_content());
 		
 		logger.info("memberBoard:"+memberBoard);
 		
@@ -70,7 +72,8 @@ public class MemberBoardServiceImpl implements MemberBoardService {
 		memberBoard.setBoard_recom(0);
 		
 		
-		MultipartFile upFile=request.getFile("file");
+		
+		/*MultipartFile upFile=request.getFile("file");
 		String fileName=upFile.getOriginalFilename();
 		String timeName=Long.toString(System.currentTimeMillis())+"_"+fileName;
 		long fileSize=upFile.getSize();
@@ -94,7 +97,7 @@ public class MemberBoardServiceImpl implements MemberBoardService {
 				logger.info("BoardServiceImpl writeOk 파일 입출력 에러");
 				e.printStackTrace();
 			}
-		}
+		}*/
 		
 		int check=memberBoardDao.insert(memberBoard);
 		logger.info("check:"+check);
@@ -148,7 +151,16 @@ public class MemberBoardServiceImpl implements MemberBoardService {
 		logger.info("nickName:"+memberReply.getReply_writer());
 		int board_num=Integer.parseInt(request.getParameter("board_num"));
 		String pageNumber=request.getParameter("pageNumber");
-
+		
+		
+		// 추천에 따른 추천수 증가 .
+		// 자바스크립트에서 +1해서 넘겨줌.
+		if(request.getParameter("board_recom")!=null){
+			int board_recom=Integer.parseInt(request.getParameter("board_recom"));
+			logger.info("board_recom:"+board_recom);
+			
+			memberBoardDao.recomUpdate(board_num, board_recom);
+		}
 		
 			/*int replySize=4;
 			int startRow=replySize-4;
@@ -178,9 +190,9 @@ public class MemberBoardServiceImpl implements MemberBoardService {
 		MemberBoardDto memberBoard=memberBoardDao.boardRead(board_num);
 		logger.info("memberBoard:"+memberBoard);
 		
-		if(memberBoard.getBoard_fileSize()!=0){
+		/*if(memberBoard.getBoard_fileSize()!=0){
 			memberBoard.setBoard_fileRoot(memberBoard.getBoard_fileRoot().substring(dir.length()+1));
-		}
+		}*/
 		
 		//해당 board_num의 reply들을 가져오기.
 		int count=memberBoardDao.replyCount(board_num);
@@ -254,26 +266,16 @@ public class MemberBoardServiceImpl implements MemberBoardService {
 		int board_num=Integer.parseInt(request.getParameter("board_num"));
 		String pageNumber=request.getParameter("pageNumber");
 		logger.info("delete --board_num:"+board_num);
-		mav.addObject("board_num", board_num);
+		/*mav.addObject("board_num", board_num);*/
 		mav.addObject("pageNumber", pageNumber);
-		mav.setViewName("memberboard/delete");
-		
-	}
-
-	@Override
-	public void boardDeleteOk(ModelAndView mav) {
-		Map<String, Object> map=mav.getModelMap();
-		HttpServletRequest request=(HttpServletRequest)map.get("request");
-		int board_num=Integer.parseInt(request.getParameter("board_num"));
-		String pageNumber=request.getParameter("pageNumber");
-		String pw=request.getParameter("password");
-		logger.info(board_num+","+pageNumber+","+pw);
-		
-		int check=memberBoardDao.deleteBoard(board_num, pw);
-		
+		int check=memberBoardDao.deleteBoard(board_num);
+	
 		mav.addObject("check", check);
 		mav.setViewName("memberboard/deleteOk");
 		
 	}
+
+
+
 }
 

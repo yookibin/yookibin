@@ -5755,8 +5755,8 @@ nhn.husky.SE_EditingArea_WYSIWYG = jindo.$Class({
 	
 		// IE8 : 찾기/바꾸기에서 글자 일부에 스타일이 적용된 경우 찾기가 안되는 브라우저 버그로 인해 EmulateIE7 파일을 사용
 		// <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-		this.sBlankPageURL = "smart_editor2_inputarea.html";
-		this.sBlankPageURL_EmulateIE7 = "smart_editor2_inputarea_ie8.html";
+		this.sBlankPageURL = "/date/smartEditor2Inputarea";
+		this.sBlankPageURL_EmulateIE7 = "/date/smartEditor2InputareaIe8";
 		this.aAddtionalEmulateIE7 = [];
 
 		this.htOptions = nhn.husky.SE2M_Configuration.SE_EditingAreaManager;	
@@ -6713,7 +6713,7 @@ nhn.husky.SE_EditingArea_WYSIWYG = jindo.$Class({
 				var linkNode = doc.createElement('link');
 				linkNode.type = 'text/css';
 				linkNode.rel = 'stylesheet';
-				linkNode.href = sCSSBaseURI + '/smart_editor2_in.css';
+				linkNode.href = '/date/smarteditor/css/smart_editor2_in.css';
 				headNode.appendChild(linkNode);
 			}
 			
@@ -20458,7 +20458,7 @@ nhn.husky.SE2B_CSSLoader = jindo.$Class({
 		}
 		
 		//nhn.husky.SE2M_Utils.loadCSS("css/smart_editor2.css");
-		nhn.husky.SE2M_Utils.loadCSS(this.htOptions.sCSSBaseURI+"/smart_editor2_items.css", fnCallback);
+		nhn.husky.SE2M_Utils.loadCSS("/date/smarteditor/css/smart_editor2_items.css", fnCallback);
 
 		return false;
 	}

@@ -14,7 +14,7 @@
 	<c:if test="${check>0 }">
 		<script type="text/javascript">
 			alert("삭제가 완료되었습니다.");
-			location.href="${root}/board/list.do?pageNumber=${pageNumber}";
+			location.href="${root}/memberboard/list.do?pageNumber=${pageNumber}";
 		</script>
 	</c:if>
 	

@@ -46,7 +46,10 @@ public interface MemberBoardDao {
 	
 	public List<MemberReplyDto> replyList(int board_num);
 	
-	public int deleteBoard(int board_num, String pw);
+	public int deleteBoard(int board_num);
+	
+	// 추천수 증가시키기
+	public void recomUpdate(int board_num, int board_recom);
 	
 	
 }

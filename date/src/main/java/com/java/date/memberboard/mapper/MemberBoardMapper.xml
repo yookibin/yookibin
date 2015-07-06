@@ -19,7 +19,7 @@
 	<select id="boardList" parameterType="java.util.HashMap" resultType="com.java.date.member.dto.MemberBoardDto">
 		<![CDATA[select *from
 					(select rownum rnum, a.* from
-						(select * from board)a)
+						(select * from board order by board_num desc)a)
 				where rnum >=#{startRow} and rnum <=#{endRow}]]>
 	</select>
 	
@@ -48,6 +48,11 @@
 	<select id="replyList" parameterType="int" resultType="com.java.date.member.dto.MemberReplyDto">
 		<![CDATA[select * from reply where board_num=#{board_num} order by reply_num desc ]]>
 	</select>
+	
+	<!-- 추천수증가 -->
+	<update id="recomUpdate" parameterType="java.util.HashMap">
+		update board set board_recom=#{board_recom} where board_num=#{board_num}
+	</update>
 </mapper>
 
 
