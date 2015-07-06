@@ -32,6 +32,7 @@
 				for(var i=0;i<data.length-1;i=i+1){
 					courseList += "<option value='"+data[i].place_code+","+data[i+1].place_code+"'>"+data[i].place_name+"ㅡㅡ>"+data[i+1].place_name+"</option>"
 				}
+				$("#courseSelect").empty();
 				$("#courseSelect").append(courseList);
 				
 				
@@ -54,17 +55,7 @@
 
 		});
 	}
-	function test2(root) {
-		$.ajax({
-			url : root + "/recommandPlace/test12.do"
-			,type : "post"
-			,success : function(data) {
-				console.log(data);
-				alert(data[0]);
-				alert(data[1].place_name);
-			}
-		});
-	}
+	
 </script>
 </head>
 <body>

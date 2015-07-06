@@ -60,7 +60,7 @@ a:hover {
 	width: 400px;
 	height: 400px;
 	float: left;
-	border: solid 1px red;
+	/* border: solid 0px red; */
 	border-width: 2px;
 	/* border-right-width: 0px;
 	border-bottom-width: 0px; */

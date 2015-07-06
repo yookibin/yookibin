@@ -42,15 +42,15 @@
 	</select>
 	<select id="selectList22" resultType="com.java.date.recommandPlace.dto.PlaceDto" parameterType="com.java.date.recommandPlace.dto.PlaceDto">
 		select * from placee 
-		where place_location=#{place_location} 
+		<!-- where place_location=#{place_location} 
 		and place_weather=#{place_weather}
 		and place_time=#{place_time}
-		and place_price=#{place_price}
-		<!-- (place_location=#{place_location} or '무관'= #{place_location}) 
+		and place_price=#{place_price} -->
+		where (place_location=#{place_location} or '무관'= #{place_location}) 
 		and (place_season=#{place_season} or '무관'= #{place_season})
 		and (place_weather=#{place_weather} or '무관'= #{place_weather})
 		and (place_time=#{place_time} or '무관'= #{place_time})
-		and (place_price=#{place_price} or 1234= #{place_price}) -->
+		and (place_price=#{place_price} or '1234'= #{place_price})
 	</select>
 </mapper>
 
