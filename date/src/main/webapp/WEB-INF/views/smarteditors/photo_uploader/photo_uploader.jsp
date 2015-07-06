@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<c:set var="root" value="${pageContext.request.contextPath }"/>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -27,7 +29,7 @@ a:hover,a:active,a:focus{text-decoration:underline}
 h1{color:#333;font-size:14px;letter-spacing:-1px}
 .btn_area{word-spacing:2px}
 .pop_container .drag_area{overflow:hidden;overflow-y:auto;position:relative;width:341px;height:129px;margin-top:4px;border:1px solid #eceff2}
-.pop_container .drag_area .bg{display:block;position:absolute;top:0;left:0;width:341px;height:129px;background:#fdfdfd url(/date/smarteditor/img/photoQuickPopup/bg_drag_image.png) 0 0 no-repeat}
+.pop_container .drag_area .bg{display:block;position:absolute;top:0;left:0;width:341px;height:129px;background:#fdfdfd url(${root}/smarteditor/img/photoQuickPopup/bg_drag_image.png) 0 0 no-repeat}
 .pop_container .nobg{background:none}
 .pop_container .bar{color:#e0e0e0}
 .pop_container .lst_type li{overflow:hidden;position:relative;padding:7px 0 6px 8px;border-bottom:1px solid #f4f4f4;vertical-align:top}
@@ -58,7 +60,7 @@ h1{color:#333;font-size:14px;letter-spacing:-1px}
 	    	 그밖의 경우 pop_container2 클래스와 하위 HTML 적용      -->
 	<div id="pop_container2" class="pop_container2">
     	<!-- content -->
-		<form id="editor_upimage" name="editor_upimage"  method="post" enctype="multipart/form-data" onSubmit="return false;">
+		<form id="editor_upimage" name="editor_upimage" method="post" enctype="multipart/form-data" onSubmit="return false;">
         <div id="pop_content2">
 			<input type="file" class="upload" id="uploadInputBox" name="Filedata">
             <p class="dsc" id="info"><strong>10MB</strong>이하의 이미지 파일만 등록할 수 있습니다.<br>(JPG, GIF, PNG, BMP)</p>
@@ -88,15 +90,15 @@ h1{color:#333;font-size:14px;letter-spacing:-1px}
     <!-- footer -->
     <div id="pop_footer">
 	    <div class="btn_area">
-            <a href="#"><img src="/date/smarteditor/img/photoQuickPopup/btn_confirm.png" width="49" height="28" alt="확인" id="btn_confirm"></a>
-            <a href="#"><img src="/date/smarteditor/img/photoQuickPopup/btn_cancel.png" width="48" height="28" alt="취소" id="btn_cancel"></a>
+            <a href="#"><img src="${root}/smarteditor/img/photoQuickPopup/btn_confirm.png" width="49" height="28" alt="확인" id="btn_confirm"></a>
+            <a href="#"><img src="${root}/smarteditor/img/photoQuickPopup/btn_cancel.png" width="48" height="28" alt="취소" id="btn_cancel"></a>
         </div>
     </div>
     <!-- //footer -->
 </div>
-<script type="text/javascript" src="/date/smarteditor/photo_uploader/popup/jindo.min.js" charset="utf-8"></script>
-<script type="text/javascript" src="/date/smarteditor/photo_uploader/popup/jindo.fileuploader.js" charset="utf-8"></script>
-<script type="text/javascript" src="/date/smarteditor/photo_uploader/popup/attach_photo.js" charset="utf-8"></script>
+<script type="text/javascript" src="${root}/smarteditor/photo_uploader/popup/jindo.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="${root}/smarteditor/photo_uploader/popup/jindo.fileuploader.js" charset="utf-8"></script>
+<script type="text/javascript" src="${root}/smarteditor/photo_uploader/popup/attach_photo.js" charset="utf-8"></script>
 
 </body>
 </html>

@@ -17,10 +17,20 @@
 	</c:if>
 	
 	<c:if test="${check==0 }">
-		<script type="text/javascript">
+		<c:if test="${firstCheck==0 }">
+			<script type="text/javascript">
 			alert("응모에 실패하였습니다. 다시 시도해주세요.");
 			location.href="${root}/eventBoard/list.do?pageNumber=${pageNumber}";
-		</script>
+			</script>
+		</c:if>
+		
+		<c:if test="${firstCheck!=0 }">
+			<script type="text/javascript">
+				alert("이벤트에는 한 번만 응모가 가능합니다.");
+				location.href="${root}/eventBoard/list.do?pageNumber=${pageNumber}";
+			</script>
+		</c:if>
+		
 	</c:if>	
 </body>
 </html>

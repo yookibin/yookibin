@@ -40,10 +40,10 @@
 		<tr>
 			<td align="center"  height="200" width="125">글내용</td>
 			<td valign="top"  height="200" colspan="3" align="center">
-				<c:if test="${eventMember.join_fileSize!=0 }">												
+<%-- 				<c:if test="${eventMember.join_fileSize!=0 }">												
 					<img src="${root}/resources/eventBoard/${eventMember.join_filePath }" width="200" height="200"/><br/>						
 					${eventMember.join_filePath }														
-				</c:if>	<br/>			
+				</c:if>	<br/>	 --%>		
 				${eventMember.join_content }
 			</td>
 		</tr>

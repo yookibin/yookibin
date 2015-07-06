@@ -53,6 +53,9 @@ function checkForm(eventBoardForm){
 	}
 	
 	//------------------------------------------------------------------------------------
+	oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []);
+	
+	//------------------------------------------------------------------------------------
 	if(eventBoardForm.writer.value==null||eventBoardForm.writer.value==""){
 		alert("작성자를 입력하세요.");
 		eventBoardForm.writer.focus();
@@ -65,11 +68,11 @@ function checkForm(eventBoardForm){
 		return false;
 	}
 	
-	if(eventBoardForm.event_content.value==null||eventBoardForm.event_content.value==""){
+/*	if(eventBoardForm.event_content.value==null||eventBoardForm.event_content.value==""){
 		alert("내용을 입력하세요.");
 		eventBoardForm.event_content.focus();
 		return false;
-	}
+	}*/
 	
 	if(eventBoardForm.event_point.value==null||eventBoardForm.event_point.value==""){
 		alert("차감 포인트를 입력하세요.");
@@ -84,6 +87,14 @@ function checkForm(eventBoardForm){
 	}
 	
 }
+
+function updateFun(updateForm){
+	oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []);
+}
+/*
+function enterFun(enterForm){
+	oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []);
+}*/
 
 function deleteCheck(deleteForm){
 

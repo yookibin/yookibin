@@ -13,7 +13,7 @@
 </head>
 <body>	
 	<c:if test="${memberLevel=='AA' }">
-		<a href="${root }/eventBoard/write.do">글쓰기(운영자만)</a>
+		<a href="${root }/eventBoard/write.do">글쓰기(운영자만)</a><br/><br/>
 	</c:if>
 	
 	
@@ -23,7 +23,6 @@
 
 	<c:if test="${count!=0 }">
 			<span>번호</span>
-			<span style="width: 150px">이미지</span>
 			<span>제목</span>
 			<span>기간</span>
 			<span>작성자</span>
@@ -37,7 +36,7 @@
 			<c:forEach var="eventBoard" items="${list }">
 				
 					${eventBoard.event_code }
-					
+			<%-- 		
 					<c:if test="${eventBoard.event_fileSize!=0 }">
 						<span>					
 						<img src="${root}/resources/eventBoard/${eventBoard.event_filePath }" width="150" height="150"/>						
@@ -49,7 +48,7 @@
 						<span style="width: 150px">
 							이미지가 없네요
 						</span>
-					</c:if>
+					</c:if> --%>
 					
 					<span>
 						<a href="${root }/eventBoard/read.do?event_code=${eventBoard.event_code}&pageNumber=${currentPage}">${eventBoard.event_title }</a>				
@@ -69,7 +68,7 @@
 	<!-- 페이지 번호 -->
 	<center>
 		<c:if test="${count>0 }">
-			<c:set var="pageBlock" value="${2 }"/>
+			<c:set var="pageBlock" value="${1 }"/>
 			
 			<c:set var="pageCount" value="${count/boardSize+(count%boardSize==0?0:1) }"/>
 			

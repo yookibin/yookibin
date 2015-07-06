@@ -108,6 +108,7 @@ public class HomeController {
 		}
 		return "";
 	}
+	
 	@RequestMapping(value="/singleAjax", method=RequestMethod.POST)
 	public String SingleAjax(HttpServletRequest request, @RequestParam("Filedata") MultipartFile file_data, @RequestParam("callback") String callback, @RequestParam("callback_func") String callback_func){
 		System.out.println("8");
