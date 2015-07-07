@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.java.date.member.dto.MemberBoardDto;
 import com.java.date.member.dto.MemberReplyDto;
+import com.java.date.member.dto.RecommendBoardDto;
 import com.java.date.memberboard.service.MemberBoardService;
 
 
@@ -136,5 +137,58 @@ public class MemberBoardController {
 		service.boardDelete(mav);
 		
 		return mav;
+	}
+	
+	/**
+	 * @name : boardSelect
+	 * @date : 2015. 7. 6.
+	 * @author : 유기빈
+	 * @description : 수정 전 select해오기.
+	 */
+	@RequestMapping(value="/memberboard/update.do", method=RequestMethod.GET)
+	public ModelAndView boardSelect(HttpServletRequest request){
+		logger.info("boardSelect GET입니당.");
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("request", request);
+		
+		service.boardSelect(mav);
+		return mav;
+	}
+	
+	/**
+	 * @name : boardUpdate
+	 * @date : 2015. 7. 6.
+	 * @author : 유기빈
+	 * @description : 수정후 성공여부 확인하기 위한 함수,
+	 */
+	@RequestMapping(value="/memberboard/update.do", method=RequestMethod.POST)
+	public ModelAndView boardUpdate(HttpServletRequest request, MemberBoardDto memberBoard){
+		logger.info("boardSelect POST입니당.");
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("request", request);
+		mav.addObject("memberBoard", memberBoard);
+		
+		service.boardUpdate(mav);
+		return mav;
+	}
+	
+	
+	/**
+	 * @name : recommendBoard
+	 * @date : 2015. 7. 6.
+	 * @author : 유기빈
+	 * @description : 해당 게시물에 추천했는지 여부와 안했으면 한 내용을 table에 담기 위한 함수.
+	 */
+	@RequestMapping(value="/memberboard/recommend.do", method=RequestMethod.GET)
+	public ModelAndView recommendBoard(HttpServletRequest request, HttpServletResponse response, RecommendBoardDto recom){
+		logger.info("recommendBoard GET입니당.");
+		
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("request", request);
+		mav.addObject("response", response);
+		mav.addObject("recom", recom);
+		
+		service.recommendBoard(mav);
+		return null;
 	}
 }
