@@ -32,6 +32,7 @@ public class EventBoardController {
 	
 	Logger logger=Logger.getLogger(this.getClass().getName());
 	
+	
 	/**
 	 * @name : eventWrite
 	 * @date : 2015. 6. 22.

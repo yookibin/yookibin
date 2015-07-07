@@ -9,21 +9,72 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
-	function randomFun(root, event_code, group_number, sequence_number, sequence_level, pageNumber, count){
+	function randomFun(root, event_code, group_number, sequence_number, sequence_level, pageNumber, count, event_period){
 		//alert("하하하 랜덤추첨!!");
-		var num=prompt("현재 응모회원수 : "+count+"\n몇 명의 당첨자?","");
-		//alert(num);
+ 		//alert(event_period);
+ 		var period=event_period.split("~");
+		var lastPeriod=period[1].trim();		
+		//alert("lastPeriod: "+lastPeriod);  		
+  		
+  		var today = new Date();  
+  		var dateArray = lastPeriod.split("-");  
+  		var dateObj = new Date(dateArray[0], Number(dateArray[1])-1, dateArray[2]);  
+  		var day = 1000*60*60*24;  
+  		var month = day*30;
+  		var year = month*12;
+
+  		var betweenDay = (today.getTime() - dateObj.getTime())/day;  
+  		var betweenMonth =  (today.getTime() - dateObj.getTime())/month;   
+  		
+  		//alert("오늘과의 차이: "+betweenDay);   		
 		
-		if(num!=null&&num!=""&&count>=num){
-			var url=root+"/eventBoard/write.do?event_code="+event_code+"&group_number="+group_number+"&sequence_number="+sequence_number+"&sequence_level="+sequence_level+"&pageNumber="+pageNumber+"&num="+num;
-			location.href=url;
-		}
+   		if(betweenDay<1){
+  			alert("아직 이벤트 진행기간입니다.");
+  		}else{
+  			var num=prompt("현재 응모회원수 : "+count+"\n몇 명의 당첨자?","");
+			//alert(num);
+			
+			if(num!=null&&num!=""&&count>=num){
+				var url=root+"/eventBoard/write.do?event_code="+event_code+"&group_number="+group_number+"&sequence_number="+sequence_number+"&sequence_level="+sequence_level+"&pageNumber="+pageNumber+"&num="+num;
+				location.href=url;
+			}
+  		} 
+
+	}
+	
+	function noRandomFun(root, event_code, group_number, sequence_number, sequence_level, pageNumber, count, event_period){
+		//alert("하하하 랜덤추첨!!");
+ 		//alert(event_period);
+ 		var period=event_period.split("~");
+		var lastPeriod=period[1].trim();		
+		//alert("lastPeriod: "+lastPeriod);  		
+  		
+  		var today = new Date();  
+  		var dateArray = lastPeriod.split("-");  
+  		var dateObj = new Date(dateArray[0], Number(dateArray[1])-1, dateArray[2]);  
+  		var day = 1000*60*60*24;  
+  		var month = day*30;
+  		var year = month*12;
+
+  		var betweenDay = (today.getTime() - dateObj.getTime())/day;  
+  		var betweenMonth =  (today.getTime() - dateObj.getTime())/month;   
+  		
+  		//alert("오늘과의 차이: "+betweenDay);   		
+		
+   		if(betweenDay<1){
+  			alert("아직 이벤트 진행기간입니다.");
+  		}else{  			
+			var url=root+"/eventBoard/write.do?event_code="+event_code+"&group_number="+group_number+"&sequence_number="+sequence_number+"&sequence_level="+sequence_level+"&pageNumber="+pageNumber+"&num=0";
+			location.href=url;			
+  		} 
+
 	}
 </script>
 </head>
 <body>
 <a href="${root}/eventBoard/list.do?pageNumber=${pageNumber}">이벤트list로 가기</a><br/>
-<input type="button" value="발표 글 쓰기" onclick="randomFun('${root }','${event_code}','${group_number }','${sequence_number }','${sequence_level }','${pageNumber }','${count }')" />
+<input type="button" value="당첨자 발표 글 쓰기(랜덤당첨)" onclick="randomFun('${root }','${event_code}','${group_number }','${sequence_number }','${sequence_level }','${pageNumber }','${count }','${event_period }')" />
+<input type="button" value="당첨자 발표 글 쓰기(수동서기)" onclick="noRandomFun('${root }','${event_code}','${group_number }','${sequence_number }','${sequence_level }','${pageNumber }','${count }','${event_period }')" />
 <br/><br/>
 
 	<c:if test="${count==0 }">		
@@ -32,10 +83,12 @@
 
 	<c:if test="${count!=0 }">		
 
+<%-- 			
 			<h4>이벤트 번호 : ${event_code }</h4><br/>
 			<h4>group_number : ${group_number }</h4>
 			<h4>sequence_number : ${sequence_number }</h4>
-			<h4>sequence_level : ${sequence_level }</h4>
+			<h4>sequence_level : ${sequence_level }</h4> 
+--%>
 	
 			<!-- Board List -->
 			<c:forEach var="eventMember" items="${list }">
@@ -62,7 +115,7 @@
 <!-- 페이지 번호 -->
 	<center>
 		<c:if test="${count>0 }">
-			<c:set var="pageBlock" value="${1 }"/>
+			<c:set var="pageBlock" value="${3 }"/>
 			
 			<c:set var="pageCount" value="${count/boardSize+(count%boardSize==0?0:1) }"/>
 			

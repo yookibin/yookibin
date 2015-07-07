@@ -1,5 +1,6 @@
 package com.java.date.member.service;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Map;
 
@@ -44,8 +45,20 @@ public class MemberServiceImpl implements MemberService {
 		System.out.println("nickname:"+memberDto.getNickName());
 		System.out.println("phone:"+memberDto.getPhone());*/
 		
-		int check=memberDao.memberRegister(memberDto);
-		logger.info("check:"+check);
+		memberDto.setMember_level("BB");
+		
+		int firstCheck=memberDao.memberRegister(memberDto);
+		logger.info("firstCheck:"+firstCheck);
+		
+		String id=memberDto.getId();
+		logger.info(id);
+		//회원가입이 완료되면 기본 포인트를 지급한다.
+		int check=0;
+		if(firstCheck>0){
+			check=memberDao.memberPoint(id);
+			logger.info("check: "+check);
+		}		
+		
 		mav.addObject("check", check);
 		mav.setViewName("member/registerOk");	
 	}
@@ -57,16 +70,24 @@ public class MemberServiceImpl implements MemberService {
 	 * @description : 아이디 중복여부를 체크하기 위해 id 값을 읽어와 dao로 넘기고 check값과 id를 idCheck.jsp로 넘김.
 	 */
 	@Override
-	public void idCheck(ModelAndView mav) {
-		// TODO Auto-generated method stub
+	public void idCheck(ModelAndView mav) {		
 		Map<String, Object> map=mav.getModelMap();
 		HttpServletRequest request=(HttpServletRequest)map.get("request");
+		try {
+			request.setCharacterEncoding("utf-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		String id=request.getParameter("id");
 		logger.info("id:"+id);
+		
 		int check=memberDao.idCheck(id);
 		logger.info("check:"+check);
+		
 		mav.addObject("check", check);
 		mav.addObject("id", id);
+		
 		mav.setViewName("member/idCheck");
 		
 	}
@@ -173,27 +194,32 @@ public class MemberServiceImpl implements MemberService {
 	 * @description : id값을 dao로 넘겨 해당하는 레코드값을 MemerDto를 가져와 update.jsp로 넘어가기 위한 함수.
 	 */
 	@Override
-	public void select(ModelAndView mav) {
+	public void update(ModelAndView mav) {
 		Map<String, Object> map=mav.getModelMap();
 		HttpServletRequest request=(HttpServletRequest)map.get("request");
 		String id=request.getParameter("id");
 		logger.info("id:"+id);
 		MemberDto member=memberDao.select(id);
 		logger.info("member:"+ member);
+		
 		mav.addObject("member", member);
+		
 		mav.setViewName("member/update");
 	}
 
-	/*@Override
-	public void update(ModelAndView mav) {
+	@Override
+	public void updateOk(ModelAndView mav) {
 		Map<String, Object> map=mav.getModelMap();
 		//HttpServletRequest request=(HttpServletRequest)map.get("request");
 		MemberDto member=(MemberDto)map.get("member");
 		logger.info("member:"+member);
+		logger.info("member id: "+member.getId());
+		logger.info("member addr: "+member.getAddr());
+		logger.info("member birthday: "+member.getBirthday());
 		
 		int check=memberDao.update(member);
 		logger.info("check:"+check);
 		mav.addObject("check", check);
 		mav.setViewName("member/updateOk");
-	}*/
+	}
 }

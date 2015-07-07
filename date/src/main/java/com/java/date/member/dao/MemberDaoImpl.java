@@ -75,9 +75,22 @@ public class MemberDaoImpl implements MemberDao {
 		return sqlSession.selectOne("dao.memberMapper.select", id);
 	}
 
-	/*@Override
+	/**
+	 * @name : memberPoint
+	 * @date : 2015. 7. 06.
+	 * @author : jeongsuhyun
+	 * @description : 회원가입 시 기본 포인트를 지급하기 위한 함수.
+	 */
+	@Override
+	public int memberPoint(String id) {
+		
+		return sqlSession.insert("dao.memberMapper.memberPoint",id);
+	}
+
+	@Override
 	public int update(MemberDto member) {
-		// TODO Auto-generated method stub
+		
 		return sqlSession.update("dao.memberMapper.update", member);
-	}*/
+		//return 0;
+	}
 }

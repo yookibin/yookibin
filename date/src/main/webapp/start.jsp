@@ -34,9 +34,8 @@
 		<c:if test="${memberLevel=='AA'}">
 			<a href="${root }/eventBoard/write.do">이벤트 추가하기(운영자만 가능한 기능)</a><br/>
 		</c:if>
-	</c:if><br/><br/>
+	</c:if><br/><br/>		
 		
-		
-	<a href="${root }/placeBoard/boardList.do">장소게시판</a>
+	<a href="${root }/placeBoard/boardList.do">장소게시판</a> 
 </body>
 </html>

@@ -68,7 +68,7 @@
 	<!-- 페이지 번호 -->
 	<center>
 		<c:if test="${count>0 }">
-			<c:set var="pageBlock" value="${1 }"/>
+			<c:set var="pageBlock" value="${3 }"/>
 			
 			<c:set var="pageCount" value="${count/boardSize+(count%boardSize==0?0:1) }"/>
 			

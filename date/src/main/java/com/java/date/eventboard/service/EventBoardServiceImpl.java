@@ -71,7 +71,7 @@ public class EventBoardServiceImpl implements EventBoardService {
 			ArrayList<EventMemberDto> winnerList=castWinner(event_code,num);
 			
 			EventBoardDto eventBoard=eventBoardDao.boardRead(event_code);
-			
+						
 			mav.addObject("winnerList", winnerList);
 			mav.addObject("eventBoard", eventBoard);
 			
@@ -292,7 +292,7 @@ public class EventBoardServiceImpl implements EventBoardService {
 		Map<String,Object> map=mav.getModelMap();
 		HttpServletRequest request=(HttpServletRequest)map.get("request");
 		
-		int boardSize=5;
+		int boardSize=3;
 		
 		String pageNumber=request.getParameter("pageNumber");
 		if(pageNumber==null) pageNumber="1";
@@ -807,6 +807,12 @@ public class EventBoardServiceImpl implements EventBoardService {
 		int sequence_level=Integer.parseInt(request.getParameter("sequence_level"));
 		String pageNumber=request.getParameter("pageNumber");	//이벤트 게시물의 페이지넘버(되돌아갈 페이지 넘버)
 		
+		//-----------------------------------------------------------
+		EventBoardDto eventBoard=eventBoardDao.boardRead(event_code);
+		String event_period=eventBoard.getEvent_period();		
+		
+		//-----------------------------------------------------------
+		
 		String eventPageNumber=request.getParameter("eventPageNumber");	
 		if(eventPageNumber==null) eventPageNumber="1";
 		//운영자만 볼 수 있는 이벤트 응모글들 페이지 넘버
@@ -843,6 +849,7 @@ public class EventBoardServiceImpl implements EventBoardService {
 			}
 		}
 
+		mav.addObject("event_period",event_period);
 		mav.addObject("event_code",event_code);
 		mav.addObject("group_number",group_number);
 		mav.addObject("sequence_number",sequence_number);
