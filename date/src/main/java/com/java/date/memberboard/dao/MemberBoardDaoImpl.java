@@ -137,5 +137,13 @@ public class MemberBoardDaoImpl implements MemberBoardDao {
 		return sqlSession.update("dao.memberBoardMapper.popGroupNumber",board_num);
 	}
 
+	@Override
+	public int boardReset() {
+		// TODO Auto-generated method stub
+		return sqlSession.update("dao.memberBoardMapper.boardReset");
+	}
+
+
+
 
 }

@@ -75,6 +75,7 @@ public class MemberBoardServiceImpl implements MemberBoardService {
 		memberBoard.setBoard_count(0);
 		memberBoard.setBoard_recom(0);
 		
+		
 		if(memberLevel.equals("AA")){
 			memberBoard.setGroupNumber(2);
 		}else{
@@ -136,8 +137,11 @@ public class MemberBoardServiceImpl implements MemberBoardService {
 		
 		List<MemberBoardDto> boardList=null;
 		List<MemberBoardDto> popularity=null;
+		List<MemberBoardDto> TotalList=null;
 		MemberBoardDto member=null;
 		if(count>0){
+			
+			int value=memberBoardDao.boardReset();
 			// 탑3 인기글가져오기
 			 popularity=memberBoardDao.getPopList();
 			 logger.info("인기글개수:"+popularity.size());

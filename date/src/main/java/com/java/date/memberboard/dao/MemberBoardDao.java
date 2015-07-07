@@ -72,6 +72,8 @@ public interface MemberBoardDao {
 	// 인기글 그룹넘버 업데이트
 	public int popGroupNumber(int board_num);
 	
+	public int boardReset();
+	
 	
 	
 	

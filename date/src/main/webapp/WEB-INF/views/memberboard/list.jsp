@@ -41,11 +41,11 @@
 		<c:forEach var="memberBoard" items="${memberboardList }">
 			<div align="center" >
 				<span>${memberBoard.board_num }</span>
-			<c:forEach var="pop" items="${popularity }">
-				<c:if test="${pop.board_num==memberBoard.board_num}">
+			
+				<c:if test="${memberBoard.groupNumber==1}">
 					<span id="popularity">[인기글]</span>
 				</c:if>
-			</c:forEach>
+			
 		
 				<a href="${root }/memberboard/read.do?board_num=${memberBoard.board_num}&pageNumber=${currentPage}">${memberBoard.board_title }</a>
 				 

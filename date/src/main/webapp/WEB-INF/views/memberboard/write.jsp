@@ -23,13 +23,13 @@
 		<input type="hidden" name="memberLevel" value="${memberLevel}"/>
 			
 		<div style="width:598px; height:15px; border-width:2px; text-align:right; padding:15px 0px 0px 0px; border-bottom-width:0px;">
-				<a href="${root}/board/list.do">글목록</a>
+				<a href="${root}/memberboard/list.do">글목록</a>
 		</div>
 			
 		
 
 		<div class="line">
-			<c:if test="${boardNumber!='AA'}">
+			<c:if test="${memberLevel!='AA'}">
 				<span class="content"><input type="text" size="50" name="board_title"/></span>
 			</c:if>
 			

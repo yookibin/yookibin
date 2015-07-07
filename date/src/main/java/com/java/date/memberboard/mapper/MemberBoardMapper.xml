@@ -5,11 +5,11 @@
 <mapper namespace="dao.memberBoardMapper">
 	<insert id="boardWrite" parameterType="com.java.date.member.dto.MemberBoardDto">
 		insert into board(board_num, board_content, board_date, board_count, board_title, board_recom, board_writer, groupNumber)
-		values(board_board_num_sql.nextval, #{board_content}, #{board_date}, #{board_count}, #{board_title}, #{board_recom}, #{board_writer}, #{groupNumber})
+		values(board_board_num_seq.nextval, #{board_content}, #{board_date}, #{board_count}, #{board_title}, #{board_recom}, #{board_writer}, #{groupNumber})
 	</insert>
 	
 	<insert id="boardWriteFile" parameterType="com.java.date.member.dto.MemberBoardDto">
-		<![CDATA[ insert into board values(board_board_num_sql.nextval, #{board_content}, #{board_date}, #{board_count}, #{board_title}, #{board_recom}, #{board_fileSize}, #{board_fileName}, #{board_fileRoot}, #{board_writer}) ]]>		
+		<![CDATA[ insert into board values(board_board_num_seq.nextval, #{board_content}, #{board_date}, #{board_count}, #{board_title}, #{board_recom}, #{board_fileSize}, #{board_fileName}, #{board_fileRoot}, #{board_writer}) ]]>		
 	</insert>
 	
 	<select id="getCount" resultType="int">
@@ -19,7 +19,7 @@
 	<select id="boardList" parameterType="java.util.HashMap" resultType="com.java.date.member.dto.MemberBoardDto">
 		<![CDATA[select *from
 					(select rownum rnum, a.* from
-						(select * from board order by  board_num desc, groupNumber desc)a)
+						(select * from board order by  groupNumber desc, board_num desc)a)
 				where rnum >=#{startRow} and rnum <=#{endRow}]]>
 	</select>
 	
@@ -79,7 +79,7 @@
 	
 	<!-- 탑3가져오기 -->
 	<select id="selectPop" resultType="com.java.date.member.dto.MemberBoardDto">
-		<![CDATA[select * from(select board_num, board_recom, rank() over(order by board_recom desc) as rank from board)where rownum<4]]>
+		<![CDATA[select * from(select board_num, board_recom, rank() over(order by board_recom desc) as rank from board where groupNumber=0)where rownum<4]]>
 	</select>
 	
 	<delete id="dropReply" parameterType="int">
@@ -88,7 +88,12 @@
  	
 	<update id="popGroupNumber" parameterType="int">
 		<![CDATA[update board set groupNumber=1 where board_num=#{board_num}]]>
-	</update> 
+	</update>
+	
+	<update id="boardReset">
+		<![CDATA[update board set groupNumber=0 where groupNumber<>2]]>
+	</update>
+
 </mapper>
 
 
