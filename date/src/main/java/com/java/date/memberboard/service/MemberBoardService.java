@@ -38,6 +38,11 @@ public interface MemberBoardService {
 	
 	public void boardDelete(ModelAndView mav);
 	
+	public void boardSelect(ModelAndView mav);
+	
+	public void boardUpdate(ModelAndView mav);
+	
+	public void recommendBoard(ModelAndView mav);
 	
 	
 }

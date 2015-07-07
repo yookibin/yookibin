@@ -113,7 +113,8 @@ public class HomeController {
 	public String SingleAjax(HttpServletRequest request, @RequestParam("Filedata") MultipartFile file_data, @RequestParam("callback") String callback, @RequestParam("callback_func") String callback_func){
 		System.out.println("8");
 		String file_result ="";
-		
+		// 추가 
+		String dir="C:\\Users\\KOSTA\\date\\date\\src\\main\\webapp\\resources\\eventBoard";
 		try{
 			//파일이 존재하면
 			if(file_data !=null && file_data.getOriginalFilename()!=null){
@@ -123,6 +124,7 @@ public class HomeController {
 				filename_extension=filename_extension.toLowerCase(); //확장자를 소문자로 변경
 				String defaultPath=request.getSession().getServletContext().getRealPath("/"); // 서버 기본경로(프로젝트폴더까지 :서버내의 해당경로에 저장되는 것임)
 				String path= defaultPath+"resources"+File.separator+"upload"+File.separator+"board"+File.separator; // 파일 저장경로
+			
 				
 				File file= new File(path);
 				// 디렉토리 존재하지 않을 경우 디렉토리 생성
@@ -161,6 +163,8 @@ public class HomeController {
 	// 익스플로러 버전이 높을때 다수 이미지 업로드
 	@RequestMapping(value="/multipleAjax", method=RequestMethod.POST)
 	public void multipleAjax(HttpServletRequest request, HttpServletResponse response){
+		// 추가 
+		String dir="C:\\Users\\KOSTA\\date\\date\\src\\main\\webapp\\";
 		System.out.println("9");
 		try{
 			String sFileInfo=""; // 파일 정보
@@ -168,12 +172,16 @@ public class HomeController {
 			String filename_extension=filename.substring(filename.lastIndexOf(".")+1); // 파일 확장자
 			filename_extension=filename_extension.toLowerCase(); // 확장자를 소문자로 변경
 			String defaultPath=request.getSession().getServletContext().getRealPath("/"); // 서버기본경로(프로젝트폴더까지: 서버내의 해당 경로에 저장되는 것임)
-			String path = defaultPath+"resources"+File.separator+"upload"+File.separator+"board"+File.separator; //파일저장경로
+			
+			//String path2 = dir+"resources"+File.separator+"eventBoard"+File.separator; //파일저장경로
+			String path= defaultPath+"resources"+File.separator+"upload"+File.separator+"board"+File.separator;
 			
 			// 디렉토리 존재하지 않을경우 디렉토리 생성
 			File file= new File(path);
 			if(!file.exists()){
+			
 				file.mkdirs();
+				
 			}
 			
 			SimpleDateFormat formatter=new SimpleDateFormat("yyyyMMddHHmmss");
@@ -185,21 +193,25 @@ public class HomeController {
 			//서버에 이미지저장(쓰기)
 			InputStream is=request.getInputStream();
 			OutputStream os=new FileOutputStream(path+modify_name);
+			// OutputStream os1=new FileOutputStream(path2+modify_name);
 			int numRead;
 			byte b[]=new byte[Integer.parseInt(request.getHeader("file-size"))]; // 파일 쓰기
 			while((numRead=is.read(b,0,b.length)) !=-1){
 				os.write(b,0,numRead);
+				//os1.write(b,0,numRead);
 			}
 			if(is!=null){
 				is.close();
 			}
 			os.flush();
 			os.close();
+			// os1.close();
 			
 			// 정보 출력
 			sFileInfo += "&bNewLine=true";
 			sFileInfo += "&sFileName="+filename; // img 태그의 title 속성을 원본파일명으로 적용시켜주기 위함.
-			sFileInfo += "&sFileURL=" + "/date/resources/upload/board/" + modify_name;
+			sFileInfo += "&sFileURL=" + "/date/resources/upload/board/"+ modify_name;
+			
 			PrintWriter print=response.getWriter();
 			print.print(sFileInfo);
 			print.flush();

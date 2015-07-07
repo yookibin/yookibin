@@ -20,10 +20,10 @@ function writeReply(root, board_num, reply_writer){
 			//alert(reply_num+reply_content+reply_writer+reply_time);
 			
 			
-			var replyDivs = $("#replyAll > div:last").clone();
+			var replyDivs = $("#replyAll > div:first").clone();
 			
-			$("#replyAll > div:last").css("display","block");
-			$("#replyAll > div:last").attr("id", reply_num);
+			$("#replyAll > div:first").css("display","block");
+			$("#replyAll > div:first").attr("id", reply_num);
 			
 			$("#replyAll span:eq(0)").text(reply_num);
 			$("#replyAll span:eq(1)").text(reply_content);
@@ -164,15 +164,46 @@ function update(root, reply_num, reply_content){
 	});
 }
 
-function recommend(root, board_num, board_recom, pageNumber){
-	 //alert(root+","+board_num+","+board_recom);
-	 var x=Number(board_recom);
-	 var recom=x+1;
-	 alert(recom);
-	 location.href=root+"/memberboard/read.do?board_num="+board_num+"&board_recom="+recom+"&pageNumber="+pageNumber;
+function recommend(root, board_num, board_recom, pageNumber, recommend_nickName){
+	 //alert(root+","+board_num+","+board_recom+","+recomand_nickName);
+	var url=root+"/memberboard/recommend.do?board_num="+board_num+"&board_recom="+board_recom+"&recommend_nickName="+recommend_nickName+"&pageNumber="+pageNumber;
+	 //location.href=url;
+	//var x=Number(board_recom);
+	 // 1증가시키기 전 증가시키고자 하는 사용자가 이미 추천을 눌렀는지 확인. 
+	 // 아니라면 추천테이블에 해당 게시물에 추천을 했다는 표시를 함.
+	 // 후에 추천을 1 증가시킴
+	 // 그 다음 보드테이블에 recomand도 1증가?
+	$.ajax({
+		url:url,
+		type:"get",
+		datatype:"text",
+		
+		success:function(data){
+			var result=data;
+			if(data!=""){
+				$("#board_recom:eq(0)").text(data);
+			}
+			
+			if(data=="") alert("추천을 이미 하셨습니다.");
+			
+			$("#recom_button").attr("disabled", "disabled");
+			//alert(result);
+		}
+		
+	});
+	 /*var recom=x+1;
+	 alert(recom);*/
+	 // location.href=root+"/memberboard/read.do?board_num="+board_num+"&board_recom="+recom+"&pageNumber="+pageNumber;
 }
 
-
+function writeFun(root, nickName){
+	//alert(root+","+nickName);
+	if(nickName==null||nickName==""){
+		alert("로그인후 이용가능합니다.");
+	}else if(nickName!=null){
+		$("#writeA").attr("href", root+"/memberboard/write.do")
+	}
+}
 
 function checkForm(boardForm){
 	

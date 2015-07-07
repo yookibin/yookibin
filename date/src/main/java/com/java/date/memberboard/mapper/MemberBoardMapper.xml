@@ -4,8 +4,8 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.memberBoardMapper">
 	<insert id="boardWrite" parameterType="com.java.date.member.dto.MemberBoardDto">
-		insert into board(board_num, board_content, board_date, board_count, board_title, board_recom, board_writer)
-		values(board_board_num_sql.nextval, #{board_content}, #{board_date}, #{board_count}, #{board_title}, #{board_recom}, #{board_writer})
+		insert into board(board_num, board_content, board_date, board_count, board_title, board_recom, board_writer, groupNumber)
+		values(board_board_num_sql.nextval, #{board_content}, #{board_date}, #{board_count}, #{board_title}, #{board_recom}, #{board_writer}, #{groupNumber})
 	</insert>
 	
 	<insert id="boardWriteFile" parameterType="com.java.date.member.dto.MemberBoardDto">
@@ -19,7 +19,7 @@
 	<select id="boardList" parameterType="java.util.HashMap" resultType="com.java.date.member.dto.MemberBoardDto">
 		<![CDATA[select *from
 					(select rownum rnum, a.* from
-						(select * from board order by board_num desc)a)
+						(select * from board order by  board_num desc, groupNumber desc)a)
 				where rnum >=#{startRow} and rnum <=#{endRow}]]>
 	</select>
 	
@@ -35,6 +35,14 @@
 		delete from board where board_num=#{board_num}
 	</delete>
 	
+	<select id="selectBoard" parameterType="int" resultType="com.java.date.member.dto.MemberBoardDto">
+		select * from board where board_num=#{board_num}
+	</select>
+	
+	<update id="updateBoard" parameterType="com.java.date.member.dto.MemberBoardDto">
+		update board set board_title=#{board_title}, board_content=#{board_content} where board_num=#{board_num}
+	</update>
+	
 	<!-- 댓글 달기 -->
 	<insert id="replyInsert" parameterType="com.java.date.member.dto.MemberReplyDto">
 		insert into reply values(reply_reply_num_seq.nextval, #{board_num}, #{reply_time}, #{reply_content}, #{reply_writer})
@@ -49,10 +57,38 @@
 		<![CDATA[select * from reply where board_num=#{board_num} order by reply_num desc ]]>
 	</select>
 	
+	<!-- 추천한 이력 확인 -->
+	<select id="selectRecommend" parameterType="java.util.HashMap" resultType="int">
+		<![CDATA[select * from recommendBoard where board_num=#{board_num} and recommend_nickName=#{recommend_nickName}]]>
+	</select>
+	
+	<!-- 추천 중복 방지 위해 테이블 등록 -->
+	<insert id="insertRecommend" parameterType="com.java.date.member.dto.RecommendBoardDto">
+		<![CDATA[insert into recommendBoard values(recommend_code_seq.nextval, #{board_num}, #{recommend_nickName}, #{recommend_check})]]>
+	</insert>
+	
 	<!-- 추천수증가 -->
-	<update id="recomUpdate" parameterType="java.util.HashMap">
-		update board set board_recom=#{board_recom} where board_num=#{board_num}
+	<update id="recomUpdate" parameterType="int">
+		<![CDATA[update board set board_recom=board_recom+1 where board_num=#{board_num}]]>
 	</update>
+	
+	<!-- 추천수 가져오기 -->
+	<select id="selectBoardRecom" parameterType="int" resultType="int">
+		select board_recom from board where board_num=#{board_num}
+	</select>
+	
+	<!-- 탑3가져오기 -->
+	<select id="selectPop" resultType="com.java.date.member.dto.MemberBoardDto">
+		<![CDATA[select * from(select board_num, board_recom, rank() over(order by board_recom desc) as rank from board)where rownum<4]]>
+	</select>
+	
+	<delete id="dropReply" parameterType="int">
+		delete from reply where board_num=#{board_num}
+	</delete>
+ 	
+	<update id="popGroupNumber" parameterType="int">
+		<![CDATA[update board set groupNumber=1 where board_num=#{board_num}]]>
+	</update> 
 </mapper>
 
 

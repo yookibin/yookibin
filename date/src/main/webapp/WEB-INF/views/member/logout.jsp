@@ -12,6 +12,7 @@
 <body>
 	<c:remove var="id" scope="session"/> <!-- 전체 세션에서 다 지워주겠다. -->
 	<c:remove var="memberLevel" scope="session"/>
+	<c:remove var="nickName" scope="session"/>
 	
 	<script type="text/javascript">
 		alert("로그아웃 되었습니다.");
