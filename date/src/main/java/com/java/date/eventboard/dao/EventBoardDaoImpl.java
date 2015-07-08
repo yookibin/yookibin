@@ -152,7 +152,7 @@ public class EventBoardDaoImpl implements EventBoardDao {
 	 * @name : joinWrite
 	 * @date : 2015. 6. 29.
 	 * @author : JeongSuhyun
-	 * @description : 
+	 * @description : event테이블에 입력받은 정보를 저장한다.
 	 */
 	@Override
 	public int joinWrite(EventMemberDto eventMember) {
@@ -171,7 +171,7 @@ public class EventBoardDaoImpl implements EventBoardDao {
 	 * @name : pointWrite
 	 * @date : 2015. 6. 29.
 	 * @author : JeongSuhyun
-	 * @description :
+	 * @description : 이벤트 참가시 point테이블에 접근하여 해당 회원의 포인트를 차감한다.
 	 */
 	@Override
 	public int pointWrite(HashMap<String, Object> hMap) {
@@ -183,7 +183,7 @@ public class EventBoardDaoImpl implements EventBoardDao {
 	 * @name : eventManagerCount
 	 * @date : 2015. 6. 30.
 	 * @author : JeongSuhyun
-	 * @description : 
+	 * @description : 입력받은 event_code에 해당하는 이벤트에 응모한 글의 개수를 반환한다.
 	 */
 	@Override
 	public int eventManagerCount(int event_code) {
@@ -195,7 +195,7 @@ public class EventBoardDaoImpl implements EventBoardDao {
 	 * @name : eventManagerList
 	 * @date : 2015. 6. 30.
 	 * @author : JeongSuhyun
-	 * @description : 
+	 * @description : event테이블에 존재하는 모든 레코드들을 List에 담아 반환한다.
 	 */
 	@Override
 	public List<EventMemberDto> eventManagerList(HashMap<String, Integer> hMap) {
@@ -207,7 +207,7 @@ public class EventBoardDaoImpl implements EventBoardDao {
 	 * @name : eventManagerRead
 	 * @date : 2015. 6. 30.
 	 * @author : JeongSuhyun
-	 * @description : 
+	 * @description : event테이블에서 넘겨받은 join_code에 해당하는 레코드 하나를 반환한다.
 	 */
 	@Override
 	public EventMemberDto eventManagerRead(int join_code) {
@@ -219,7 +219,7 @@ public class EventBoardDaoImpl implements EventBoardDao {
 	 * @name : eventManagerDel
 	 * @date : 2015. 7. 01.
 	 * @author : JeongSuhyun
-	 * @description : 
+	 * @description : event테이블에서 넘겨받은 join_code에 해당하는 레코드 하나를 삭제한다.
 	 */
 	@Override
 	public int eventManagerDel(int join_code) {
@@ -231,7 +231,7 @@ public class EventBoardDaoImpl implements EventBoardDao {
 	 * @name : boardGroupNumberMax
 	 * @date : 2015. 7. 01.
 	 * @author : JeongSuhyun
-	 * @description : 
+	 * @description : event_board테이블에서 가장 큰 group_number를 검색하여 반환한다.
 	 */
 	@Override
 	public int boardGroupNumberMax() {
@@ -243,7 +243,7 @@ public class EventBoardDaoImpl implements EventBoardDao {
 	 * @name : boardGroupNumberUpdate
 	 * @date : 2015. 7. 01.
 	 * @author : JeongSuhyun
-	 * @description : 
+	 * @description : 조건에 맞는 레코드들의 sequence_number를 수정한다.
 	 */
 	@Override
 	public int boardGroupNumberUpdate(HashMap<String, Integer> hMap) {
@@ -255,15 +255,36 @@ public class EventBoardDaoImpl implements EventBoardDao {
 	 * @name : getEventMembers
 	 * @date : 2015. 7. 01.
 	 * @author : JeongSuhyun
-	 * @description : 
+	 * @description : event_code에 해당하는 이벤트에 속한 event테이블의 레코드들을 List에 담아 반환한다.
 	 */
 	@Override
 	public List<EventMemberDto> getEventMembers(int event_code) {
 		
 		return sqlSession.selectList("dao.eventBoardMapper.getEventMembers", event_code);
 	}
-	
 
-	
+	/**
+	 * @name : eventEnterAllDel
+	 * @date : 2015. 7. 06.
+	 * @author : JeongSuhyun
+	 * @description : event_code에 해당하는 이벤트에 속한 event테이블의 레코드들을 모두 삭제한다. 
+	 */
+	@Override
+	public int eventEnterAllDel(int event_code) {
+		
+		return sqlSession.delete("dao.eventBoardMapper.eventEnterAllDel",event_code);
+	}
+
+	/**
+	 * @name : joinWriteCheck
+	 * @date : 2015. 7. 06.
+	 * @author : JeongSuhyun
+	 * @description : event테이블에서 매개변수로 넘겨받은 id레코드의 개수를 반환한다.
+	 */
+	@Override
+	public int joinWriteCheck(HashMap<String,Object> hMap) {
+		
+		return sqlSession.selectOne("dao.eventBoardMapper.joinWriteCheck",hMap);
+	}	
 	
 }

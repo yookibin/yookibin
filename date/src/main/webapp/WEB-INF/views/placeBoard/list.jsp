@@ -41,7 +41,7 @@
 		  			<img src="${root}${placeBoard.place_photo}" width="180" height="180"/>
 				</span><br/>
 				
-				<span>장소명=${placeBoard.place_name}</span><br/>
+				<span>${placeBoard.place_name}</span><br/>
 				
 			    <span id="${placeBoard.place_code}" style="position: relative; top:-120px; width:40; height:40;"></span><br/>
 			    

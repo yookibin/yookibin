@@ -8,16 +8,23 @@ public class PlaceDto {
 	private String place_cordi1;
 	private String place_cordi2;
 	private String place_weather;
+	
 	private String place_season;
 	private int place_star;
 	private String place_time;
-	private int place_balance;
+	private String place_balance;
 	private String place_location;
+	
 	private String place_photo;
 	private String place_content;
 	private int place_price;
 	private String place_phone;
 	private String place_runtime;
+	
+	private String place_thema;
+	private String place_gu;
+	
+	
 	public String getPlace_code() {
 		return place_code;
 	}
@@ -66,10 +73,10 @@ public class PlaceDto {
 	public void setPlace_time(String place_time) {
 		this.place_time = place_time;
 	}
-	public int getPlace_balance() {
+	public String getPlace_balance() {
 		return place_balance;
 	}
-	public void setPlace_balance(int place_balance) {
+	public void setPlace_balance(String place_balance) {
 		this.place_balance = place_balance;
 	}
 	public String getPlace_location() {
@@ -108,6 +115,17 @@ public class PlaceDto {
 	public void setPlace_runtime(String place_runtime) {
 		this.place_runtime = place_runtime;
 	}
-
+	public String getPlace_thema() {
+		return place_thema;
+	}
+	public void setPlace_thema(String place_thema) {
+		this.place_thema = place_thema;
+	}
+	public String getPlace_gu() {
+		return place_gu;
+	}
+	public void setPlace_gu(String place_gu) {
+		this.place_gu = place_gu;
+	}
 	
 }

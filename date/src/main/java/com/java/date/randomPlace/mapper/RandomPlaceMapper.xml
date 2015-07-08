@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.randomPlaceMapper">
+
+	<select id="aquestionCount" resultType="int">
+		<![CDATA[
+			select count(*) from random_question where question_number like 'A%'
+		]]>
+	</select>
+
+	<select id="randomPlaceStart" parameterType="String" resultType="com.java.date.randomPlace.dto.RandomQuestionDto">
+		<![CDATA[
+			select * from random_Question where question_number=#{num}
+		]]>
+	</select>
+
+	<select id="next_QuestionCount" parameterType="String" resultType="String">
+		<![CDATA[
+			select count(*) from random_question where question_number like #{next_Question}||'%'
+		]]>
+	</select>
+	
+	<select id="randomPlaceResult" parameterType="java.util.HashMap" resultType="com.java.date.recommandPlace.dto.PlaceDto">
+		<![CDATA[
+			select * from Placee where place_gu=#{place} and place_weather=#{weather} and place_time=#{time}
+		]]>
+	</select>
+</mapper>

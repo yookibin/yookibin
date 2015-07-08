@@ -10,11 +10,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.java.date.member.dto.MemberBoardDto;
 import com.java.date.member.dto.MemberReplyDto;
+import com.java.date.member.dto.RecommendBoardDto;
 import com.java.date.memberboard.service.MemberBoardService;
 
 
@@ -29,6 +32,14 @@ import com.java.date.memberboard.service.MemberBoardService;
  * @date : 2015. 6. 23.
  * @author : 유기빈
  * @description :
+ */
+/**
+ * @author yookibin
+ *
+ */
+/**
+ * @author yookibin
+ *
  */
 @Controller
 public class MemberBoardController {
@@ -61,7 +72,7 @@ public class MemberBoardController {
 	 * @author : 유기빈
 	 * @description : 글쓰기 완료여부 확인 및 서비스로 값을 주고받기 위한 함수
 	 */
-	@RequestMapping(value="/memberboard/write.do", method=RequestMethod.POST)
+	@RequestMapping(value="/memberboard/writeOk.do", method=RequestMethod.POST)
 	public ModelAndView boardWrite(MultipartHttpServletRequest request, MemberBoardDto memberBoard){
 		logger.info("write POST입니다.---------------------");
 		ModelAndView mav=new ModelAndView();
@@ -111,6 +122,12 @@ public class MemberBoardController {
 		return mav;
 	}
 	
+	/**
+	 * @name : boardRead
+	 * @date : 2015. 7. 05.
+	 * @author : 유기빈
+	 * @description : 글내용 삭제 
+	 */
 	@RequestMapping(value="/memberboard/delete.do", method=RequestMethod.GET)
 	public ModelAndView boardDelete(HttpServletRequest request){
 		logger.info("boardDelete GET입니당");
@@ -121,14 +138,57 @@ public class MemberBoardController {
 		
 		return mav;
 	}
-	@RequestMapping(value="/board/deleteOk.do", method=RequestMethod.POST)
-	public ModelAndView boardDelete(HttpServletRequest request, HttpServletResponse response){
-		logger.info("boardDelete POST입니당");
-		logger.info(request.getParameter("board_num"));
+	
+	/**
+	 * @name : boardSelect
+	 * @date : 2015. 7. 6.
+	 * @author : 유기빈
+	 * @description : 수정 전 select해오기.
+	 */
+	@RequestMapping(value="/memberboard/update.do", method=RequestMethod.GET)
+	public ModelAndView boardSelect(HttpServletRequest request){
+		logger.info("boardSelect GET입니당.");
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("request", request);
 		
-		service.boardDeleteOk(mav);
+		service.boardSelect(mav);
 		return mav;
+	}
+	
+	/**
+	 * @name : boardUpdate
+	 * @date : 2015. 7. 6.
+	 * @author : 유기빈
+	 * @description : 수정후 성공여부 확인하기 위한 함수,
+	 */
+	@RequestMapping(value="/memberboard/update.do", method=RequestMethod.POST)
+	public ModelAndView boardUpdate(HttpServletRequest request, MemberBoardDto memberBoard){
+		logger.info("boardSelect POST입니당.");
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("request", request);
+		mav.addObject("memberBoard", memberBoard);
+		
+		service.boardUpdate(mav);
+		return mav;
+	}
+	
+	
+	/**
+	 * @name : recommendBoard
+	 * @date : 2015. 7. 6.
+	 * @author : 유기빈
+	 * @description : 해당 게시물에 추천했는지 여부와 안했으면 한 내용을 table에 담기 위한 함수.
+	 */
+	@RequestMapping(value="/memberboard/recommend.do", method=RequestMethod.GET)
+	public ModelAndView recommendBoard(HttpServletRequest request, HttpServletResponse response, RecommendBoardDto recom){
+		logger.info("recommendBoard GET입니당.");
+		
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("request", request);
+		mav.addObject("response", response);
+		mav.addObject("recom", recom);
+		
+		service.recommendBoard(mav);
+		return null;
 	}
 }

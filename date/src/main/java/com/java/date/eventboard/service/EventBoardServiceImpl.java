@@ -62,11 +62,16 @@ public class EventBoardServiceImpl implements EventBoardService {
 			sequence_number=Integer.parseInt(request.getParameter("sequence_number"));
 			sequence_level=Integer.parseInt(request.getParameter("sequence_level"));
 			
-			int num=Integer.parseInt(request.getParameter("num"));
+			int num=0;
+						
+			if(request.getParameter("num")!=null){
+				num=Integer.parseInt(request.getParameter("num"));
+			}
+			
 			ArrayList<EventMemberDto> winnerList=castWinner(event_code,num);
 			
 			EventBoardDto eventBoard=eventBoardDao.boardRead(event_code);
-			
+						
 			mav.addObject("winnerList", winnerList);
 			mav.addObject("eventBoard", eventBoard);
 			
@@ -93,7 +98,7 @@ public class EventBoardServiceImpl implements EventBoardService {
 	 * @name : castWinner
 	 * @date : 2015. 7. 01.
 	 * @author : JeongSuhyun
-	 * @description : 
+	 * @description : event_code에 해당하는 레코드들 중 입력받은 개수의 레코드를 랜덤으로 선택하여 반환한다.
 	 */
 	public ArrayList<EventMemberDto> castWinner(int event_code, int num){
 		ArrayList<EventMemberDto> winnerList=new ArrayList<EventMemberDto>();		
@@ -142,18 +147,40 @@ public class EventBoardServiceImpl implements EventBoardService {
 		
 		MultipartHttpServletRequest request=(MultipartHttpServletRequest)map.get("request");
 		EventBoardDto eventBoard=(EventBoardDto)map.get("eventBoard");
+		//MultipartFile naverFile=(MultipartFile)map.get("naverFile");
 		
+		//-------------------------------------------------------
+	/*	String naverFileName=naverFile.getOriginalFilename();
+		logger.info("eventWriteOk naverFile: "+naverFileName);
+		String fileExtension=naverFileName.substring(naverFileName.lastIndexOf(".")+1);
+		
+		fileExtension.toLowerCase();
+		
+		String serverPath=request.getSession().getServletContext().getRealPath("/");
+		String storePath=serverPath+"resources"+File.separator+"eventBoard"+File.separator;
+		
+		try{
+			naverFile.transferTo(new File(storePath+"image."+fileExtension));
+		}catch(Exception e){
+			e.printStackTrace();
+			
+		}
+		
+		String event_content=request.getParameter("event_content");
+		logger.info("event_content: "+event_content);*/
+		
+		//-------------------------------------------------------
 		eventBoardWriteNumber(eventBoard);
 		
 		eventBoard.setRead_count(0);
 		eventBoard.setEvent_progress("진행");
 		
-		MultipartFile upFile=request.getFile("file");
+	/*	MultipartFile upFile=request.getFile("file");
 		String fileName=upFile.getOriginalFilename();
 		String timeName=Long.toString(System.currentTimeMillis())+"_"+fileName;
-		long fileSize=upFile.getSize();
+		long fileSize=upFile.getSize();*/
 		
-		logger.info("fileName:"+fileName);
+/*		logger.info("fileName:"+fileName);
 		logger.info("timeName:"+timeName);
 		logger.info("fileSize:"+fileSize);
 		
@@ -186,7 +213,7 @@ public class EventBoardServiceImpl implements EventBoardService {
 				logger.info("EventBoardServiceImpl writeOk 파일 입출력 에러");
 				e.printStackTrace();
 			}
-		}
+		}*/
 		
 		//3. DB에 insert
 		int check=eventBoardDao.boardInsert(eventBoard);
@@ -206,7 +233,7 @@ public class EventBoardServiceImpl implements EventBoardService {
 	 * @name : eventBoardWriteNumber
 	 * @date : 2015. 7. 01.
 	 * @author : JeongSuhyun
-	 * @description : 
+	 * @description : 작성하는 게시물의 group_number, sequence_number, sequence_level을 답글과 부모글을 구분지어 정의한다.
 	 */
 	public void eventBoardWriteNumber(EventBoardDto eventBoard){
 		int event_code=eventBoard.getEvent_code();
@@ -265,7 +292,7 @@ public class EventBoardServiceImpl implements EventBoardService {
 		Map<String,Object> map=mav.getModelMap();
 		HttpServletRequest request=(HttpServletRequest)map.get("request");
 		
-		int boardSize=5;
+		int boardSize=3;
 		
 		String pageNumber=request.getParameter("pageNumber");
 		if(pageNumber==null) pageNumber="1";
@@ -462,8 +489,19 @@ public class EventBoardServiceImpl implements EventBoardService {
 			if(oldFile.exists()&&oldFile.isFile()) oldFile.delete();					
 		}
 		
-		int check=eventBoardDao.boardDelete(event_code);
-		logger.info("check: "+check);
+		
+		//삭제하려는 이벤트에 이미 응모한 글이 존재하면 무결성때문에 삭제되지 않는다.
+		//응모한 글을 먼저 삭제 후 삭제해야 한다.
+		int firstCheck=eventBoardDao.eventManagerCount(event_code);
+		int secondCheck=0;
+		int check=0;
+		if(firstCheck>0) secondCheck=eventBoardDao.eventEnterAllDel(event_code);
+		logger.info("eventDeleteOk firstCheck: "+firstCheck);
+		
+		if(secondCheck>0){
+			check=eventBoardDao.boardDelete(event_code);
+			logger.info("check: "+check);
+		}		
 		
 		mav.addObject("check",check);
 		mav.addObject("pageNumber",pageNumber);
@@ -517,7 +555,7 @@ public class EventBoardServiceImpl implements EventBoardService {
 			String event_filePath=request.getParameter("event_filePath");	//기존
 			long event_fileSize=Long.parseLong(request.getParameter("event_fileSize"));	 //기존
 			
-			MultipartFile upFile=request.getFile("file");
+		/*	MultipartFile upFile=request.getFile("file");
 			String fileName=upFile.getOriginalFilename();
 			String timeName=Long.toString(System.currentTimeMillis())+"_"+fileName;
 			long fileSize=upFile.getSize();
@@ -564,6 +602,7 @@ public class EventBoardServiceImpl implements EventBoardService {
 			logger.info("updateOk filesize: "+eventBoard.getEvent_fileSize());
 			logger.info("updateOk filepoint: "+eventBoard.getEvent_point());
 			logger.info("updateOk filegiveaway: "+eventBoard.getEvent_giveaway());
+			*/
 			
 			int check=eventBoardDao.boardUpdate(eventBoard);
 			logger.info("updateOk check: "+check);
@@ -614,7 +653,7 @@ public class EventBoardServiceImpl implements EventBoardService {
 	 * @name : eventEnter
 	 * @date : 2015. 6. 26.
 	 * @author : JeongSuhyun
-	 * @description : 
+	 * @description : 넘겨받은 데이터를 mav에 담에 enter.jsp로 이동한다.
 	 */
 	@Override
 	public void eventEnter(ModelAndView mav) {
@@ -638,7 +677,7 @@ public class EventBoardServiceImpl implements EventBoardService {
 	 * @name : eventEnterOk
 	 * @date : 2015. 6. 28.
 	 * @author : JeongSuhyun
-	 * @description : 
+	 * @description : enter.jsp에서 입력받은 데이터를 바탕으로 이미 응모한 적이 있는 아이디인지 조사 후 insert한다.
 	 */
 	@Override
 	public void eventEnterOk(ModelAndView mav) {
@@ -676,7 +715,8 @@ public class EventBoardServiceImpl implements EventBoardService {
 		String pageNumber=request.getParameter("pageNumber");
 		int event_point=Integer.parseInt(request.getParameter("event_point"));
 		int afterPoint=Integer.parseInt(request.getParameter("afterPoint"));
-		
+		int event_code=eventMember.getEvent_code();
+	/*	
 		MultipartFile upFile=request.getFile("file");
 		String fileName=upFile.getOriginalFilename();
 		String timeName=Long.toString(System.currentTimeMillis())+"_"+fileName;
@@ -716,21 +756,33 @@ public class EventBoardServiceImpl implements EventBoardService {
 				e.printStackTrace();
 			}
 		}
-		
+		*/
 		//3. DB에 insert
 		HashMap<String, Object> hMap=new HashMap<String, Object>();
 		hMap.put("id", eventMember.getId());
 		hMap.put("event_point", event_point);
 		hMap.put("afterPoint", afterPoint);
+		hMap.put("event_code", event_code);
 		
-		int check=eventBoardDao.joinWrite(eventMember);
-		logger.info("joinWrite check: "+check);
+		//---------------------------------------------------------------
+		//event테이블에서 이미 응모한 적이 있는 아이디인지 확인해야한다.
+		int firstCheck=eventBoardDao.joinWriteCheck(hMap);
+		logger.info("eventEnterOk firstCheck: "+firstCheck);
+		
+		//---------------------------------------------------------------
+		int check=0;
+		
+		if(firstCheck==0){		//event테이블에 해당 아이디 레코드가 하나도 없으면 event테이블에 insert
+			check=eventBoardDao.joinWrite(eventMember);
+			logger.info("joinWrite check: "+check);
+		}	
 		
 		if(check>0) check=eventBoardDao.pointWrite(hMap);
 		logger.info("pointWrite check: "+check);
 		
 		mav.addObject("check", check);
 		mav.addObject("pageNumber",pageNumber);
+		mav.addObject("firstCheck",firstCheck);
 		
 		mav.setViewName("eventboard/enterOk");	
 		
@@ -740,7 +792,7 @@ public class EventBoardServiceImpl implements EventBoardService {
 	 * @name : eventManagerList
 	 * @date : 2015. 6. 30.
 	 * @author : JeongSuhyun
-	 * @description : 
+	 * @description : DB로부터 EventMemberDto들을 List형태로 가져와 jsp페이지로 이동한다.
 	 */
 	@Override
 	public void eventManagerList(ModelAndView mav) {
@@ -754,6 +806,12 @@ public class EventBoardServiceImpl implements EventBoardService {
 		int sequence_number=Integer.parseInt(request.getParameter("sequence_number"));
 		int sequence_level=Integer.parseInt(request.getParameter("sequence_level"));
 		String pageNumber=request.getParameter("pageNumber");	//이벤트 게시물의 페이지넘버(되돌아갈 페이지 넘버)
+		
+		//-----------------------------------------------------------
+		EventBoardDto eventBoard=eventBoardDao.boardRead(event_code);
+		String event_period=eventBoard.getEvent_period();		
+		
+		//-----------------------------------------------------------
 		
 		String eventPageNumber=request.getParameter("eventPageNumber");	
 		if(eventPageNumber==null) eventPageNumber="1";
@@ -790,7 +848,8 @@ public class EventBoardServiceImpl implements EventBoardService {
 				logger.info("list["+i+"] filfPath: "+list.get(i).getJoin_filePath());
 			}
 		}
-		
+
+		mav.addObject("event_period",event_period);
 		mav.addObject("event_code",event_code);
 		mav.addObject("group_number",group_number);
 		mav.addObject("sequence_number",sequence_number);
@@ -809,7 +868,7 @@ public class EventBoardServiceImpl implements EventBoardService {
 	 * @name : eventManagerRead
 	 * @date : 2015. 6. 30.
 	 * @author : JeongSuhyun
-	 * @description : 
+	 * @description : join_code에 해당하는 EventMemberDto데이터를 DB로부터 가져와 jsp페이지로 이동한다.
 	 */
 	@Override
 	public void eventManagerRead(ModelAndView mav) {
@@ -849,7 +908,7 @@ public class EventBoardServiceImpl implements EventBoardService {
 	 * @name : eventManagerDel
 	 * @date : 2015. 7. 01.
 	 * @author : JeongSuhyun
-	 * @description : 
+	 * @description : 넘겨받은 데이터를 가지고 jsp페이지로 이동한다.
 	 */
 	@Override
 	public void eventManagerDel(ModelAndView mav) {
@@ -881,7 +940,7 @@ public class EventBoardServiceImpl implements EventBoardService {
 	 * @name : eventManagerDelOk
 	 * @date : 2015. 7. 01.
 	 * @author : JeongSuhyun
-	 * @description : 
+	 * @description : join_code에 해당하는 레코드를 event테이블에서 삭제 후 jsp페이지로 이동한다.
 	 */
 	@Override
 	public void eventManagerDelOk(ModelAndView mav) {
@@ -903,7 +962,7 @@ public class EventBoardServiceImpl implements EventBoardService {
 		if(eventMember.getJoin_fileSize()!=0){
 			File oldFile=new File(eventMember.getJoin_filePath());
 			if(oldFile.exists()&&oldFile.isFile()) oldFile.delete();
-		}
+		}		
 		
 		//DB에서 레코드 삭제
 		int check=eventBoardDao.eventManagerDel(join_code);

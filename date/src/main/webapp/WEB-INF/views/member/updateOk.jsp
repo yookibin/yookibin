@@ -14,16 +14,16 @@
 	<c:if test="${check==0}">
 		<script type="text/javascript">
 			alert("수정이 실패하였습니다.");
-			//location.href="${root}/member/update.do";
-			$(location).attr("href", "${root}/member/update.do");
+			location.href="${root}/member/update.do";
+			//$(location).attr("href", "${root}/member/update.do");
 		</script>
 	</c:if>
 	
 	<c:if test="${check>0 }">
 		<script type="text/javascript">
 			alert("수정이 완료되었습니다.");
-			//location.href="${root}/member/main.do"
-			$(location).attr("href", "${root}/member/main.do");
+			location.href="${root}/start.jsp"
+			//$(location).attr("href", "${root}/member/main.do");
 		</script>
 	</c:if>
 

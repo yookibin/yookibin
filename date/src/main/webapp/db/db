@@ -1,0 +1,10 @@
+select * from PLACE_REVIEW;
+
+select * from place;
+
+insert into PLACE_REVIEW values(reivew_code_num_seq.nextval, 3, 'tea', '하하하 좋다', sysdate, 50);
+
+delete from PLACE_REVIEW;
+select * from seq;
+
+select * from RANDOM_RECOM;

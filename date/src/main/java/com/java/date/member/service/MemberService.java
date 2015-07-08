@@ -54,13 +54,13 @@ public interface MemberService {
 	public void delete(ModelAndView mav);
 	
 	/**
-	 * @name : select
+	 * @name : update
 	 * @date : 2015. 6. 26.
 	 * @author : 유기빈
 	 * @description : 수정하기 전 회원이 자기 정보를 가져오기 위한 함수
 	 */
-	public void select(ModelAndView mav);
+	public void update(ModelAndView mav);
 	
-	/*public void update(ModelAndView mav);*/
+	public void updateOk(ModelAndView mav);
 	
 }

@@ -28,6 +28,12 @@ public class ReplyController {
 	@Autowired
 	ReplyService replyService;
 	
+	/**
+	 * @name : readList
+	 * @date : 2015. 7. 7.
+	 * @author : 유기빈
+	 * @description : request, response를 가지고 service의 reply 함수 실행시킴.
+	 */
 	@RequestMapping(value="/reply/reply.do", method=RequestMethod.GET)
 	public ModelAndView readList(HttpServletRequest request,HttpServletResponse response, MemberReplyDto memberReply){
 		logger.info("reply페이지입니당.");
@@ -40,6 +46,12 @@ public class ReplyController {
 		return null;
 	}
 	
+	/**
+	 * @name : replyDelete
+	 * @date : 2015. 7. 7.
+	 * @author : 유기빈
+	 * @description : request, response를 가지고 service의 replyDelete함수를 실행시킴.
+	 */
 	@RequestMapping(value="/reply/replyDelete.do", method=RequestMethod.GET)
 	public ModelAndView replyDelete(HttpServletRequest request, HttpServletResponse response){
 		logger.info("replyDelete GET입니당.");
@@ -52,6 +64,12 @@ public class ReplyController {
 		return null;
 	}
 	
+	/**
+	 * @name : replyUpdate
+	 * @date : 2015. 7. 7.
+	 * @author : 유기빈
+	 * @description :request, response를 가지고 replyUpdate를 실행시킴
+	 */
 	@RequestMapping(value="/reply/replyUpdate.do", method=RequestMethod.GET)
 	public ModelAndView replyUpdate(HttpServletRequest request, HttpServletResponse response){
 		logger.info("replyUpdate GET입니당.");
@@ -63,6 +81,12 @@ public class ReplyController {
 		return null;
 	}
 	
+	/**
+	 * @name : updateReply
+	 * @date : 2015. 7. 7.
+	 * @author : 유기빈
+	 * @description : request,response를 가지고 service의 updateReply를 실행시킨다.
+	 */
 	@RequestMapping(value="/reply/update.do", method=RequestMethod.GET)
 	public ModelAndView updateReply(HttpServletRequest request, HttpServletResponse response){
 		logger.info("updateReply GET입니당.");

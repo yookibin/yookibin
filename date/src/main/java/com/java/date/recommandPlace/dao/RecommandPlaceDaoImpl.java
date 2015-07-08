@@ -40,13 +40,15 @@ public class RecommandPlaceDaoImpl implements RecommandPlaceDao {
 	public List<PlaceDto> placeList(PlaceDto dto) {
 		// TODO Auto-generated method stub
 		System.out.println("디에오");
-		System.out.println(dto.getPlace_location());
+		System.out.println(dto.getPlace_gu());
 		System.out.println(dto.getPlace_season());
 		System.out.println(dto.getPlace_weather());
 		System.out.println(dto.getPlace_time());
 		System.out.println(dto.getPlace_price());
 		System.out.println("출력되어라");
-		return sqlSession.selectList("dao.recommandPlaceMapper.selectList22", dto);
+		List<PlaceDto> list = sqlSession.selectList("dao.recommandPlaceMapper.selectList22", dto);
+		System.out.println("이거 하자" + list.size());
+		return list;
 	}
 
 	@Override

@@ -25,7 +25,7 @@
 		<h4>sequence_level : ${sequence_level}</h4>
 		<h4>pageNumber : ${pageNumber}</h4>
 			
-		<div style="width:598px; height:15px; border-width:2px; text-align:right; padding:15px 0px 0px 0px; border-bottom-width:0px;">
+		<div style="width:645px; height:15px; border-width:2px; text-align:right; padding:15px 0px 0px 0px; border-bottom-width:0px;">
 				<a href="${root}/eventBoard/list.do">글목록</a>
 		</div>
 			
@@ -41,7 +41,7 @@
 			<c:if test="${event_code==0 }">
 				<span class="content"><input type="text" size="50" name="event_period"/></span>	
 			</c:if>
-			<c:if test="${eventcode!=0 }">
+			<c:if test="${event_code!=0 }">
 				<span class="content"><input type="text" size="50" name="event_period" value="${eventBoard.event_period }"/></span>
 			</c:if>
 					
@@ -58,19 +58,19 @@
 						
 		</div>
 		
-		<div class="line" style="height:230px;">
-			<label class="title" style="height:230px;">이벤트 내용</label>
+		<div class="line" style="height:390px;">
+		
 			<c:if test="${event_code==0 }">
-				<span class="content" style="height:230px;">
-					<textarea rows="14" cols="58" name="event_content"></textarea>
+				<span>
+					<textarea name="event_content" id="ir1" rows="22" style="width:645px;"></textarea>
 				</span>
 			</c:if>
 			<c:if test="${event_code!=0 }">
-				<span class="content" style="height:230px;">
-					<textarea rows="14" cols="58" name="event_content">
-글번호  아이디  닉네임					
+				<span class="content">
+					<textarea name="event_content" id="ir1" rows="22" style="width:645px;">
+글번호  아이디  닉네임			<br/>		
 						<c:forEach var="winner" items="${winnerList }">
-${winner.join_code}      ${winner.id }        ${winner.join_writer }
+${winner.join_code}      ${winner.id }        ${winner.join_writer }<br/>
 						</c:forEach>
 					</textarea>
 				</span>
@@ -96,14 +96,14 @@ ${winner.join_code}      ${winner.id }        ${winner.join_writer }
 				<span class="content"><input type="text" size="50" name="event_giveaway" value="${eventBoard.event_giveaway }"></span>
 			</c:if>	
 		</div>
-		
+<!-- 		
 		
 		<div class="line">
 			<label class="title">이벤트 사진 파일</label>
 			<span class="content">
 				<input type="file" name="file"/>
 			</span>
-		</div>
+		</div> -->
 		
 <%-- 		
 		<c:if test="${event_code==0 }">
@@ -112,7 +112,7 @@ ${winner.join_code}      ${winner.id }        ${winner.join_writer }
 			</span>			
 		</c:if>
  --%>						
-		<div class="line" style="width:598px; border-width:2px; text-align:center;">
+		<div class="line" style="width:641px; border-width:2px; text-align:center;">
 			<input type="submit" value="글쓰기"/>
 			<input type="reset" value="다시작성"/>
 			<input type="button" value="목록보기" onclick="location.href='${root}/eventBoard/list.do'"/>
@@ -120,4 +120,23 @@ ${winner.join_code}      ${winner.id }        ${winner.join_writer }
 		
 	</form>
 </body>
+<script type="text/javascript">
+var oEditors = [];
+nhn.husky.EZCreator.createInIFrame({
+    oAppRef: oEditors,
+    elPlaceHolder: "ir1", //textarea ID
+    sSkinURI: "${root}/SmartEditor2Skin",
+    htParams : {
+      bUseToolbar : true,	// 툴바 사용 여부 (true:사용/ false:사용하지 않음[default:true] )
+      bUseVerticalResizer : true,	// 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음[default:true])
+      bUseModeChanger : true	// 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음[default:true])
+    },
+    //Editor 로딩이 완료된 후 처리될 내용 ex) 수정시 입력한글 내용 삽입가능
+    fOnAppLoad : function(){
+       //예제 코드
+       //oEditors.getById["bbsContent"].exec("PASTE_HTML", ["로딩이 완료된 후에 본문에 삽입되는 text입니다."]);
+    },
+    fCreator: "createSEditor2"
+});
+</script>
 </html>

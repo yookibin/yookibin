@@ -44,4 +44,8 @@ public interface EventBoardDao {
 	public int boardGroupNumberUpdate(HashMap<String,Integer> hMap);
 	
 	public List<EventMemberDto> getEventMembers(int event_code);
+	
+	public int eventEnterAllDel(int event_code);
+	
+	public int joinWriteCheck(HashMap<String,Object> hMap);
 }

@@ -14,15 +14,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div id="head" style="width: 400px; height: 400px; border: 1px solid red; float: left; margin-right: 20px;">
+	<div id="head" style="width: 500px; height: 500px; border: 1px solid red; float: left; margin-right: 20px;">
 		<center>
-			<img src="${root}${placeBoard.place_photo}">
+			<img src="${root}${placeBoard.place_photo}" width=500 height="500"/>
 		</center>
 	</div>
-	<div style="width: 400px; height: 400px; border: 1px solid orange; float: left; border-radius: 30px 30px 30px 30px;"><br/>
+	<div style="width: 500px; height: 500px; border: 1px solid orange; float: left; border-radius: 30px 30px 30px 30px;"><br/>
 		<h3>${placeBoard.place_name}</h3><br/> 
 		주소 ${placeBoard.place_location}<br/><br/>
-		전화번호 ${placeBoard.place_phone}<br/><br/> 
+		전화번호 ${placeBoard.place_phone}<br/><br/>
 		운영시간 ${placeBoard.place_time}<br/><br/> 
 		예산(2인) ${placeBoard.place_price}원<br/><br/>
 		${placeBoard.place_content}<br/><br/>

@@ -30,8 +30,8 @@ public class RecommandPlaceServiceImpl implements RecommandPlaceService {
 		String place_name = request.getParameter("place_name");
 		String place_season = request.getParameter("place_season");
 		String place_weather = request.getParameter("place_weather");
-		int place_time = Integer.parseInt(request.getParameter("place_time"));
-		int place_price = Integer.parseInt(request.getParameter("place_price"));
+		String place_time = request.getParameter("place_time");
+		String place_price = request.getParameter("place_price");
 		
 		PlaceDto dto = (PlaceDto) map.get("placeDto");
 		logger.info("잘나오나" + dto.getPlace_name());

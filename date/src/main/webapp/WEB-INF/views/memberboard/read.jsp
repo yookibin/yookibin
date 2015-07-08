@@ -14,7 +14,7 @@
 		location.href=url;
 	}
 	
-	function updateFun(root, boardNumber, pageNumber){
+	function updateFun(root, board_num, pageNumber){
 		var url=root + "/memberboard/update.do?board_num="+board_num+"&pageNumber="+pageNumber;
 		//alert(url);
 		location.href=url;
@@ -60,22 +60,32 @@
 </head>
 <body>
 
-		글제목
-		${memberBoard.board_title }
+		<div>
+			<span>글제목</span>
+			<span>${memberBoard.board_title }</span>
+		</div>
 		
-		조회수
-		${memberBoard.board_count }
-	
-		작성자
-		${memberBoard.board_writer }
+		<div>
+			<span>조회수</span>
+			<span>${memberBoard.board_count }</span>
+		</div>
 		
-		작성일
-		<fmt:formatDate value="${memberBoard.board_date }" type="date"/>
-	
-		<p>글내용</p>
+		<div>
+			<span>작성자</span>
+			<span>${memberBoard.board_writer }</span>
+		</div>
 		
-			<img src="${root}/resources/board/${memberBoard.board_fileRoot}" width="200" height="200"/><br/>
-			${memberBoard.board_content }
+		<div>
+			<span>작성일</span>
+			<span><fmt:formatDate value="${memberBoard.board_date }" type="date"/></span>
+		</div>
+		<div>
+			<p>글내용</p>
+		
+			<span>${memberBoard.board_content }</span>
+		</div>	
+			<span id="board_recom">${memberBoard.board_recom}</span>
+			<input type="button" value="추천" id="recom_button" onclick="recommend('${root }', '${memberBoard.board_num}', '${memberBoard.board_recom}', '${pageNumber}', '${nickName}')"/>
 		
 		<c:if test="${memberBoard.board_writer==nickName}">
 			<input type="button" value="글수정" onclick="updateFun('${root}','${memberBoard.board_num }', '${pageNumber}')" />
@@ -118,15 +128,7 @@
 				</div>
 			</c:forEach>
 			
-		
-			
-		
-			
 			<input type="button" id="moreComment" onclick="moreComment()" style="display:none;" value="댓글 더 보기"/>
-		<%-- 	<c:if test="${memberReply!=null }">
-			
-					${memberReply.reply_num} &nbsp; ${memberReply.reply_content} &nbsp; <fmt:formatDate value="${memberReply.reply_time }" type="date"/>
-			</c:if> --%>
 		</div>
 
 </body>

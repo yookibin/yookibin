@@ -53,8 +53,11 @@ public class MemberController {
 		logger.info("MemberRegister POST-----------------");
 		//System.out.println(memberDto.getBirthday());
 		ModelAndView mav=new ModelAndView();
+		
 		mav.addObject("memberDto", memberDto);
+		
 		memberService.memberRegisterOk(mav);
+		
 		return mav;
 	}
 	
@@ -65,7 +68,7 @@ public class MemberController {
 	 * @description : 아이디중복체크를 위해 service로 request정보를 넘기는 함수.
 	 */
 	@RequestMapping(value="/member/idCheck.do", method=RequestMethod.GET)
-	public ModelAndView idCheck(HttpServletRequest request, HttpServletResponse response){
+	public ModelAndView idCheck(HttpServletRequest request){
 		logger.info("idCheck-----------------------");
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("request", request);
@@ -184,7 +187,7 @@ public class MemberController {
 		logger.info("update----------------");
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("request", request);
-		memberService.select(mav);
+		memberService.update(mav);
 		return mav;
 	}
 	
@@ -195,14 +198,14 @@ public class MemberController {
 	 * @description : 수정이 성공했는지 여부를 service에 전달하고 이동하기 위한 함수. 
 	 * 				  select로 받은 생년월일을 그냥 string으로 넣을지 date로 넣을지 정한 후 그 부분만 고치면 됨.
 	 */
-	/*@RequestMapping(value="/member/update.do", method=RequestMethod.POST)
+	@RequestMapping(value="/member/update.do", method=RequestMethod.POST)
 	public ModelAndView update(HttpServletRequest request, HttpServletResponse response, MemberDto member){
 		logger.info("updateOk-------------");
 		ModelAndView mav=new ModelAndView();
 		//mav.addObject("request", request);
 		mav.addObject("member", member);
-		memberService.update(mav);
+		memberService.updateOk(mav);
 		return mav;
-	}*/
+	}
 	
 }

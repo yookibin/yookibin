@@ -7,12 +7,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="css/recommandPlace/script.js"></script>
 </head>
 <body>
-<input type="button" value="test" onclick="test1()">
 	<hr>
 		<a href="${root }/recommandPlace/findPlace.do">장소추천</a>
+		<a href="${root }/recommandPlace/insertPlace.do">장소입력</a>
 		<a href="${root }/recommandPlace/selectMap0.do"> Map</a>
 		<a href="${root }/recommandPlace/selectMap.do">select Map</a>
 		<a href="${root }/recommandPlace/selectMap2.do">select Map2</a>

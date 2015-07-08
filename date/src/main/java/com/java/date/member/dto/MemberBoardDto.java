@@ -19,7 +19,14 @@ public class MemberBoardDto {
 	private String board_fileName;
 	private String board_fileRoot;
 	private String board_writer;
+	private int groupNumber;
 	
+	public int getGroupNumber() {
+		return groupNumber;
+	}
+	public void setGroupNumber(int groupNumber) {
+		this.groupNumber = groupNumber;
+	}
 	public int getBoard_num() {
 		return board_num;
 	}
