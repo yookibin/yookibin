@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -29,6 +31,14 @@ import com.java.date.memberboard.service.MemberBoardService;
  * @date : 2015. 6. 23.
  * @author : 유기빈
  * @description :
+ */
+/**
+ * @author yookibin
+ *
+ */
+/**
+ * @author yookibin
+ *
  */
 @Controller
 public class MemberBoardController {
@@ -61,7 +71,7 @@ public class MemberBoardController {
 	 * @author : 유기빈
 	 * @description : 글쓰기 완료여부 확인 및 서비스로 값을 주고받기 위한 함수
 	 */
-	@RequestMapping(value="/memberboard/write.do", method=RequestMethod.POST)
+	@RequestMapping(value="/memberboard/writeOk.do", method=RequestMethod.POST)
 	public ModelAndView boardWrite(MultipartHttpServletRequest request, MemberBoardDto memberBoard){
 		logger.info("write POST입니다.---------------------");
 		ModelAndView mav=new ModelAndView();
@@ -111,6 +121,12 @@ public class MemberBoardController {
 		return mav;
 	}
 	
+	/**
+	 * @name : boardRead
+	 * @date : 2015. 7. 05.
+	 * @author : 유기빈
+	 * @description : 글내용 삭제 
+	 */
 	@RequestMapping(value="/memberboard/delete.do", method=RequestMethod.GET)
 	public ModelAndView boardDelete(HttpServletRequest request){
 		logger.info("boardDelete GET입니당");
@@ -119,16 +135,6 @@ public class MemberBoardController {
 		
 		service.boardDelete(mav);
 		
-		return mav;
-	}
-	@RequestMapping(value="/board/deleteOk.do", method=RequestMethod.POST)
-	public ModelAndView boardDelete(HttpServletRequest request, HttpServletResponse response){
-		logger.info("boardDelete POST입니당");
-		logger.info(request.getParameter("board_num"));
-		ModelAndView mav=new ModelAndView();
-		mav.addObject("request", request);
-		
-		service.boardDeleteOk(mav);
 		return mav;
 	}
 }

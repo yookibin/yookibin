@@ -263,7 +263,7 @@
 <script type="text/javascript"
 	src="//apis.daum.net/maps/maps3.js?apikey=cd16bfc3926d034f1176275f760bd0ff&libraries=services"></script>
 </head>
-<body>
+<body onload="saveCourse('${placeDtoList[0].place_cordi1}','${placeDtoList[0].place_cordi2}','${placeDtoList[0].place_name}','${placeDtoList[1].place_cordi1}','${placeDtoList[1].place_cordi2}','${placeDtoList[1].place_name}')">
 
 	<div class="map_wrap">
 		<div id="map"

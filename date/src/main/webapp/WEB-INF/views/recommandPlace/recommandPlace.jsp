@@ -7,24 +7,20 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css"
-	href="${root}/css/recommandPlace/style.css" />
-<script type="text/javascript" src="${root}/css/jquery.js"></script>
-<script type="text/javascript"
-	src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script type="text/javascript"
-	src="${root}/css/recommandPlace/script.js"></script>
+<link rel="stylesheet" type="text/css" href="${root}/css/recommandPlace/style.css" />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="${root}/css/recommandPlace/script.js"></script>
 <script type="text/javascript">
 	function test(root) {
 		$.ajax({
 			url : root + "/recommandPlace/select2.do"
 			,type : "post"
 			,data:{
-					place_location:$("#place_location").val(),
+					place_gu:$("#place_gu").val(),
 					place_season:$("#place_season").val(),
 					place_weather:$("#place_weather").val(),
 					place_time:$("#place_time").val(),
-					place_price:$("#place_price").val(),
+					place_price:$("#place_price").val()
 				}
 			,success : function(data) {
 				console.log(data);
@@ -64,23 +60,11 @@
 		지역을 선택하세요<br>
 		<div>
 			<p>
-				지 역<select id="place_location" name="place_location">
+				지 역<select id="place_gu" name="place_gu">
 					<option value="무관">무관</option>
-					<option>강남</option>
-					<option>목동</option>
-					<option>사당</option>
-					<option>삼성</option>
-					<option>서래마을</option>
-					<option>신림</option>
-					<option>신사</option>
-					<option>신천</option>
-					<option>압구정</option>
-					<option>여의도</option>
-					<option>영등포</option>
-					<option>잠실</option>
-					<option>천호</option>
-					<option>상암</option>
-					<option>기타</option>
+					<option value="강남구">강남</option>
+					<option value="송파구">송파</option>
+					<option value="종로구">종로</option>
 				</select><br>
 			</p>
 			<p>

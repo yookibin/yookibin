@@ -164,10 +164,18 @@ function update(root, reply_num, reply_content){
 	});
 }
 
+function recommend(root, board_num, board_recom, pageNumber){
+	 //alert(root+","+board_num+","+board_recom);
+	 var x=Number(board_recom);
+	 var recom=x+1;
+	 alert(recom);
+	 location.href=root+"/memberboard/read.do?board_num="+board_num+"&board_recom="+recom+"&pageNumber="+pageNumber;
+}
+
 
 
 function checkForm(boardForm){
-
+	
 }
 
 function deleteCheck(deleteForm){

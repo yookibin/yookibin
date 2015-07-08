@@ -13,7 +13,7 @@ public class PlaceBoardDto {
 	private String place_photo;			//장소사진
 	private String place_content;		//장소내용
 	private int place_price;			//장소금액
-	private String place_phone;			//장소사진
+	private String place_phone;			//장소전번
 	private String place_runtime;		//장소운영시간
 	private String place_thema;         //장소테마
 	private String place_gu;            //장소구

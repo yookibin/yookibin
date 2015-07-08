@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.java.date.placeBoard.dao.PlaceBoardDao;
 import com.java.date.placeBoard.dto.PlaceBoardDto;
+import com.java.date.reviewBoard.dto.ReviewBoardDto;
  
 @Component
 public class PlaceBoardServiceImpl implements PlaceBoardService {
@@ -27,6 +28,7 @@ public class PlaceBoardServiceImpl implements PlaceBoardService {
 	 * @date : 2015. 6. 23.
 	 * @author : 정희준
 	 * @description : controller에서 plce_location 넘어온 값이 없다면 디폴트값을 gangNam으로 설정해주는 함수 
+	 *                페이지넘버 설정 함수
 	 */
 	
 	@Override
@@ -82,6 +84,7 @@ public class PlaceBoardServiceImpl implements PlaceBoardService {
 	
 	@Override
 	public void placeBoardSearch(ModelAndView mav) {
+		String selectPlace="";
 		Map<String, Object> map=mav.getModelMap();
 		HttpServletRequest request=(HttpServletRequest)map.get("request");
 		String location=request.getParameter("location");
@@ -90,7 +93,36 @@ public class PlaceBoardServiceImpl implements PlaceBoardService {
 		StringTokenizer token=new StringTokenizer(location, ",");
 		
 		 while(token.hasMoreTokens()) {
-			 System.out.println(token.nextToken());
+			selectPlace=token.nextToken();
+			System.out.println(selectPlace);
 		 }
+		 
+		 List<PlaceBoardDto> placeBoardList=placeBoardDao.placeBoardList(selectPlace);
+		 logger.info("placeBoardList : " + placeBoardList.size());
+		 
+		 mav.addObject("placeBoardList",placeBoardList);
+		 mav.setViewName("placeBoard/list");
+	}
+	
+	/**
+	 * @name : reviewBoard
+	 * @date : 2015. 6. 29.
+	 * @author : 정희준
+	 * @description : 
+	 */
+	
+	@Override
+	public void reviewBoard(ModelAndView mav) {
+		Map<String, Object>map=mav.getModel();
+		HttpServletRequest request=(HttpServletRequest)map.get("request");
+		
+		int place_code=Integer.parseInt(request.getParameter("place_code"));
+		
+		PlaceBoardDto placeBoard=placeBoardDao.reviewBoard(place_code);
+
+		logger.info("placeBoard"+placeBoard);
+		mav.addObject("placeBoard",placeBoard);
+		
+		mav.setViewName("reviewBoard/list");
 	}
 }

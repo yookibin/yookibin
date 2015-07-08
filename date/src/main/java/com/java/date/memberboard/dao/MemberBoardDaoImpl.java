@@ -75,11 +75,16 @@ public class MemberBoardDaoImpl implements MemberBoardDao {
 	}
 
 	@Override
-	public int deleteBoard(int board_num, String pw) {
+	public int deleteBoard(int board_num) {
+		return sqlSession.delete("dao.memberBoardMapper.deleteBoard", board_num);
+	}
+
+	@Override
+	public void recomUpdate(int board_num, int board_recom) {
 		HashMap<String, Object> hMap=new HashMap<String, Object>();
 		hMap.put("board_num", board_num);
-		hMap.put("pw", pw);
-		return sqlSession.delete("dao.memberBoardMapper.deleteBoard", hMap);
+		hMap.put("board_recom", board_recom);
+		sqlSession.update("dao.memberBoardMapper.recomUpdate", hMap);
 	}
 
 
