@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.java.date.placeBoard.dao.PlaceBoardDao;
 import com.java.date.placeBoard.dto.PlaceBoardDto;
+import com.java.date.reviewBoard.dao.ReviewBoardDao;
 import com.java.date.reviewBoard.dto.ReviewBoardDto;
  
 @Component
@@ -21,13 +22,16 @@ public class PlaceBoardServiceImpl implements PlaceBoardService {
 	
 	@Autowired
 	private PlaceBoardDao placeBoardDao;
+	
+	@Autowired
+	private ReviewBoardDao reviewBoardDao;
 
 	
 	/**
 	 * @name : boardList
 	 * @date : 2015. 6. 23.
 	 * @author : 정희준
-	 * @description : controller에서 plce_location 넘어온 값이 없다면 디폴트값을 gangNam으로 설정해주는 함수 
+	 * @description : controller에서 plce_location 넘어온 값이 없다면 디폴트값을 gangNam으로 설정해주는 함수
 	 *                페이지넘버 설정 함수
 	 */
 	
@@ -79,7 +83,7 @@ public class PlaceBoardServiceImpl implements PlaceBoardService {
 	 * @name : placeBoardSearch
 	 * @date : 2015. 6. 25.
 	 * @author : 정희준
-	 * @description : 장소검색을 눌렀을시 해당 장소을 갖고와 장소에 해당하는 레코드를 가지고 오는 함수
+	 * @description : 장소검색을 눌렀을 시 해당 장소을 갖고와 장소에 해당하는 레코드를 가지고 오는 함수
 	 */
 	
 	@Override
@@ -108,7 +112,7 @@ public class PlaceBoardServiceImpl implements PlaceBoardService {
 	 * @name : reviewBoard
 	 * @date : 2015. 6. 29.
 	 * @author : 정희준
-	 * @description : 
+	 * @description : '평가하기'를 눌렀을 시 해당 place_code를 갖고있는 리뷰들을 리스트 형태로 갖고오는 함수
 	 */
 	
 	@Override
@@ -116,12 +120,15 @@ public class PlaceBoardServiceImpl implements PlaceBoardService {
 		Map<String, Object>map=mav.getModel();
 		HttpServletRequest request=(HttpServletRequest)map.get("request");
 		
-		int place_code=Integer.parseInt(request.getParameter("place_code"));
+		String place_code=request.getParameter("place_code");
 		
-		PlaceBoardDto placeBoard=placeBoardDao.reviewBoard(place_code);
-
-		logger.info("placeBoard"+placeBoard);
+		PlaceBoardDto placeBoard=placeBoardDao.reviewBoard(place_code); 
+		List<ReviewBoardDto> reviewList=reviewBoardDao.reviewSelect(place_code);
+		
+		
+		logger.info("placeBoard:"+placeBoard+"reviewList:"+reviewList);
 		mav.addObject("placeBoard",placeBoard);
+		mav.addObject("reviewList",reviewList);
 		
 		mav.setViewName("reviewBoard/list");
 	}

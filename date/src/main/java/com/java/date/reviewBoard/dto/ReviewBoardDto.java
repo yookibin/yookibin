@@ -4,10 +4,11 @@ import java.util.Date;
 
 public class ReviewBoardDto {
 	private int review_code;
-	private int place_code;
+	private String place_code;
 	private String review_id;
 	private String review_content;
 	private Date review_date;
+	private int review_star;
 	
 	public int getReview_code() {
 		return review_code;
@@ -15,10 +16,10 @@ public class ReviewBoardDto {
 	public void setReview_code(int review_code) {
 		this.review_code = review_code;
 	}
-	public int getPlace_code() {
+	public String getPlace_code() {
 		return place_code;
 	}
-	public void setPlace_code(int place_code) {
+	public void setPlace_code(String place_code) {
 		this.place_code = place_code;
 	}
 	
@@ -44,6 +45,12 @@ public class ReviewBoardDto {
 	
 	public void setReview_date(Date review_date) {
 		this.review_date = review_date;
+	}
+	public int getReview_star() {
+		return review_star;
+	}
+	public void setReview_star(int review_star) {
+		this.review_star = review_star;
 	}
 	
 }

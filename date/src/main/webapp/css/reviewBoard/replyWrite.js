@@ -1,65 +1,40 @@
 /**
  * 
  */
-var root=null;
+function writeToServer(requestRoot, place_code, nickName) {
+/*	alert(requestRoot);
+	alert($("#starReply").val());
+	alert(place_code);
+	alert($("#writeReply").val());*/
+	
+	$.ajax({
+		url : requestRoot + "/reviewBoard/insertReview.do",
+		type : "post",
+		data : {
+			star : $("#starReply").val(),
+			place_code : place_code,
+			nickName : nickName,
+			writeReply : $("#writeReply").val()
+		},
+		success : function(data) {
+			console.log(data[0].review_content);
+			var str = "";
+			
+			
+			for(var i=0;i<data.length;i++){
+				str += "<div class='replyDiv' id='"+data[i].review_code+"'>"+
+						"<div class='cssCode'>"+data[i].review_code+"</div>"+ 
+						"<div class='cssId'>"+data[i].review_id+"</div>"+
+						"<div class='cssStar'>"+data[i].review_star/10+"점"+"</div>"+ 
+						"<div class='cssContent'>"+data[i].review_content+"</div>"+ 
+						"<div class='cssDate'>"+data[i].review_date+"</div>"+ 
+						"<div class='cssUpDel'>"+"</div>"+"</div>";
+			}
+			
 
-function writeToServer(requestRoot,place_code){
-    alert("확인");
-    root=requestRoot;
-    
-    alert("dd:"+root+","+place_code);
-    
-    var writeReply=$("#writeReply").val();
-    var sendData="place_code="+place_code+"&lineReply="+writeReply;
-    var replyurl=root+"/reviewBoard/replyWrite.do?"+sendData;
-    //.json 사용 할껏이다
-    
-    $.ajax({
-      url:replyurl, 
-      type:"get",
-      dataType:"text",
-    /*  success:function(data){
-          var result=data.split(",");
-          var bunho=result[0].trim();         //배열임 json아님
-          var reply=result[1].trim();
-          alert(bunho+"|"+reply);
-          
-          var spanBunho=document.createElement("span");
-          spanBunho.className="cssBunho";
-          spanBunho.innerHTML=bunho;
-          
-          var spanReply=document.createElement("span");
-          spanReply.className="cssReply";
-          spanReply.innerHTML=reply;
-          
-          var spanUpDel=document.createElement("span");
-          spanUpDel.className="cssUpDel";
-          
-          var aUpdate=document.createElement("a");
-          aUpdate.href="javascript:upSelectToServer("+bunho+",\'"+root+"\')";
-          aUpdate.innerHTML="수정 &nbsp";
-          
-          
-          var aDelete=document.createElement("a");
-          aDelete.href="javascript:deleteToServer("+bunho+",\'"+root+"\')";
-          aDelete.innerHTML="삭제 ";
-          
-          spanUpDel.appendChild(aUpdate);
-          spanUpDel.appendChild(aDelete);
-          
-          
-          
-          div.appendChild(spanBunho);
-          div.appendChild(spanReply);
-          div.appendChild(spanUpDel);
-          //newReply.appendChild(div);
-          newReply.insertBefore(div,newReply.firstChild);
-         
-      },
-      error:function(xhr,status,error){
-         alert(xhr+","+status+","+error);
-      }
-      */
-    });
+			$("#foot").empty();
+			$("#foot").prepend(str);
+			
+		}
+	});
 }
- 

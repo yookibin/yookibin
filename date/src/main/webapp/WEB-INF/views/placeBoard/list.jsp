@@ -36,7 +36,7 @@
 		<a href="">신규순</a> &nbsp; <a href="">인기순</a> <br/>
 		
 		<c:forEach var="placeBoard" items="${placeBoardList}" varStatus="status">
-			<span>
+			<div style="float:left">
 		 		<span id="${status.index}" onmouseover="mouseOver('${placeBoard.place_star}','${status.index}','${placeBoard.place_code}')" onmouseout="mouseOut('${status.index}', '${placeBoard.place_code}')" style="position:relative; width:60; height:60;">
 		  			<img src="${root}${placeBoard.place_photo}" width="180" height="180"/>
 				</span><br/>
@@ -46,7 +46,7 @@
 			    <span id="${placeBoard.place_code}" style="position: relative; top:-120px; width:40; height:40;"></span><br/>
 			    
 				<a href="${root}/placeBoard/reviewBoard.do?place_code=${placeBoard.place_code}">평가하기</a><br/><br/><br/>
-			</span>  
+			</div>  
 		</c:forEach>
 	
 	<!-- 페이지 번호 

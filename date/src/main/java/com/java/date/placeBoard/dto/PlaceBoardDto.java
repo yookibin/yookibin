@@ -1,14 +1,15 @@
 package com.java.date.placeBoard.dto;
 
 public class PlaceBoardDto {
-	private int place_code;             //장소코드
+	private String place_code;          //장소코드
 	private String place_name;     	    //장소이름
-	private int place_cordi;			//장소좌표
+	private String place_cordi1;		//장소좌표
+	private String place_cordi2;        //장소좌표2
 	private String place_weather;		//장소날씨
 	private String place_season;		//장소계절
 	private int place_star;				//장소별점
 	private String place_time; 			//장소시간대
-	private int place_balance;			//장소금액
+	private String place_balance;		//장소금액
 	private String place_location;		//장소위치
 	private String place_photo;			//장소사진
 	private String place_content;		//장소내용
@@ -19,10 +20,10 @@ public class PlaceBoardDto {
 	private String place_gu;            //장소구
 	
 	
-	public int getPlace_code() {
+	public String getPlace_code() {
 		return place_code;
 	}
-	public void setPlace_code(int place_code) {
+	public void setPlace_code(String place_code) {
 		this.place_code = place_code;
 	}
 	public String getPlace_name() {
@@ -31,18 +32,27 @@ public class PlaceBoardDto {
 	public void setPlace_name(String place_name) {
 		this.place_name = place_name;
 	}
-	public int getPlace_cordi() {
-		return place_cordi;
+	public String getPlace_cordi1() {
+		return place_cordi1;
 	}
-	public void setPlace_cordi(int place_cordi) {
-		this.place_cordi = place_cordi;
+	public void setPlace_cordi1(String place_cordi1) {
+		this.place_cordi1 = place_cordi1;
 	}
+	
+	public String getPlace_cordi2() {
+		return place_cordi2;
+	}
+	
+	public void setPlace_cordi2(String place_cordi2) {
+		this.place_cordi2 = place_cordi2;
+	}
+	
 	public String getPlace_weather() {
 		return place_weather;
 	}
 	public void setPlace_weather(String place_weather) {
 		this.place_weather = place_weather;
-	}
+	} 
 	public String getPlace_season() {
 		return place_season;
 	}
@@ -61,10 +71,10 @@ public class PlaceBoardDto {
 	public void setPlace_time(String place_time) {
 		this.place_time = place_time;
 	}
-	public int getPlace_balance() {
+	public String getPlace_balance() {
 		return place_balance;
 	}
-	public void setPlace_balance(int place_balance) {
+	public void setPlace_balance(String place_balance) {
 		this.place_balance = place_balance;
 	}
 	public String getPlace_location() {

@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.java.date.placeBoard.dto.PlaceBoardDto;
-import com.java.date.reviewBoard.dto.ReviewBoardDto;
 
 @Component
 public class PlaceBoardDaoImpl implements PlaceBoardDao {
@@ -26,9 +25,16 @@ public class PlaceBoardDaoImpl implements PlaceBoardDao {
 		System.out.println("dao String : " + place_location);
 		return sqlSession.selectList("dao.placeBoardMapper.placeBoardList",place_location);
 	}
+	
+	/**
+	 * @name : reviewBoard
+	 * @date : 2015. 6. 27.
+	 * @author : 정희준
+	 * @description : 특정 place_code를 갖고있는 review_Board의 레코드를 뽑기 위해 mapper클래스로 보내주는 함수 
+	 */
 
 	@Override
-	public PlaceBoardDto reviewBoard(int place_code) {
+	public PlaceBoardDto reviewBoard(String place_code) {
 		System.out.println("dao int : " + place_code);
 		return sqlSession.selectOne("dao.placeBoardMapper.reviewBoard",place_code);
 	}

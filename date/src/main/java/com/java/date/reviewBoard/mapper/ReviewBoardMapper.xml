@@ -3,7 +3,19 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="dao.reviewBoardMapper">
-<!-- 	<insert id="dao.reviewBoardMapper.replyWrite">
-		<![CDATA[insert into place_review (review_code,review_id,review_content,review_date) values review_code_]]>
-	</insert> -->
+	<select id="replyList" parameterType="String" resultType="com.java.date.reviewBoard.dto.ReviewBoardDto">
+		<![CDATA[select * from place_review where place_code=#{place_code} order by review_code desc]]>
+	</select>
+	
+	<insert id="replyInsert" parameterType="java.util.HashMap">
+		<![CDATA[insert into place_review values(review_code_num_seq.nextval,#{place_code},#{nickName},#{writeReply},sysdate,#{star})]]>
+	</insert>
+	
+	<delete id="replyDelete" parameterType="int">
+		<![CDATA[delete from place_review where review_code=#{review_code}]]>
+	</delete>
+	
+	<select id="replyDto" parameterType="String" resultType="com.java.date.reviewBoard.dto.ReviewBoardDto">
+		<![CDATA[select * from place_review where place_code=#{place_code}]]>
+	</select>
 </mapper>
