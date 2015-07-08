@@ -38,6 +38,12 @@ public class MemberBoardServiceImpl implements MemberBoardService {
 	@Autowired
 	private MemberBoardDao memberBoardDao;
 	
+	/**
+	 * @name : boardWrite
+	 * @date : 2015. 6. 23.
+	 * @author : 유기빈
+	 * @description : 회원추천 게시판 글쓰기 
+	 */
 	@Override
 	public void boardWrite(ModelAndView mav) {
 		Map<String, Object> map=mav.getModelMap();
@@ -55,6 +61,12 @@ public class MemberBoardServiceImpl implements MemberBoardService {
 		mav.setViewName("memberboard/write");
 	}
 
+	/**
+	 * @name : boardWriteOk
+	 * @date : 2015. 6. 23.
+	 * @author : 유기빈
+	 * @description : 회원추천 게시판 글쓰기 성공여부를 확인 하는 함수
+	 */
 	@Override
 	public void boardWriteOk(ModelAndView mav) {
 		Map<String, Object> map=mav.getModelMap();
@@ -117,6 +129,12 @@ public class MemberBoardServiceImpl implements MemberBoardService {
 		      
 	}
 
+	/**
+	 * @name : boardList
+	 * @date : 2015. 6. 23.
+	 * @author : 유기빈
+	 * @description : 회원추천 게시판 글 목록
+	 */
 	@Override
 	public void boardList(ModelAndView mav) {
 		// TODO Auto-generated method stub
@@ -173,6 +191,13 @@ public class MemberBoardServiceImpl implements MemberBoardService {
 		
 	}
 
+
+	/**
+	 * @name : boardRead
+	 * @date : 2015. 6. 23.
+	 * @author : 유기빈
+	 * @description : 회원 추천 게시판 글 내용 
+	 */
 	@Override
 	public void boardRead(ModelAndView mav){
 		Map<String, Object> map=mav.getModelMap();
@@ -291,6 +316,13 @@ public class MemberBoardServiceImpl implements MemberBoardService {
 		mav.setViewName("memberboard/read");
 	}
 
+	
+	/**
+	 * @name : boardDelete
+	 * @date : 2015. 6. 23.
+	 * @author : 유기빈
+	 * @description : 회원 추천 게시판 글 삭제
+	 */
 	@Override
 	public void boardDelete(ModelAndView mav) {
 		// TODO Auto-generated method stub
@@ -308,6 +340,12 @@ public class MemberBoardServiceImpl implements MemberBoardService {
 		
 	}
 
+	/**
+	 * @name : boardSelect
+	 * @date : 2015. 6. 25.
+	 * @author : 유기빈
+	 * @description : 회원 추천 게시판 글 수정전 가져오기 
+	 */
 	@Override
 	public void boardSelect(ModelAndView mav) {
 		Map<String, Object> map=mav.getModelMap();
@@ -323,6 +361,12 @@ public class MemberBoardServiceImpl implements MemberBoardService {
 		
 	}
 
+	/**
+	 * @name : boardUpdate
+	 * @date : 2015. 6. 25.
+	 * @author : 유기빈
+	 * @description : 회원 추천 게시판 글 수정
+	 */
 	@Override
 	public void boardUpdate(ModelAndView mav) {
 		Map<String, Object> map=mav.getModelMap();
@@ -338,6 +382,13 @@ public class MemberBoardServiceImpl implements MemberBoardService {
 		
 	}
 
+	
+	/**
+	 * @name : recommendBoard
+	 * @date : 2015. 7. 6
+	 * @author : 유기빈
+	 * @description : 추천한 회원 구분하기 위한 게시판
+	 */
 	@Override
 	public void recommendBoard(ModelAndView mav) {
 		Map<String, Object> map=mav.getModelMap();

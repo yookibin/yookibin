@@ -25,6 +25,13 @@ public class ReplyServiceImpl implements ReplyService {
 	@Autowired
 	ReplyDao replyDao;
 
+	
+	/**
+	 * @name : reply
+	 * @date : 2015. 7. 7.
+	 * @author : 유기빈
+	 * @description : 댓글 작성한 내용을 table에 담고 ajax처리하기 위해 넘기는 함수
+	 */
 	@Override
 	public void reply(ModelAndView mav) {
 		Map<String, Object> map=mav.getModelMap();
@@ -78,6 +85,14 @@ public class ReplyServiceImpl implements ReplyService {
 	}
 
 
+	
+
+	/**
+	 * @name : replyDelete
+	 * @date : 2015. 7. 7.
+	 * @author : 유기빈
+	 * @description : 댓글 삭제를 눌렀을때 테이블에서도 삭제하기위해 넘기기 위한 함수(+ ajax 처리 )
+	 */
 	@Override
 	public void replyDelete(ModelAndView mav) {
 		Map<String, Object>map=mav.getModelMap();
@@ -103,6 +118,12 @@ public class ReplyServiceImpl implements ReplyService {
 	}
 
 
+	/**
+	 * @name : replyUpdate
+	 * @date : 2015. 7. 7.
+	 * @author : 유기빈
+	 * @description : 수정을 처음눌렀을때 기존에 입력한 값들을 가져오기 위한 함수 .
+	 */
 	@Override
 	public void replyUpdate(ModelAndView mav) {
 		Map<String, Object>map=mav.getModelMap();
@@ -135,6 +156,13 @@ public class ReplyServiceImpl implements ReplyService {
 		}
 	}
 
+	
+	/**
+	 * @name : updateReply
+	 * @date : 2015. 7. 7.
+	 * @author : 유기빈
+	 * @description : 수정을 처리하기 위한 함수 db테이블에도 수정된 값이 들어가게하기위해 넘겨주는 함수.
+	 */
 
 	@Override
 	public void updateReply(ModelAndView mav) {

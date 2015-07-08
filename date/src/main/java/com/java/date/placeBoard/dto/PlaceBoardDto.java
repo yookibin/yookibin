@@ -1,28 +1,28 @@
 package com.java.date.placeBoard.dto;
 
 public class PlaceBoardDto {
-	private int place_code;             //장소코드
+	private String place_code;             //장소코드
 	private String place_name;     	    //장소이름
-	private int place_cordi;			//장소좌표
+	private String place_cordi;			//장소좌표
 	private String place_weather;		//장소날씨
 	private String place_season;		//장소계절
 	private int place_star;				//장소별점
 	private String place_time; 			//장소시간대
-	private int place_balance;			//장소금액
+	private String place_balance;			//장소금액
 	private String place_location;		//장소위치
 	private String place_photo;			//장소사진
 	private String place_content;		//장소내용
-	private int place_price;			//장소금액
+	private String place_price;			//장소금액
 	private String place_phone;			//장소전번
 	private String place_runtime;		//장소운영시간
 	private String place_thema;         //장소테마
 	private String place_gu;            //장소구
 	
 	
-	public int getPlace_code() {
+	public String getPlace_code() {
 		return place_code;
 	}
-	public void setPlace_code(int place_code) {
+	public void setPlace_code(String place_code) {
 		this.place_code = place_code;
 	}
 	public String getPlace_name() {
@@ -31,10 +31,10 @@ public class PlaceBoardDto {
 	public void setPlace_name(String place_name) {
 		this.place_name = place_name;
 	}
-	public int getPlace_cordi() {
+	public String getPlace_cordi() {
 		return place_cordi;
 	}
-	public void setPlace_cordi(int place_cordi) {
+	public void setPlace_cordi(String place_cordi) {
 		this.place_cordi = place_cordi;
 	}
 	public String getPlace_weather() {
@@ -61,10 +61,10 @@ public class PlaceBoardDto {
 	public void setPlace_time(String place_time) {
 		this.place_time = place_time;
 	}
-	public int getPlace_balance() {
+	public String getPlace_balance() {
 		return place_balance;
 	}
-	public void setPlace_balance(int place_balance) {
+	public void setPlace_balance(String place_balance) {
 		this.place_balance = place_balance;
 	}
 	public String getPlace_location() {
@@ -85,10 +85,10 @@ public class PlaceBoardDto {
 	public void setPlace_content(String place_content) {
 		this.place_content = place_content;
 	}
-	public int getPlace_price() {
+	public String getPlace_price() {
 		return place_price;
 	}
-	public void setPlace_price(int place_price) {
+	public void setPlace_price(String place_price) {
 		this.place_price = place_price;
 	}
 	public String getPlace_phone() {
