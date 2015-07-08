@@ -42,6 +42,5 @@
 
 	<a href="${root }/placeBoard/boardList.do">장소게시판</a> 
 		
-
 </body>
 </html>

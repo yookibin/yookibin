@@ -3,15 +3,15 @@ package com.java.date.placesearch.dto;
 import java.util.Date;
 
 public class PlacesearchDto {
-	private int place_code;              //장소코드
+	private String place_code;              //장소코드
 	private String place_name;           //장소이름
-	private int place_cordi1;	         //장소좌표
-	private int place_cordi;
+	private String place_cordi1;	         //장소좌표
+	private String place_cordi2;
 	private String place_weather;          //날씨
 	private String place_season;         //계절
 	private int place_star;              //별점
 	private String place_time;             //시간대
-	private int place_balance;           //금액
+	private String place_balance;           //금액
 	private String place_location;       //지역
 	private String place_photo;          //장소사진
 	private String place_content;        //장소내용
@@ -27,10 +27,10 @@ public class PlacesearchDto {
 	public void setPlace_gu(String place_gu) {
 		this.place_gu = place_gu;
 	}
-	public int getPlace_code() {
+	public String getPlace_code() {
 		return place_code;
 	}
-	public void setPlace_code(int place_code) {
+	public void setPlace_code(String place_code) {
 		this.place_code = place_code;
 	}
 	public String getPlace_name() {
@@ -39,11 +39,11 @@ public class PlacesearchDto {
 	public void setPlace_name(String place_name) {
 		this.place_name = place_name;
 	}
-	public int getPlace_cordi() {
-		return place_cordi;
+	public String getPlace_cordi2() {
+		return place_cordi2;
 	}
-	public void setPlace_cordi(int place_cordi) {
-		this.place_cordi = place_cordi;
+	public void setPlace_cordi2(String place_cordi2) {
+		this.place_cordi2 = place_cordi2;
 	}
 	public String getPlace_weather() {
 		return place_weather;
@@ -69,10 +69,10 @@ public class PlacesearchDto {
 	public void setPlace_time(String place_time) {
 		this.place_time = place_time;
 	}
-	public int getPlace_balance() {
+	public String getPlace_balance() {
 		return place_balance;
 	}
-	public void setPlace_balance(int place_balance) {
+	public void setPlace_balance(String place_balance) {
 		this.place_balance = place_balance;
 	}
 	public String getPlace_location() {
@@ -117,10 +117,10 @@ public class PlacesearchDto {
 	public void setPlace_thema(String place_thema) {
 		this.place_thema = place_thema;
 	}
-	public int getPlace_cordi1() {
+	public String getPlace_cordi1() {
 		return place_cordi1;
 	}
-	public void setPlace_cordi1(int place_cordi1) {
+	public void setPlace_cordi1(String place_cordi1) {
 		this.place_cordi1 = place_cordi1;
 	}
 	
