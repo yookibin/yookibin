@@ -54,15 +54,15 @@
 }
 
 .ch-img-4 { 
-	background-image: url(../../resouces/images/19.jpg);
+	background-image: url(../../resources/images/19.jpg);
 }
 
 .ch-img-5 { 
-	background-image: url(../../resouces/images/20.jpg);
+	background-image: url(../../resources/images/20.jpg);
 }
 
 .ch-img-6 { 
-	background-image: url(../../resouces/images/21.jpg);
+	background-image: url(../../resources/images/21.jpg);
 }
 
 .ch-infos h3 {
@@ -86,4 +86,40 @@
 	margin: 0 30px;
 	font-size: 12px;
 	border-top: 1px solid rgba(255,255,255,0.5);
+}
+
+.ch-infos p a {
+	display: block;
+	color: #fff;
+	color: rgba(255,255,255,0.7);
+	font-style: normal;
+	font-weight: 700;
+	text-transform: uppercase;
+	font-size: 9px;
+	letter-spacing: 1px;
+	padding-top: 4px;
+	font-family: 'Open Sans', Arial, sans-serif;
+}
+
+.ch-infos p a:hover {
+	color: #fff222;
+	color: rgba(255,242,34, 0.8);
+}
+
+.ch-items:hover .ch-info-fronts {
+	-webkit-transform: translate3d(0,280px,0) rotate3d(1,0,0,-90deg);
+	-moz-transform: translate3d(0,280px,0) rotate3d(1,0,0,-90deg);
+	-o-transform: translate3d(0,280px,0) rotate3d(1,0,0,-90deg);
+	-ms-transform: translate3d(0,280px,0) rotate3d(1,0,0,-90deg);
+	transform: translate3d(0,280px,0) rotate3d(1,0,0,-90deg);
+	opacity: 0;
+}
+
+.ch-items:hover .ch-info-backs {
+	-webkit-transform: rotate3d(1,0,0,0deg);
+	-moz-transform: rotate3d(1,0,0,0deg);
+	-o-transform: rotate3d(1,0,0,0deg);
+	-ms-transform: rotate3d(1,0,0,0deg);
+	transform: rotate3d(1,0,0,0deg);
+	opacity: 1;
 }
