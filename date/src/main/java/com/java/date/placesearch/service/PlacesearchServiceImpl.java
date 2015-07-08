@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.java.date.placesearch.dao.PlacesearchDao;
 import com.java.date.placesearch.dto.PlacesearchDto;
+import com.java.date.reviewBoared.dto.reviewBoardDto;
 
 
 
@@ -57,6 +58,41 @@ public class PlacesearchServiceImpl implements PlacesearchService {
 		mav.setViewName("placesearch/parkthema");
 		
 	}
+	
+	@Override
+	public void list(ModelAndView mav) {
+		Map<String,Object> hMap=mav.getModelMap();
+		HttpServletRequest request=(HttpServletRequest)hMap.get("request");
+		
+		String area=request.getParameter("area");
+		String listcode=request.getParameter("code");
+		
+		logger.info("area:"+area);
+		logger.info("listcode:"+listcode);
+		
+		PlacesearchDto placeBoard=placesearchDao.finalthema(area,listcode);
+		mav.addObject("area",area);
+		mav.addObject("listcode",listcode);
+		mav.addObject("placeBoard",placeBoard);
+		
+		mav.setViewName("placesearch/list");
+		
+	}
 
+	@Override
+	public void reply(ModelAndView mav) {
+		Map<String,Object> hMap=mav.getModelMap();
+		HttpServletRequest request=(HttpServletRequest)hMap.get("request");
+		
+		int place_code=Integer.parseInt(request.getParameter("place_code"));
+		String lineReply=request.getParameter("lineReply");
+		
+		logger.info("place_code"+place_code);
+		logger.info("lineReply"+lineReply);
+		
+		reviewBoardDto replyDto=new reviewBoardDto();
+		int check=placesearchDao.replyInsert(replyDto);
+		mav.addObject("");
+	}
 
 }

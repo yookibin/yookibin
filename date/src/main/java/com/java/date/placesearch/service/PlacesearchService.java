@@ -6,5 +6,7 @@ public interface PlacesearchService {
 
 	public void choiceOk(ModelAndView mav);
 	public void parkthema(ModelAndView mav);
+	public void list(ModelAndView mav);
+	public void reply(ModelAndView mav);
 
 }

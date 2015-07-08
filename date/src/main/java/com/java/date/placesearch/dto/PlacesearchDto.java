@@ -5,7 +5,8 @@ import java.util.Date;
 public class PlacesearchDto {
 	private int place_code;              //장소코드
 	private String place_name;           //장소이름
-	private int place_cordi;	         //장소좌표
+	private int place_cordi1;	         //장소좌표
+	private int place_cordi;
 	private String place_weather;          //날씨
 	private String place_season;         //계절
 	private int place_star;              //별점
@@ -115,6 +116,12 @@ public class PlacesearchDto {
 	}
 	public void setPlace_thema(String place_thema) {
 		this.place_thema = place_thema;
+	}
+	public int getPlace_cordi1() {
+		return place_cordi1;
+	}
+	public void setPlace_cordi1(int place_cordi1) {
+		this.place_cordi1 = place_cordi1;
 	}
 	
 	
