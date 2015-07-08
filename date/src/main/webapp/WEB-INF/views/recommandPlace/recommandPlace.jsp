@@ -12,7 +12,7 @@
 <script type="text/javascript" src="${root}/css/recommandPlace/script.js"></script>
 <script type="text/javascript">
 	function test(root) {
-		$("#course").css("display","none");
+		$("#course").css("display","block");
 		$.ajax({
 			url : root + "/recommandPlace/select2.do"
 			,type : "post"
@@ -42,7 +42,10 @@
 								+"<img src='"+root+data[i].place_photo+"' width='348' height='250'>"
 							+"</div>"
 				
-							+"<div id='title_b'>"+data[i].place_name
+							+"<div id='title_b'>장소이름 : "+data[i].place_name +"<br>"
+											+"가격 : " +data[i].place_balance +"<br>"
+											+"운영시간 : " +data[i].place_runtime +"<br>"
+											+"전화번호 : " +data[i].place_phone +"<br>"
 								+"<div id='"+data[i].place_code+"'>"
 							+"</div></div></div></div>"
 				}
@@ -61,7 +64,7 @@
 		지역을 선택하세요<br>
 		<div>
 			<p>
-				지 역<select id="place_gu" name="place_gu">
+				지 역 : <select id="place_gu" name="place_gu">
 					<option value="무관">무관</option>
 					<option value="강남구">강남</option>
 					<option value="송파구">송파</option>
@@ -69,7 +72,7 @@
 				</select><br>
 			</p>
 			<p>
-				계 절<select id="place_season" name="place_season">
+				계 절 : <select id="place_season" name="place_season">
 					<option value="무관">무관</option>
 					<option>봄</option>
 					<option>여름</option>
@@ -78,7 +81,7 @@
 				</select><br>
 			</p>
 			<p>
-				날 씨<select id="place_weather" name="place_weather">
+				날 씨 : <select id="place_weather" name="place_weather">
 					<option value="무관">무관</option>
 					<option>맑음</option>
 					<option>흐림</option>
@@ -87,7 +90,7 @@
 				</select><br>
 			</p>
 			<p>
-				시간대<select id="place_time" name="place_time">
+				시간대 : <select id="place_time" name="place_time">
 					<option value="무관">무관</option>	
 					<option value="1">새벽(4시~8시)</option>
 					<option value="2">오전(8시~12시)</option>
@@ -98,7 +101,7 @@
 				</select><br>
 			</p>
 			<p>
-				가격대<select id="place_price" name="place_price">
+				가격대 : <select id="place_price" name="place_price">
 					<option value="1234">무관</option>
 					<option value="1">1만원</option>
 					<option value="3">3만원</option>

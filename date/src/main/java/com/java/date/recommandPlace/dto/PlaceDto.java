@@ -8,16 +8,19 @@ public class PlaceDto {
 	private String place_cordi1;
 	private String place_cordi2;
 	private String place_weather;
+	
 	private String place_season;
 	private int place_star;
 	private String place_time;
 	private String place_balance;
 	private String place_location;
+	
 	private String place_photo;
 	private String place_content;
 	private int place_price;
 	private String place_phone;
 	private String place_runtime;
+	
 	private String place_thema;
 	private String place_gu;
 	
