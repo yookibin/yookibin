@@ -19,7 +19,7 @@
 			self.close();
 			
 		}else{
-			alert("현재창을 닫고 다시 enter.jsp로 돌아가서 submit하고싶다.");
+			//alert("현재창을 닫고 다시 enter.jsp로 돌아가서 submit하고싶다.");
 		
 			var url=root+"/eventBoard/enter.do?afterPoint="+afterPoint;			
 			//opener.document.location.href=url;	

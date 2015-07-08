@@ -63,5 +63,7 @@ public interface MemberDao {
 	 */
 	public MemberDto select(String id);
 	
-	/*public int update(MemberDto member);*/
+	public int update(MemberDto member);
+	
+	public int memberPoint(String id);
 }

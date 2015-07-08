@@ -86,4 +86,12 @@
 	<select id="getEventMembers" parameterType="int" resultType="com.java.date.member.dto.EventMemberDto">
 		<![CDATA[ select * from event where event_code=#{event_code} ]]>
 	</select>
+	
+	<delete id="eventEnterAllDel" parameterType="int">
+		<![CDATA[ delete from event where event_code=#{event_code} ]]>
+	</delete>
+	
+ 	<select id="joinWriteCheck" parameterType="java.util.HashMap" resultType="int">
+		<![CDATA[ select count(*) from event where id=#{id} and event_code=#{event_code} ]]>
+	</select> 
 </mapper>

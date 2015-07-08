@@ -84,10 +84,11 @@
 		<tr>
 			<td align="center"  height="200" width="125">글내용</td>
 			<td valign="top"  height="200" colspan="3" align="center">
-				<c:if test="${eventBoard.event_fileSize!=0 }">												
+	<%-- 		<c:if test="${eventBoard.event_fileSize!=0 }">												
 					<img src="${root}/resources/eventBoard/${eventBoard.event_filePath }" width="200" height="200"/><br/>						
 					${eventBoard.event_filePath }														
 				</c:if>	<br/>			
+				 --%>
 				${eventBoard.event_content }
 			</td>
 		</tr>

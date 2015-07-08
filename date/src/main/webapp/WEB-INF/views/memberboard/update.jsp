@@ -6,49 +6,46 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>게시판 글쓰기</title>
-	<script type="text/javascript" src="${root}/css/board/script.js"></script>
-	<link rel="stylesheet" type="text/css" href="${root}/css/board/style.css"/>
+	<title>게시판 수정</title>
+	<script type="text/javascript" src="${root }/css/board/script.js"></script>
+	<link rel="stylesheet" type="text/css" href="${root }/css/board/style.css"/>
 	
 	<!-- 에디터 -->
-	<script type="text/javascript" src="${root }/smarteditor/js/HuskyEZCreator.js"></script>
-	
+	<script type="text/javascript" src="${root}/smarteditor/js/HuskyEZCreator.js"></script>
 </head>
 <body>
 	
-	<form class="form_style"  action="${root }/memberboard/writeOk.do"  method="post" onsubmit="return doPost(this)" enctype="multipart/form-data">	
-		<%-- <input type="hidden" name="boardNumber" value="${boardNumber}"/> --%>
+	<form class="form_style" action="${root}/memberboard/update.do" method="post" onsubmit="return boardUpdate()">
+		<input type="hidden" name="board_num" value="${memberBoard.board_num}"/>
 		<input type="hidden" name="pageNumber" value="${pageNumber}"/>
-		<input type="hidden" name="board_writer" value="${nickName}"/>
-		<input type="hidden" name="memberLevel" value="${memberLevel}"/>
-			
+		
 		<div style="width:598px; height:15px; border-width:2px; text-align:right; padding:15px 0px 0px 0px; border-bottom-width:0px;">
-				<a href="${root}/memberboard/list.do">글목록</a>
+				<a href="${root }/memberboard/list.do?pageNumber=${pageNumber}">글목록</a>
 		</div>
 			
-		
-
-		<div class="line">
-			<c:if test="${memberLevel!='AA'}">
-				<span class="content"><input type="text" size="50" name="board_title"/></span>
-			</c:if>
-			
-			<c:if test="${memberLevel=='AA' }">
-				<span class="content"><input type="text" size="50" name="board_title" value="[공지사항]"/></span>
-			</c:if>
+		<div>
+			<label>작성자</label>
+			<span>
+				<input type="text" name="board_writer" value="${memberBoard.board_writer}" />
+			</span>
 		</div>
 		
+		<div>
+			<label>제목</label>
+			<span><input type="text" size="50" name="board_title"  value="${memberBoard.board_title}"/></span>
+		</div>
 		
-		<div class="line" style="height:400px;">
-			<span class="content" style="height:230px; width:700px;">
-				<textarea name="board_content" id="content" rows="22" style="width:650px;"></textarea>
+		<div>
+			<label>글내용</label>
+			<span class="content" style="height:230px;">
+				<textarea rows="14" cols="58" name="board_content" id="content">${memberBoard.board_content}</textarea>
 			</span>
 		</div>
 		
 		<div class="line" style="width:598px; border-width:2px; text-align:center;">
-			<input type="submit" value="확인"/>
-			<input type="reset" value="다시작성"/>
-			<input type="button" value="목록보기" onclick="location.href='${root}/memberboard/list.do'"/> 
+			<input type="submit" value="글수정"/>
+			<input type="reset" value="취소"/>
+			<input type="button" value="목록보기" onclick="location.href='${root}/board/list.do?pageNumber=${pageNumber}'">
 		</div>
 	</form>
 </body>
@@ -71,21 +68,12 @@ nhn.husky.EZCreator.createInIFrame({
     },
     fCreator: "createSEditor2"
 });
-
-function doPost(form)
+function boardUpdate()
 {
-	if((form.board_title.value==null)||(form.board_title.value=="")){
-		alert("제목을 입력하세요.");
-		form.board_title.focus();
-		return false;
-	}
-	
 	//에디터의 내용을 실제 Textarea로 가져옴
 	oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD",[]);
 
 	submit();
-	
 }
-
 </script>
 </html>

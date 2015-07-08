@@ -16,16 +16,11 @@ public class MemberDto {
 	private int age;
 	private String nickName;
 	private String phone;
+	private String zipcode;
 	private String addr;
 	private String birthday;
 	private String member_level;
 	
-	public String getMember_level() {
-		return member_level;
-	}
-	public void setMember_level(String member_level) {
-		this.member_level = member_level;
-	}
 	public String getId() {
 		return id;
 	}
@@ -56,24 +51,28 @@ public class MemberDto {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
+	public String getZipcode() {
+		return zipcode;
+	}
+	public void setZipcode(String zipcode) {
+		this.zipcode = zipcode;
+	}
 	public String getAddr() {
 		return addr;
 	}
 	public void setAddr(String addr) {
 		this.addr = addr;
 	}
-	/*public Date getBirthday() {
-		return birthday;
-	}
-	public void setBirthday(Date birthday) {
-		this.birthday = birthday;
-	}*/
 	public String getBirthday() {
 		return birthday;
 	}
 	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
-	
-	
+	public String getMember_level() {
+		return member_level;
+	}
+	public void setMember_level(String member_level) {
+		this.member_level = member_level;
+	}	
 }

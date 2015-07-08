@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -29,6 +31,7 @@ public class EventBoardController {
 	private EventBoardService eventBoardService;
 	
 	Logger logger=Logger.getLogger(this.getClass().getName());
+	
 	
 	/**
 	 * @name : eventWrite
@@ -232,7 +235,7 @@ public class EventBoardController {
 	 * @name : enter
 	 * @date : 2015. 6. 26.
 	 * @author : JeongSuhyun
-	 * @description : 
+	 * @description : 입력받은 데이터를 mav에 담아 eventEnterOk함수를 실행시킨다.
 	 */
 	@RequestMapping(value="/eventBoard/enter.do", method=RequestMethod.POST)
 	public ModelAndView enter(MultipartHttpServletRequest request, EventMemberDto eventMember){
@@ -253,7 +256,7 @@ public class EventBoardController {
 	 * @name : eventManagerList
 	 * @date : 2015. 6. 30.
 	 * @author : JeongSuhyun
-	 * @description : 
+	 * @description : eventManagerList함수를 실행시킨다.
 	 */
 	@RequestMapping(value="/eventBoard/managerList.do",method=RequestMethod.GET)
 	public ModelAndView eventManagerList(HttpServletRequest request){
@@ -273,7 +276,7 @@ public class EventBoardController {
 	 * @name : eventManagerRead
 	 * @date : 2015. 6. 30.
 	 * @author : JeongSuhyun
-	 * @description : 
+	 * @description : eventManagerRead함수를 실행시킨다.
 	 */
 	@RequestMapping(value="/eventBoard/managerRead.do",method=RequestMethod.GET)
 	public ModelAndView eventManagerRead(HttpServletRequest request){
@@ -293,7 +296,7 @@ public class EventBoardController {
 	 * @name : eventManagerDel
 	 * @date : 2015. 7. 01.
 	 * @author : JeongSuhyun
-	 * @description : 
+	 * @description : eventManagerDel함수를 실행시킨다.
 	 */
 	@RequestMapping(value="/eventBoard/managerDel.do", method=RequestMethod.GET)
 	public ModelAndView eventManagerDel(HttpServletRequest request){
@@ -313,7 +316,7 @@ public class EventBoardController {
 	 * @name : eventManagerDel
 	 * @date : 2015. 7. 01.
 	 * @author : JeongSuhyun
-	 * @description : 
+	 * @description : eventManagerDelOk함수를 실행시킨다.
 	 */
 	@RequestMapping(value="/eventBoard/managerDel.do", method=RequestMethod.POST)
 	public ModelAndView eventManagerDel(HttpServletRequest request, HttpServletResponse response){

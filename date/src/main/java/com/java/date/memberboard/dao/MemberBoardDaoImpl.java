@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import com.java.date.member.dto.MemberBoardDto;
 import com.java.date.member.dto.MemberReplyDto;
+import com.java.date.member.dto.RecommendBoardDto;
 
 
 @Component
@@ -76,16 +77,73 @@ public class MemberBoardDaoImpl implements MemberBoardDao {
 
 	@Override
 	public int deleteBoard(int board_num) {
+		sqlSession.delete("dao.memberBoardMapper.dropReply", board_num);
 		return sqlSession.delete("dao.memberBoardMapper.deleteBoard", board_num);
 	}
 
 	@Override
-	public void recomUpdate(int board_num, int board_recom) {
+	public void recomUpdate(int board_num) {
+		
+		sqlSession.update("dao.memberBoardMapper.recomUpdate", board_num);
+	}
+
+	@Override
+	public MemberBoardDto selectBoard(int board_num) {
+		return sqlSession.selectOne("dao.memberBoardMapper.selectBoard", board_num);
+	}
+
+	@Override
+	public int updateBoard(MemberBoardDto memberBoard) {
+		
+		return sqlSession.update("dao.memberBoardMapper.updateBoard", memberBoard);
+	}
+
+	@Override
+	public int selectRecommend(int board_num, String recommend_nickName) {
+		System.out.println("selectRecommend:"+board_num+","+recommend_nickName);
 		HashMap<String, Object> hMap=new HashMap<String, Object>();
 		hMap.put("board_num", board_num);
-		hMap.put("board_recom", board_recom);
-		sqlSession.update("dao.memberBoardMapper.recomUpdate", hMap);
+		hMap.put("recommend_nickName", recommend_nickName);
+		
+		int value=0;
+		if(sqlSession.selectOne("dao.memberBoardMapper.selectRecommend", hMap)==null){
+			value=0;
+		}else{
+			value=1;
+		}
+		return value;
 	}
+
+	@Override
+	public void insertRecommend(RecommendBoardDto recom) {
+		sqlSession.insert("dao.memberBoardMapper.insertRecommend", recom);
+	}
+
+	@Override
+	public int selectBoardRecom(int board_num) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("dao.memberBoardMapper.selectBoardRecom", board_num);
+	}
+
+	@Override
+	public List<MemberBoardDto> getPopList() {
+		
+		return sqlSession.selectList("dao.memberBoardMapper.selectPop");
+	}
+
+	@Override
+	public int popGroupNumber(int board_num) {
+		
+		return sqlSession.update("dao.memberBoardMapper.popGroupNumber",board_num);
+	}
+
+	@Override
+	public int boardReset() {
+		// TODO Auto-generated method stub
+		return sqlSession.update("dao.memberBoardMapper.boardReset");
+	}
+
+
 
 
 }

@@ -7,23 +7,21 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Insert title here</title>
-<script type="text/javascript" src="${root }/css/jquery.js"></script>
 </head>
 <body>
-<c:set var="root" value="${pageContext.request.contextPath }"/>
-	<c:if test="${check==0}">
-		<script type="text/javascript">
-			alert("수정이 실패하였습니다.");
-			location.href="${root}/member/update.do";
-			//$(location).attr("href", "${root}/member/update.do");
-		</script>
-	</c:if>
+	<c:set var="root" value="${pageContext.request.contextPath }"/>
 	
 	<c:if test="${check>0 }">
 		<script type="text/javascript">
 			alert("수정이 완료되었습니다.");
-			location.href="${root}/start.jsp"
-			//$(location).attr("href", "${root}/member/main.do");
+			location.href="${root}/memberboard/list.do?pageNumber=${pageNumber}";
+		</script>
+	</c:if>
+	
+	<c:if test="${check==0 }">
+		<script type="text/javascript">
+			alert("수정이 실패되었습니다.");
+			location.href="${root}/memberboard/list.do?pageNumber=${pageNumber}";
 		</script>
 	</c:if>
 

@@ -12,6 +12,7 @@ import java.util.Map;
 import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -21,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.java.date.member.dto.MemberBoardDto;
 import com.java.date.member.dto.MemberReplyDto;
+import com.java.date.member.dto.RecommendBoardDto;
 import com.java.date.memberboard.dao.MemberBoardDao;
 
 
@@ -31,11 +33,11 @@ import com.java.date.memberboard.dao.MemberBoardDao;
 public class MemberBoardServiceImpl implements MemberBoardService {
 	Logger logger=Logger.getLogger(this.getClass().getName());
 	
-	private String dir="C:\\Users\\KOSTA\\date\\date\\src\\main\\webapp\\resources\\board";
+	//private String dir="C:\\Users\\KOSTA\\date\\date\\src\\main\\webapp\\resources\\board";
 	
 	@Autowired
 	private MemberBoardDao memberBoardDao;
-
+	
 	@Override
 	public void boardWrite(ModelAndView mav) {
 		Map<String, Object> map=mav.getModelMap();
@@ -62,6 +64,8 @@ public class MemberBoardServiceImpl implements MemberBoardService {
 		
 		String pageNumber=request.getParameter("pageNumber");
 		String content=request.getParameter("content");
+		String memberLevel=request.getParameter("memberLevel");
+		logger.info("writeOk-memberLevel:"+memberLevel);
 		logger.info("content:"+content);
 		logger.info("memberBoard:"+memberBoard.getBoard_content());
 		
@@ -72,6 +76,11 @@ public class MemberBoardServiceImpl implements MemberBoardService {
 		memberBoard.setBoard_recom(0);
 		
 		
+		if(memberLevel.equals("AA")){
+			memberBoard.setGroupNumber(2);
+		}else{
+			memberBoard.setGroupNumber(0);
+		}
 		
 		/*MultipartFile upFile=request.getFile("file");
 		String fileName=upFile.getOriginalFilename();
@@ -105,7 +114,7 @@ public class MemberBoardServiceImpl implements MemberBoardService {
 		mav.addObject("check", check);
 		mav.addObject("pageNumber", pageNumber);
 		mav.addObject("memberboard/writeOk");
-		
+		      
 	}
 
 	@Override
@@ -118,7 +127,7 @@ public class MemberBoardServiceImpl implements MemberBoardService {
 		
 		if(pageNumber==null) pageNumber="1";
 		
-		int boardSize=3;
+		int boardSize=10;
 		int currentPage=Integer.parseInt(pageNumber);
 		int startRow=(currentPage-1)*boardSize+1;
 		int endRow=currentPage*boardSize;
@@ -127,8 +136,29 @@ public class MemberBoardServiceImpl implements MemberBoardService {
 		logger.info("count"+count);
 		
 		List<MemberBoardDto> boardList=null;
+		List<MemberBoardDto> popularity=null;
+		List<MemberBoardDto> TotalList=null;
+		MemberBoardDto member=null;
 		if(count>0){
-			boardList=memberBoardDao.getBoardList(startRow, endRow);
+			
+			int value=memberBoardDao.boardReset();
+			// 탑3 인기글가져오기
+			 popularity=memberBoardDao.getPopList();
+			 logger.info("인기글개수:"+popularity.size());
+			for(int i=0; i<popularity.size(); i++){
+				member=popularity.get(i);
+				
+				logger.info("member.setBoardNumber: "+member.getBoard_num());
+				
+				// 인기글은 그룹넘버에 1을주자.
+				int check=memberBoardDao.popGroupNumber(member.getBoard_num());
+				logger.info("check: "+check);
+				
+			}			
+			
+			// 페이지마다 뿌려줄 게시물 가져오기.
+			boardList=memberBoardDao.getBoardList(startRow, endRow);			
+			
 		}
 		
 		logger.info("boardList"+boardList.size());
@@ -137,6 +167,8 @@ public class MemberBoardServiceImpl implements MemberBoardService {
 		mav.addObject("boardSize", boardSize);
 		mav.addObject("currentPage", currentPage);
 		mav.addObject("count", count);
+		// top 3 
+		// mav.addObject("popularity", popularity);
 		mav.setViewName("memberboard/list");
 		
 	}
@@ -155,12 +187,13 @@ public class MemberBoardServiceImpl implements MemberBoardService {
 		
 		// 추천에 따른 추천수 증가 .
 		// 자바스크립트에서 +1해서 넘겨줌.
-		if(request.getParameter("board_recom")!=null){
+		/*if(request.getParameter("board_recom")!=null){
 			int board_recom=Integer.parseInt(request.getParameter("board_recom"));
 			logger.info("board_recom:"+board_recom);
 			
+			
 			memberBoardDao.recomUpdate(board_num, board_recom);
-		}
+		}*/
 		
 			/*int replySize=4;
 			int startRow=replySize-4;
@@ -275,7 +308,71 @@ public class MemberBoardServiceImpl implements MemberBoardService {
 		
 	}
 
+	@Override
+	public void boardSelect(ModelAndView mav) {
+		Map<String, Object> map=mav.getModelMap();
+		HttpServletRequest request=(HttpServletRequest)map.get("request");
+		int board_num=Integer.parseInt(request.getParameter("board_num"));
+		String pageNumber=request.getParameter("pageNumber");
+		logger.info("select--board_num:"+board_num+","+"select--pageNumber:"+pageNumber);
+		MemberBoardDto memberBoard=memberBoardDao.selectBoard(board_num);
+		
+		mav.addObject("memberBoard", memberBoard);
+		mav.addObject("pageNumber", pageNumber);
+		mav.setViewName("memberboard/update");
+		
+	}
 
+	@Override
+	public void boardUpdate(ModelAndView mav) {
+		Map<String, Object> map=mav.getModelMap();
+		HttpServletRequest request=(HttpServletRequest)map.get("request");
+		MemberBoardDto memberBoard=(MemberBoardDto)map.get("memberBoard");
+		
+		int check=memberBoardDao.updateBoard(memberBoard);
+		String pageNumber=request.getParameter("pageNumber");
+		
+		mav.addObject("check", check);
+		mav.addObject("pageNumber", pageNumber);
+		mav.setViewName("memberboard/updateOk");
+		
+	}
 
+	@Override
+	public void recommendBoard(ModelAndView mav) {
+		Map<String, Object> map=mav.getModelMap();
+		HttpServletRequest request=(HttpServletRequest)map.get("request");
+		HttpServletResponse response=(HttpServletResponse)map.get("response");
+		RecommendBoardDto recom=(RecommendBoardDto)map.get("recom");
+		
+		String pageNumber=request.getParameter("pageNumber");
+		int board_num=Integer.parseInt(request.getParameter("board_num"));
+		String board_recom=request.getParameter("board_recom");
+		String recommend_nickName=request.getParameter("recommend_nickName");
+		logger.info("recommendBoard:"+pageNumber+","+board_num+","+board_recom+","+recommend_nickName);
+		
+		int check=memberBoardDao.selectRecommend(board_num, recommend_nickName);
+		logger.info("check:"+check);
+		
+		//logger.info("띠로리"+recom.getBoard_num()+","+recom.getRecommend_check()+","+recom.getRecommend_code()+","+recom.getRecommend_nickName());
+		if(check==0){
+			recom.setRecommend_check(1);
+			memberBoardDao.insertRecommend(recom);
+			memberBoardDao.recomUpdate(board_num);
+			
+			int boardRecom=memberBoardDao.selectBoardRecom(board_num);
+			
+			response.setContentType("application/html;charset=utf-8");
+			PrintWriter out;
+			try {
+				out = response.getWriter();
+				out.print(boardRecom);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+	}
 }
 

@@ -62,15 +62,15 @@
 		
 			<c:if test="${event_code==0 }">
 				<span>
-					<textarea name="event_content" id="content" rows="22" style="width:645px;"></textarea>
+					<textarea name="event_content" id="ir1" rows="22" style="width:645px;"></textarea>
 				</span>
 			</c:if>
 			<c:if test="${event_code!=0 }">
 				<span class="content">
-					<textarea name="event_content" id="content" rows="22" style="width:645px;">
-글번호  아이디  닉네임					
+					<textarea name="event_content" id="ir1" rows="22" style="width:645px;">
+글번호  아이디  닉네임			<br/>		
 						<c:forEach var="winner" items="${winnerList }">
-${winner.join_code}      ${winner.id }        ${winner.join_writer }
+${winner.join_code}      ${winner.id }        ${winner.join_writer }<br/>
 						</c:forEach>
 					</textarea>
 				</span>
@@ -96,14 +96,14 @@ ${winner.join_code}      ${winner.id }        ${winner.join_writer }
 				<span class="content"><input type="text" size="50" name="event_giveaway" value="${eventBoard.event_giveaway }"></span>
 			</c:if>	
 		</div>
-		
+<!-- 		
 		
 		<div class="line">
 			<label class="title">이벤트 사진 파일</label>
 			<span class="content">
 				<input type="file" name="file"/>
 			</span>
-		</div>
+		</div> -->
 		
 <%-- 		
 		<c:if test="${event_code==0 }">
@@ -124,8 +124,8 @@ ${winner.join_code}      ${winner.id }        ${winner.join_writer }
 var oEditors = [];
 nhn.husky.EZCreator.createInIFrame({
     oAppRef: oEditors,
-    elPlaceHolder: "content", //textarea ID
-    sSkinURI: "${root }/smarteditor/SmartEditor2Skin.html",
+    elPlaceHolder: "ir1", //textarea ID
+    sSkinURI: "${root}/SmartEditor2Skin",
     htParams : {
       bUseToolbar : true,	// 툴바 사용 여부 (true:사용/ false:사용하지 않음[default:true] )
       bUseVerticalResizer : true,	// 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음[default:true])

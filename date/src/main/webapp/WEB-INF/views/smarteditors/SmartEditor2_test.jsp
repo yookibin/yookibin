@@ -14,7 +14,7 @@
 </body>
 <script type="text/javascript">
 var oEditors = [];
-alert("${root}/SmartEditor2Skin");
+//alert("${root}/SmartEditor2Skin");
 nhn.husky.EZCreator.createInIFrame({
     oAppRef: oEditors,
     elPlaceHolder: "content", //textarea ID

@@ -27,30 +27,36 @@
 	</c:if>
 
 	<c:if test="${count>0 }">
-		<table border="1" width="530" cellpadding="2" cellspacing="0" align="center">
-			<tr> 
-				<td align="center" width="30">번호</td>
-				<td align="center" width="250">제목</td>
-				<td align="center" width="70">작성자</td>
-				<td align="center" width="100">작성일</td>
-				<td align="center" width="50">조회수</td>
-			</tr>
+		<div align="center">
 			
+				<span>번호</span>
+				<span>제목</span>
+				<span>작성자</span>
+				<span>작성일</span>
+				<span>조회수</span>
+			
+		</div>	
 			<!-- Board List -->
+	
 		<c:forEach var="memberBoard" items="${memberboardList }">
-			<tr>
-				<td>${memberBoard.board_num }</td>
-				<td>
-					<a href="${root }/memberboard/read.do?board_num=${memberBoard.board_num}&pageNumber=${currentPage}">${memberBoard.board_title }</a>
-				</td> 
-				<td>${memberBoard.board_writer }</td>
-				<td>
-					<fmt:formatDate value="${memberBoard.board_date }" type="date"/>
-				</td>
-				<td>${memberBoard.board_count }</td>
-			</tr>
+			<div align="center" >
+				<span>${memberBoard.board_num }</span>
+			
+				<c:if test="${memberBoard.groupNumber==1}">
+					<span id="popularity">[인기글]</span>
+				</c:if>
+			
+		
+				<a href="${root }/memberboard/read.do?board_num=${memberBoard.board_num}&pageNumber=${currentPage}">${memberBoard.board_title }</a>
+				 
+				<span>${memberBoard.board_writer }</span>
+				
+				<span><fmt:formatDate value="${memberBoard.board_date }" type="date"/></span>
+				
+				<span>${memberBoard.board_count }</span>
+			</div>
 		</c:forEach>
-		</table>
+
 		<br/>
 		
 		<!-- 페이지 번호 -->
