@@ -21,7 +21,7 @@
 					place_season:$("#place_season").val(),
 					place_weather:$("#place_weather").val(),
 					place_time:$("#place_time").val(),
-					place_price:$("#place_price").val()
+					place_balance:$("#place_balance").val()
 				}
 			,success : function(data) {
 				console.log(data);
@@ -73,7 +73,7 @@
 			</p>
 			<p>
 				계 절 : <select id="place_season" name="place_season">
-					<option value="무관">무관</option>
+					<option value="">무관</option>
 					<option>봄</option>
 					<option>여름</option>
 					<option>가을</option>
@@ -82,7 +82,7 @@
 			</p>
 			<p>
 				날 씨 : <select id="place_weather" name="place_weather">
-					<option value="무관">무관</option>
+					<option value="">무관</option>
 					<option>맑음</option>
 					<option>흐림</option>
 					<option>비</option>
@@ -92,23 +92,26 @@
 			<p>
 				시간대 : <select id="place_time" name="place_time">
 					<option value="무관">무관</option>	
-					<option value="1">새벽(4시~8시)</option>
-					<option value="2">오전(8시~12시)</option>
-					<option value="3">오후(12시~17시)</option>
-					<option value="4">저녁(17시~23시)</option>
-					<option value="5">야간(23시~4시)</option>
-					<option value="21">야간(21)</option>
+					<option value="1">0시~4시</option>
+					<option value="2">4시~8시</option>
+					<option value="3">8시~12시</option>
+					<option value="4">12시~16시</option>
+					<option value="5">16시~20시</option>
+					<option value="6">20시~24시</option>
 				</select><br>
 			</p>
 			<p>
-				가격대 : <select id="place_price" name="place_price">
-					<option value="1234">무관</option>
-					<option value="1">1만원</option>
-					<option value="3">3만원</option>
-					<option value="5">5만원</option>
-					<option value="7">7만원</option>
-					<option value="9">9만원</option>
-					<option value="0">0</option>
+				가격대 : <select id="place_balance" name="place_balance">
+					<option value="무관">무관</option>
+					<option value="1만원">1만원</option>
+					<option value="2만원">2만원</option>
+					<option value="3만원">3만원</option>
+					<option value="4만원">4만원</option>
+					<option value="5만원">5만원</option>
+					<option value="6만원">6만원</option>
+					<option value="7만원">7만원</option>
+					<option value="8만원">8만원</option>
+					<option value="9만원">9만원</option>
 				</select><br>
 			</p>
 

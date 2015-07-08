@@ -41,16 +41,23 @@
 		select * from place where place_code=#{a}
 	</select>
 	<select id="selectList22" resultType="com.java.date.recommandPlace.dto.PlaceDto" parameterType="com.java.date.recommandPlace.dto.PlaceDto">
-		select * from place
+		
 		<!-- where place_location=#{place_location} 
 		and place_weather=#{place_weather}
 		and place_time=#{place_time}  where place_weather like '%맑음%';
 		and place_price=#{place_price} -->
+		<!-- select * from place
 		where (place_gu=#{place_gu} or '무관'= #{place_gu}) 
 		and (place_season=#{place_season} or '무관'= #{place_season})
 		and (place_weather=#{place_weather} or '무관'= #{place_weather})
 		and (place_time=#{place_time} or '무관'= #{place_time})
-		and (place_price=#{place_price} or '1234'= #{place_price})
+		and (place_balance=#{place_balance} or '무관'= #{place_balance}) -->
+		select * from place
+		where (place_gu=#{place_gu} or '무관'= #{place_gu}) 
+		and (place_season like '%'||#{place_season}||'%')
+		and (place_weather like '%'||#{place_weather}||'%')
+		and (place_time=#{place_time} or '무관'= #{place_time})
+		and (place_balance=#{place_balance} or '무관'= #{place_balance})
 	</select>
 </mapper>
 

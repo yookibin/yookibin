@@ -36,15 +36,14 @@ public class ReviewBoardDaoImpl implements ReviewBoardDao {
 	 */
 
 	@Override
-	public List<ReviewBoardDto> replyWrite(int star, String place_code,String nickName, String writeReply) {
+	public int replyWrite(int star, String place_code,String nickName, String writeReply) {
 		Map<String,Object> hMap = new HashMap<String,Object>();
 		hMap.put("place_code",place_code);
 		hMap.put("nickName",nickName);
 		hMap.put("writeReply",writeReply);
 		hMap.put("star",star);
 		
-		sqlSession.insert("dao.reviewBoardMapper.replyInsert",hMap);
-		return sqlSession.selectList("dao.reviewBoardMapper.replyList",place_code);
+		return sqlSession.insert("dao.reviewBoardMapper.replyInsert",hMap);
 	}
 
 	/**
@@ -68,7 +67,14 @@ public class ReviewBoardDaoImpl implements ReviewBoardDao {
 	 */
 	
 	@Override
-	public ReviewBoardDto replyUpdate(int review_code) {
-		return sqlSession.selectOne("dao.reviewBoardMapper.replyDto",review_code);
+	public int replyUpdate(int review_code, String review_content) {
+		Map<String, Object> hMap = new HashMap();
+		hMap.put("review_code", review_code);
+		hMap.put("review_content", review_content);
+		System.out.println("DAO");
+		System.out.println(review_code);
+		System.out.println(review_content);
+		System.out.println("또 그러는건가");
+		return sqlSession.update("dao.reviewBoardMapper.replyDto",hMap);
 	}
 }

@@ -17,22 +17,16 @@
 }
 
 #foot {
-	position: absolute;
+	width: 850px;
 	clear: left;
 	float: left;
 	left: 0;
-	bottom: -20px;
 }
 
 .replyDiv {
-	width: 860px;
-}
-
-.cssCode {
-	border: solid 1px black;
-	float: left;
-	width: 30px;
-	text-align:center;
+	width: 850px;
+	height: 28px;
+	align:left;
 }
 
 .cssId {
@@ -65,6 +59,6 @@
 .cssUpDel {
 	border: solid 1px black;
 	float: left;
-	width: 100px;
+	width: 80px;
 	text-align:center;
 }

@@ -1,10 +1,9 @@
 /**
  * 
  */
-function deleteToServer(review_code,requestRoot){
+function deleteToServer(review_code,requestRoot,review_id,nickName){
 /*	alert(review_code);
 	alert("root:"+requestRoot);*/
-	
 	$.ajax({
 		url : requestRoot + "/reviewBoard/deleteReview.do",
 		type : "post",
@@ -15,7 +14,7 @@ function deleteToServer(review_code,requestRoot){
 		success : function(data) {
 			console.log(data);
 			
-			alert("삭제하시겠습니까?");
+			confirm("삭제하시겠습니까?");
 			$("#"+review_code).remove();
 		}
 	});

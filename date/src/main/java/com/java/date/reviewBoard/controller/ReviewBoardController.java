@@ -27,7 +27,7 @@ public class ReviewBoardController {
 	
 	@RequestMapping("/reviewBoard/insertReview.do")
 	@ResponseBody
-	public List<ReviewBoardDto> replyWrite(int star, String place_code, String nickName, String writeReply){
+	public int replyWrite(int star, String place_code, String nickName, String writeReply){
 		logger.info("-------------------replyWrite");
 		return reviewBoardService.replyWrite(star,place_code,nickName,writeReply);
 	}
@@ -55,10 +55,14 @@ public class ReviewBoardController {
 	 * @description : 수정버튼을 눌렀을 시 AJAX를 통해 각 멤버변수들이 들어와 해당 변수들을 reviewBoardService로 리턴해주는 함수
 	 */
 	
-	@RequestMapping("reviewBoard/updateReview.do")
+	@RequestMapping("/reviewBoard/updateReview.do")
 	@ResponseBody
-	public ReviewBoardDto replyUpdate(int review_code){
+	public int replyUpdate(int review_code, String review_content){
 		logger.info("-------------------replyUpdate");
-		return reviewBoardService.replyUpdate(review_code);
+		System.out.println("컨트롤러");
+		System.out.println(review_code);
+		System.out.println(review_content);
+		
+		return reviewBoardService.replyUpdate(review_code, review_content);
 	}
 }

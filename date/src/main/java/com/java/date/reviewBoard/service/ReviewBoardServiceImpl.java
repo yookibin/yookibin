@@ -27,7 +27,7 @@ public class ReviewBoardServiceImpl implements ReviewBoardService {
 	 */
 	
 	@Override
-	public List<ReviewBoardDto> replyWrite(int star, String place_code, String nickName, String writeReply) {
+	public int replyWrite(int star, String place_code, String nickName, String writeReply) {
 		// TODO Auto-generated method stub
 		return reviewBoardDao.replyWrite(star,place_code,nickName,writeReply);
 	}
@@ -55,9 +55,9 @@ public class ReviewBoardServiceImpl implements ReviewBoardService {
 	 */
 
 	@Override
-	public ReviewBoardDto replyUpdate(int review_code) {
+	public int replyUpdate(int review_code, String review_content) {
 		logger.info("review_code: " + review_code);
-		return reviewBoardDao.replyUpdate(review_code);
+		return reviewBoardDao.replyUpdate(review_code, review_content);
 	}
 	
 }

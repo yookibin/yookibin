@@ -91,8 +91,8 @@
 	top: 0;
 	left: 0;
 	bottom: 0;
-	width: 250px;
-	margin: 10px 0 30px 10px;
+	width: 300px;
+	margin: 10px 0 30px 900px;
 	padding: 5px;
 	overflow-y: auto;
 	background: rgba(255, 255, 255, 0.7);
@@ -267,9 +267,9 @@
 
 	<div class="map_wrap">
 		<div id="map"
-			style="width: 100%; height: 80%; position: relative; overflow: hidden;"></div>
-
-		<div id="menu_wrap" class="bg_white">
+			style="width: 60%; height: 80%; position: relative; overflow: hidden;"></div>
+	</div>
+	<div id="menu_wrap" class="bg_white">
 			<div class="option">
 				<p>
 				<form onsubmit="searchPlaces(); return false;">
@@ -280,7 +280,6 @@
 			<hr>
 			<ul id="placesList"></ul>
 			<div id="pagination"></div>
-		</div>
 	</div>
 
 	<script>
@@ -872,31 +871,26 @@ function getTimeHTML(distance) {
 }
     
 </script>
-	
 
-
-
-
-
-
-
-
-
-
-
-
-
-		<c:forEach var="place" items="${placeDtoList}">
-				<div id="title">
+	<c:forEach var="place" items="${placeDtoList}">
+		<div id="title">
+				<img src="${root}${place.place_photo}" width="350" height="263" alt="Klematis">
+				<div>
+					${place.place_name}<br>
+					장소설명 : ${place.place_content}<br>
+			</div>
+		</div>
+				<%-- <div id="title">
 					<div id="title_a">
-						<img src="${root}${place.place_photo}" width="348" height="348"
+						<img src="${root}${place.place_photo}" width="348" height="248"
 							onclick="getInfo('${root}','${place.place_code}')">
 					</div>
 					<div id="title_b">${place.place_name}
 						<div id="${place.place_code}">
+							장소설명 : ${place.place_content}<br>
 						</div>
 					</div>
-				</div>
+				</div> --%>
 			</c:forEach>
 
 	<input type="button" value="지도위치보기"

@@ -44,7 +44,7 @@ public class RecommandPlaceDaoImpl implements RecommandPlaceDao {
 		System.out.println(dto.getPlace_season());
 		System.out.println(dto.getPlace_weather());
 		System.out.println(dto.getPlace_time());
-		System.out.println(dto.getPlace_price());
+		System.out.println(dto.getPlace_balance());
 		System.out.println("출력되어라");
 		List<PlaceDto> list = sqlSession.selectList("dao.recommandPlaceMapper.selectList22", dto);
 		System.out.println("이거 하자" + list.size());

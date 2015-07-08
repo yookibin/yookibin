@@ -52,19 +52,19 @@ public class RecommandPlaceController {
 	 */
 	@RequestMapping("/recommandPlace/select2.do")
 	@ResponseBody
-	public List<PlaceDto> select2(String place_gu,String place_season,String place_weather,String place_time,int place_price) {
+	public List<PlaceDto> select2(String place_gu,String place_season,String place_weather,String place_time,String place_balance) {
 		logger.info("이것이 실행되어야함?");
 		System.out.println(place_gu);
 		System.out.println(place_season);
 		System.out.println(place_weather);
 		System.out.println(place_time);
-		System.out.println(place_price);
+		System.out.println(place_balance);
 		PlaceDto dto = new PlaceDto();
 		dto.setPlace_gu(place_gu);
 		dto.setPlace_season(place_season);
 		dto.setPlace_weather(place_weather);
 		dto.setPlace_time(place_time);
-		dto.setPlace_price(place_price);
+		dto.setPlace_balance(place_balance);
 		return service.placeList(dto);
 	}
 	
