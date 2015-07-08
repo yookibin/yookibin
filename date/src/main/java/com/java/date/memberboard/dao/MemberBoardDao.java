@@ -11,9 +11,7 @@ public interface MemberBoardDao {
 	
 	public int insert(MemberBoardDto memberBoard);
 	
-	
 	public int getBoardCount();
-	
 	
 	public List<MemberBoardDto> getBoardList(int startRow, int endRow);
 	
