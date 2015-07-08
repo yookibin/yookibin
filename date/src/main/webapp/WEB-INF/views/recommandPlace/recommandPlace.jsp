@@ -12,6 +12,7 @@
 <script type="text/javascript" src="${root}/css/recommandPlace/script.js"></script>
 <script type="text/javascript">
 	function test(root) {
+		$("#course").css("display","none");
 		$.ajax({
 			url : root + "/recommandPlace/select2.do"
 			,type : "post"
@@ -38,17 +39,17 @@
 						
 						+"<div id='title'>"
 							+"<div id='title_a'>"
-								+"<img src='"+root+data[i].place_photo+"' width='348' height='348'>"
+								+"<img src='"+root+data[i].place_photo+"' width='348' height='250'>"
 							+"</div>"
 				
 							+"<div id='title_b'>"+data[i].place_name
 								+"<div id='"+data[i].place_code+"'>"
 							+"</div></div></div></div>"
 				}
+				
 				$("#place").empty();
 				$("#place").append(placeList);
 			}
-
 		});
 	}
 	
@@ -109,14 +110,14 @@
 			</p>
 
 			<div>
-				<input type="button" id="btn" value="gg" onclick="test('${root }')">
-				<input type="button" id="btn" value="11" onclick="test2('${root }')">
-				<input type="submit" value="페이지이동">
+				<input type="button" id="btn" value="장소검색하기" onclick="test('${root }')">
+				<!-- <input type="submit" value="페이지이동"> -->
 			</div>
 		</div>
 	</form>
 	<form action="${root}/recommandPlace/selectCourse.do" method="POST">
-		<div id="course">
+		<div id="course" style="display:none">
+
 			<p>
 				코스추천 : <select id="courseSelect" name="courseSelect">
 					<option>--코스선택--</option>

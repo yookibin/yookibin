@@ -69,16 +69,9 @@ a:hover {
 	text-align: center;
 }
 
-#title_a {
+#title_a{
 	width: 350px;
-	height: 350px;
-	border: solid 1px blue;
-	text-align: center;
-}
-
-.title_a {
-	width: 350px;
-	height: 350px;
+	height: 248px;
 	border: solid 1px blue;
 	text-align: center;
 }
