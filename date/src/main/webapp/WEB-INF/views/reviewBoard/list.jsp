@@ -34,8 +34,8 @@
 				<div class="cssCode">${review.review_code}</div>
 				<div class="cssId">${review.review_id}</div>
 				<div class="cssStar">${review.review_star/10}점</div>
-				<textarea rows="30" cols="100" class="cssContent">${review.review_content}</textarea>
-				<textarea rows="30" cols="100" class="cssContent" style="display:none;">${review.review_content}</textarea>
+				<div class="cssContent">${review.review_content}</div>
+				<div class="cssContent" style="display:none;">${review.review_content}</div>
 				<input type="button" value="평가하기" style="display:none;" onclick="writeToServer('${root}','${placeBoard.place_code}','${nickName}')" />
 				<div class="cssDate">${review.review_date}</div>
 				<div class="cssUpDel">
