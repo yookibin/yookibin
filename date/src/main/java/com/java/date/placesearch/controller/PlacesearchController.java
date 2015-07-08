@@ -62,5 +62,28 @@ public class PlacesearchController {
 		return mav;
 	}
 	
+	@RequestMapping(value="placesearch/list.do",method=RequestMethod.GET)
+	public ModelAndView list(HttpServletRequest request,HttpServletResponse response){
+		logger.info("list Start-----------------");
+		
+		ModelAndView mav= new ModelAndView();
+		mav.addObject("request",request);
+		
+		placesearchService.list(mav);
+		return mav;
+	}
+	
+	@RequestMapping(value="placesearch/ReplyWriteAction.do",method=RequestMethod.GET)
+	public ModelAndView reply(HttpServletRequest request,HttpServletResponse response){
+		logger.info("reply Start----------------");
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("request",request);
+		
+		placesearchService.reply(mav);
+		return mav;
+	}
+	
+	
 	
 }
