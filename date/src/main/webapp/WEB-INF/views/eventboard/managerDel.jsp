@@ -10,10 +10,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h3>managerDel.jsp 이지롱</h3>
+<%-- <h3>managerDel.jsp 이지롱</h3>
 	<h4>group_number : ${group_number }</h4>
 	<h4>sequence_number : ${sequence_number }</h4>
-	<h4>sequence_level : ${sequence_level }</h4>
+	<h4>sequence_level : ${sequence_level }</h4> --%>
 	
 	<form method="post" action="${root}/eventBoard/managerDel.do" name="deleteForm">
 		<input type="hidden" name="event_code" value="${event_code }"/>

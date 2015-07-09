@@ -36,6 +36,6 @@
 	</update>  
 	
 	<insert id="memberPoint" parameterType="String">
-		<![CDATA[ insert into point values(point_point_code_seq.nextval,#{id},'+1000','1000','회원가입기념 포인트 지급') ]]>
+		<![CDATA[ insert into point values(point_point_code_seq.nextval,#{id},'+1000','1000','회원가입기념 포인트 지급',sysdate) ]]>
 	</insert>
 </mapper>

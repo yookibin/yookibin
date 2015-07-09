@@ -47,7 +47,7 @@ public class MemberServiceImpl implements MemberService {
 		
 		memberDto.setMember_level("BB");
 		
-		int firstCheck=memberDao.memberRegister(memberDto);
+		int firstCheck=memberDao.memberRegister(memberDto);		//회원가입
 		logger.info("firstCheck:"+firstCheck);
 		
 		String id=memberDto.getId();
