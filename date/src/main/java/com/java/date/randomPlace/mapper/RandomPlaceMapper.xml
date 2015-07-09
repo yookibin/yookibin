@@ -24,7 +24,7 @@
 	
 	<select id="randomPlaceResult" parameterType="java.util.HashMap" resultType="com.java.date.recommandPlace.dto.PlaceDto">
 		<![CDATA[
-			select * from Placee where place_gu=#{place} and place_weather=#{weather} and place_time=#{time}
+			select * from place where place_gu=#{endPlace} and place_time=#{endTime} and place_weather like #{endWeather} ||'%'
 		]]>
 	</select>
 </mapper>

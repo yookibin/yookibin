@@ -66,11 +66,13 @@ public class RandomPlaceDaoImpl implements RandomPlaceDao {
 	 *@description : 랜덤장소추천의 모든데이터를 받아 랜덤한 데이터를 데이터베이스에서 꺼내오는 기능
 	 */
 	@Override
-	public List<PlaceDto> randomPlace(HashMap<String, String> hMap) {
+	public List<PlaceDto> randomPlace(HashMap<String, Object> hMap) {
 		List<PlaceDto> list=new ArrayList<PlaceDto>();
 		List<PlaceDto> placeList=sqlSession.selectList("dao.randomPlaceMapper.randomPlaceResult", hMap);
 		int fristPlace=(int)(Math.random()*placeList.size());
+		System.out.println("fristPlace:"+fristPlace);
 		int secondPlace=(int)(Math.random()*placeList.size());
+		System.out.println("secondPlace:"+secondPlace);
 		while(fristPlace==secondPlace){
 			secondPlace=(int)(Math.random()*placeList.size());
 		}

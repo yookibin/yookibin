@@ -104,11 +104,11 @@ public class RandomPlaceServiceImpl implements RandomPlaceService {
 		
 		logger.info(endPlace+","+endWeather+","+endTime);
 		
-		HashMap<String, String> hMap=new HashMap<String, String>();
+		HashMap<String, Object> hMap=new HashMap<String, Object>();
 		
-		hMap.put("endPlace", endPlace);
-		hMap.put("endWeather", endWeather);
-		hMap.put("endTime", endTime);
+		hMap.put("endPlace",endPlace);
+		hMap.put("endWeather",endWeather);
+		hMap.put("endTime",Integer.parseInt(endTime));
 		
 		return randomPlaceDao.randomPlace(hMap);
 	}

@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="${root}/randomplace/randomPlaceStart.do">시작</a>
+	<a href="${root}/randomplace/randomPlaceStart.do">시작></a>
 
 </body>
 </html>

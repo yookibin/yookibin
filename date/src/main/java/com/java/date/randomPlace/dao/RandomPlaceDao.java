@@ -13,5 +13,5 @@ public interface RandomPlaceDao {
 	
 	public String next_Question(String next_Question);
 	
-	public List<PlaceDto> randomPlace(HashMap<String, String> hMap);
+	public List<PlaceDto> randomPlace(HashMap<String, Object> hMap);
 }
