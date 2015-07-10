@@ -498,7 +498,7 @@ public class EventBoardServiceImpl implements EventBoardService {
 		if(firstCheck>0) secondCheck=eventBoardDao.eventEnterAllDel(event_code);
 		logger.info("eventDeleteOk firstCheck: "+firstCheck);
 		
-		if(secondCheck>0){
+		if(firstCheck==0||secondCheck>0){
 			check=eventBoardDao.boardDelete(event_code);
 			logger.info("check: "+check);
 		}		

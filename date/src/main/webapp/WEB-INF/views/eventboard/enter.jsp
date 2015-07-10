@@ -10,43 +10,8 @@
 	<script type="text/javascript" src="${root}/css/eventBoard/script.js"></script>
 	<link rel="stylesheet" type="text/css" href="${root}/css/eventBoard/style.css"/>
 	<script type="text/javascript" src="${root }/css/jquery.js"></script>
-	<script type="text/javascript" src="${root }/smarteditor/js/HuskyEZCreator.js"></script>
-<!--     <script>
-	   $(document).ready(function(){
-		   
-		   //file 양식으로 이미지를 선택(값이 변경) 되었을때 처리하는 코드
-	       $("#imgInp").change(function(){
-	           //alert(this.value); //선택한 이미지 경로 표시
-	           var filePath=this.value;
-	           filePath= $("input[name='join_filePath']").val()+","+this.value;
-	           $("input[name='join_filePath']").val(filePath);
-	           readURL(this);
-	       });
-		   
-	       function readURL(input) {
-	           if(input.files && input.files[0]) {
-	        	   var div=document.getElementById("toress");
-	        	   var img=document.createElement("img");
-	        	  
-	               var reader=new FileReader(); 	//파일을 읽기 위한 FileReader객체 생성
-	               reader.onload=function(e){   //파일 읽어들이기를 성공했을때 호출되는 이벤트 핸들러
-	            	  	img.setAttribute("src", e.target.result);
-		                img.setAttribute("width", "100");
-		                img.setAttribute("height", "100");
-		                
-		               	//alert("HI");                  	
-	               }       
-	               
-	               reader.readAsDataURL(input.files[0]);     //File내용을 읽어 dataURL형식의 문자열로 저장
-	               div.appendChild(img);	               
-	           }
-	       }     
-	    
-	    });
-
-  </script> -->
-  
-  <script type="text/javascript">   	
+	<script type="text/javascript" src="${root }/smarteditor/js/HuskyEZCreator.js"></script>  
+	<script type="text/javascript">   	
 		function joinFun(root, event_code, pageNumber,id,event_point,event_progress){
 			//alert(id);
 			//alert(root+","+ event_code+","+pageNumber+","+id+","+event_point+","+form);
@@ -61,10 +26,9 @@
 				alert("로그인하세요.");
 				location.href=root+"/member/login.do";
 			}
-			
+				
 		} 
-  </script>
-	
+	</script>	
 </head>
 <body>
 

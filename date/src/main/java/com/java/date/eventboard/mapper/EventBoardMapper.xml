@@ -56,7 +56,7 @@
 	</insert>
 		
 	<insert id="pointWrite" parameterType="java.util.HashMap">	
-		<![CDATA[ insert into point values(POINT_POINT_CODE_SEQ.nextval,#{id},-#{event_point},#{afterPoint},'이벤트 참가') ]]>
+		<![CDATA[ insert into point values(POINT_POINT_CODE_SEQ.nextval,#{id},-#{event_point},#{afterPoint},'이벤트 참가',sysdate) ]]>
 	</insert>
 	
 	<select id="eventManagerCount" parameterType="int" resultType="int">

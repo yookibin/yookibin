@@ -49,78 +49,68 @@
 	<!-- eventBoard와 pageNumber를 넘겨줌 -->
 	<c:set var="root" value="${pageContext.request.contextPath }"/>
 	
-	<table border="1" width="510" cellpadding="2"  cellspacing="0" align="center">
-		<tr>
-			<td align="center"  height="20" width="125">글번호</td>
-			<td align="center"  height="20" width="125">${eventBoard.event_code }</td>
+	<div>
+		<span>글번호</span>
+		<span>${eventBoard.event_code }</span>		
+	</div>
+	
+	<div>
+		<span>조회수</span>
+		<span>${eventBoard.read_count }</span>		
+	</div>
+	
+	<div>
+		<span>작성자</span>
+		<span>${eventBoard.writer }</span>		
+	</div>
+	
+	<div>
+		<span>이벤트 기간</span>
+		<span>${eventBoard.event_period }</span>		
+	</div>
+	
+	<div>
+		<span>차감포인트</span>
+		<span>${eventBoard.event_point }</span>		
+	</div>
+	
+	<div>
+		<span>경품</span>
+		<span>${eventBoard.event_giveaway }</span>		
+	</div>
+	
+	<div>
+		<span>제목</span>
+		<span>${eventBoard.event_title }</span>		
+	</div>
+	
+	<div>
+		<span>진행상황</span>
+		<span>${eventBoard.event_progress }</span>		
+	</div>
+	
+	<div>
+		<span>글내용</span>
+		<span>${eventBoard.event_content }</span>		
+	</div>
+	
+	<div>
+		<c:if test="${memberLevel=='AA' }">
+			<input type="button" value="글수정" onclick="updateFun('${root}','${eventBoard.event_code }','${pageNumber }')" />
+			<input type="button" value="글삭제" onclick="delFun('${root}','${eventBoard.event_code }','${pageNumber }')"/>
+			<input type="button" value="응모회원관리" onclick="manageFun('${root}','${eventBoard.event_code }','${eventBoard.group_number }','${eventBoard.sequence_number }','${eventBoard.sequence_level }','${pageNumber }')"/><br/>
 			
-			<td align="center"  height="20" width="125">조회수</td>
-			<td align="center"  height="20" width="125">${eventBoard.read_count }</td>
-		</tr>
-		
-		<tr>
-			<td align="center"  height="20" width="125">작성자</td>
-			<td align="center"  height="20" width="125">${eventBoard.writer }</td>
-			
-			<td align="center"  height="20" width="125">이벤트 기간</td>
-			<td align="center"  height="20" width="125">${eventBoard.event_period }</td>
-		</tr>
-		
-		<tr>
-			<td align="center"  height="20" width="125">차감포인트</td>
-			<td align="center"  height="20" width="125">${eventBoard.event_point }</td>
-			
-			<td align="center"  height="20" width="125">경품</td>
-			<td align="center"  height="20" width="125">${eventBoard.event_giveaway }</td>
-		</tr>
-		
-		<tr>
-			<td align="center"  height="20" width="125">제목</td>
-			<td align="center"  height="20" width="125">${eventBoard.event_title }</td>
-			<td align="center"  height="20" width="125">진행상황</td>
-			<td align="center"  height="20" width="125">${eventBoard.event_progress }</td>
-		</tr>
-		
-		<tr>
-			<td align="center"  height="200" width="125">글내용</td>
-			<td valign="top"  height="200" colspan="3" align="center">
-	<%-- 		<c:if test="${eventBoard.event_fileSize!=0 }">												
-					<img src="${root}/resources/eventBoard/${eventBoard.event_filePath }" width="200" height="200"/><br/>						
-					${eventBoard.event_filePath }														
-				</c:if>	<br/>			
-				 --%>
-				${eventBoard.event_content }
-			</td>
-		</tr>
-<%-- 		
-		<c:if test="${eventBoard.event_fileName !=null }">
-			<tr>
-				<td align="center"  height="20" width="125">파일명</td>
-				<td colspan="3">
-					<a href="${root }/fileBoard/downLoad.do?boardNumber=${eventBoard.event_code}">${eventBoard.event_fileName }</a>
-				</td>
-			</tr>		
 		</c:if>
-		 --%>
-		<tr>
-			<td height="30" colspan="4" align="center">
-				<c:if test="${memberLevel=='AA' }">
-					<input type="button" value="글수정" onclick="updateFun('${root}','${eventBoard.event_code }','${pageNumber }')" />
-					<input type="button" value="글삭제" onclick="delFun('${root}','${eventBoard.event_code }','${pageNumber }')"/>
-					<input type="button" value="응모회원관리" onclick="manageFun('${root}','${eventBoard.event_code }','${eventBoard.group_number }','${eventBoard.sequence_number }','${eventBoard.sequence_level }','${pageNumber }')"/><br/>
-					
-				</c:if>
-				
-		 		<c:if test="${eventBoard.event_progress=='진행' }">
-					<input type="button" value="참가하기" onclick="enterFun('${root}','${eventBoard.event_code }','${pageNumber }','${eventBoard.event_point }')"/>
-				</c:if>
-				<c:if test="${eventBoard.event_progress=='종료' }">
-					<input type="text" value="기간이 지난 이벤트 입니다."/>
-				</c:if>
-				
-				<input type="button" value="글목록" onclick="location.href='${root}/eventBoard/list.do?pageNumber=${pageNumber }'"/>
-			</td>
-		</tr>
-	</table>
+		
+ 		<c:if test="${eventBoard.event_progress=='진행' }">
+			<input type="button" value="참가하기" onclick="enterFun('${root}','${eventBoard.event_code }','${pageNumber }','${eventBoard.event_point }')"/>
+		</c:if>
+		<c:if test="${eventBoard.event_progress=='종료' }">
+			<input type="text" value="기간이 지난 이벤트 입니다."/>
+		</c:if>
+		
+		<input type="button" value="글목록" onclick="location.href='${root}/eventBoard/list.do?pageNumber=${pageNumber }'"/>
+	</div>
+		
 </body>
 </html>
