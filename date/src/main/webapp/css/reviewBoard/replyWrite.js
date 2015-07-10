@@ -2,10 +2,9 @@
  * 
  */
 function writeToServer(requestRoot, place_code, nickName) {
-/*	alert(requestRoot);
-	alert($("#starReply").val());
-	alert(place_code);
-	alert($("#writeReply").val());*/
+	if($("#starReply").val()=="선택"){
+		alert("평점을 선택 해주세요");
+	}
 	
 	$.ajax({
 		url : requestRoot + "/reviewBoard/insertReview.do",

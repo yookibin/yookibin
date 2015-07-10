@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.java.date.placesearch.dao.PlacesearchDao;
-import com.java.date.placesearch.dto.PlacesearchDto;
+import com.java.date.recommandPlace.dto.PlaceDto;
 import com.java.date.reviewBoared.dto.reviewBoardDto;
 
 
@@ -48,7 +48,7 @@ public class PlacesearchServiceImpl implements PlacesearchService {
 		logger.info("area:"+area);
 		logger.info("park:"+park);
 		
-		List <PlacesearchDto> parkthema=placesearchDao.gutheam(area,park);
+		List <PlaceDto> parkthema=placesearchDao.gutheam(area,park);
 		logger.info("gg"+parkthema.size());
 		
 		mav.addObject("area",area);
@@ -70,7 +70,7 @@ public class PlacesearchServiceImpl implements PlacesearchService {
 		logger.info("area:"+area);
 		logger.info("listcode:"+listcode);
 		
-		PlacesearchDto placeBoard=placesearchDao.finalthema(area,listcode);
+		PlaceDto placeBoard=placesearchDao.finalthema(area,listcode);
 		mav.addObject("area",area);
 		mav.addObject("listcode",listcode);
 		mav.addObject("placeBoard",placeBoard);

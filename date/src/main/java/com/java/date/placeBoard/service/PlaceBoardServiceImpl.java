@@ -2,7 +2,6 @@ package com.java.date.placeBoard.service;
 
 import java.util.List;
 import java.util.Map;
-import java.util.StringTokenizer;
 import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,7 +11,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.java.date.placeBoard.dao.PlaceBoardDao;
-import com.java.date.placeBoard.dto.PlaceBoardDto;
+import com.java.date.recommandPlace.dto.PlaceDto;
 import com.java.date.reviewBoard.dao.ReviewBoardDao;
 import com.java.date.reviewBoard.dto.ReviewBoardDto;
  
@@ -28,7 +27,7 @@ public class PlaceBoardServiceImpl implements PlaceBoardService {
 
 	
 	/**
-	 * @name : boardList
+	 * @name : placeList
 	 * @date : 2015. 6. 23.
 	 * @author : 정희준
 	 * @description : controller에서 plce_location 넘어온 값이 없다면 디폴트값을 gangNam으로 설정해주는 함수
@@ -36,77 +35,50 @@ public class PlaceBoardServiceImpl implements PlaceBoardService {
 	 */
 	
 	@Override
-	public void boardList(ModelAndView mav) {
+	public void placeList(ModelAndView mav) {
 		Map<String,Object> map=mav.getModelMap();
 		HttpServletRequest request=(HttpServletRequest)map.get("request");
 		
-/*		String pageNumber=request.getParameter("pageNumber");
-		if(pageNumber==null) pageNumber="1";
-		
-		int boardSize=10;
-		int currentPage=Integer.parseInt(pageNumber);
-		int startRow=(currentPage-1)*boardSize+1;
-		int endRow=currentPage*boardSize;
-		logger.info("boardList startRow: "+startRow+", endRow: "+endRow);
-		
-		int count=placeBoardDao.getBoardCount();
-		logger.info("boardList count: "+count);
-		
-		List<PlaceBoardDto> boardList=null;
-		if(count>0){
-			boardList=PlaceBoardDao.getBoardList(startRow, endRow);
-		}
-		logger.info("boardList size: "+boardList.size());
-		*/ 
-		
-		
 		String place_location="";
-		logger.info(request.getParameter("place_location"));
-		
-		//place_location이 null값이라면 place_location=gangName으로 설정
-		
 		if(request.getParameter("place_location")==null){
 			place_location="강남";
 		}else{
 			place_location=request.getParameter("place_location");
 		}
+		logger.info("place_location:"+place_location);
 		
-		//place_laction이 gangNam에 해당하는 레코드를 뽑아 List로 담아 준다.
-		List<PlaceBoardDto> placeBoardList = placeBoardDao.placeBoardList(place_location);
-		logger.info("placeBoardList="+placeBoardList.size());
+		String pageNumber=request.getParameter("pageNumber");
+		if(pageNumber==null) pageNumber="1";
 		
-		mav.addObject("placeBoardList",placeBoardList);
+		int boardSize=12;
+		int currentPage=Integer.parseInt(pageNumber);
+		int startRow=(currentPage-1)*boardSize+1;
+		int endRow=currentPage*boardSize;
+		logger.info("boardList startRow: "+startRow+", endRow: "+endRow);
+		
+		int count=placeBoardDao.getBoardCount(place_location);
+		logger.info("boardList count: "+count);
+		
+		List<PlaceDto> boardList=null;
+		if(count>0){
+			boardList=placeBoardDao.getPlaceList(startRow, endRow, place_location);
+		}
+		logger.info("boardList size: "+boardList.size());
+		
+		//place_laction이 강남에 해당하는 레코드를 뽑아 List로 담아 준다.
+		
+		logger.info("boardSize"+boardSize);
+		logger.info("currentPage"+currentPage);
+		logger.info("count"+count);
+
+		mav.addObject("boardList",boardList);
+		mav.addObject("boardSize", boardSize);
+		mav.addObject("currentPage", currentPage);
+		mav.addObject("count", count);
+		
 		mav.setViewName("placeBoard/list");
 	}
 
-	/**
-	 * @name : placeBoardSearch
-	 * @date : 2015. 6. 25.
-	 * @author : 정희준
-	 * @description : 장소검색을 눌렀을 시 해당 장소을 갖고와 장소에 해당하는 레코드를 가지고 오는 함수
-	 */
-	
-	@Override
-	public void placeBoardSearch(ModelAndView mav) {
-		String selectPlace="";
-		Map<String, Object> map=mav.getModelMap();
-		HttpServletRequest request=(HttpServletRequest)map.get("request");
-		String location=request.getParameter("location");
-		//logger.info(location);
-		
-		StringTokenizer token=new StringTokenizer(location, ",");
-		
-		 while(token.hasMoreTokens()) {
-			selectPlace=token.nextToken();
-			System.out.println(selectPlace);
-		 }
-		 
-		 List<PlaceBoardDto> placeBoardList=placeBoardDao.placeBoardList(selectPlace);
-		 logger.info("placeBoardList : " + placeBoardList.size());
-		 
-		 mav.addObject("placeBoardList",placeBoardList);
-		 mav.setViewName("placeBoard/list");
-	}
 	
 	/**
 	 * @name : reviewBoard
@@ -122,9 +94,24 @@ public class PlaceBoardServiceImpl implements PlaceBoardService {
 		
 		String place_code=request.getParameter("place_code");
 		
-		PlaceBoardDto placeBoard=placeBoardDao.reviewBoard(place_code); 
+		PlaceDto placeBoard=placeBoardDao.reviewBoard(place_code); 
 		List<ReviewBoardDto> reviewList=reviewBoardDao.reviewSelect(place_code);
+		 
+		int selectStar=reviewBoardDao.selectStar(place_code);
+		logger.info("selectStar :" + selectStar);
 		
+		if(selectStar==1){	
+			int review_star=reviewBoardDao.reviewStar(place_code);
+			logger.info("star : " + review_star);
+			
+			int starCheck=reviewBoardDao.reviewStarCheck(place_code);
+			logger.info("starCheck : " + starCheck);
+			float place_star=review_star/starCheck/(float)10;
+			logger.info("place_star :"+place_star);
+			
+			int check=placeBoardDao.starUpdate(place_star,place_code);
+			logger.info("check :"+check);
+		}
 		
 		logger.info("placeBoard:"+placeBoard+"reviewList:"+reviewList);
 		mav.addObject("placeBoard",placeBoard);

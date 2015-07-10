@@ -35,31 +35,11 @@ public class PlaceBoardController{
 		
 		mav.addObject("request",request);
 		
-		placeBoardService.boardList(mav);
+		placeBoardService.placeList(mav);
 		 
 		
 		return mav;
 	}	
-	
-	/**
-	 * @name : placeSearch
-	 * @date : 2015. 6. 24.
-	 * @author : 정희준
-	 * @description : 메뉴에서 장소 검색을 했을 때 해당 장소를 검색 
-	 */
-	
-	@RequestMapping(value="placeBoard/placeBoardsearch.do")
-	public ModelAndView placeSearch(HttpServletRequest request,HttpServletResponse response){
-		logger.info("----------------------placeBoardSearch");
-		
-		ModelAndView mav=new ModelAndView();
-		
-		mav.addObject("request",request);
-		
-		placeBoardService.placeBoardSearch(mav);
-		
-		return mav;
-	}
 	
 	/**
 	 * @name : reviewBoard

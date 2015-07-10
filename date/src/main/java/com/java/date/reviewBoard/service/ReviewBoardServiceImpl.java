@@ -1,6 +1,5 @@
 package com.java.date.reviewBoard.service;
 
-import java.util.List;
 import java.util.logging.Logger;
 
 
@@ -8,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.java.date.reviewBoard.dao.ReviewBoardDao;
-import com.java.date.reviewBoard.dto.ReviewBoardDto;
 
 @Component
 public class ReviewBoardServiceImpl implements ReviewBoardService {

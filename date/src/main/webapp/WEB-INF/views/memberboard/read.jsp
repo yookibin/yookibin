@@ -33,7 +33,7 @@
 <script>
 	// 댓글 더보기 기능. 가져오기 
 	var commentCount=("${memberReplyList.size()}"); // 일단 댓글 개수를 가져온다.
-	// alert(commentCount);
+	 alert(commentCount);
 	
 	$(document).ready(function () {
 		
