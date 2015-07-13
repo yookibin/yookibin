@@ -3,4 +3,25 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.memberManagerMapper">
+	<select id="memberAll" resultType="com.java.date.member.dto.MemberDto">
+		<![CDATA[
+			select * from member
+		]]>
+	</select>
+	
+	<delete id="memberDelete" parameterType="String">
+		delete from member where id=#{id}
+	</delete>
+	
+	<delete id="eventDelete" parameterType="String">
+		delete from event where id=#{id}
+	</delete>
+	
+	<delete id="pointDelete" parameterType="String">
+		delete from point where id=#{id}
+	</delete>
+	
+	<update id="memberUpdate" parameterType="java.util.HashMap">
+		update member set member_level=#{member_level} where id=#{id}
+	</update>
 </mapper>

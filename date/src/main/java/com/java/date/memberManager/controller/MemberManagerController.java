@@ -19,10 +19,31 @@ public class MemberManagerController {
 	@Autowired
 	private MemberManagerService memberManagerService;
 	
-	@RequestMapping(value="membermanager/memberManagerMain.do")
-	public String memberManagerMain (HttpServletRequest request){
+	@RequestMapping(value="membermanager/memberManager.do")
+	public ModelAndView memberManagerMain (HttpServletRequest request){
 		logger.info("membermanager //");
+		ModelAndView mav=new ModelAndView();
 		
-		return "membermanager/memberManagerMain";
+		memberManagerService.memberManager(mav);
+		
+		return mav;
+	}
+	
+	@RequestMapping(value="membermanager/memberManagerDelete.do")
+	public ModelAndView memberManagerDelete(HttpServletRequest request){
+		logger.info("membermanagerDelete //");
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("request", request);
+		memberManagerService.memberManagerDelete(mav);
+		return mav;
+	}
+	
+	@RequestMapping(value="membermanager/memberManagerUpdate.do")
+	public ModelAndView memberManagerUpdate(HttpServletRequest request){
+		logger.info("membermanagerUpdate //");
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("request", request);
+		memberManagerService.memberManagerUpdate(mav);
+		return mav;
 	}
 }

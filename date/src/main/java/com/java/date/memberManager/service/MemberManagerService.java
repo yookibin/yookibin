@@ -1,5 +1,12 @@
 package com.java.date.memberManager.service;
 
-public interface MemberManagerService {
+import org.springframework.web.servlet.ModelAndView;
 
+
+public interface MemberManagerService {
+	public void memberManager(ModelAndView mav);
+	
+	public void memberManagerDelete(ModelAndView mav);
+	
+	public void memberManagerUpdate(ModelAndView mav);
 }

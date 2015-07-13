@@ -10,6 +10,6 @@
 </head>
 <body>
 	<a href="${root}/randomplace/randomPlaceStart.do">시작></a>
-	<a href="${root}/membermanager/memberManagerMain.do">회원/장소 관리</a>
+	<a href="${root}/membermanager/memberManager.do">회원 관리</a>
 </body>
 </html>
