@@ -10,6 +10,14 @@
 	<select id="getMyCourse" parameterType="String" resultType="com.java.date.recommandPlace.dto.SaveCourseDto">
 		select * from save_coursee where save_cid=#{id}
 	</select>
+	
+	<select id="pointcheck" parameterType="String" resultType="com.java.date.mypage.dto.MypageDto">
+      select * from point where id=#{id}      
+   </select>
+   
+   <select id="usingevent" parameterType="String" resultType="com.java.date.mypage.dto.MypageDto">
+      select * from event where id=#{id}
+   </select>
 </mapper>
 
 

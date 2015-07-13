@@ -2,12 +2,17 @@ package com.java.date.mypage.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Logger;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.java.date.mypage.dao.MypageDao;
+import com.java.date.mypage.dto.MypageDto;
 import com.java.date.recommandPlace.dao.RecommandPlaceDao;
 import com.java.date.recommandPlace.dto.LoadCourseDto;
 import com.java.date.recommandPlace.dto.SaveCourseDto;
@@ -15,7 +20,7 @@ import com.java.date.recommandPlace.dto.SaveCourseDto;
 @Component
 public class MypageServiceImpl implements MypageService {
 	@Autowired
-	private MypageDao dao;
+	private MypageDao mypagedao;
 	@Autowired
 	private RecommandPlaceDao placeDao;
 	Logger logger = Logger.getLogger(this.getClass().getName());
@@ -23,7 +28,7 @@ public class MypageServiceImpl implements MypageService {
 	@Override
 	public int delete(int num) {
 		// TODO Auto-generated method stub
-		return dao.delete(num);
+		return mypagedao.delete(num);
 	}
 
 	/**
@@ -36,7 +41,7 @@ public class MypageServiceImpl implements MypageService {
 	public List<LoadCourseDto> getMyCourse(String id) {
 		// TODO Auto-generated method stub
 		System.out.println("여긴 서비스");
-		List<SaveCourseDto>	sList = dao.getMyCourse(id);
+		List<SaveCourseDto>	sList = mypagedao.getMyCourse(id);
 		List<LoadCourseDto> lList = new ArrayList<LoadCourseDto>();
 		for(int i = 0; i< sList.size();i++){
 			LoadCourseDto dto = new LoadCourseDto();
@@ -48,5 +53,35 @@ public class MypageServiceImpl implements MypageService {
 		}
 		return lList;
 	}
+	
+	@Override
+	   public void pointCheck(ModelAndView mav) {
+	      Map<String,Object> hMap = mav.getModelMap();
+	      HttpServletRequest request= (HttpServletRequest)hMap.get("request");
+	      
+	      String id=request.getParameter("id");
+	      
+	      logger.info("id"+id);
+	      List <MypageDto> mypageDto=mypagedao.point(id);
+	      
+	      mav.addObject("mypageDto",mypageDto);
+	      mav.setViewName("mypage/point");
+	      
+	   }
+
+	   @Override
+	   public void usingevent(ModelAndView mav) {
+	      Map<String,Object> hMap =mav.getModelMap();
+	      HttpServletRequest request=(HttpServletRequest)hMap.get("request");
+	      
+	      String id=request.getParameter("id");
+	      
+	      logger.info("id"+id);
+	      List <MypageDto> eventDto=mypagedao.usingevent(id);
+	      
+	      mav.addObject("eventDto",eventDto);
+	      mav.setViewName("mypage/usingevent");
+	      
+	   }
 
 }

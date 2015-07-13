@@ -188,8 +188,7 @@ function deleteCourse(root, num) {
 }
 </script>
 </head>
-
-
+<body>
 <!-- 모달시작 -->
 <button class="btn btn-primary btn-lg" data-toggle="modal"
 	data-target="#myModal" onclick="myCourse('${root}','rkaqo2')">나의저장코스</button>
@@ -218,7 +217,12 @@ function deleteCourse(root, num) {
 
 
 
-
+<c:if test="${id==null}">
+      <a href="${root }/member/register.do">회원가입</a>
+      <a href="${root }/member/login.do">로그인</a>
+   </c:if>
+   
+   <c:if test="${id!=null}"> 
 
 <div class="allAll">
 	<div id="css_tabs" style="border: 1px solid red;">
@@ -301,7 +305,7 @@ function deleteCourse(root, num) {
 							<div class="ch-infos">
 								<div class="ch-info-fronts ch-img-5"></div>
 								<div class="ch-info-backs">
-									<a href="">
+									<a href="${root}/mypage/point.do?id=${id}">
 										<h3>포인트사용조회</h3>
 										<p>by Zoe Ingram View on usingcheck</p>
 									</a>
@@ -314,7 +318,7 @@ function deleteCourse(root, num) {
 							<div class="ch-infos">
 								<div class="ch-info-fronts ch-img-6"></div>
 								<div class="ch-info-backs">
-									<a href="">
+									<a href="${root}/eventBoard/list.do">
 										<h3>포인트사용(이벤트게시판이동)</h3>
 										<p>by Eileen Tjan View on usingpoint</p>
 									</a>
@@ -327,7 +331,7 @@ function deleteCourse(root, num) {
 			</section>
 
 
-			<a href="">내가응모한 이벤트</a><br /> <br />
+			<a href="${root}/mypage/usingevent.do?id=${id}">내가응모한 이벤트</a><br /> <br />
 
 		</div>
 
@@ -416,7 +420,7 @@ function deleteCourse(root, num) {
         .popover()
     </script>
 
-
+</c:if>
 
 
 </body>
