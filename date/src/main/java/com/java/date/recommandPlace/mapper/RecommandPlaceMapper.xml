@@ -59,6 +59,12 @@
 		and (place_time=#{place_time} or '무관'= #{place_time})
 		and (place_balance=#{place_balance} or '무관'= #{place_balance})
 	</select>
+	<insert id="saveCourse" parameterType="java.util.HashMap">
+		insert into save_course values (num_save_coursee_seq.nextval, #{cid}, #{place_code1}, #{place_code2}, TO_CHAR(sysdate,'yy-mm-dd'))
+	</insert>
+	<select id="getMyCourseList" parameterType="String" resultType="com.java.date.recommandPlace.dto.SaveCourseDto">
+		select * from save_course where save_cid=#{cid}
+	</select>
 </mapper>
 
 

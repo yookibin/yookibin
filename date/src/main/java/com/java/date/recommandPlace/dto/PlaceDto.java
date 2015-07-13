@@ -1,7 +1,5 @@
 package com.java.date.recommandPlace.dto;
 
-import java.util.List;
-
 public class PlaceDto {
 	private String place_code;
 	private String place_name;
@@ -10,7 +8,7 @@ public class PlaceDto {
 	private String place_weather;
 	
 	private String place_season;
-	private int place_star;
+	private float place_star;
 	private String place_time;
 	private String place_balance;
 	private String place_location;
@@ -61,10 +59,10 @@ public class PlaceDto {
 	public void setPlace_season(String place_season) {
 		this.place_season = place_season;
 	}
-	public int getPlace_star() {
+	public float getPlace_star() {
 		return place_star;
 	}
-	public void setPlace_star(int place_star) {
+	public void setPlace_star(float place_star) {
 		this.place_star = place_star;
 	}
 	public String getPlace_time() {

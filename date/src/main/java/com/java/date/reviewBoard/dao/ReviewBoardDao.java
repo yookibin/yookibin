@@ -12,4 +12,11 @@ public interface ReviewBoardDao {
 	public int replyDelete(int review_code); 
 	
 	public int replyUpdate(int review_code, String review_content);
+	
+	public int selectStar(String place_code);
+	
+	public int reviewStar(String place_code);
+	
+	public int reviewStarCheck(String place_code); 
+	
 }

@@ -4,13 +4,13 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="dao.placesearchMapper">
 
-  <select id="selectThema" parameterType="java.util.HashMap" resultType="com.java.date.placesearch.dto.PlacesearchDto">
+  <select id="selectThema" parameterType="java.util.HashMap" resultType="com.java.date.recommandPlace.dto.PlaceDto">
   	<![CDATA[
   		select * from place where place_thema =#{park} and place_gu=#{area}
   	]]>  
   </select>   
 
-	<select id="finalthema" parameterType="java.util.HashMap" resultType="com.java.date.placesearch.dto.PlacesearchDto">
+	<select id="finalthema" parameterType="java.util.HashMap" resultType="com.java.date.recommandPlace.dto.PlaceDto">
    	<![CDATA[
    		select * from place where place_code =#{listcode} and place_gu=#{area}   		
    	]]>

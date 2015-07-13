@@ -20,7 +20,7 @@
 	
 	<a href="${root }/eventBoard/list.do">이벤트 목록보기</a>
 	<br/><br/>
-	
+
 	<a href="${root }/placesearch/choice.do">서울시 전체지도</a>
 	<br/><br/><br/>
  

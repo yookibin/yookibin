@@ -68,7 +68,7 @@ public class ReviewBoardDaoImpl implements ReviewBoardDao {
 	
 	@Override
 	public int replyUpdate(int review_code, String review_content) {
-		Map<String, Object> hMap = new HashMap();
+		HashMap<String, Object> hMap = new HashMap<String,Object>();
 		hMap.put("review_code", review_code);
 		hMap.put("review_content", review_content);
 		System.out.println("DAO");
@@ -77,4 +77,28 @@ public class ReviewBoardDaoImpl implements ReviewBoardDao {
 		System.out.println("또 그러는건가");
 		return sqlSession.update("dao.reviewBoardMapper.replyDto",hMap);
 	}
+	
+	@Override
+	public int selectStar(String place_code) {
+		int value=0;
+		
+		int check=sqlSession.selectOne("dao.reviewBoardMapper.selectStar",place_code);
+		if(check==0){
+			value=0;
+		}else{
+			value=1;
+		}
+		return value;
+	}
+
+	@Override
+	public int reviewStar(String place_code) {
+		return sqlSession.selectOne("dao.reviewBoardMapper.reviewStar",place_code);
+	}
+
+	@Override
+	public int reviewStarCheck(String place_code) {
+		return sqlSession.selectOne("dao.reviewBoardMapper.reviewStarCheck",place_code);
+	}
+
 }
