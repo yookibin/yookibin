@@ -27,24 +27,30 @@
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,700'
 	rel='stylesheet' type='text/css' />
 <!-- Bootstrap Core CSS -->
-<link href="${root}/css/bootstrap/bower_components/bootstrap/dist/css/bootstrap.min.css"
+<link
+	href="${root}/css/bootstrap/bower_components/bootstrap/dist/css/bootstrap.min.css"
 	rel="stylesheet">
 
 <!-- MetisMenu CSS -->
-<link href="${root}/css/bootstrap/bower_components/metisMenu/dist/metisMenu.min.css"
+<link
+	href="${root}/css/bootstrap/bower_components/metisMenu/dist/metisMenu.min.css"
 	rel="stylesheet">
 
 <!-- Social Buttons CSS -->
-<link href="${root}/css/bootstrap/bower_components/bootstrap-social/bootstrap-social.css"
+<link
+	href="${root}/css/bootstrap/bower_components/bootstrap-social/bootstrap-social.css"
 	rel="stylesheet">
 
 <!-- Custom CSS -->
-<link href="${root}/css/bootstrap/dist/css/sb-admin-2.css" rel="stylesheet">
+<link href="${root}/css/bootstrap/dist/css/sb-admin-2.css"
+	rel="stylesheet">
 
 <!-- Custom Fonts -->
-<link href="${root}/css/bootstrap/bower_components/font-awesome/css/font-awesome.min.css"
+<link
+	href="${root}/css/bootstrap/bower_components/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
-<link href="${root}/css/mypage/style.css" rel="stylesheet" type="text/css">
+<link href="${root}/css/mypage/style.css" rel="stylesheet"
+	type="text/css">
 <script type="text/javascript"
 	src="${root}/css/modernizr.custom.79639.js"></script>
 
@@ -126,301 +132,346 @@
 </style>
 <title>Insert title here</title>
 <script type="text/javascript">
-function myCourse(root,id) {
-	$.ajax({
-		url : root + "/mypage/getMyCourse.do"
-		,type : "post"
-		,data:{
-			id:id
+	function myCourse(root, id) {
+		$
+				.ajax({
+					url : root + "/mypage/getMyCourse.do",
+					type : "post",
+					data : {
+						id : id
+					},
+					success : function(data) {
+						console.log(data);
+
+						var str = "";
+						for (var i = 0; i < data.length; i++) {
+							str += "<div class='a' id="+data[i].num+">"
+									+ "<div class='a1'>" + "<span> &nbsp;"
+									+ (i + 1)
+									+ "</span>"
+									+ "</div>"
+									+ "<div class='a2'>"
+									+ "<div>"
+									+ "<img alt='' src='"+root+data[i].save_cplace1.place_photo+"' width='250' height='150'>"
+									+ "</div>"
+									+ "<div>"
+									+ data[i].save_cplace1.place_name
+									+ "<br>"
+									+ "</div>"
+									+ "</div>"
+									+ "<div class='a3'>"
+									+ "<div>"
+									+ "<img alt='' src='"+root+data[i].save_cplace2.place_photo+"' width='250' height='150'>"
+									+ "</div>"
+									+ "<div>"
+									+ data[i].save_cplace2.place_name
+									+ "<br>"
+									+ "</div>"
+									+ "</div>"
+									+ "<div class='ab'>"
+									+ "date : "
+									+ data[i].save_date
+									+ "<br> <input type='button' class='btn btn-outline btn-danger' value='삭제' onclick='deleteCourse()'"                 
+									+ root
+									+ "\',"
+									+ data[i].num
+									+ ")'>"
+									+ "</div>" + "</div>"
+						}
+
+						$("#loadMyCourse").append(str);
+					}
+				});
+	}
+	function deleteCourse(root, num) {
+		alert(num);
+		alert(root);
+		$.ajax({
+			url : root + "/mypage/delete.do",
+			type : "post",
+			data : {
+				num : num
+			},
+			success : function(data) {
+				console.log(data);
+				if (data == 1) {
+					$("#" + num).remove();
+				}
 			}
-		,success : function(data) {
-			console.log(data);
-			
-			var str = "";
-			for(var i = 0; i<data.length;i++){
-			str +="<div class='a' id="+data[i].num+">"
-			+"<div class='a1'>"
-				+"<span> &nbsp;"+(i+1)+"</span>"
-			+"</div>"
-			+"<div class='a2'>"
-				+"<div>"
-					+"<img alt='' src='"+root+data[i].save_cplace1.place_photo+"' width='250' height='150'>"
-				+"</div>"
-				+"<div>"
-					+data[i].save_cplace1.place_name+"<br>"
-				+"</div>"
-			+"</div>"
-			+"<div class='a3'>"
-				+"<div>"
-					+"<img alt='' src='"+root+data[i].save_cplace2.place_photo+"' width='250' height='150'>"
-				+"</div>"
-				+"<div>"
-					+ data[i].save_cplace2.place_name+"<br>"
-				+"</div>"
-			+"</div>"
-			+"<div>"
-				+"date : "+data[i].save_date+"<br> <input type='button' class='btn btn-outline btn-danger' value='삭제' onclick='deleteCourse(\'"+root+"\',"+data[i].num+")'>"
-			+"</div>"
-		+"</div>"
-			}
-			
-			
-			$("#loadMyCourse").append(str);
-		}
-	});
-}
-function deleteCourse(root, num) {
-	alert(num);
-	alert(root);
-	$.ajax({
-		url : root + "/mypage/delete.do",
-		type : "post",
-		data : {
-			num : num
-		},
-		success : function(data) {
-			console.log(data);
-			if (data == 1) {
-				$("#" + num).remove();
-			}
-		}
-	});
-}
+		});
+	}
+
+	function myPoint(root, id) {
+
+	}
 </script>
 </head>
 <body>
-<!-- 모달시작 -->
-<button class="btn btn-primary btn-lg" data-toggle="modal"
-	data-target="#myModal" onclick="myCourse('${root}','rkaqo2')">나의저장코스</button>
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-	aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content" id="loadMyCourse">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal"
-					aria-hidden="true">&times;</button>
-				<h4 class="modal-title" id="myModalLabel">나의저장코스</h4>
+	<!-- Modal -->
+	<div class="modal fade" id="myModal23" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">Using Point</h4>
+				</div>
+				<div class="racetimes" id="">
+					<div class="row" id="firstrow">
+						<div class="column">날짜</div>
+						<div class="column">포인트 사용 내역</div>
+						<div class="column">내역</div>
+						<div class="column">포인트</div>
+					</div>
+				</div>
+				<div class="modal-body">
+					지혜공주님이 만들어야 할 자리
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary">Save changes</button>
+				</div>
 			</div>
+			<!-- /.modal-content -->
 		</div>
-		<!-- /.modal-content -->
+		<!-- /.modal-dialog -->
 	</div>
-	<!-- /.modal-dialog -->
-</div>
-<!-- /.modal -->
-
-<!-- 모달끝 -->
+	<!-- /.modal -->
 
 
 
+	<!-- 모달시작 -->
+	<div class="modal fade" id="myCourseLode" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content" id="loadMyCourse">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">나의저장코스</h4>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
+
+	<!-- 모달끝 -->
 
 
 
 
 
-<c:if test="${id==null}">
-      <a href="${root }/member/register.do">회원가입</a>
-      <a href="${root }/member/login.do">로그인</a>
-   </c:if>
-   
-   <c:if test="${id!=null}"> 
 
-<div class="allAll">
-	<div id="css_tabs" style="border: 1px solid red;">
-		<input id="tab1" type="radio" name="tab" checked="checked" /> <input
-			id="tab2" type="radio" name="tab" /> <input id="tab3" type="radio"
-			name="tab" /> <label for="tab1">내 코스 관리</label> <label for="tab2">포인트
-			관리</label> <label for="tab3">내 흔적</label>
-		<div class="tab1_content">
 
-			<section class="main">
 
-				<ul class="ch-grid">
-					<li>
-						<div class="ch-item ch-img-1">
-							<div class="ch-info-wrap">
-								<div class="ch-info">
-									<div class="ch-info-front ch-img-1"></div>
-									<div class="ch-info-back"  data-toggle="modal" data-target="#myModal" onclick="myCourse('${root}','rkaqo2')">
+	<c:if test="${id==null}">
+		<a href="${root }/member/register.do">회원가입</a>
+		<a href="${root }/member/login.do">로그인</a>
+	</c:if>
+
+
+	<div class="allAll">
+		<div id="css_tabs" style="border: 1px solid red;">
+			<input id="tab1" type="radio" name="tab" checked="checked" /> <input
+				id="tab2" type="radio" name="tab" /> <input id="tab3" type="radio"
+				name="tab" /> <label for="tab1">내 코스 관리</label> <label for="tab2">포인트
+				관리</label> <label for="tab3">내 흔적</label>
+			<div class="tab1_content">
+
+				<section class="main">
+
+					<ul class="ch-grid">
+						<li>
+							<div class="ch-item ch-img-1">
+								<div class="ch-info-wrap">
+									<div class="ch-info">
+										<div class="ch-info-front ch-img-1"></div>
+										<div class="ch-info-back" data-toggle="modal"
+											data-target="#myCourseLode" onclick="myCourse('${root}','rkaqo2')">
 											<h3>나의추천코스</h3>
 											<p>by Gumball Creative View on choiceCourse</p>
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-					</li>
-					<li>
-						<div class="ch-item ch-img-2">
-							<div class="ch-info-wrap">
-								<div class="ch-info">
-									<div class="ch-info-front ch-img-2"></div>
-									<div class="ch-info-back">
-										<a href="${root}/mypage/randomcourse.do">
-											<h3>랜덤코스</h3>
-											<p>by Brian Hurst View on RandomCourse</p>
-										</a>
+						</li>
+						<li>
+							<div class="ch-item ch-img-2">
+								<div class="ch-info-wrap">
+									<div class="ch-info">
+										<div class="ch-info-front ch-img-2"></div>
+										<div class="ch-info-back">
+											<a href="${root}/mypage/randomcourse.do">
+												<h3>랜덤코스</h3>
+												<p>by Brian Hurst View on RandomCourse</p>
+											</a>
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-					</li>
-					<li>
-						<div class="ch-item ch-img-3">
-							<div class="ch-info-wrap">
-								<div class="ch-info">
-									<div class="ch-info-front ch-img-3"></div>
-									<div class="ch-info-back">
-										<a href="${root}/mypage/middlecourse.do">
-											<h3>중간코스</h3>
-											<p>by Tad Carpenter View on Dribbble</p>
-										</a>
+						</li>
+						<li>
+							<div class="ch-item ch-img-3">
+								<div class="ch-info-wrap">
+									<div class="ch-info">
+										<div class="ch-info-front ch-img-3"></div>
+										<div class="ch-info-back">
+											<a href="${root}/mypage/middlecourse.do">
+												<h3>중간코스</h3>
+												<p>by Tad Carpenter View on Dribbble</p>
+											</a>
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-					</li>
-				</ul>
-			</section>
-		</div>
+						</li>
+					</ul>
+				</section>
+			</div>
 
-		<div class="tab2_content">
+			<div class="tab2_content">
 
-			<section class="main">
+				<section class="main">
 
-				<ul class="ch-grid">
-					<li>
-						<div class="ch-items">
-							<div class="ch-infos">
-								<div class="ch-info-fronts ch-img-4"></div>
-								<div class="ch-info-backs">
-									<a href="">
+					<ul class="ch-grid">
+						<li>
+							<div class="ch-items">
+								<div class="ch-infos">
+									<div class="ch-info-fronts ch-img-4"></div>
+									<div class="ch-info-backs">
 										<h3>잔여포인트</h3>
 										<p>by Alexander Shumihin View on remainingpoint</p>
-									</a>
+										</a>
+									</div>
 								</div>
 							</div>
-						</div>
-					</li>
-					<li>
-						<div class="ch-items">
-							<div class="ch-infos">
-								<div class="ch-info-fronts ch-img-5"></div>
-								<div class="ch-info-backs">
-									<a href="${root}/mypage/point.do?id=${id}">
-										<h3>포인트사용조회</h3>
-										<p>by Zoe Ingram View on usingcheck</p>
-									</a>
+						</li>
+						<li>
+							<div class="ch-items">
+								<div class="ch-infos">
+									<div class="ch-info-fronts ch-img-5"></div>
+									<div class="ch-info-backs"  data-toggle="modal"
+										data-target="#myModal23" onclick="myPoint('${root}','rkaqo2')">
+											<h3>포인트사용조회</h3>
+											<p>by Zoe Ingram View on usingcheck</p>
+										</a>
+									</div>
 								</div>
 							</div>
-						</div>
-					</li>
-					<li>
-						<div class="ch-items">
-							<div class="ch-infos">
-								<div class="ch-info-fronts ch-img-6"></div>
-								<div class="ch-info-backs">
-									<a href="${root}/eventBoard/list.do">
-										<h3>포인트사용(이벤트게시판이동)</h3>
-										<p>by Eileen Tjan View on usingpoint</p>
-									</a>
+						</li>
+						<li>
+							<div class="ch-items">
+								<div class="ch-infos">
+									<div class="ch-info-fronts ch-img-6"></div>
+									<div class="ch-info-backs">
+										<a href="${root}/eventBoard/list.do">
+											<h3>포인트사용(이벤트게시판이동)</h3>
+											<p>by Eileen Tjan View on usingpoint</p>
+										</a>
+									</div>
 								</div>
 							</div>
-						</div>
-					</li>
-				</ul>
+						</li>
+					</ul>
 
-			</section>
+				</section>
 
 
-			<a href="${root}/mypage/usingevent.do?id=${id}">내가응모한 이벤트</a><br /> <br />
+				<a href="${root}/mypage/usingevent.do?id=${id}">내가응모한 이벤트</a><br />
+				<br />
+
+			</div>
+
+			<div class="tab3_content">
+				<section class="main">
+
+					<ul class="ch-grid">
+						<li>
+							<div class="ch-itema ch-img-8">
+								<div class="ch-info-wrapa">
+									<div class="ch-infoa">
+										<div class="ch-info-front ch-img-8"></div>
+										<div class="ch-info-backa">
+											<a href="">
+												<h3>회원정보수정</h3>
+												<p>by Josh Schott View on Dribbble</p>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="ch-itema ch-img-9">
+								<div class="ch-info-wrapa">
+									<div class="ch-infoa">
+										<div class="ch-info-front ch-img-9"></div>
+										<div class="ch-info-backa">
+											<a href="">
+												<h3>내가 쓴 게시글</h3>
+												<p>by Jeremy Slagle View on Dribbble</p>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="ch-itema ch-img-10">
+								<div class="ch-info-wrapa">
+									<div class="ch-infoa">
+										<div class="ch-info-front ch-img-10"></div>
+										<div class="ch-info-backa">
+											<a href="">
+												<h3>내가 쓴 댓글</h3>
+												<p>by Dustin Leer View on Dribbble</p>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</li>
+					</ul>
+
+				</section>
+
+			</div>
+
+
+
 
 		</div>
-
-		<div class="tab3_content">
-			<section class="main">
-
-				<ul class="ch-grid">
-					<li>
-						<div class="ch-itema ch-img-8">
-							<div class="ch-info-wrapa">
-								<div class="ch-infoa">
-									<div class="ch-info-front ch-img-8"></div>
-									<div class="ch-info-backa">
-										<a href="">
-											<h3>회원정보수정</h3>
-											<p>by Josh Schott View on Dribbble</p>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="ch-itema ch-img-9">
-							<div class="ch-info-wrapa">
-								<div class="ch-infoa">
-									<div class="ch-info-front ch-img-9"></div>
-									<div class="ch-info-backa">
-										<a href="">
-											<h3>내가 쓴 게시글</h3>
-											<p>by Jeremy Slagle View on Dribbble</p>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="ch-itema ch-img-10">
-							<div class="ch-info-wrapa">
-								<div class="ch-infoa">
-									<div class="ch-info-front ch-img-10"></div>
-									<div class="ch-info-backa">
-										<a href="">
-											<h3>내가 쓴 댓글</h3>
-											<p>by Dustin Leer View on Dribbble</p>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</li>
-				</ul>
-
-			</section>
-
-		</div>
-
-
-
-
 	</div>
-</div>
-<!-- jQuery -->
-    <script src="${root}/css/bootstrap/bower_components/jquery/dist/jquery.min.js"></script>
+	<!-- jQuery -->
+	<script
+		src="${root}/css/bootstrap/bower_components/jquery/dist/jquery.min.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="${root}/css/bootstrap/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	<!-- Bootstrap Core JavaScript -->
+	<script
+		src="${root}/css/bootstrap/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="${root}/css/bootstrap/bower_components/metisMenu/dist/metisMenu.min.js"></script>
+	<!-- Metis Menu Plugin JavaScript -->
+	<script
+		src="${root}/css/bootstrap/bower_components/metisMenu/dist/metisMenu.min.js"></script>
 
-    <!-- Custom Theme JavaScript -->
-    <script src="${root}/css/bootstrap/dist/js/sb-admin-2.js"></script>
+	<!-- Custom Theme JavaScript -->
+	<script src="${root}/css/bootstrap/dist/js/sb-admin-2.js"></script>
 
-    <!-- Page-Level Demo Scripts - Notifications - Use for reference -->
-    <script>
-    // tooltip demo
-    $('.tooltip-demo').tooltip({
-        selector: "[data-toggle=tooltip]",
-        container: "body"
-    })
+	<!-- Page-Level Demo Scripts - Notifications - Use for reference -->
+	<script>
+		// tooltip demo
+		$('.tooltip-demo').tooltip({
+			selector : "[data-toggle=tooltip]",
+			container : "body"
+		})
 
-    // popover demo
-    $("[data-toggle=popover]")
-        .popover()
-    </script>
+		// popover demo
+		$("[data-toggle=popover]").popover()
+	</script>
 
-</c:if>
 
 
 </body>

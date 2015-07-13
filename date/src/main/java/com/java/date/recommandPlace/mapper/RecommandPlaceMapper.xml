@@ -5,11 +5,11 @@
 <mapper namespace="dao.recommandPlaceMapper">
 	<select id="getPlaceList" resultType="com.java.date.recommandPlace.dto.PlaceDto">
 		select * from place
-		<!-- where 
+		where 
 		place_name=#{place_name}
 		, place_weather=#{place_weather}
 		, place_season=#{place_season}
-		, place_time=#{place_time} -->
+		, place_time=#{place_time}
 		
 	</select>
 	<select id="getPrice" resultType="Integer" parameterType="String">
@@ -24,9 +24,9 @@
 	</select>
 	
 	
-	<!-- <select id="userSelect" resultType="com.java.date.recommandPlace.dto.PlaceDto" parameterType="java.util.Map">
+	<select id="userSelect" resultType="com.java.date.recommandPlace.dto.PlaceDto" parameterType="java.util.Map">
 		select * from placee where place_code=#{placeCode1} or place_code=#{placeCode2}
-	</select> -->
+	</select>
 	<select id="userSelect" resultType="com.java.date.recommandPlace.dto.PlaceDto" parameterType="java.util.List">
 		select * from place
 		<where>
@@ -42,16 +42,16 @@
 	</select>
 	<select id="selectList22" resultType="com.java.date.recommandPlace.dto.PlaceDto" parameterType="com.java.date.recommandPlace.dto.PlaceDto">
 		
-		<!-- where place_location=#{place_location} 
+		where place_location=#{place_location} 
 		and place_weather=#{place_weather}
 		and place_time=#{place_time}  where place_weather like '%맑음%';
-		and place_price=#{place_price} -->
-		<!-- select * from place
+		and place_price=#{place_price}
+		select * from place
 		where (place_gu=#{place_gu} or '무관'= #{place_gu}) 
 		and (place_season=#{place_season} or '무관'= #{place_season})
 		and (place_weather=#{place_weather} or '무관'= #{place_weather})
 		and (place_time=#{place_time} or '무관'= #{place_time})
-		and (place_balance=#{place_balance} or '무관'= #{place_balance}) -->
+		and (place_balance=#{place_balance} or '무관'= #{place_balance})
 		select * from place
 		where (place_gu=#{place_gu} or '무관'= #{place_gu}) 
 		and (place_season like '%'||#{place_season}||'%')
@@ -60,12 +60,89 @@
 		and (place_balance=#{place_balance} or '무관'= #{place_balance})
 	</select>
 	<insert id="saveCourse" parameterType="java.util.HashMap">
-		insert into save_course values (num_save_coursee_seq.nextval, #{cid}, #{place_code1}, #{place_code2}, TO_CHAR(sysdate,'yy-mm-dd'))
+		insert into save_courses values (num_save_coursee_seq.nextval, #{cid}, #{place_code1}, #{place_code2}, TO_CHAR(sysdate,'yy-mm-dd'))
 	</insert>
 	<select id="getMyCourseList" parameterType="String" resultType="com.java.date.recommandPlace.dto.SaveCourseDto">
-		select * from save_course where save_cid=#{cid}
+		select * from save_courses where save_cid=#{cid}
 	</select>
 </mapper>
+
+
+
+<!-- <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.recommandPlaceMapper">
+	<select id="getPlaceList" resultType="com.java.date.recommandPlace.dto.PlaceDto">
+		select * from placee
+		where 
+		place_name=#{place_name}
+		, place_weather=#{place_weather}
+		, place_season=#{place_season}
+		, place_time=#{place_time}
+		
+	</select>
+	<select id="getPrice" resultType="Integer" parameterType="String">
+		select place_star from placee where place_name=#{name}
+	</select>
+	
+	<select id="getInfo" resultType="com.java.date.recommandPlace.dto.PlaceDto" parameterType="String">
+		select * from placee where place_code=#{code}
+	</select>
+	<select id="nameList" resultType="com.java.date.recommandPlace.dto.PlaceDto">
+		select * from placee
+	</select>
+	
+	
+	<select id="userSelect" resultType="com.java.date.recommandPlace.dto.PlaceDto" parameterType="java.util.Map">
+		select * from placee where place_code=#{placeCode1} or place_code=#{placeCode2}
+	</select>
+	<select id="userSelect" resultType="com.java.date.recommandPlace.dto.PlaceDto" parameterType="java.util.List">
+		select * from placee
+		<where>
+			 <foreach collection="list" item="item" index="index" separator="or">
+				place_code=#{item}
+			</foreach>
+		</where>
+	</select>
+	
+	
+	<select id="test12" resultType="com.java.date.recommandPlace.dto.PlaceDto" parameterType="String">
+		select * from placee where place_code=#{a}
+	</select>
+	<select id="selectList22" resultType="com.java.date.recommandPlace.dto.PlaceDto" parameterType="com.java.date.recommandPlace.dto.PlaceDto">
+		
+		where place_location=#{place_location} 
+		and place_weather=#{place_weather}
+		and place_time=#{place_time}  where place_weather like '%맑음%';
+		and place_price=#{place_price}
+		select * from place
+		where (place_gu=#{place_gu} or '무관'= #{place_gu}) 
+		and (place_season=#{place_season} or '무관'= #{place_season})
+		and (place_weather=#{place_weather} or '무관'= #{place_weather})
+		and (place_time=#{place_time} or '무관'= #{place_time})
+		and (place_balance=#{place_balance} or '무관'= #{place_balance})
+		select * from placee
+		where (place_gu=#{place_gu} or '무관'= #{place_gu}) 
+		and (place_season like '%'||#{place_season}||'%')
+		and (place_weather like '%'||#{place_weather}||'%')
+		and (place_time=#{place_time} or '무관'= #{place_time})
+		and (place_balance=#{place_balance} or '무관'= #{place_balance})
+	</select>
+	<insert id="saveCourse" parameterType="java.util.HashMap">
+		insert into save_coursee values (num_save_coursee_seq.nextval, #{cid}, #{place_code1}, #{place_code2}, TO_CHAR(sysdate,'yy-mm-dd'))
+	</insert>
+	<select id="getMyCourseList" parameterType="String" resultType="com.java.date.recommandPlace.dto.SaveCourseDto">
+		select * from save_coursee where save_cid=#{cid}
+	</select>
+</mapper> -->
+
+
+
+
+
+
 
 
 
