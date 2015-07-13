@@ -1,0 +1,39 @@
+.aa {
+	width: 800px;
+	height: 30px;
+}	
+
+.a {
+	width: 800px;
+	height: 180px;
+	float: left;
+	border: solid 1px black;
+	font-size:large;
+	color:aqua;
+}
+
+.a1 {
+	font-size:large;
+	color:aqua;
+	border: solid 0px black;
+	float: left;
+	margin: 70px 0 0 0;
+	align: center;
+	width: 20px;
+}
+
+.a2 {
+	float: left;
+	margin: 0 0 0 20px;
+	width: 250px;
+	height: 180px;
+	border: solid 1px black;
+}
+
+.a3 {
+	float: left;
+	margin: 0 0 0 20px;
+	width: 250px;
+	height: 180px;
+	border: solid 1px black;
+}

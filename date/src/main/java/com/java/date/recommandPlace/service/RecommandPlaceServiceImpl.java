@@ -12,8 +12,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.java.date.recommandPlace.dao.RecommandPlaceDao;
-import com.java.date.recommandPlace.dto.CourseDto;
+import com.java.date.recommandPlace.dto.LoadCourseDto;
 import com.java.date.recommandPlace.dto.PlaceDto;
+import com.java.date.recommandPlace.dto.SaveCourseDto;
 
 @Component
 public class RecommandPlaceServiceImpl implements RecommandPlaceService {
@@ -125,19 +126,37 @@ public class RecommandPlaceServiceImpl implements RecommandPlaceService {
 		logger.info("잘나오나" + dto.getPlace_price());
 		mav.setViewName("recommandPlace/daumMap");
 	}
-
+	
+	/**
+	 * @name : RecommandPlaceController
+	 * @date : 2015. 6. 22.
+	 * @author : 종현
+	 * @description : 장소코드로 장소DTO를 가져옴.
+	 */
 	@Override
 	public PlaceDto getInfo(String code) {
 		
 		return dao.getInfo(code);
 	}
 
+	/**
+	 * @name : RecommandPlaceController
+	 * @date : 2015. 6. 22.
+	 * @author : 종현
+	 * @description : 사용자선택에 의한 장소들을 가져온다.
+	 */
 	@Override
 	public List<PlaceDto> placeList(PlaceDto dto) {
 		// TODO Auto-generated method stub
 		return dao.placeList(dto);
 	}
 
+	/**
+	 * @name : RecommandPlaceController
+	 * @date : 2015. 6. 22.
+	 * @author : 종현
+	 * @description : 선택한 코스에 대한 정보를 제공.
+	 */
 	@Override
 	public void selectCourse(ModelAndView mav) {
 		// TODO Auto-generated method stub
@@ -161,6 +180,47 @@ public class RecommandPlaceServiceImpl implements RecommandPlaceService {
 	public List<Object> test12() {
 		// TODO Auto-generated method stub
 		return dao.test12();
+	}
+
+	/**
+	 * @name : RecommandPlaceController
+	 * @date : 2015. 7. 10.
+	 * @author : 종현
+	 * @description : 사용자가 선택한 코스를 저장하는 함수.
+	 */
+	@Override
+	public int saveCourse(String place_code1, String place_code2) {
+		// TODO Auto-generated method stub
+		return dao.saveCourse(place_code1,place_code2);
+	}
+
+	/**
+	 * @name : RecommandPlaceController
+	 * @date : 2015. 7. 12.
+	 * @author : 종현
+	 * @description : 마이페이지의 내 저장된 코스보기로 이동.
+	 */
+	@Override
+	public void moveMypage(ModelAndView mav) {
+		// TODO Auto-generated method stub
+		Map<String, Object> map = mav.getModelMap();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
+		String cid = request.getParameter("id");
+		System.out.println(cid);
+		List<SaveCourseDto> cList = dao.moveMypageGetCourse(cid);
+		List<LoadCourseDto> lList = new ArrayList();
+		for(int i = 0; i< cList.size();i++){
+			LoadCourseDto dto = new LoadCourseDto();
+			dto.setNum(cList.get(i).getNum());
+			dto.setSave_cplace1(dao.getInfo(cList.get(i).getSave_cplace1()));
+			dto.setSave_cplace2(dao.getInfo(cList.get(i).getSave_cplace2()));
+			dto.setSave_date(cList.get(i).getSave_date());
+			lList.add(dto);
+		}
+		
+		mav.addObject("lList", lList);
+		mav.setViewName("mypage/recommend");
+		
 	}
 }
 
