@@ -16,7 +16,11 @@
 		select count(*) from board
 	</select>
 	
-	<select id="boardList" parameterType="java.util.HashMap" resultType="com.java.date.member.dto.MemberBoardDto">
+	<select id="boardList" resultType="com.java.date.member.dto.MemberBoardDto">
+		<!--  <![CDATA[select *from
+					(select rownum rnum, a.* from
+						(select * from board order by  groupNumber desc, board_num desc)a)]]> -->
+	
 		<![CDATA[select *from
 					(select rownum rnum, a.* from
 						(select * from board order by  groupNumber desc, board_num desc)a)
@@ -93,6 +97,11 @@
 	<update id="boardReset">
 		<![CDATA[update board set groupNumber=0 where groupNumber<>2]]>
 	</update>
+	
+	<!-- 포인트 지급 -->
+	<insert id="pointGive" parameterType="java.util.HashMap">
+		<![CDATA[ insert into point values(POINT_POINT_CODE_SEQ.nextval,#{id},'+10',#{totalPoint},'추천',sysdate) ]]>
+	</insert>
 
 </mapper>
 

@@ -39,7 +39,8 @@ function writeReply(root, board_num, reply_writer){
 			$("#reply").val("");
 			
 			$("#replyAll").prepend(replyDivs);
-
+			
+			
 		},
 		error:function(xhr,status,error){
 			alert(xhr+"\n"+status+"\n"+error);
@@ -164,9 +165,9 @@ function update(root, reply_num, reply_content){
 	});
 }
 
-function recommend(root, board_num, board_recom, pageNumber, recommend_nickName){
+function recommend(root, board_num, board_recom, pageNumber, recommend_nickName, id){
 	 //alert(root+","+board_num+","+board_recom+","+recomand_nickName);
-	var url=root+"/memberboard/recommend.do?board_num="+board_num+"&board_recom="+board_recom+"&recommend_nickName="+recommend_nickName+"&pageNumber="+pageNumber;
+	var url=root+"/memberboard/recommend.do?board_num="+board_num+"&board_recom="+board_recom+"&recommend_nickName="+recommend_nickName+"&pageNumber="+pageNumber+"&id="+id;
 	 //location.href=url;
 	//var x=Number(board_recom);
 	 // 1증가시키기 전 증가시키고자 하는 사용자가 이미 추천을 눌렀는지 확인. 
