@@ -111,7 +111,7 @@
 								</c:if>
 								
 								<c:forEach var="i" begin="${startPage }" end="${endPage }">
-									<a href="${root }/memberboard/list.do?pageNumber=${i}">[${i}]</a>
+									<a id="pNum" href="${root }/memberboard/list.do?pageNumber=${i}">[${i}]</a>
 								</c:forEach>
 								
 								<c:if test="${endPage<pageCount }">
