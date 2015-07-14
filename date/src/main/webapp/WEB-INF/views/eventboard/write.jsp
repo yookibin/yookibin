@@ -9,31 +9,32 @@
 <title>이벤트 등록하기</title>
 <script type="text/javascript" src="${root }/smarteditor/js/HuskyEZCreator.js"></script>
 <script type="text/javascript" src="${root }/css/eventBoard/script.js"></script>
-<link rel="stylesheet" type="text/css" href="${root }/css/eventBoard/style.css">
+<%-- <link rel="stylesheet" type="text/css" href="${root }/css/eventBoard/style.css"> --%>
+<link href="${root }/css/eventBoard/style.css" rel="stylesheet"/>
 </head>
 <body>
+<div class="listDiv">
 	<form class="form_style"  action="${root }/eventBoard/write.do"  method="post" onsubmit="return checkForm(this)" enctype="multipart/form-data">	
 		<input type="hidden" name="event_code" value="${event_code}"/>
 		<input type="hidden" name="group_number" value="${group_number}"/>
 		<input type="hidden" name="sequence_number" value="${sequence_number}"/>
 		<input type="hidden" name="sequence_level" value="${sequence_level}"/>
 		<input type="hidden" name="pageNumber" value="${pageNumber}"/>
-		
+<%-- 		
 		<h4>event_code : ${event_code}</h4>
 		<h4>group_number : ${group_number}</h4>
 		<h4>sequence_number : ${sequence_number}</h4>
 		<h4>sequence_level : ${sequence_level}</h4>
-		<h4>pageNumber : ${pageNumber}</h4>
-			
-		<div style="width:645px; height:15px; border-width:2px; text-align:right; padding:15px 0px 0px 0px; border-bottom-width:0px;">
-				<a href="${root}/eventBoard/list.do">글목록</a>
-		</div>
-			
-		<div class="line">
-			<label class="title">작성자</label>
-			<span class="content">
-				<input type="text" name="writer" value="${nickName }"/>
+		<h4>pageNumber : ${pageNumber}</h4> --%>
+		<!-- style="width:645px; height:40px; border-width:2px; text-align:right; padding:15px 0px 0px 0px; border-bottom-width:0px;" -->	
+		<div class="line2">
+			<span>
+				<h1>이벤트 글쓰기</h1>
 			</span>
+		</div>
+		
+		<div class="line">
+			<p class="orangeLine"></p>
 		</div>
 		
 		<div class="line">
@@ -78,7 +79,7 @@ ${winner.join_code}      ${winner.id }        ${winner.join_writer }<br/>
 		</div>
 		
 		<div class="line">
-			<label class="title">이벤트 차감 포인트</label>
+			<label class="title">차감 포인트</label>
 			<c:if test="${event_code==0 }">
 				<span class="content"><input type="text" size="50" name="event_point"/></span>
 			</c:if>
@@ -94,31 +95,21 @@ ${winner.join_code}      ${winner.id }        ${winner.join_writer }<br/>
 			</c:if>		
 			<c:if test="${event_code!=0 }">
 				<span class="content"><input type="text" size="50" name="event_giveaway" value="${eventBoard.event_giveaway }"></span>
-			</c:if>	
+			</c:if>				
 		</div>
-<!-- 		
 		
 		<div class="line">
-			<label class="title">이벤트 사진 파일</label>
-			<span class="content">
-				<input type="file" name="file"/>
-			</span>
-		</div> -->
-		
-<%-- 		
-		<c:if test="${event_code==0 }">
-			<span style="display:none">
-				<input type="file" name="file" />
-			</span>			
-		</c:if>
- --%>						
-		<div class="line" style="width:641px; border-width:2px; text-align:center;">
+			<p class="orangeLine"></p>
+		</div>
+							
+		<div class="line" style="width:641px; border-width:0px; text-align:center;">
 			<input type="submit" value="글쓰기"/>
 			<input type="reset" value="다시작성"/>
 			<input type="button" value="목록보기" onclick="location.href='${root}/eventBoard/list.do'"/>
 		</div>
 		
 	</form>
+</div>
 </body>
 <script type="text/javascript">
 var oEditors = [];
