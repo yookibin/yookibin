@@ -22,6 +22,7 @@
 	<br/><br/>
 	
 	<a href="${root }/placesearch/choice.do">서울시 전체지도</a>
+	<a href="${root}/mypage/mycourse.do">마이페이지</a>
 	<br/><br/><br/>
  
 	<c:if test="${id==null}">
@@ -40,7 +41,21 @@
 		</c:if>
 	</c:if><br/><br/>		
 
-	<a href="${root }/placeBoard/boardList.do">장소게시판</a> 
+	<a href="${root }/placeBoard/boardList.do">장소게시판</a><br/>
+	
+	<hr> 
+		<a href="${root }/recommandPlace/findPlace.do">장소추천</a>
+		<a href="${root }/recommandPlace/insertPlace.do">장소입력</a>
+		<a href="${root }/recommandPlace/selectMap0.do"> Map</a>
+		<a href="${root }/recommandPlace/selectMap.do">select Map</a>
+		<a href="${root }/recommandPlace/selectMap2.do">select Map2</a>
+		<a href="${root }/recommandPlace/selectMap3.do">지도에 선그리기</a>
+	<hr>
+	
+	<a href="${root}/randomplace/randomPlaceStart.do">랜덤시작></a>
+	<a href="${root}/membermanager/memberManager.do">회원 관리</a>
+	
+	
 		
 </body>
 </html>

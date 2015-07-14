@@ -36,7 +36,7 @@ public class RecommandPlaceController {
 	 * @name : RecommandPlaceController
 	 * @date : 2015. 6. 22.
 	 * @author : 종현
-	 * @description : 장소이미지를 클릭시에 정보뿌려줌.
+	 * @description : 장소코드로 장소DTO를 가져옴.
 	 */
 	@RequestMapping("/recommandPlace/getInfo.do")
 	@ResponseBody
@@ -83,25 +83,54 @@ public class RecommandPlaceController {
 		service.selectCourse(mav);
 		return mav;
 	}
-	/*@RequestMapping(value = "/recommandPlace/selectMap.do", method = RequestMethod.POST)
-	public ModelAndView selectMap(HttpServletRequest request,
+	/**
+	 * @name : RecommandPlaceController
+	 * @date : 2015. 7. 10.
+	 * @author : 종현
+	 * @description : 사용자가 선택한 코스를 저장하는 함수.
+	 */
+	@RequestMapping("/recommandPlace/saveCourse.do")
+	@ResponseBody
+	public int saveCourse(String place_code1, String place_code2) {
+		System.out.println("지금은 여기로 오는게 맞는가???");
+		System.out.println(place_code1);
+		System.out.println(place_code2);
+		return service.saveCourse(place_code1, place_code2);
+	}
+	
+	/**
+	 * @name : RecommandPlaceController
+	 * @date : 2015. 7. 12.
+	 * @author : 종현
+	 * @description : 마이페이지의 내 저장된 코스보기로 이동.
+	 */
+	@RequestMapping(value="/recommandPlace/moveMypage.do", method=RequestMethod.GET)
+	public ModelAndView moveMypage(HttpServletRequest request,
 			HttpServletResponse response) {
-		logger.info("selectMap");
+		logger.info("moveMypage ㅋㅋ");
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("request", request);
-		service.selectMap(mav);
+		service.moveMypage(mav);
 		return mav;
-	}*/
-
-
-	/* @RequestMapping(value="/recommandPlace/??.do", method=RequestMethod.POST)
-	  public ModelAndView placeList(HttpServletRequest request,
-	  HttpServletResponse response){
-		  ModelAndView mav = new ModelAndView();
-		  mav.addObject("request", request); service.placeCourseList(mav);
-
-	  return mav; 
-	  }*/
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/*--------------------아래함수들은 테스트 함수들입니다.----------------------------------------------------*/
+	
 	@RequestMapping("/recommandPlace/map.do")
 	public String map() {
 		logger.info("map");
@@ -171,4 +200,21 @@ public class RecommandPlaceController {
 		return mav;
 	}
 
+	/*@RequestMapping(value = "/recommandPlace/selectMap.do", method = RequestMethod.POST)
+	public ModelAndView selectMap(HttpServletRequest request,
+			HttpServletResponse response) {
+		logger.info("selectMap");
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("request", request);
+		service.selectMap(mav);
+		return mav;
+	}*/
+	/* @RequestMapping(value="/recommandPlace/??.do", method=RequestMethod.POST)
+	  public ModelAndView placeList(HttpServletRequest request,
+	  HttpServletResponse response){
+		  ModelAndView mav = new ModelAndView();
+		  mav.addObject("request", request); service.placeCourseList(mav);
+
+	  return mav; 
+	  }*/
 }

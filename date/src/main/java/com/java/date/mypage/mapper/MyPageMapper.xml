@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.myPageMapper">
+	<delete id="delete" parameterType="Integer">
+		delete save_courses where num=#{num}
+	</delete>
+	
+	<select id="getMyCourse" parameterType="String" resultType="com.java.date.recommandPlace.dto.SaveCourseDto">
+		select * from save_courses where save_cid=#{id}
+	</select>
+	
+	<select id="pointcheck" parameterType="String" resultType="com.java.date.mypage.dto.MypageDto">
+      select * from point where id=#{id}      
+   </select>
+   
+   <select id="usingevent" parameterType="String" resultType="com.java.date.mypage.dto.MypageDto">
+      select * from event where id=#{id}
+   </select>
+</mapper>
+
+
+
+
+
+
+
+

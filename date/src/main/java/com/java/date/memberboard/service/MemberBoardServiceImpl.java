@@ -176,6 +176,7 @@ public class MemberBoardServiceImpl implements MemberBoardService {
 			
 			// 페이지마다 뿌려줄 게시물 가져오기.
 			boardList=memberBoardDao.getBoardList(startRow, endRow);			
+			/*boardList=memberBoardDao.getBoardList();*/	
 			
 		}
 		
@@ -396,6 +397,8 @@ public class MemberBoardServiceImpl implements MemberBoardService {
 		HttpServletResponse response=(HttpServletResponse)map.get("response");
 		RecommendBoardDto recom=(RecommendBoardDto)map.get("recom");
 		
+		String id=request.getParameter("id");
+		logger.info("recommendId:"+id);
 		String pageNumber=request.getParameter("pageNumber");
 		int board_num=Integer.parseInt(request.getParameter("board_num"));
 		String board_recom=request.getParameter("board_recom");
@@ -410,6 +413,14 @@ public class MemberBoardServiceImpl implements MemberBoardService {
 			recom.setRecommend_check(1);
 			memberBoardDao.insertRecommend(recom);
 			memberBoardDao.recomUpdate(board_num);
+			
+			// 포인트지급하기
+			int totalPoint=memberBoardDao.getPoint(id);
+			logger.info("totalPoint:"+totalPoint);
+			
+			totalPoint+=10;
+			
+			memberBoardDao.pointGive(id, totalPoint);
 			
 			int boardRecom=memberBoardDao.selectBoardRecom(board_num);
 			

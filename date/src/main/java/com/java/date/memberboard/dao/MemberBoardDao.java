@@ -13,7 +13,7 @@ public interface MemberBoardDao {
 	
 	public int getBoardCount();
 	
-	public List<MemberBoardDto> getBoardList(int startRow, int endRow);
+	public List<MemberBoardDto> getBoardList(int startRow,int endRow);
 	
 	public MemberBoardDto boardRead(int board_num);
 	
@@ -50,6 +50,12 @@ public interface MemberBoardDao {
 	public int popGroupNumber(int board_num);
 	
 	public int boardReset();
+	
+	// 토탈포인트 가져오기
+	public int getPoint(String id);
+	
+	// 포인트지급 
+	public void pointGive(String id, int totalPoint);
 	
 	
 	
