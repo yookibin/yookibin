@@ -29,13 +29,7 @@
 		
 
 		<div class="line">
-			<c:if test="${memberLevel!='AA'}">
 				<span class="content"><input type="text" size="50" name="board_title"/></span>
-			</c:if>
-			
-			<c:if test="${memberLevel=='AA' }">
-				<span class="content"><input type="text" size="50" name="board_title" value="[공지사항]"/></span>
-			</c:if>
 		</div>
 		
 		

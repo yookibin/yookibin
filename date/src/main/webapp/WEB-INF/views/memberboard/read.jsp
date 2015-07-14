@@ -59,45 +59,44 @@
 	<link rel="stylesheet" type="text/css" href="${root }/css/board/style.css">
 </head>
 <body>
-
-		<div>
-			<span>글제목</span>
-			<span>${memberBoard.board_title }</span>
+	<div class="line1">
+		<div class="centers">
+			<span id="readTitle">${memberBoard.board_title }</span>
 		</div>
 		
-		<div>
+		<div class="centers">
+			
+			<span style="widows:30%">${memberBoard.board_writer }ㅣ</span>
+			
+			<span><fmt:formatDate value="${memberBoard.board_date }" type="date"/>ㅣ</span>
 			<span>조회수</span>
 			<span>${memberBoard.board_count }</span>
 		</div>
-		
-		<div>
-			<span>작성자</span>
-			<span>${memberBoard.board_writer }</span>
-		</div>
-		
-		<div>
-			<span>작성일</span>
-			<span><fmt:formatDate value="${memberBoard.board_date }" type="date"/></span>
-		</div>
-		<div>
-			<p>글내용</p>
-		
+	</div>	
+		<div class="line2">
 			<span>${memberBoard.board_content }</span>
-		</div>	
-			<span id="board_recom">${memberBoard.board_recom}</span>
-			<input type="button" value="추천" id="recom_button" onclick="recommend('${root }', '${memberBoard.board_num}', '${memberBoard.board_recom}', '${pageNumber}', '${nickName}', '${id }')"/>
-		
-		<c:if test="${memberBoard.board_writer==nickName}">
-			<input type="button" value="글수정" onclick="updateFun('${root}','${memberBoard.board_num }', '${pageNumber}')" />
-			<input type="button" value="글삭제" onclick="deleteFun('${root}','${memberBoard.board_num }', '${pageNumber}')"/>
-		</c:if>
-			<input type="button" value="글목록" onclick="location.href='${root}/memberboard/list.do?pageNumber=${pageNumber}'"/>
-			<%-- <input type="button" value="글목록" onclick="location.href='${root}/memberboard/list.do'"/> --%>
-		<div>
-			<input type="button" id="replyView" value="댓글보기"/> 
 		</div>
-		<input type="text" name="reply_content" class="replyWrite" id="reply" style="display:none;"/>
-		<input type="button" value="댓글작성" class="replyWrite" onclick="writeReply('${root}','${memberBoard.board_num}', '${nickName}')" style="display:none;"/>
+		<div style="text-align:center;">	
+			<span id="board_recom">${memberBoard.board_recom}</span>
+			<input type="button"  value="추천" id="recom_button" onclick="recommend('${root }', '${memberBoard.board_num}', '${memberBoard.board_recom}', '${pageNumber}', '${nickName}', '${id }')"/><br/>
+		
+			<c:if test="${memberBoard.board_writer==nickName}">
+				<input type="button" value="글수정" onclick="updateFun('${root}','${memberBoard.board_num }', '${pageNumber}')" />
+				<input type="button" value="글삭제" onclick="deleteFun('${root}','${memberBoard.board_num }', '${pageNumber}')"/>
+			</c:if>
+			
+			<span>
+				<input type="button" id="replyView" value="댓글보기"/><br/>
+				<input type="text" name="reply_content" class="replyWrite" id="reply" style="display:none;"/>
+				<input type="button" value="댓글작성" class="replyWrite" onclick="writeReply('${root}','${memberBoard.board_num}', '${nickName}')" style="display:none;"/>
+			</span>
+			
+		
+			
+			<input style="margin-left:60%" type="button" align="middle" value="글목록" onclick="location.href='${root}/memberboard/list.do?pageNumber=${pageNumber}'"/>
+			<%-- <input type="button" value="글목록" onclick="location.href='${root}/memberboard/list.do'"/> --%>
+			
+		</div>
 		<div id="replyAll" style="display:none;">
 			
 			
@@ -127,6 +126,7 @@
 					</c:if>
 				</div>
 			</c:forEach>
+			
 			
 			<input type="button" id="moreComment" onclick="moreComment()" style="display:none;" value="댓글 더 보기"/>
 		</div>
