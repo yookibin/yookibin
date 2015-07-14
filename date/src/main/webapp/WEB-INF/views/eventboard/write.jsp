@@ -29,7 +29,7 @@
 		<!-- style="width:645px; height:40px; border-width:2px; text-align:right; padding:15px 0px 0px 0px; border-bottom-width:0px;" -->	
 		<div class="line2">
 			<span>
-				<h1>이벤트 글쓰기</h1>
+				<h1>이벤트 글쓰기 </h1>
 			</span>
 		</div>
 		
