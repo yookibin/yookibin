@@ -7,6 +7,24 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<!-- Bootstrap Core CSS -->
+<link href="${root}/css/bootstrap/bower_components/bootstrap/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+
+<!-- MetisMenu CSS -->
+<link href="${root}/css/bootstrap/bower_components/metisMenu/dist/metisMenu.min.css"
+	rel="stylesheet">
+
+<!-- Social Buttons CSS -->
+<link href="${root}/css/bootstrap/bower_components/bootstrap-social/bootstrap-social.css"
+	rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="${root}/css/bootstrap/dist/css/sb-admin-2.css" rel="stylesheet">
+
+<!-- Custom Fonts -->
+<link href="${root}/css/bootstrap/bower_components/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css">
 <style>
 .dot {
 	overflow: hidden;
@@ -88,7 +106,6 @@
 }
 
 .map_wrap {
-	border: solid 1px black;
 	position: relative;
 	width: 100%;
 	height: 400px;
@@ -265,23 +282,18 @@
 .map_button {
 	width: 100%;
 	height: 50px;
-	align: center;
+	text-align:right;
 }
 
 .courseImg {
-	border: 1px solid black;
 	width: 91.5%;
 	height: 500px;
 	padding: 0 0 0 8.5%;
-}
-
-.buttonMap {
-	width: 100.3%;
-	height: 50px;
+	color:white;
 }
 
 .bgcolor {
-	background-color: aqua;
+	background-color: brown;
 }
 </style>
 <link rel="stylesheet" type="text/css"
@@ -334,7 +346,7 @@
 			</c:forEach>
 		</div>
 		<div class="map_button">
-			<input type="button" class="buttonMap" value="지도위치보기"
+			<input type="button" class="btn btn-primary btn-lg btn-block" value="지도위치보기"
 				onclick="showCourse('${placeDtoList[0].place_cordi1}','${placeDtoList[0].place_cordi2}','${placeDtoList[0].place_name}','${placeDtoList[1].place_cordi1}','${placeDtoList[1].place_cordi2}','${placeDtoList[1].place_name}')">
 		</div>
 		<div class="map_wrap">
@@ -356,11 +368,9 @@
 
 		</div>
 		<div class="map_button">
-			<input type="button" class="buttonMap" value="장소저장하기"
+			<input type="button" class="btn btn-primary btn-lg" value="장소저장하기"
 				onclick="saveCourse('${root}','${placeDtoList[0].place_code}','${placeDtoList[1].place_code}')">
-		</div>
-		<div class="map_button">
-			<input type="button" class="buttonMap" value="마이페이지이동"
+			<input type="button" class="btn btn-primary btn-lg" value="마이페이지이동"
 				onclick="moveMypage('${root}','${id}')">
 		</div>
 

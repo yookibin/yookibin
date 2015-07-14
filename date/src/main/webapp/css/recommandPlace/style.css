@@ -72,13 +72,11 @@ a:hover {
 #title_a{
 	width: 350px;
 	height: 248px;
-	border: solid 1px blue;
 	text-align: center;
 }
 
 #title_b {
 	width: 350px;
 	height: 100px;
-	border: solid 1px blue;
 	text-align: left;
 }

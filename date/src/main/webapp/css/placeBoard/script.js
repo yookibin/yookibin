@@ -14,7 +14,6 @@ function mouseOver(place_star,index,place_code){
 	$(function (){
 		$("#"+index).css("opacity","0.4");
 		$("#"+place_code).append(place_star+"점");
-		$("#starDiv").show();
 	});
 }
 

@@ -219,7 +219,7 @@ public class RecommandPlaceServiceImpl implements RecommandPlaceService {
 		}
 		
 		mav.addObject("lList", lList);
-		mav.setViewName("mypage/recommend");
+		mav.setViewName("mypage/mycourse");
 		
 	}
 }
