@@ -13,7 +13,7 @@
 <link href="${root }/css/eventBoard/style.css" rel="stylesheet"/>
 </head>
 <body>
-<div class="listDiv">
+<div class="totalDiv">
 	<form class="form_style"  action="${root }/eventBoard/write.do"  method="post" onsubmit="return checkForm(this)" enctype="multipart/form-data">	
 		<input type="hidden" name="event_code" value="${event_code}"/>
 		<input type="hidden" name="group_number" value="${group_number}"/>
@@ -27,7 +27,7 @@
 		<h4>sequence_level : ${sequence_level}</h4>
 		<h4>pageNumber : ${pageNumber}</h4> --%>
 		<!-- style="width:645px; height:40px; border-width:2px; text-align:right; padding:15px 0px 0px 0px; border-bottom-width:0px;" -->	
-		<div class="line2">
+		<div class="line3">
 			<span>
 				<h1>이벤트 글쓰기 </h1>
 			</span>

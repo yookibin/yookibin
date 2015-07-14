@@ -48,7 +48,7 @@
 
 
 	<!-- /.row -->
-    <div class="listDiv">
+    <div class="totalDiv">
     <c:if test="${count!=0 }">
         <div class="col-lg-12">
             <div class="panel panel-default">
