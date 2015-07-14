@@ -15,14 +15,24 @@
 	
 </head>
 <body>
-	
+<div class="totalDiv">	
 	<form class="form_style"  action="${root }/memberboard/writeOk.do"  method="post" onsubmit="return doPost(this)" enctype="multipart/form-data">	
 		<%-- <input type="hidden" name="boardNumber" value="${boardNumber}"/> --%>
 		<input type="hidden" name="pageNumber" value="${pageNumber}"/>
 		<input type="hidden" name="board_writer" value="${nickName}"/>
 		<input type="hidden" name="memberLevel" value="${memberLevel}"/>
+		
+		<div class="line3">
+			<span>
+				<h1>추천 글쓰기</h1>
+			</span>
+		</div>
+		
+		<div class="line">
+			<p class="orangeLine"></p>
+		</div>
 			
-		<div style="width:598px; height:15px; border-width:2px; text-align:right; padding:15px 0px 0px 0px; border-bottom-width:0px;">
+		<div class="line">
 				<a href="${root}/memberboard/list.do">글목록</a>
 		</div>
 			
@@ -45,6 +55,7 @@
 			<input type="button" value="목록보기" onclick="location.href='${root}/memberboard/list.do'"/> 
 		</div>
 	</form>
+</div>
 </body>
 <script type="text/javascript">
 var oEditors = [];

@@ -25,6 +25,12 @@
 	font-style:inherit;
 	font-weight: bold;
 }
+
+.totalDiv{
+	width:1200px;
+	height:1200px;
+	margin:0% auto 0% auto;
+}
 /* */
  .myTh {
 	background-color:#F05F40;
@@ -33,8 +39,10 @@
 body{
    font-size:12px;
    font-family:Gulim, dotum, sans-serif;
-   padding: 0% 15% 0% 15%;
+  
 }
+
+
 
 a:link {
 	text-decoration:none;
