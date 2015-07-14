@@ -46,7 +46,7 @@
 <body>   
 
 
-
+<div class="totalDiv">
 <c:if test="${count!=0 }">
    <!-- /.row -->
     <div >
@@ -166,5 +166,6 @@
         });
     }); */
     </script>
+</div>
 </body>
 </html>

@@ -59,9 +59,11 @@
 	<link rel="stylesheet" type="text/css" href="${root }/css/board/style.css">
 </head>
 <body>
+<div class="totalDiv">
+	<input style="margin-left:80%" type="button" align="middle" value="글목록" onclick="location.href='${root}/memberboard/list.do?pageNumber=${pageNumber}'"/>
 	<div class="line1">
+	
 		<div class="centers">
-		<input style="margin-left:60%" type="button" align="middle" value="글목록" onclick="location.href='${root}/memberboard/list.do?pageNumber=${pageNumber}'"/>
 			<span id="readTitle">${memberBoard.board_title }</span>
 		</div>
 		
@@ -77,9 +79,9 @@
 		<div class="line2">
 			<span>${memberBoard.board_content }</span>
 		</div>
-		<div style="text-align:center;">	
-			<span id="board_recom">${memberBoard.board_recom}</span>
-			<input type="button"  value="추천" id="recom_button" onclick="recommend('${root }', '${memberBoard.board_num}', '${memberBoard.board_recom}', '${pageNumber}', '${nickName}', '${id }')"/><br/>
+			
+			<span style="margin-left:50%" id="board_recom">${memberBoard.board_recom}</span>
+			<input type="button" value="추천" id="recom_button" onclick="recommend('${root }', '${memberBoard.board_num}', '${memberBoard.board_recom}', '${pageNumber}', '${nickName}', '${id }')"/><br/>
 		
 			<c:if test="${memberBoard.board_writer==nickName}">
 				<input type="button" value="글수정" onclick="updateFun('${root}','${memberBoard.board_num }', '${pageNumber}')" />
@@ -88,12 +90,12 @@
 				
 				<%-- <input type="button" value="글목록" onclick="location.href='${root}/memberboard/list.do'"/> --%>
 			<span>
-				<input type="button" id="replyView" value="댓글보기"/> 
+				<input style="margin-left:15%" type="button" id="replyView" value="댓글보기"/> 
 			</span>
 			
 			<input type="text" name="reply_content" class="replyWrite" id="reply" style="display:none;"/>
 			<input type="button" value="댓글작성" class="replyWrite" onclick="writeReply('${root}','${memberBoard.board_num}', '${nickName}')" style="display:none;"/>
-		</div>
+		
 		<div id="replyAll" style="display:none;">
 			
 			
@@ -111,7 +113,7 @@
 	
 			<c:forEach var="memberReplyList" items="${memberReplyList}" begin="${startRow }" step="1">
 			
-				<div class="replyDiv" id="${memberReplyList.reply_num}" style="display:block;">
+				<div style="margin-left:15%" class="replyDiv" id="${memberReplyList.reply_num}" style="display:block;">
 					<span>${memberReplyList.reply_num}</span>
 					<span>${memberReplyList.reply_content}</span>
 					<span>${memberReplyList.reply_writer}</span>
@@ -125,8 +127,8 @@
 			</c:forEach>
 			
 			
-			<input type="button" id="moreComment" onclick="moreComment()" style="display:none;" value="댓글 더 보기"/>
+			<input style="margin-left:15%" type="button" id="moreComment" onclick="moreComment()" style="display:none;" value="댓글 더 보기"/>
 		</div>
-
+</div>
 </body>
 </html>
