@@ -84,7 +84,7 @@
         </div>
     </header>
 
-    <section class="bg-primary" id="about">
+    <!-- <section class="bg-primary" id="about">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
@@ -95,7 +95,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <section id="services">
         <div class="container">
@@ -254,7 +254,7 @@
         </div>
     </section>
 
-    <aside class="bg-dark">
+    <!-- <aside class="bg-dark">
         <div class="container text-center">
             <div class="call-to-action">
                 <h2>Free Download at Start Bootstrap!</h2>
@@ -262,7 +262,7 @@
             </div>
         </div>
     </aside>
-
+ -->
     <section id="contact">
         <div class="container">
             <div class="row">

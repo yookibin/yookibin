@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 	<script type="text/javascript" src="${root}/css/board/script.js"></script>
-	<script type="text/javascript" src="${root }/css/jquery.js"></script>
+	<script type="text/javascript" src="${root}/css/jquery.js"></script>
 </head>
 
 <body>
