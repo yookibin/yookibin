@@ -133,8 +133,8 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 	function myCourse(root, id) {
-		$
-				.ajax({
+		
+				$.ajax({
 					url : root + "/mypage/getMyCourse.do",
 					type : "post",
 					data : {
@@ -143,8 +143,12 @@
 					success : function(data) {
 						console.log(data);
 
-						var str = "";
-						for (var i = 0; i < data.length; i++) {
+						var str = "<div class='modal-header'>"
+							+"<button type='button' class='close' data-dismiss='modal'"
+							+"aria-hidden='true'>&times;</button>"
+							+"<h4 class='modal-title' id='myModalLabel'>나의저장코스</h4>"
+							+"</div>";
+						for (var i = 0; i < data.length; i++){
 							str += "<div class='a' id="+data[i].num+">"
 									+ "<div class='a1'>" + "<span> &nbsp;"
 									+ (i + 1)
@@ -168,26 +172,24 @@
 									+ "<br>"
 									+ "</div>"
 									+ "</div>"
-									+ "<div class='ab'>"
+									/* + "<div class='ab'>"
 									+ "date : "
-									+ data[i].save_date
-									+ "<br> <input type='button' class='btn btn-outline btn-danger' value='삭제' onclick='deleteCourse()'"                 
-									+ root
-									+ "\',"
-									+ data[i].num
-									+ ")'>"
-									+ "</div>" + "</div>"
+									+ data[i].save_date */
+									+ "<br> <input type='button' class='btn btn-outline btn-danger' value='삭제' onclick='deleteCourse("+data[i].num+")'>"    
+									/* + "</div>"  */
+									+ "</div>"
 						}
-
+						
+						$("#loadMyCourse").empty();
 						$("#loadMyCourse").append(str);
 					}
 				});
 	}
-	function deleteCourse(root, num) {
+	function deleteCourse(num) {
+		/* alert(num); */
 		alert(num);
-		alert(root);
 		$.ajax({
-			url : root + "/mypage/delete.do",
+			url : "/date/mypage/delete.do",
 			type : "post",
 			data : {
 				num : num
@@ -246,11 +248,6 @@
 		aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content" id="loadMyCourse">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-hidden="true">&times;</button>
-					<h4 class="modal-title" id="myModalLabel">나의저장코스</h4>
-				</div>
 			</div>
 			<!-- /.modal-content -->
 		</div>
