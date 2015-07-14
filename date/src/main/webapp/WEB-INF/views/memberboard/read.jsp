@@ -85,14 +85,14 @@
 			<span>${memberBoard.board_content }</span>
 		</div>	
 			<span id="board_recom">${memberBoard.board_recom}</span>
-			<input type="button" value="추천" id="recom_button" onclick="recommend('${root }', '${memberBoard.board_num}', '${memberBoard.board_recom}', '${pageNumber}', '${nickName}')"/>
+			<input type="button" value="추천" id="recom_button" onclick="recommend('${root }', '${memberBoard.board_num}', '${memberBoard.board_recom}', '${pageNumber}', '${nickName}', '${id }')"/>
 		
 		<c:if test="${memberBoard.board_writer==nickName}">
 			<input type="button" value="글수정" onclick="updateFun('${root}','${memberBoard.board_num }', '${pageNumber}')" />
 			<input type="button" value="글삭제" onclick="deleteFun('${root}','${memberBoard.board_num }', '${pageNumber}')"/>
 		</c:if>
 			<input type="button" value="글목록" onclick="location.href='${root}/memberboard/list.do?pageNumber=${pageNumber}'"/>
-
+			<%-- <input type="button" value="글목록" onclick="location.href='${root}/memberboard/list.do'"/> --%>
 		<div>
 			<input type="button" id="replyView" value="댓글보기"/> 
 		</div>

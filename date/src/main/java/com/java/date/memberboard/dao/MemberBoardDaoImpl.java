@@ -61,6 +61,7 @@ public class MemberBoardDaoImpl implements MemberBoardDao {
 		hMap.put("startRow", startRow);
 		hMap.put("endRow", endRow);
 		return sqlSession.selectList("dao.memberBoardMapper.boardList", hMap);
+		/*return sqlSession.selectList("dao.memberBoardMapper.boardList");*/
 	}
 
 	/**
@@ -221,8 +222,21 @@ public class MemberBoardDaoImpl implements MemberBoardDao {
 		// TODO Auto-generated method stub
 		return sqlSession.update("dao.memberBoardMapper.boardReset");
 	}
+	
+	@Override
+	public int getPoint(String id) {
+		
+		return sqlSession.selectOne("dao.eventBoardMapper.getPoint", id);
+	}
 
 
-
+	@Override
+	public void pointGive(String id, int totalPoint) {
+		HashMap<String, Object> hMap=new HashMap<String, Object>();
+		hMap.put("id", id);
+		hMap.put("totalPoint", totalPoint);
+		sqlSession.insert("dao.memberBoardMapper.pointGive", hMap);
+		
+	}
 
 }

@@ -16,7 +16,7 @@
 	<br/><br/>
 	<a href="${root}/placesearch/choice.do">서울시 전체지도</a>
 	
-	<a href="${root}/mypage/mycourse.do">마이페이지</a>
+
 	
 	
 	
