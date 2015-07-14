@@ -8,8 +8,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 	<script type="text/javascript" src="${root}/css/board/script.js"></script>
+<<<<<<< HEAD
 	<script type="text/javascript" src="${root }/css/jquery.js"></script>
 </head>
+=======
+	<script type="text/javascript" src="${root}/css/jquery.js"></script>
+</head>
+
+>>>>>>> branch 'master' of https://github.com/yookibin/yookibin.git
 <body>
 	<a href="${root }">기본 제공 HomeController</a><br/><br/>
 	<%-- <a href="${root }/memberboard/write.do">글쓰기</a> --%>
