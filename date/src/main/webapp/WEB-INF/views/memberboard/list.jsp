@@ -16,6 +16,7 @@
 <title>게시판 목록보기</title>
 
 	<link href="${root }/css/board/style.css" rel="stylesheet"/>
+	
 
     <!-- Bootstrap Core CSS -->
     <link href="${root }/css/bootstrap/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">

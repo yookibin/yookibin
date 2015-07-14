@@ -31,15 +31,10 @@
 		<div class="line">
 			<p class="orangeLine"></p>
 		</div>
-			
-		<div class="line">
-				<a href="${root}/memberboard/list.do">글목록</a>
-		</div>
-			
-		
 
 		<div class="line">
-				<span class="content"><input type="text" size="50" name="board_title"/></span>
+			<label class="title">이벤트 제목</label>
+			<span class="content"><input type="text" size="50" name="board_title"/></span>
 		</div>
 		
 		
@@ -49,7 +44,11 @@
 			</span>
 		</div>
 		
-		<div class="line" style="width:598px; border-width:2px; text-align:center;">
+		<div class="line">
+			<p class="orangeLine"></p>
+		</div>
+		
+		<div style="width:598px; border-width:2px; text-align:center;">
 			<input type="submit" value="확인"/>
 			<input type="reset" value="다시작성"/>
 			<input type="button" value="목록보기" onclick="location.href='${root}/memberboard/list.do'"/> 
