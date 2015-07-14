@@ -61,6 +61,7 @@
 <body>
 	<div class="line1">
 		<div class="centers">
+		<input style="margin-left:60%" type="button" align="middle" value="글목록" onclick="location.href='${root}/memberboard/list.do?pageNumber=${pageNumber}'"/>
 			<span id="readTitle">${memberBoard.board_title }</span>
 		</div>
 		
@@ -84,18 +85,14 @@
 				<input type="button" value="글수정" onclick="updateFun('${root}','${memberBoard.board_num }', '${pageNumber}')" />
 				<input type="button" value="글삭제" onclick="deleteFun('${root}','${memberBoard.board_num }', '${pageNumber}')"/>
 			</c:if>
-			
+				
+				<%-- <input type="button" value="글목록" onclick="location.href='${root}/memberboard/list.do'"/> --%>
 			<span>
-				<input type="button" id="replyView" value="댓글보기"/><br/>
-				<input type="text" name="reply_content" class="replyWrite" id="reply" style="display:none;"/>
-				<input type="button" value="댓글작성" class="replyWrite" onclick="writeReply('${root}','${memberBoard.board_num}', '${nickName}')" style="display:none;"/>
+				<input type="button" id="replyView" value="댓글보기"/> 
 			</span>
 			
-		
-			
-			<input style="margin-left:60%" type="button" align="middle" value="글목록" onclick="location.href='${root}/memberboard/list.do?pageNumber=${pageNumber}'"/>
-			<%-- <input type="button" value="글목록" onclick="location.href='${root}/memberboard/list.do'"/> --%>
-			
+			<input type="text" name="reply_content" class="replyWrite" id="reply" style="display:none;"/>
+			<input type="button" value="댓글작성" class="replyWrite" onclick="writeReply('${root}','${memberBoard.board_num}', '${nickName}')" style="display:none;"/>
 		</div>
 		<div id="replyAll" style="display:none;">
 			
