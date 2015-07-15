@@ -47,7 +47,7 @@
 	</div>
 			
 	<div class="line">
-		<label class="title">${nickName }님의 현재 잔여 포인트</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<label class="title2">${nickName }님의 현재 잔여 포인트</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<span class="content">
 			<input type="text" size="50" name="point" value="${point }"/>
 		</span>
@@ -55,7 +55,7 @@
 	<br/>
 	
 	<div class="line">
-		<label class="title">차감 포인트</label>
+		<label class="title2">차감 포인트</label>
 		<span class="content">
 			<input type="text" size="50" name="event_point" value="${event_point }"/>
 		</span>
@@ -70,7 +70,7 @@
 	
 	<c:if test="${afterPoint>=0 }">
 		<div class="line">
-			<label class="title">이벤트 응모 후 <br/>${nickName }님의 잔여 포인트</label>
+			<label class="title2">이벤트 응모 후 <br/>${nickName }님의 잔여 포인트</label>
 			<span class="content">
 				<input type="text" size="50" name="afterPoint" value="${afterPoint }"/>
 			</span>
