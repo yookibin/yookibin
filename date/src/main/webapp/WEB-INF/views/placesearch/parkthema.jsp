@@ -13,12 +13,11 @@
 		
 		<c:forEach var="park" items="${parkthema}">
 							
-				<a href="${root}/placesearch/list.do?area=송파구&code=${park.place_code}">
+				<a href="${root}/placeBoard/reviewBoard.do?place_code=${park.place_code}">
 				<img src="${root}${park.place_photo}"></a>
-			<tr>
+				
 				<td>${park.place_code}</td>
 				<td>${park.place_name}</td>
-			</tr>	
 			
 		</c:forEach>
 	

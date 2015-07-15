@@ -46,6 +46,8 @@
 </head>
 
 <body>
+<jsp:include page="/youAndITop.jsp"/>
+
 <div class="totalDiv">
 	<!-- eventBoard와 pageNumber를 넘겨줌 -->
 	<c:set var="root" value="${pageContext.request.contextPath }"/>
@@ -62,7 +64,7 @@
 			<span style="widows:30%">${eventBoard.writer }ㅣ</span>			
 			<span>${eventBoard.event_period }ㅣ</span>
 			<span>조회</span>
-			<span>${eventBoard.read_count }</span>
+			<span>${eventBoard.read_count }ㅣ</span>
 			<span>${eventBoard.event_point}ㅣ</span>
 			<span>${eventBoard.event_giveaway }ㅣ</span>
 			<span>${eventBoard.event_progress }</span>			

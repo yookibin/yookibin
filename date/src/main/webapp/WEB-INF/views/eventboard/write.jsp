@@ -13,6 +13,8 @@
 <link href="${root }/css/eventBoard/style.css" rel="stylesheet"/>
 </head>
 <body>
+<jsp:include page="/youAndITop.jsp"/>
+
 <div class="totalDiv">
 	<form class="form_style"  action="${root }/eventBoard/write.do"  method="post" onsubmit="return checkForm(this)" enctype="multipart/form-data">	
 		<input type="hidden" name="event_code" value="${event_code}"/>
@@ -20,6 +22,7 @@
 		<input type="hidden" name="sequence_number" value="${sequence_number}"/>
 		<input type="hidden" name="sequence_level" value="${sequence_level}"/>
 		<input type="hidden" name="pageNumber" value="${pageNumber}"/>
+		<input type="hidden" name="writer" value="${nickName }"/>
 <%-- 		
 		<h4>event_code : ${event_code}</h4>
 		<h4>group_number : ${group_number}</h4>
@@ -27,13 +30,13 @@
 		<h4>sequence_level : ${sequence_level}</h4>
 		<h4>pageNumber : ${pageNumber}</h4> --%>
 		<!-- style="width:645px; height:40px; border-width:2px; text-align:right; padding:15px 0px 0px 0px; border-bottom-width:0px;" -->	
-		<div class="line3">
+		<div class="line3" style="height:80px;">
 			<span>
 				<h1>이벤트 글쓰기 </h1>
 			</span>
 		</div>
 		
-		<div class="line">
+		<div class="line5">
 			<p class="orangeLine"></p>
 		</div>
 		
@@ -44,8 +47,7 @@
 			</c:if>
 			<c:if test="${event_code!=0 }">
 				<span class="content"><input type="text" size="50" name="event_period" value="${eventBoard.event_period }"/></span>
-			</c:if>
-					
+			</c:if>					
 		</div>
 		
 		<div class="line">
@@ -59,7 +61,7 @@
 						
 		</div>
 		
-		<div class="line" style="height:390px;">
+		<div class="line" style="height:510px;">
 		
 			<c:if test="${event_code==0 }">
 				<span>
@@ -67,7 +69,7 @@
 				</span>
 			</c:if>
 			<c:if test="${event_code!=0 }">
-				<span class="content">
+				<span>
 					<textarea name="event_content" id="ir1" rows="22" style="width:645px;">
 글번호  아이디  닉네임			<br/>		
 						<c:forEach var="winner" items="${winnerList }">
@@ -88,7 +90,7 @@ ${winner.join_code}      ${winner.id }        ${winner.join_writer }<br/>
 			</c:if>						
 		</div>
 		
-		<div class="line">
+		<div class="line" style="height:40px">
 			<label class="title">이벤트 경품</label>
 			<c:if test="${event_code==0 }">
 				<span class="content"><input type="text" size="50" name="event_giveaway"/></span>
@@ -98,7 +100,7 @@ ${winner.join_code}      ${winner.id }        ${winner.join_writer }<br/>
 			</c:if>				
 		</div>
 		
-		<div class="line">
+		<div class="line5">
 			<p class="orangeLine"></p>
 		</div>
 							
