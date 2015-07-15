@@ -106,6 +106,7 @@ public class PlaceBoardServiceImpl implements PlaceBoardService {
 			
 			int starCheck=reviewBoardDao.reviewStarCheck(place_code);
 			logger.info("starCheck : " + starCheck);
+			
 			float place_star=review_star/starCheck/(float)10;
 			logger.info("place_star :"+place_star);
 			

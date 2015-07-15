@@ -39,7 +39,7 @@
 					<input type="submit" class="btn btn-danger" value="검색">
 				</form>
 			</div>
-		</div>
+		</div>	
 	
 		<div style="width:1080px; height:680px; margin-left:auto; margin-right:auto; text-align:center; ">
 		<h3>검색결과</h3>
@@ -62,7 +62,7 @@
 			   					<c:if test="${placeBoard.place_star>4.5 && placeBoard.place_star<=5}"><img src="${root}/resources/star/50.png" width="120" height="25" style="margin:0px 0px 0px 52px;"/></c:if>
 			   					${placeBoard.place_star}점
 			   				</div>
-			   				<a href="${root}/placeBoard/reviewBoard.do?place_code=${placeBoard.place_code}">평가하기</a>
+			   				<a href="${root}/placeBoard/reviewBoard.do?place_code=${placeBoard.place_code}">상세보기</a>
 			   			</figcaption>
 					</figure>
 					<div align="center">${placeBoard.place_name}</div>
