@@ -45,9 +45,9 @@
 
 </head>
 
-<body id="page-top">
+<body>
 
-	<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+	
 		<div class="container" style="height: 120px;">
 
 			<div class="row">
@@ -60,7 +60,7 @@
 							<ul>
 								<li class="topMenuLi" style="margin:0 0 0 14px;"><a class="menuLink" href="">데이트
 										코스추천</a>
-									<ul class="submenu">
+									<ul class="submenu" style="position: relative; z-index: 1;">
 										<li><a href="" class="submenuLink longLink">데이트코스 추천</a></li>
 										<li><a href="" class="submenuLink longLink">랜덤데이트 추천</a></li>
 										<li><a href="" class="submenuLink longLink">테마별장소 선택</a></li>
@@ -117,8 +117,7 @@
 				</div>
 			</div>
 		</div>
-	
-	</nav>
+
 
 
 
