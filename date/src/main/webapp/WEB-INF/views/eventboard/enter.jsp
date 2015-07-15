@@ -31,7 +31,9 @@
 	</script>	
 </head>
 <body>
+<jsp:include page="/youAndITop.jsp"/>
 
+<div class="totalDiv">
 	<form class="form_style" id="enterForm" method="post" enctype="multipart/form-data">	
 		<input type="hidden" name="event_code" value="${event_code }"/>
 		<!-- <input type="hidden" name="join_filePath"/> -->
@@ -40,13 +42,13 @@
 		<input type="hidden" name="event_point" value="${event_point }"/>
 		<input type="hidden" name="id" value="${id }"/>
 			
-		<div class="line3">
+		<div class="line3" style="height:80px;">
 			<span>
 				<h1>이벤트 참가하기 </h1>
 			</span>
 		</div>	
 		
-		<div class="line">
+		<div class="line5">
 			<p class="orangeLine"></p>
 		</div>
 		
@@ -55,10 +57,14 @@
 				<span class="content"><input type="text" size="50" name="join_title"/></span>
 		</div>
 		
-		<div class="line" style="height:390px;">
+		<div class="line" style="height:510px;">
 			<span>
 				<textarea name="join_content" id="ir1" rows="22" style="width:645px;"></textarea><br/>
 			</span>
+		</div>
+		
+		<div class="line5">
+			<p class="orangeLine"></p>
 		</div>
 		
 		<div class="line" style="width:598px; border-width:0px; text-align:center;">		
@@ -67,7 +73,7 @@
 			<input type="button" value="목록보기" onclick="location.href='${root }/eventBoard/list.do?pageNumber=${pageNumber }'"/> 
 		</div>
 	</form>
-	
+</div>	
 </body>
 <script type="text/javascript">
 var oEditors = [];

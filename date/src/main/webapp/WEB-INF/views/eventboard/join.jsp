@@ -36,7 +36,7 @@
 </script>
 </head>
 <body>
-	<div class="line3">
+	<div class="line4">
 		<span>
 			<h1>포인트 현황 </h1>
 		</span>
@@ -46,18 +46,18 @@
 		<p class="orangeLine"></p>
 	</div>
 			
-	<div class="line">
-		<label class="title2">${nickName }님의 현재 잔여 포인트</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<span class="content">
-			<input type="text" size="50" name="point" value="${point }"/>
+	<div class="line4">
+		<label class="title2">${nickName }님의 현재 잔여 포인트</label>
+		<span class="content2">
+			<input type="text" size="30" name="point" value="${point }"/>
 		</span>
 	</div>
 	<br/>
 	
-	<div class="line">
+	<div class="line4">
 		<label class="title2">차감 포인트</label>
-		<span class="content">
-			<input type="text" size="50" name="event_point" value="${event_point }"/>
+		<span class="content2">
+			<input type="text" size="30" name="event_point" value="${event_point }"/>
 		</span>
 	</div>
 	<br/>
@@ -69,16 +69,16 @@
 	<c:set var="afterPoint" value="${point-event_point }"/>
 	
 	<c:if test="${afterPoint>=0 }">
-		<div class="line">
+		<div class="line4">
 			<label class="title2">이벤트 응모 후 <br/>${nickName }님의 잔여 포인트</label>
-			<span class="content">
-				<input type="text" size="50" name="afterPoint" value="${afterPoint }"/>
+			<span class="content2">
+				<input type="text" size="30" name="afterPoint" value="${afterPoint }"/>
 			</span>
 		</div>
 		<br/>
 	</c:if>
 	<c:if test="${afterPoint<0 }">
-		<div class="line">
+		<div class="line4">
 			<label class="title">포인트가 부족합니다.</label>
 		</div>
 		<br/>
@@ -88,7 +88,7 @@
 		<p class="orangeLine"></p>
 	</div>
 	
- 	<div class="line" style="width:598px; border-width:0px; text-align:center;">
+ 	<div class="line4" style="text-align:center;">
 		<input type="button" value="응모하기" onclick="joinOkFun('${root }','${afterPoint }','${point }')"/>
 		<%-- <input type="button" value="목록보기" onclick="location.href='${root}/eventBoard/list.do'"/> --%>
 	</div>

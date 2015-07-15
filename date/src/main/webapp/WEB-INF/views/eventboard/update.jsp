@@ -14,6 +14,8 @@
 	<link href="${root }/css/eventBoard/style.css" rel="stylesheet"/>
 </head>
 <body>
+<jsp:include page="/youAndITop.jsp"/>
+
 <div class="totalDiv">
 <!-- updateAction에서 board와 (boardNumber는 board에 들어있음), pageNumber를 가져옴 -->	
 	<form class="form_style" action="${root}/eventBoard/update.do" method="post" onsubmit="return updateFun(this)" enctype="multipart/form-data">
@@ -25,7 +27,7 @@
 		<input type="hidden" name="event_fileSize" value="${eventBoard.event_fileSize }"/>
 		<input type="hidden" name="writer" value="${eventBoard.writer }"/>
 		
-		<div class="line3">
+		<div class="line3" style="height:80px;">
 			<span>
 				<h1>이벤트 글수정 </h1>
 			</span>
@@ -45,7 +47,7 @@
 				<span class="content"><input type="text" size="50" name="event_title" value="${eventBoard.event_title }"/></span>
 		</div>
 		
-		<div class="line" style="height:390px;">
+		<div class="line" style="height:510px;">
 			<span>
 				<textarea name="event_content" id="ir1" rows="22" style="width:645px;">${eventBoard.event_content }</textarea>
 			</span>
@@ -56,7 +58,7 @@
 			<span class="content"><input type="text" size="50" name="event_point" value="${eventBoard.event_point }"/></span>			
 		</div>
 		
-		<div class="line">
+		<div class="line" style="height:40px">
 			<label class="title">이벤트 경품</label>
 			<span class="content"><input type="text" size="50" name="event_giveaway" value="${eventBoard.event_giveaway }"/></span>			
 		</div>
