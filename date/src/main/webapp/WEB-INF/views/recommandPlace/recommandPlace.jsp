@@ -74,30 +74,30 @@
 									+ "<img src='"+root+data[i].place_photo+"' width='348' height='250'>"
 									+ "<figcaption>" 
 					   				+ "<div>";
-					   				if(data[i].place_star == 0 && data[i].place_star < 0.5){
-					   					placeList +="<img src='/date/resources/star/00.png' width='120' height='25' style='margin:0px 0px 0px 52px;'/>";}
-					   				if(data[i].place_star == 0.5 && data[i].place_star < 1){
-					   					placeList +="<img src='/date/resources/star/05.png' width='120' height='25' style='margin:0px 0px 0px 52px;'/>";}
-					   				if(data[i].place_star == 1 && data[i].place_star < 1.5){
-					   					placeList +="<img src='/date/resources/star/10.png' width='120' height='25' style='margin:0px 0px 0px 52px;'/>";}
-					   				if(data[i].place_star == 1.5 && data[i].place_star < 2){
-					   					placeList +="<img src='/date/resources/star/15.png' width='120' height='25' style='margin:0px 0px 0px 52px;'/>";}
-					   				if(data[i].place_star == 2 && data[i].place_star < 2.5){
-					   					placeList +="<img src='/date/resources/star/20.png' width='120' height='25' style='margin:0px 0px 0px 52px;'/>";}
-					   				if(data[i].place_star == 2.5 && data[i].place_star < 3){
-					   					placeList +="<img src='/date/resources/star/25.png' width='120' height='25' style='margin:0px 0px 0px 52px;'/>";}
-					   				if(data[i].place_star == 3 && data[i].place_star < 3.5){
-					   					placeList +="<img src='/date/resources/star/30.png' width='120' height='25' style='margin:0px 0px 0px 52px;'/>";}
-					   				if(data[i].place_star == 3.5 && data[i].place_star < 4){
-					   					placeList +="<img src='/date/resources/star/35.png' width='120' height='25' style='margin:0px 0px 0px 52px;'/>";}
-					   				if(data[i].place_star == 4 && data[i].place_star < 4.5){
-					   					placeList +="<img src='/date/resources/star/40.png' width='120' height='25' style='margin:0px 0px 0px 52px;'/>";}
-					   				if(data[i].place_star == 4.5 && data[i].place_star < 5){
-					   					placeList +="<img src='/date/resources/star/45.png' width='120' height='25' style='margin:0px 0px 0px 52px;'/>";} 
-					   				if(data[i].place_star == 5){
-					   					placeList +="<img src='/date/resources/star/50.png' width='120' height='25' style='margin:0px 0px 0px 52px;'/>";} 
+					   				if(data[i].place_star <= 0 && data[i].place_star < 0.5){
+					   					placeList +="<img src='/date/resources/star/00.png' width='120' height='25' style='margin:0px 0px 0px 110px;'/>";}
+					   				else if(data[i].place_star <= 0.5 && data[i].place_star < 1){
+					   					placeList +="<img src='/date/resources/star/05.png' width='120' height='25' style='margin:0px 0px 0px 110px;'/>";}
+					   				else if(data[i].place_star <= 1 && data[i].place_star < 1.5){
+					   					placeList +="<img src='/date/resources/star/10.png' width='120' height='25' style='margin:0px 0px 0px 110px;'/>";}
+					   				else if(data[i].place_star <= 1.5 && data[i].place_star < 2){
+					   					placeList +="<img src='/date/resources/star/15.png' width='120' height='25' style='margin:0px 0px 0px 110px;'/>";}
+					   				else if(data[i].place_star <= 2 && data[i].place_star < 2.5){
+					   					placeList +="<img src='/date/resources/star/20.png' width='120' height='25' style='margin:0px 0px 0px 110px;'/>";}
+					   				else if(data[i].place_star <= 2.5 && data[i].place_star < 3){
+					   					placeList +="<img src='/date/resources/star/25.png' width='120' height='25' style='margin:0px 0px 0px 110px;'/>";}
+					   				else if(data[i].place_star <= 3 && data[i].place_star < 3.5){
+					   					placeList +="<img src='/date/resources/star/30.png' width='120' height='25' style='margin:0px 0px 0px 110px;'/>";}
+					   				else if(data[i].place_star <= 3.5 && data[i].place_star < 4){
+					   					placeList +="<img src='/date/resources/star/35.png' width='120' height='25' style='margin:0px 0px 0px 110px;'/>";}
+					   				else if(data[i].place_star <= 4 && data[i].place_star < 4.5){
+					   					placeList +="<img src='/date/resources/star/40.png' width='120' height='25' style='margin:0px 0px 0px 110px;'/>";}
+					   				else if(data[i].place_star <= 4.5 && data[i].place_star < 5){
+					   					placeList +="<img src='/date/resources/star/45.png' width='120' height='25' style='margin:0px 0px 0px 110px;'/>";} 
+					   				else if(data[i].place_star == 5.0){
+					   					placeList +="<img src='/date/resources/star/50.png' width='120' height='25' style='margin:0px 0px 0px 110px;'/>";} 
 					   			placeList += "</div>" 
-					   				+ "<a href='/date/placeBoard/reviewBoard.do?place_code="+data[i].place_code+">평가하기</a>"
+					   				+ "<a href='/date/placeBoard/reviewBoard.do?place_code="+data[i].place_code+"'>평가하기</a>"
 					   				+ "</figcaption>"
 					   				+ "</figure>" 
 									+ "</div>"
@@ -106,6 +106,7 @@
 									+ data[i].place_balance + "<br>"
 									+ "운영시간 : " + data[i].place_runtime
 									+ "<br>" + "전화번호 : " + data[i].place_phone
+									+ "<br>" + "별점 : " + data[i].place_star
 									+ "<br>"
 									+ "<div id='"+data[i].place_code+"'>"
 									+ "</div></div></div></div>";

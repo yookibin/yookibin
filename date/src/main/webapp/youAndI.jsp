@@ -11,11 +11,13 @@
 <meta name="author" content="">
 
 <title>Creative - Start Bootstrap Theme</title>
-
+<link href="${root}/css/imgSlide/js-image-slider.css" rel="stylesheet"
+	type="text/css" />
+<script src="${root}/css/js-image-slider.js" type="text/javascript"></script>
+<link href="${root}/css/generic.css" rel="stylesheet" type="text/css" />
 <!-- Bootstrap Core CSS -->
 <link rel="stylesheet" href="${root}/resources/css/bootstrap.min.css"
 	type="text/css">
-
 <!-- Custom Fonts -->
 <link
 	href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
@@ -26,23 +28,19 @@
 <link rel="stylesheet"
 	href="${root}/resources/font-awesome/css/font-awesome.min.css"
 	type="text/css">
-
 <!-- Plugin CSS -->
 <link rel="stylesheet" href="${root}/resources/css/animate.min.css"
 	type="text/css">
-
 <!-- Custom CSS -->
 <link rel="stylesheet" href="${root}/resources/css/creative.css"
 	type="text/css">
 <link href="${root}/css/bootstrap/subMenu.css" rel="stylesheet">
-
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
 </head>
 
 <body id="page-top">
@@ -112,112 +110,14 @@
 	<section class="bg-primary" id="about">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-8 col-lg-offset-2 text-center"></div>
+				<div class="col-lg-8 col-lg-offset-2 text-center">
+					
+				</div>
 			</div>
 		</div>
 	</section>
 
-<<<<<<< HEAD
-    <section class="no-padding" id="portfolio">
-        <div class="container-fluid">
-            <div class="row no-gutter">
-                <div class="col-lg-4 col-sm-6">
-                    <a href="#" class="portfolio-box">
-                        <img src="${root}/resources/img/portfolio/1.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    장소이름
-                                </div>
-                                <div class="project-name">
-                                    별점 이나 다른것
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="#" class="portfolio-box">
-                        <img src="${root}/resources/img/portfolio/2.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Category
-                                </div>
-                                <div class="project-name">
-                                    Project Name
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="#" class="portfolio-box">
-                        <img src="${root}/resources/img/portfolio/3.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Category
-                                </div>
-                                <div class="project-name">
-                                    Project Name
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="#" class="portfolio-box">
-                        <img src="${root}/resources/img/portfolio/4.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Category
-                                </div>
-                                <div class="project-name">
-                                    Project Name
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="#" class="portfolio-box">
-                        <img src="${root}/resources/img/portfolio/5.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Category
-                                </div>
-                                <div class="project-name">
-                                    Project Name
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="#" class="portfolio-box">
-                        <img src="${root}/resources/img/portfolio/6.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Category
-                                </div>
-                                <div class="project-name">
-                                    Project Name
-                                </div>
-                            </div>
-                   
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-=======
 	<section id="services">
->>>>>>> branch 'master' of https://github.com/yookibin/yookibin.git
 
 		<div class="container" style="height: 120px;">
 
@@ -229,8 +129,8 @@
 						<!-- <p class="text-muted">Our templates are updated regularly so they don't break.</p> -->
 						<div id="topMenu">
 							<ul>
-								<li class="topMenuLi" style="margin:0 0 0 14px;"><a class="menuLink" href="">데이트
-										코스추천</a>
+								<li class="topMenuLi" style="margin: 0 0 0 14px;"><a
+									class="menuLink" href="">데이트 코스추천</a>
 									<ul class="submenu">
 										<li><a href="" class="submenuLink longLink">데이트코스 추천</a></li>
 										<li><a href="" class="submenuLink longLink">랜덤데이트 추천</a></li>
@@ -250,8 +150,8 @@
 						<!-- <p class="text-muted">You can use this theme as is, or you can make changes!</p> -->
 						<div id="topMenu">
 							<ul>
-								<li class="topMenuLi" style="margin:0 0 0 14px;"><a class="menuLink" href="">회원추천
-										게시판</a></li>
+								<li class="topMenuLi" style="margin: 0 0 0 14px;"><a
+									class="menuLink" href="">회원추천 게시판</a></li>
 							</ul>
 						</div>
 
@@ -266,8 +166,8 @@
 						<!-- <p class="text-muted">We update dependencies to keep things fresh.</p> -->
 						<div id="topMenu">
 							<ul>
-								<li class="topMenuLi" style="margin:0 0 0 14px;"><a class="menuLink" href="">장소
-										게시판</a></li>
+								<li class="topMenuLi" style="margin: 0 0 0 14px;"><a
+									class="menuLink" href="">장소 게시판</a></li>
 							</ul>
 						</div>
 					</div>
@@ -281,7 +181,8 @@
 						<!-- <p class="text-muted">You have to make your websites with love these days!</p> -->
 						<div id="topMenu">
 							<ul>
-								<li class="topMenuLi" style="margin:0 0 0 14px;"><a class="menuLink" href="">이벤트 게시판</a></li>
+								<li class="topMenuLi" style="margin: 0 0 0 14px;"><a
+									class="menuLink" href="">이벤트 게시판</a></li>
 							</ul>
 						</div>
 					</div>

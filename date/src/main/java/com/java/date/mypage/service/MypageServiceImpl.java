@@ -53,7 +53,17 @@ public class MypageServiceImpl implements MypageService {
 		}
 		return lList;
 	}
-	
+	@Override
+	   public List<MypageDto> pointCheck(String id) {
+	      logger.info("포인트체크id"+id);
+	      return mypagedao.point(id);
+	   }
+	   
+	   public List<MypageDto> usingCheck(String id){
+	      logger.info("이벤트사용체크id"+id);
+	      return mypagedao.usingevent(id);
+	   }
+	/*
 	@Override
 	   public void pointCheck(ModelAndView mav) {
 	      Map<String,Object> hMap = mav.getModelMap();
@@ -82,6 +92,6 @@ public class MypageServiceImpl implements MypageService {
 	      mav.addObject("eventDto",eventDto);
 	      mav.setViewName("mypage/usingevent");
 	      
-	   }
+	   }*/
 
 }

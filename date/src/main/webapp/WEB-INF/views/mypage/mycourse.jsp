@@ -54,6 +54,9 @@
 <script type="text/javascript"
 	src="${root}/css/modernizr.custom.79639.js"></script>
 
+<link href="${root}/css/example/mypoint.css"
+	rel="stylesheet">
+
 <style type="text/css">
 .allAll {
 	border: 1px solid black;
@@ -202,60 +205,133 @@
 			}
 		});
 	}
+	 function myPoint(root, id) {
+	      //alert("root"+root);
+	      //alert("id"+id);
+	      
+	      $.ajax({
+	         url: root+"/mypage/point.do",
+	         type:"post",
+	         data: {
+	            id :id
+	         },
+	         success : function(data){
+	            
+	            console.log(data);
+	            
+	             var str="";
+	             
+	            for (var i=0;i<data.length;i++){
+	            
+	               str+="<div class='row'>"
+	                +"<div class='column'>"+data[i].point_content+"</div>"
+	                +"<div class='column'>"+data[i].point_manager+"</div>"
+	                +"<div class='column'>"+data[i].point_total+"</div>"
+	                +"</div>"
 
-	function myPoint(root, id) {
-		alert(root);
-		alert(id);
-		$.ajax({
-			url : "/date/mypage/point.do",
-			type: "post",
-			data :{
-				id:id
-			},
-			success :function(data) {
-				console.log(data);
-				
-				var str="";
-				for(var i=0;i<data.length;i++){
-					str+="<div>"
-				}
-			}
-		});
-	}
+	            }
+	            $("#myPoint").empty();
+	            $("#myPoint").append(str);
+	         }
+	      });
+	      
+	   }
+	   
+	   function usingEvent(root,id) {
+	      alert("root"+root);
+	      alert("id"+id);
+	      
+	      $.ajax({
+	         url: root+"/mypage/usingevent.do",
+	         type:"post",
+	         data: {
+	            id:id
+	         },
+	         success : function(data){
+	            console.log(data);
+	            var str="";
+	            for( var i=0; i<data.length;i++ ){
+	               str+="<div class='row'>"
+	                   +"<div class='column'>"+data[i].event_period+"</div>"
+	                   +"<div class='column'>"+data[i].event_title+"</div>"
+	                   +"<div class='column'>"+data[i].event_progress+"</div>"
+	                   +"<div class='column'>"+data[i].event_giveaway+"</div>"
+	                   +"</div>"
+	            }
+	         }
+	         
+	      });
+	   }
 </script>
 </head>
 <body>
-	<!-- Modal -->
-	<div class="modal fade" id="myModal23" tabindex="-1" role="dialog"
-		aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-hidden="true">&times;</button>
-					<h4 class="modal-title" id="myModalLabel">Using Point</h4>
-				</div>
-				<div class="racetimes" id="">
-					<div class="row" id="firstrow">
-						<div class="column">날짜</div>
-						<div class="column">포인트 사용 내역</div>
-						<div class="column">내역</div>
-						<div class="column">포인트</div>
-					</div>
-				</div>
-				<div class="modal-body">
-					지혜공주님이 만들어야 할 자리
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary">Save changes</button>
-				</div>
-			</div>
-			<!-- /.modal-content -->
-		</div>
-		<!-- /.modal-dialog -->
-	</div>
-	<!-- /.modal -->
+	<!-- ModalJiHye1-->
+   <div class="modal fade" id="myModal23" tabindex="-1" role="dialog"
+      aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+         <div class="modal-content" id="mypointBody">
+            <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal"
+                  aria-hidden="true">&times;</button>
+               <h4 class="modal-title" id="myModalLabel">Using Point</h4>
+            </div>
+            <div class="racetimes">
+               <div class="row" id="firstrow">
+                  <div class="column">날짜</div>
+                  <div class="column">포인트 사용 내역</div>
+                  <div class="column">내역</div>
+                  <div class="column">포인트</div>
+               </div>
+            
+            <div class="modal-body" id="myPoint" >
+               
+            </div>
+            </div>
+            <div class="modal-footer">
+               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+               <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+         </div>
+         <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+   </div> 
+   <!-- /.modal -->
+   
+   
+   <!-- ModalJiHye2-->
+   <div class="modal fade" id="myModal45" tabindex="-1" role="dialog"
+      aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+         <div class="modal-content" id="mypointBody">
+            <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal"
+                  aria-hidden="true">&times;</button>
+               <h4 class="modal-title" id="mypointBody">Event Check</h4>
+            </div>
+            <div class="racetimes">
+               <div class="row" id="firstrow">
+                  <div class="column">날짜</div>
+                  <div class="column">포인트 사용 내역</div>
+                  <div class="column">당첨 여부</div>                  
+               </div>
+            
+            <div class="modal-body" id="usingEvent" >
+               
+            </div>
+            </div>
+            <div class="modal-footer">
+               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+               <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+         </div>
+         <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+   </div> 
+   <!-- /.modal -->
+
+	
 
 
 
@@ -347,56 +423,65 @@
 
 			<div class="tab2_content">
 
-				<section class="main">
+            <section class="main">
 
-					<ul class="ch-grid">
-						<li>
-							<div class="ch-items">
-								<div class="ch-infos">
-									<div class="ch-info-fronts ch-img-4"></div>
-									<div class="ch-info-backs">
-										<h3>잔여포인트</h3>
-										<p>by Alexander Shumihin View on remainingpoint</p>
-										</a>
-									</div>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="ch-items">
-								<div class="ch-infos">
-									<div class="ch-info-fronts ch-img-5"></div>
-									<div class="ch-info-backs"  data-toggle="modal"
-										data-target="#myModal23" onclick="myPoint('${root}','rkaqo2')">
-											<h3>포인트사용조회</h3>
-											<p>by Zoe Ingram View on usingcheck</p>
-										</a>
-									</div>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="ch-items">
-								<div class="ch-infos">
-									<div class="ch-info-fronts ch-img-6"></div>
-									<div class="ch-info-backs">
-										<a href="${root}/eventBoard/list.do">
-											<h3>포인트사용(이벤트게시판이동)</h3>
-											<p>by Eileen Tjan View on usingpoint</p>
-										</a>
-									</div>
-								</div>
-							</div>
-						</li>
-					</ul>
-
-				</section>
-
-
-				<a href="${root}/mypage/usingevent.do?id=${id}">내가응모한 이벤트</a><br />
-				<br />
-
-			</div>
+               <ul class="ch-grid">
+                  <li>
+                     <div class="ch-items">
+                        <div class="ch-infos">
+                           <div class="ch-info-fronts ch-img-4"></div>
+                           <div class="ch-info-backs">
+                              <h3>잔여포인트</h3>
+                              <p>by Alexander Shumihin View on remainingpoint</p>
+                              </a>
+                           </div>
+                        </div>
+                     </div>
+                  </li>
+                  <li>
+                     <div class="ch-items">
+                        <div class="ch-infos">
+                           <div class="ch-info-fronts ch-img-5"></div>
+                           <div class="ch-info-backs"  data-toggle="modal"
+                              data-target="#myModal23" onclick="myPoint('${root}','aaaa')">
+                                 <h3>포인트 사용조회</h3>
+                                 <p>by Zoe Ingram View on usingcheck</p>
+                              </a>
+                           </div>
+                        </div>
+                     </div>
+                  </li>
+                  <li>
+                     <div class="ch-items">
+                        <div class="ch-infos">
+                           <div class="ch-info-fronts ch-img-6"></div>
+                           <div class="ch-info-backs">
+                              <a href="${root}/eventBoard/list.do">
+                                 <h3>포인트 사용(이벤트게시판이동)</h3>
+                                 <p>by Eileen Tjan View on usingpoint</p>
+                              </a>
+                           </div>
+                        </div>
+                     </div>
+                  </li>
+                  
+               <li>
+                  <div class="ch-items">
+                     <div class="ch-infos">
+                        <div class="ch-info-fronts ch-img-4"></div>
+                        <div class="ch-info-backs" data-toggle="modal"
+                              data-target="#myModal45" onclick="usingEvent('${root}','aaaa')">                                                      
+                           <h3>응모한 이벤트</h3>
+                           <p>by Eileen Tjan View on usingpoint</p>
+                           
+                        </div>
+                     </div>
+                  </div>
+               </li>
+            
+            </ul>
+         </section>
+      </div>
 
 			<div class="tab3_content">
 				<section class="main">

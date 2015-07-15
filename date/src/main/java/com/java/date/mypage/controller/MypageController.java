@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.java.date.mypage.dto.MypageDto;
 import com.java.date.mypage.service.MypageService;
 import com.java.date.recommandPlace.dto.LoadCourseDto;
 
@@ -57,7 +58,27 @@ public class MypageController {
 		System.out.println("getMyCourse");
 		return mypageService.getMyCourse(id);
 	}
+	@RequestMapping("/mypage/point.do")
+	@ResponseBody
+    public List<MypageDto> point(String id) {
+	    logger.info("point Start----------------");
 
+	    System.out.println("point");
+	      
+
+	    return mypageService.pointCheck(id);
+    }
+	   
+	@RequestMapping("/mypage/usingevent.do")
+	@ResponseBody
+	public List<MypageDto> usingevent(String id){
+		logger.info("usingEvetn Start--------------");
+		System.out.println("Event 된당");
+	      
+		return mypageService.usingCheck(id);
+	}
+	
+	/*
 	@RequestMapping(value = "/mypage/point.do", method = RequestMethod.GET)
 	public ModelAndView point(HttpServletRequest request,
 			HttpServletResponse response) {
@@ -82,6 +103,6 @@ public class MypageController {
 		mypageService.usingevent(mav);
 
 		return mav;
-	}
+	}*/
 
 }
