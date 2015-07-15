@@ -40,30 +40,28 @@
 		<input type="hidden" name="event_point" value="${event_point }"/>
 		<input type="hidden" name="id" value="${id }"/>
 			
-		<div style="width:598px; height:15px; border-width:2px; text-align:right; padding:15px 0px 0px 0px; border-bottom-width:0px;">
-				<a href="${root }/eventBoard/list.do?pageNumber=${pageNumber }">글목록</a>
-		</div>		
+		<div class="line3">
+			<span>
+				<h1>이벤트 참가하기 </h1>
+			</span>
+		</div>	
+		
+		<div class="line">
+			<p class="orangeLine"></p>
+		</div>
 		
 		<div class="line">
 			<label class="title">제목</label>
 				<span class="content"><input type="text" size="50" name="join_title"/></span>
 		</div>
 		
-		
-<!-- 		<div class="line">
-			<label class="title">파일 첨부</label>
-			<span class="content">
-				<input type="file" name="file" id="imgInp"/>
-			</span>
-		</div> -->
-		
 		<div class="line" style="height:390px;">
-			<div id="toress">
+			<span>
 				<textarea name="join_content" id="ir1" rows="22" style="width:645px;"></textarea><br/>
-			</div>
+			</span>
 		</div>
 		
-		<div class="line" style="width:598px; border-width:2px; text-align:center;">		
+		<div class="line" style="width:598px; border-width:0px; text-align:center;">		
 			<input type="button" value="응모하기" onclick="joinFun('${root}','${event_code }','${pageNumber }','${id }','${event_point }')"/>			
 			<input type="reset" value="다시작성"/>
 			<input type="button" value="목록보기" onclick="location.href='${root }/eventBoard/list.do?pageNumber=${pageNumber }'"/> 

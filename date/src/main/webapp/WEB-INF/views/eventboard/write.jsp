@@ -20,6 +20,7 @@
 		<input type="hidden" name="sequence_number" value="${sequence_number}"/>
 		<input type="hidden" name="sequence_level" value="${sequence_level}"/>
 		<input type="hidden" name="pageNumber" value="${pageNumber}"/>
+		<input type="hidden" name="writer" value="${nickName }"/>
 <%-- 		
 		<h4>event_code : ${event_code}</h4>
 		<h4>group_number : ${group_number}</h4>
@@ -44,8 +45,7 @@
 			</c:if>
 			<c:if test="${event_code!=0 }">
 				<span class="content"><input type="text" size="50" name="event_period" value="${eventBoard.event_period }"/></span>
-			</c:if>
-					
+			</c:if>					
 		</div>
 		
 		<div class="line">
@@ -67,7 +67,7 @@
 				</span>
 			</c:if>
 			<c:if test="${event_code!=0 }">
-				<span class="content">
+				<span>
 					<textarea name="event_content" id="ir1" rows="22" style="width:645px;">
 글번호  아이디  닉네임			<br/>		
 						<c:forEach var="winner" items="${winnerList }">
