@@ -285,6 +285,7 @@ public class EventBoardDaoImpl implements EventBoardDao {
 	public int joinWriteCheck(HashMap<String,Object> hMap) {
 		
 		return sqlSession.selectOne("dao.eventBoardMapper.joinWriteCheck",hMap);
-	}	
+	}
+
 	
 }

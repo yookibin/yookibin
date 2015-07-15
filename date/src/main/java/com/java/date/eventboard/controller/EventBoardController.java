@@ -331,6 +331,7 @@ public class EventBoardController {
 		
 		return mav;
 	}
+
 	
 }
 

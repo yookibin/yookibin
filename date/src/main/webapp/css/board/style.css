@@ -1,10 +1,58 @@
 @CHARSET "UTF-8";
 
 /* -- DEFUAL STYLE START ---------------------------------------- */
+.centers {
+    border:0px solid #8AC007;
+    padding: 10px;
+}
+
+.line1{
+	width: 70%;
+	margin-left: 15%;
+	border-top:2px solid #F05F40;
+	border-bottom:2px solid #F05F40;
+}
+
+.line2{
+	width: 70%;
+	margin-left: 15%;
+	height:300px;
+	overflow: auto;
+	border-bottom:2px solid #F05F40;
+}
+
+.line3{	
+	width:650px;height:40px;float:left;
+	border-style:solid;border-width:0px;border-color:#000000;
+	margin:0px 0px 0px 0px;padding:0px 0px 0px 0px;text-align:left; 
+}
+
+.orangeLine{
+	border-style:solid;border-width:2px;border-color:#F05F40;
+}
+
+#readTitle{
+	font-size:30px;
+	font-style:inherit;
+	font-weight: bold;
+}
+
+.totalDiv{
+	width:1200px;
+	height:1200px;
+	margin:0% auto 0% auto;
+}
+/* */
+ .myTh {
+	background-color:#F05F40;
+}
+
 body{
    font-size:12px;
-   font-family:Gulim, dotum, sans-serif;	
+   font-family:Gulim, dotum, sans-serif;
 }
+
+
 
 a:link {
 	text-decoration:none;
@@ -38,12 +86,11 @@ a:hover {
 
 .title{
 	width:96px;height:12px;float:left;
-	border-style:solid;border-width:2px;border-color:#000000;
+	border-style:solid;border-width:0px;border-color:#000000;
 	border-right-width:0px;border-bottom-width:0px;
-    padding:8px 0px 8px 2px;text-align:center; 
+    padding:8px 0px 8px 2px;text-align:left; 
+    color:#F05F40;font-weight: bold;
 }
-
-
 
  #spanWrite{
 	width:645px;height:24px;float:left;

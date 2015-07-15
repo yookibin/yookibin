@@ -8,8 +8,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 	<script type="text/javascript" src="${root}/css/board/script.js"></script>
+
+
 	<script type="text/javascript" src="${root }/css/jquery.js"></script>
 </head>
+
+
+
 <body>
 	<a href="${root }">기본 제공 HomeController</a><br/><br/>
 	<%-- <a href="${root }/memberboard/write.do">글쓰기</a> --%>
@@ -45,11 +50,11 @@
 	
 	<hr> 
 		<a href="${root }/recommandPlace/findPlace.do">장소추천</a>
-		<a href="${root }/recommandPlace/insertPlace.do">장소입력</a>
+<%-- 		<a href="${root }/recommandPlace/insertPlace.do">장소입력</a>
 		<a href="${root }/recommandPlace/selectMap0.do"> Map</a>
 		<a href="${root }/recommandPlace/selectMap.do">select Map</a>
 		<a href="${root }/recommandPlace/selectMap2.do">select Map2</a>
-		<a href="${root }/recommandPlace/selectMap3.do">지도에 선그리기</a>
+		<a href="${root }/recommandPlace/selectMap3.do">지도에 선그리기</a> --%>
 	<hr>
 	
 	<a href="${root}/randomplace/randomPlaceStart.do">랜덤시작></a>

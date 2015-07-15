@@ -7,23 +7,30 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link type="text/css" rel="stylesheet" href="${root}/css/bootstrap/bootstrap.min.css"/>
+<link type="text/css" rel="stylesheet" href="${root}/css/placeBoard/style.css"/>
 <!-- Bootstrap Core CSS -->
-<link href="${root}/css/bootstrap/bower_components/bootstrap/dist/css/bootstrap.min.css"
+<link
+	href="${root}/css/bootstrap/bower_components/bootstrap/dist/css/bootstrap.min.css"
 	rel="stylesheet">
 
 <!-- MetisMenu CSS -->
-<link href="${root}/css/bootstrap/bower_components/metisMenu/dist/metisMenu.min.css"
+<link
+	href="${root}/css/bootstrap/bower_components/metisMenu/dist/metisMenu.min.css"
 	rel="stylesheet">
 
 <!-- Social Buttons CSS -->
-<link href="${root}/css/bootstrap/bower_components/bootstrap-social/bootstrap-social.css"
+<link
+	href="${root}/css/bootstrap/bower_components/bootstrap-social/bootstrap-social.css"
 	rel="stylesheet">
 
 <!-- Custom CSS -->
-<link href="${root}/css/bootstrap/dist/css/sb-admin-2.css" rel="stylesheet">
+<link href="${root}/css/bootstrap/dist/css/sb-admin-2.css"
+	rel="stylesheet">
 
 <!-- Custom Fonts -->
-<link href="${root}/css/bootstrap/bower_components/font-awesome/css/font-awesome.min.css"
+<link
+	href="${root}/css/bootstrap/bower_components/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css"
 	href="${root}/css/recommandPlace/style.css" />
@@ -63,9 +70,37 @@
 
 									+ "<div id='title'>"
 									+ "<div id='title_a'>"
+									+ "<figure class='figurefx default'>"
 									+ "<img src='"+root+data[i].place_photo+"' width='348' height='250'>"
+									+ "<figcaption>" 
+					   				+ "<div>";
+					   				if(data[i].place_star == 0 && data[i].place_star < 0.5){
+					   					placeList +="<img src='/date/resources/star/00.png' width='120' height='25' style='margin:0px 0px 0px 52px;'/>";}
+					   				if(data[i].place_star == 0.5 && data[i].place_star < 1){
+					   					placeList +="<img src='/date/resources/star/05.png' width='120' height='25' style='margin:0px 0px 0px 52px;'/>";}
+					   				if(data[i].place_star == 1 && data[i].place_star < 1.5){
+					   					placeList +="<img src='/date/resources/star/10.png' width='120' height='25' style='margin:0px 0px 0px 52px;'/>";}
+					   				if(data[i].place_star == 1.5 && data[i].place_star < 2){
+					   					placeList +="<img src='/date/resources/star/15.png' width='120' height='25' style='margin:0px 0px 0px 52px;'/>";}
+					   				if(data[i].place_star == 2 && data[i].place_star < 2.5){
+					   					placeList +="<img src='/date/resources/star/20.png' width='120' height='25' style='margin:0px 0px 0px 52px;'/>";}
+					   				if(data[i].place_star == 2.5 && data[i].place_star < 3){
+					   					placeList +="<img src='/date/resources/star/25.png' width='120' height='25' style='margin:0px 0px 0px 52px;'/>";}
+					   				if(data[i].place_star == 3 && data[i].place_star < 3.5){
+					   					placeList +="<img src='/date/resources/star/30.png' width='120' height='25' style='margin:0px 0px 0px 52px;'/>";}
+					   				if(data[i].place_star == 3.5 && data[i].place_star < 4){
+					   					placeList +="<img src='/date/resources/star/35.png' width='120' height='25' style='margin:0px 0px 0px 52px;'/>";}
+					   				if(data[i].place_star == 4 && data[i].place_star < 4.5){
+					   					placeList +="<img src='/date/resources/star/40.png' width='120' height='25' style='margin:0px 0px 0px 52px;'/>";}
+					   				if(data[i].place_star == 4.5 && data[i].place_star < 5){
+					   					placeList +="<img src='/date/resources/star/45.png' width='120' height='25' style='margin:0px 0px 0px 52px;'/>";} 
+					   				if(data[i].place_star == 5){
+					   					placeList +="<img src='/date/resources/star/50.png' width='120' height='25' style='margin:0px 0px 0px 52px;'/>";} 
+					   			placeList += "</div>" 
+					   				+ "<a href='/date/placeBoard/reviewBoard.do?place_code="+data[i].place_code+">평가하기</a>"
+					   				+ "</figcaption>"
+					   				+ "</figure>" 
 									+ "</div>"
-
 									+ "<div id='title_b'>장소이름 : "
 									+ data[i].place_name + "<br>" + "가격 : "
 									+ data[i].place_balance + "<br>"
@@ -73,7 +108,7 @@
 									+ "<br>" + "전화번호 : " + data[i].place_phone
 									+ "<br>"
 									+ "<div id='"+data[i].place_code+"'>"
-									+ "</div></div></div></div>"
+									+ "</div></div></div></div>";
 						}
 
 						$("#place").empty();
@@ -82,11 +117,12 @@
 				});
 	}
 </script>
+<link type="text/css" rel="stylesheet" href="${root}/css/bootstrap/bootstrap.min.css"/>
 <style type="text/css">
 .questAll {
 	color: white;
-	width:1000px;
-	height:100px;
+	width: 1000px;
+	height: 100px;
 	color: white;
 }
 
@@ -107,8 +143,7 @@
 	font-size: 15px;
 	color: white;
 	font-size: 20px;
-	font-family: "돋움","돋움체","굴림", "굴림체", "나눔고딕"; 
-	
+	font-family: "돋움", "돋움체", "굴림", "굴림체", "나눔고딕";
 }
 </style>
 </head>
@@ -116,11 +151,12 @@
 	<div class="allView">
 		환영합니다.
 		<form action="${root}/recommandPlace/select.do" method="POST">
-			지역을 선택하세요<br>
+			지역을 선택하세요dy<br>
 			<div class="questAll">
 				<div class="ques">
 					<p>
-						지 역 :<br> <select id="place_gu" style="color: black;" name="place_gu">
+						지 역 :<br> <select id="place_gu" style="color: black; border-radius:20px; background: #F05F40;"
+							name="place_gu">
 							<option value="무관">무관</option>
 							<option value="강남구">강남</option>
 							<option value="송파구">송파</option>
@@ -130,7 +166,8 @@
 				</div>
 				<div class="ques">
 					<p>
-						계 절 : <br> <select id="place_season" style="color: black;" name="place_season">
+						계 절 : <br> <select id="place_season" style="color: black; border-radius:20px; background: #F05F40;"
+							name="place_season">
 							<option value="">무관</option>
 							<option>봄</option>
 							<option>여름</option>
@@ -141,7 +178,8 @@
 				</div>
 				<div class="ques">
 					<p>
-						날 씨 :<br> <select id="place_weather" style="color: black;" name="place_weather">
+						날 씨 :<br> <select id="place_weather" style="color: black; border-radius:20px; background: #F05F40;"
+							name="place_weather">
 							<option value="">무관</option>
 							<option>맑음</option>
 							<option>흐림</option>
@@ -152,7 +190,8 @@
 				</div>
 				<div class="ques">
 					<p>
-						시간대 :<br> <select id="place_time" style="color: black;" name="place_time">
+						시간대 :<br> <select id="place_time" style="color: black; border-radius:20px; background: #F05F40;"
+							name="place_time">
 							<option value="무관">무관</option>
 							<option value="1">0시~4시</option>
 							<option value="2">4시~8시</option>
@@ -165,7 +204,8 @@
 				</div>
 				<div class="ques">
 					<p>
-						가격대 :<br> <select id="place_balance" style="color: black;" name="place_balance">
+						가격대 :<br> <select id="place_balance" style="color: black; border-radius:20px; background: #F05F40;"
+							name="place_balance">
 							<option value="무관">무관</option>
 							<option value="1만원">1만원</option>
 							<option value="2만원">2만원</option>
@@ -179,25 +219,27 @@
 						</select><br>
 					</p>
 				</div>
-				
+
 			</div>
-			<div class="ques6"><hr>
-			<div style="text-align: right;">
-				<input type="button" id="btn" class="btn btn-warning" value="장소검색하기"
-					onclick="test('${root }')">
-				<!-- <input type="submit" value="페이지이동"> -->
+			<div class="ques6">
+				<hr>
+				<div style="text-align: right;">
+					<input type="button" id="btn" class="btn btn-warning"
+						value="장소검색하기" onclick="test('${root }')">
+					<!-- <input type="submit" value="페이지이동"> -->
+				</div>
+
 			</div>
-			
-			</div>
-				
-			
+
+
 
 		</form>
 		<form action="${root}/recommandPlace/selectCourse.do" method="POST">
 			<div id="course" style="display: none">
 
 				<p>
-					코스추천 : <select id="courseSelect" style="color: black;" name="courseSelect">
+					코스추천 : <select id="courseSelect" style="color: black; border-radius:20px; background: #F05F40;"
+						name="courseSelect">
 						<option>--코스선택--</option>
 					</select>&nbsp;&nbsp;
 				</p>

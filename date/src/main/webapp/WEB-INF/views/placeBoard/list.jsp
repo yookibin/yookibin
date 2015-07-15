@@ -39,7 +39,7 @@
 					<input type="submit" class="btn btn-danger" value="검색">
 				</form>
 			</div>
-		</div>
+		</div>	
 	
 		<div style="width:1080px; height:680px; margin-left:auto; margin-right:auto; text-align:center; ">
 		<h3>검색결과</h3>

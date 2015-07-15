@@ -61,7 +61,10 @@ public class RecommandPlaceDaoImpl implements RecommandPlaceDao {
 		System.out.println(dto.getPlace_balance());
 		System.out.println("출력되어라");
 		List<PlaceDto> list = sqlSession.selectList("dao.recommandPlaceMapper.selectList22", dto);
-		System.out.println("이거 하자" + list.size());
+		for(int i=0;i<list.size();i++){
+			float a = list.get(i).getPlace_star();
+			System.out.println(a);
+		}
 		return list;
 	}
 

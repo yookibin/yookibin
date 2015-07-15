@@ -5,8 +5,14 @@
 <c:set var="root" value="${pageContext.request.contextPath }"/>
 <html>
 <style type="text/css">
+#memberManager{
+	width: 1100px;
+	height: 1200px;
+}
 .member{
 	float:left;
+	border: 0px solid #F05F40;
+	font-size:15px;
 }
 
 </style>
@@ -49,7 +55,7 @@
 </head>
 <body>
 
-	<div>
+	<div id="memberManager">
 		<c:forEach var="member" items="${list}" varStatus="status">
 			<div id="${member.id}div" style="float: left">
 				<div class="member">아이디 : ${member.id}&nbsp;&nbsp;</div>

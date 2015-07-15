@@ -48,4 +48,5 @@ public interface EventBoardDao {
 	public int eventEnterAllDel(int event_code);
 	
 	public int joinWriteCheck(HashMap<String,Object> hMap);
+	
 }

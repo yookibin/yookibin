@@ -15,27 +15,27 @@
 	
 </head>
 <body>
-	
+
+<div class="totalDiv">	
 	<form class="form_style"  action="${root }/memberboard/writeOk.do"  method="post" onsubmit="return doPost(this)" enctype="multipart/form-data">	
 		<%-- <input type="hidden" name="boardNumber" value="${boardNumber}"/> --%>
 		<input type="hidden" name="pageNumber" value="${pageNumber}"/>
 		<input type="hidden" name="board_writer" value="${nickName}"/>
 		<input type="hidden" name="memberLevel" value="${memberLevel}"/>
-			
-		<div style="width:598px; height:15px; border-width:2px; text-align:right; padding:15px 0px 0px 0px; border-bottom-width:0px;">
-				<a href="${root}/memberboard/list.do">글목록</a>
-		</div>
-			
 		
+		<div class="line3">
+			<span>
+				<h1>추천 글쓰기</h1>
+			</span>
+		</div>
+		
+		<div class="line">
+			<p class="orangeLine"></p>
+		</div>
 
 		<div class="line">
-			<c:if test="${memberLevel!='AA'}">
-				<span class="content"><input type="text" size="50" name="board_title"/></span>
-			</c:if>
-			
-			<c:if test="${memberLevel=='AA' }">
-				<span class="content"><input type="text" size="50" name="board_title" value="[공지사항]"/></span>
-			</c:if>
+			<label class="title">이벤트 제목</label>
+			<span class="content"><input type="text" size="50" name="board_title"/></span>
 		</div>
 		
 		
@@ -45,12 +45,17 @@
 			</span>
 		</div>
 		
-		<div class="line" style="width:598px; border-width:2px; text-align:center;">
+		<div class="line">
+			<p class="orangeLine"></p>
+		</div>
+		
+		<div style="width:598px; border-width:2px; text-align:center;">
 			<input type="submit" value="확인"/>
 			<input type="reset" value="다시작성"/>
 			<input type="button" value="목록보기" onclick="location.href='${root}/memberboard/list.do'"/> 
 		</div>
 	</form>
+</div>
 </body>
 <script type="text/javascript">
 var oEditors = [];

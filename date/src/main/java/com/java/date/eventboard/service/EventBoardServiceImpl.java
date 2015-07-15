@@ -292,21 +292,23 @@ public class EventBoardServiceImpl implements EventBoardService {
 		Map<String,Object> map=mav.getModelMap();
 		HttpServletRequest request=(HttpServletRequest)map.get("request");
 		
-		int boardSize=3;
-		
+	
+	
 		String pageNumber=request.getParameter("pageNumber");
 		if(pageNumber==null) pageNumber="1";
 		
 		int currentPage=Integer.parseInt(pageNumber);	
+		
+		int boardSize=10;
 		
 		int startRow=(currentPage-1)*boardSize+1;
 		int endRow=currentPage*boardSize;
 		
 		int count=eventBoardDao.boardCount();		//총 게시물 수
 		
-		logger.info("list boardSize:"+boardSize);
-		logger.info("list currentPage:"+currentPage);		
-		logger.info("list count:"+count);
+		//logger.info("list boardSize:"+boardSize);
+		//logger.info("list currentPage:"+currentPage);		
+		//logger.info("list count:"+count);
 		
 		HashMap<String, Integer> hMap=new HashMap<String, Integer>();
 		hMap.put("startRow", startRow);
