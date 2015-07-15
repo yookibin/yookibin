@@ -14,40 +14,44 @@
 	<script type="text/javascript" src="${root}/smarteditor/js/HuskyEZCreator.js"></script>
 </head>
 <body>
-	
+	<jsp:include page="/youAndITop.jsp"/>
+	<div class="totalDiv">	
 	<form class="form_style" action="${root}/memberboard/update.do" method="post" onsubmit="return boardUpdate()">
 		<input type="hidden" name="board_num" value="${memberBoard.board_num}"/>
 		<input type="hidden" name="pageNumber" value="${pageNumber}"/>
 		
-		<div style="width:598px; height:15px; border-width:2px; text-align:right; padding:15px 0px 0px 0px; border-bottom-width:0px;">
-				<a href="${root }/memberboard/list.do?pageNumber=${pageNumber}">글목록</a>
-		</div>
-			
-		<div>
-			<label>작성자</label>
+		<div class="line3">
 			<span>
-				<input type="text" name="board_writer" value="${memberBoard.board_writer}" />
+				<h1>추천 글 수정</h1>
 			</span>
 		</div>
 		
-		<div>
-			<label>제목</label>
-			<span><input type="text" size="50" name="board_title"  value="${memberBoard.board_title}"/></span>
+		<div class="line4">
+			<p class="orangeLine"></p>
 		</div>
 		
-		<div>
-			<label>글내용</label>
-			<span class="content" style="height:230px;">
-				<textarea rows="14" cols="58" name="board_content" id="content">${memberBoard.board_content}</textarea>
+		<div class="line">
+			<label class="title">글 제목</label>
+			<span class="content"><input type="text" size="50" name="board_title" value="${memberBoard.board_title}"/></span>
+		</div>
+		
+		<div class="line" style="height:510px;">
+			<span class="content" style="height:230px; width:700px;">
+				<textarea rows="22" style="width:650px;" name="board_content" id="content">${memberBoard.board_content}</textarea>
 			</span>
 		</div>
 		
-		<div class="line" style="width:598px; border-width:2px; text-align:center;">
+		<div class="line4">
+			<p class="orangeLine"></p>
+		</div>
+		
+		<div class="line" style="width:641px; border-width:0px; text-align:center;">
 			<input type="submit" value="글수정"/>
 			<input type="reset" value="취소"/>
 			<input type="button" value="목록보기" onclick="location.href='${root}/board/list.do?pageNumber=${pageNumber}'">
 		</div>
 	</form>
+	</div>
 </body>
 <script type="text/javascript">
 var oEditors = [];

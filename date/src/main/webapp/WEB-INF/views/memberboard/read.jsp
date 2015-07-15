@@ -59,11 +59,13 @@
 	<link rel="stylesheet" type="text/css" href="${root }/css/board/style.css">
 </head>
 <body>
+<jsp:include page="/youAndITop.jsp"/>
+
 <div class="totalDiv">
-	<input style="margin-left:80%" type="button" align="middle" value="글목록" onclick="location.href='${root}/memberboard/list.do?pageNumber=${pageNumber}'"/>
+	<div class="col-lg-12">
 	<div class="line1">
-	
-		<div class="centers">
+		
+		<div class="centers" >
 			<span id="readTitle">${memberBoard.board_title }</span>
 		</div>
 		
@@ -80,14 +82,17 @@
 			<span>${memberBoard.board_content }</span>
 		</div>
 			
-			<span style="margin-left:50%" id="board_recom">${memberBoard.board_recom}</span>
-			<input type="button" value="추천" id="recom_button" onclick="recommend('${root }', '${memberBoard.board_num}', '${memberBoard.board_recom}', '${pageNumber}', '${nickName}', '${id }')"/><br/>
-		
+			
+			<%-- <input type="button" value="추천" id="recom_button" onclick="recommend('${root }', '${memberBoard.board_num}', '${memberBoard.board_recom}', '${pageNumber}', '${nickName}', '${id }')"/> --%>
+			<button style="margin-left:50%" type="button" class="btn btn-danger btn-circle-lg" value="추천" id="recom_button" onclick="recommend('${root }', '${memberBoard.board_num}', '${memberBoard.board_recom}', '${pageNumber}', '${nickName}', '${id }')"><i class="fa fa-heart">${memberBoard.board_recom}</i>
+            </button>
+			
+			<input style="margin-left:80%" type="button" align="middle" value="글목록" onclick="location.href='${root}/memberboard/list.do?pageNumber=${pageNumber}'"/>
 			<c:if test="${memberBoard.board_writer==nickName}">
 				<input type="button" value="글수정" onclick="updateFun('${root}','${memberBoard.board_num }', '${pageNumber}')" />
 				<input type="button" value="글삭제" onclick="deleteFun('${root}','${memberBoard.board_num }', '${pageNumber}')"/>
 			</c:if>
-				
+			<br/>
 				<%-- <input type="button" value="글목록" onclick="location.href='${root}/memberboard/list.do'"/> --%>
 			<span>
 				<input style="margin-left:15%" type="button" id="replyView" value="댓글보기"/> 
@@ -129,6 +134,7 @@
 			
 			<input style="margin-left:15%" type="button" id="moreComment" onclick="moreComment()" style="display:none;" value="댓글 더 보기"/>
 		</div>
+	</div>
 </div>
 </body>
 </html>

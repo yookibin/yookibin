@@ -15,7 +15,7 @@
 	
 </head>
 <body>
-
+<jsp:include page="/youAndITop.jsp"/>
 <div class="totalDiv">	
 	<form class="form_style"  action="${root }/memberboard/writeOk.do"  method="post" onsubmit="return doPost(this)" enctype="multipart/form-data">	
 		<%-- <input type="hidden" name="boardNumber" value="${boardNumber}"/> --%>
@@ -29,30 +29,30 @@
 			</span>
 		</div>
 		
-		<div class="line">
+		<div class="line4">
 			<p class="orangeLine"></p>
 		</div>
 
 		<div class="line">
-			<label class="title">이벤트 제목</label>
+			<label class="title">글 제목</label>
 			<span class="content"><input type="text" size="50" name="board_title"/></span>
 		</div>
 		
 		
-		<div class="line" style="height:400px;">
+		<div class="line" style="height:510px;">
 			<span class="content" style="height:230px; width:700px;">
 				<textarea name="board_content" id="content" rows="22" style="width:650px;"></textarea>
 			</span>
 		</div>
 		
-		<div class="line">
+		<div class="line4">
 			<p class="orangeLine"></p>
 		</div>
 		
-		<div style="width:598px; border-width:2px; text-align:center;">
+		<div class="line" style="width:641px; border-width:0px; text-align:center;">
 			<input type="submit" value="확인"/>
 			<input type="reset" value="다시작성"/>
-			<input type="button" value="목록보기" onclick="location.href='${root}/memberboard/list.do'"/> 
+			<input type="button" value="목록보기" onclick="location.href='${root}/memberboard/list.do'"/>
 		</div>
 	</form>
 </div>
