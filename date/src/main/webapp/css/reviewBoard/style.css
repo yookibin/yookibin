@@ -1,26 +1,23 @@
-#head {
-	float: left;
-	width: 300px;
-	height: 50px;
+#picture {
+	float:left;
+	width:300px;
+	height:350px;
+	text-align:center; 
+	padding:0 0 0 15%;
 }
 
-#body {
-	clear: left;
-	float: left;
-	width: 300px;
+#content {
+	float:left;
+	width:500px;
+	height:350px;
 }
 
-#foot {
-	width: 850px;
-	clear: left;
+.commentList{
 	float: left;
-	left: 0;
-}
-
-.replyDiv {
-	width: 850px;
-	height: 28px;
-	align:left;
+	width: 982px;
+	height: auto;
+	text-align:center; 
+	padding:0 0 0 2.5%;
 }
 
 .cssId {
@@ -39,7 +36,7 @@
 .cssContent {
 	border: solid 1px black;
 	float: left;
-	width: 300px;
+	width: 396px;
 	text-align:center;
 }
 
@@ -59,12 +56,21 @@
 
 #moreComment {
 	padding: 1em;
-	width: 710px;
+	width: 760px;
 	font-size: .8em;
 	font-weight: bold;
 	background-color: #eee;
+	margin-left: 15%;
 }
 #moreComment:hover {
 	color:#fff;
 	background-color: #999;
 }
+
+.replyDiv {
+	width: 880px;
+	height: 28px;
+	text-align:center;
+	margin-left: 15%;
+}
+

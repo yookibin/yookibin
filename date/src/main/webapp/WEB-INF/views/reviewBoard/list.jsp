@@ -7,14 +7,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link type="text/css" rel="stylesheet"
-	href="${root}/css/reviewBoard/style.css" />
-<script type="text/javascript"
-	src="${root}/css/reviewBoard/replyWrite.js"></script>
-<script type="text/javascript"
-	src="${root}/css/reviewBoard/replyDelete.js"></script>
-<script type="text/javascript"
-	src="${root}/css/reviewBoard/replyUpdate.js"></script>
+<link type="text/css" rel="stylesheet" href="${root}/css/reviewBoard/style.css" />
+<script type="text/javascript" src="${root}/css/reviewBoard/replyWrite.js"></script>
+<script type="text/javascript" src="${root}/css/reviewBoard/replyDelete.js"></script>
+<script type="text/javascript" src="${root}/css/reviewBoard/replyUpdate.js"></script>
 <script type="text/javascript" src="${root}/css/jquery.js"></script>
 <title>Insert title here</title>
 <script>
@@ -38,27 +34,56 @@
 </script>
 </head>
 <body>
-	<div style="width:1200px; height:1200px; margin-left:auto; margin-right:auto;">
-		<div id="head" style="width: 500px; height: 450px; border: 1px solid red; float: left; margin-right: 20px;">
-			<center>
-				<img src="${root}${placeBoard.place_photo}" width=500 height="450" />
-			</center>
-		</div>
-		<div style="width: 500px; height: 450px; border: 1px solid orange; float: left; border-radius: 30px 30px 30px 30px;">
-			<br />
-			<h3>${placeBoard.place_name}</h3>
-			<br /> 주소 ${placeBoard.place_location}<br /> <br /> 전화번호
-			${placeBoard.place_phone}<br /> <br /> 운영시간 ${placeBoard.place_time}<br />
-			<br /> 예산(2인) ${placeBoard.place_price}원<br /> <br />
-			${placeBoard.place_content}<br /> <br />
+	<div style="width:1200px; height:1200px; margin-left:auto; margin-right:auto; border:1px solid black;" >
+		<div id="picture" style="border:1px solid red;">
+			<img src="${root}${placeBoard.place_photo}" width="300" height="250"/>
+			<div id="starDiv">
+				<c:if test="${placeBoard.place_star==0}"><img src="${root}/resources/star/00.png" width="120" height="25" style="margin:0px 0px 0px 52px;"/></c:if>	
+				<c:if test="${placeBoard.place_star>0 && placeBoard.place_star<=0.5}"><img src="${root}/resources/star/05.png" width="120" height="25"/></c:if>
+				<c:if test="${placeBoard.place_star>0.5 && placeBoard.place_star<=1}"><img src="${root}/resources/star/10.png" width="120" height="25"/></c:if>
+				<c:if test="${placeBoard.place_star>1 && placeBoard.place_star<=1.5}"><img src="${root}/resources/star/15.png" width="120" height="25"/></c:if>
+				<c:if test="${placeBoard.place_star>1.5 && placeBoard.place_star<=2}"><img src="${root}/resources/star/20.png" width="120" height="25"/></c:if>
+				<c:if test="${placeBoard.place_star>2 && placeBoard.place_star<=2.5}"><img src="${root}/resources/star/25.png" width="120" height="25"/></c:if>
+				<c:if test="${placeBoard.place_star>2.5 && placeBoard.place_star<=3}"><img src="${root}/resources/star/30.png" width="120" height="25"/></c:if>
+				<c:if test="${placeBoard.place_star>3 && placeBoard.place_star<=3.5}"><img src="${root}/resources/star/35.png" width="120" height="25"/></c:if>
+				<c:if test="${placeBoard.place_star>3.5 && placeBoard.place_star<=4}"><img src="${root}/resources/star/40.png" width="120" height="25"/></c:if>
+				<c:if test="${placeBoard.place_star>4 && placeBoard.place_star<=4.5}"><img src="${root}/resources/star/45.png" width="120" height="25"/></c:if>
+				<c:if test="${placeBoard.place_star>4.5 && placeBoard.place_star<=5}"><img src="${root}/resources/star/50.png" width="120" height="25"/></c:if><br/>
+				${placeBoard.place_star}점
+			</div>
 		</div>
 		
-		<div style="width: 400px; height: 500px;">
-		
+		<div id="content" style="border:1px solid blue;">
+			<b style="font-size:20px;">${placeBoard.place_name}</b>
+			<ul>
+				<li>
+					<b>주          소</b>
+					<span>${placeBoard.place_location}</span>
+				</li>
+				
+				<li>
+					<b>전화번호</b>
+					<span>${placeBoard.place_phone}</span>
+				</li>
+				
+				<li>
+					<b>운영시간</b>
+					<span>${placeBoard.place_time}</span>
+				</li>
+				
+				<li>
+					<b>예산(2인)</b>
+					<span>${placeBoard.place_price}원</span>
+				</li>
+			</ul>
+			
+			<p>${placeBoard.place_content}</p>
 		</div>
 		
-		<div class="commentList">
-			<c:forEach var="reviewList" items="${reviewList}">
+			
+		<div class="commentList" style="border:1px solid green;">
+		
+	 <c:forEach var="reviewList" items="${reviewList}">
 				<div class="replyDiv" id="${reviewList.review_code}">
 					<div class="cssId">${reviewList.review_id}</div>
 					<div class="cssStar">${reviewList.review_star/10}점</div>
@@ -78,7 +103,7 @@
 					</div>
 				</div>			
 			</c:forEach>
-		</div>
+		</div> 
 		
 		<button id="moreComment" onclick="moreComment()" style="display:none">댓글 더 보기 </button>
 	
