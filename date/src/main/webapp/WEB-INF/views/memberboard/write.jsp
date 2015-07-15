@@ -15,6 +15,7 @@
 	
 </head>
 <body>
+
 <div class="totalDiv">	
 	<form class="form_style"  action="${root }/memberboard/writeOk.do"  method="post" onsubmit="return doPost(this)" enctype="multipart/form-data">	
 		<%-- <input type="hidden" name="boardNumber" value="${boardNumber}"/> --%>
