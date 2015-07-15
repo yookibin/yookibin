@@ -204,7 +204,23 @@
 	}
 
 	function myPoint(root, id) {
-
+		alert(root);
+		alert(id);
+		$.ajax({
+			url : "/date/mypage/point.do",
+			type: "post",
+			data :{
+				id:id
+			},
+			success :function(data) {
+				console.log(data);
+				
+				var str="";
+				for(var i=0;i<data.length;i++){
+					str+="<div>"
+				}
+			}
+		});
 	}
 </script>
 </head>
