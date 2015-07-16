@@ -12,6 +12,9 @@
 
 	<script type="text/javascript" src="${root }/css/jquery.js"></script>
 </head>
+
+
+
 <body>
 	<a href="${root }">기본 제공 HomeController</a><br/><br/>
 	<%-- <a href="${root }/memberboard/write.do">글쓰기</a> --%>
