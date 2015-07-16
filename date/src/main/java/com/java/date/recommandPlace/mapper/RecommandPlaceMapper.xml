@@ -4,21 +4,21 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.recommandPlaceMapper">
    <select id="getPlaceList" resultType="com.java.date.recommandPlace.dto.PlaceDto">
-      select * from placee
+      select * from place
       
    </select>
    <select id="getPrice" resultType="Integer" parameterType="String">
-      select place_star from placee where place_name=#{name}
+      select place_star from place where place_name=#{name}
    </select>
    
    <select id="getInfo" resultType="com.java.date.recommandPlace.dto.PlaceDto" parameterType="String">
-      select * from placee where place_code=#{code}
+      select * from place where place_code=#{code}
    </select>
    <select id="nameList" resultType="com.java.date.recommandPlace.dto.PlaceDto">
-      select * from placee
+      select * from place
    </select>
    <select id="userSelect" resultType="com.java.date.recommandPlace.dto.PlaceDto" parameterType="java.util.List">
-      select * from placee
+      select * from place
       <where>
           <foreach collection="list" item="item" index="index" separator="or">
             place_code=#{item}
@@ -28,10 +28,10 @@
    
    
    <select id="test12" resultType="com.java.date.recommandPlace.dto.PlaceDto" parameterType="String">
-      select * from placee where place_code=#{a}
+      select * from place where place_code=#{a}
    </select>
    <select id="selectList22" resultType="com.java.date.recommandPlace.dto.PlaceDto" parameterType="com.java.date.recommandPlace.dto.PlaceDto">
-      select * from placee
+      select * from place
       where (place_gu=#{place_gu} or '무관'= #{place_gu}) 
       and (place_season like '%'||#{place_season}||'%')
       and (place_weather like '%'||#{place_weather}||'%')
@@ -39,9 +39,9 @@
       and (place_balance=#{place_balance} or '무관'= #{place_balance})
    </select>
    <insert id="saveCourse" parameterType="java.util.HashMap">
-      insert into save_coursee values (num_save_coursee_seq.nextval, #{cid}, #{place_code1}, #{place_code2}, TO_CHAR(sysdate,'yy-mm-dd'))
+      insert into save_courses values (num_save_coursee_seq.nextval, #{cid}, #{place_code1}, #{place_code2}, TO_CHAR(sysdate,'yy-mm-dd'))
    </insert>
    <select id="getMyCourseList" parameterType="String" resultType="com.java.date.recommandPlace.dto.SaveCourseDto">
-      select * from save_coursee where save_cid=#{cid}
+      select * from save_courses where save_cid=#{cid}
    </select>
 </mapper>
