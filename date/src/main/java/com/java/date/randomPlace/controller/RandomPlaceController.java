@@ -1,5 +1,6 @@
 package com.java.date.randomPlace.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -74,4 +75,24 @@ public class RandomPlaceController {
 		logger.info(place + "," + weather + "," + time);
 		return randomPlaceService.randomPlaceEnd(place, weather, time);
 	}
+	
+	@RequestMapping(value="/randomplace/randomPlaceSaveCourse.do")
+	public ModelAndView randomPlaceSaveCourse(HttpServletRequest request){
+		logger.info("randomPlaceSaveCourse //");
+		
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("request", request);
+		
+		randomPlaceService.randomPlaceSaveCourse(mav);
+		
+		return mav;
+	}
+	
+	/*
+	$(this).hide("slide", { direction: "left" }, 1000);
+	$(this).show("slide", { direction: "left" }, 1000);
+	
+	*/
+	
+	
 }

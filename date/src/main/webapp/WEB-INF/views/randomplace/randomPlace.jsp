@@ -104,8 +104,11 @@
 	var reAqustion=null;
 	var place=null;
 	var weather=null;
-	var map=null;	
-function randomPlaceStart(thisroot,aquestion){
+	var place_code=[];
+	var id=null;
+function randomPlaceStart(thisroot,aquestion,sessionId){
+	place_code=[];
+	id=sessionId
 	$("#randomPlaceResult").slideUp();
 	$("#start").slideUp();
 	root=thisroot;
@@ -223,42 +226,42 @@ function randomPlaceEnd(questionAnswer){
 			var placeList = "";
 						for (var i = 0; i < data.length;i++) {
 							placeList += "<div class='place'>"
-									+ "<div class=placeImgTitle>"+data[i].place_name+"</div>"
-									+ "<figure class='figurefx default'>"
-									+ "<img src='"+root+data[i].place_photo+"' width='348' height='250' class='placeImg'>"
-									+ "<figcaption>"
-					   				+ "<div>";
-					   				if(data[i].place_star <= 0 && data[i].place_star < 0.5){
-					   					placeList +="<img src='/date/resources/star/00.png' width='120' height='25' style='margin:0px 0px 0px 107px;'/>";}
-					   				if(data[i].place_star <= 0.5 && data[i].place_star < 1){
-					   					placeList +="<img src='/date/resources/star/05.png' width='120' height='25' style='margin:0px 0px 0px 107px;'/>";}
-					   				if(data[i].place_star <= 1 && data[i].place_star < 1.5){
-					   					placeList +="<img src='/date/resources/star/10.png' width='120' height='25' style='margin:0px 0px 0px 107px;'/>";}
-					   				if(data[i].place_star <= 1.5 && data[i].place_star < 2){
-					   					placeList +="<img src='/date/resources/star/15.png' width='120' height='25' style='margin:0px 0px 0px 107px;'/>";}
-					   				if(data[i].place_star <= 2 && data[i].place_star < 2.5){
-					   					placeList +="<img src='/date/resources/star/20.png' width='120' height='25' style='margin:0px 0px 0px 107px;'/>";}
-					   				if(data[i].place_star <= 2.5 && data[i].place_star < 3){
-					   					placeList +="<img src='/date/resources/star/25.png' width='120' height='25' style='margin:0px 0px 0px 107px;'/>";}
-					   				if(data[i].place_star <= 3 && data[i].place_star < 3.5){
-					   					placeList +="<img src='/date/resources/star/30.png' width='120' height='25' style='margin:0px 0px 0px 107px;'/>";}
-					   				if(data[i].place_star <= 3.5 && data[i].place_star < 4){
-					   					placeList +="<img src='/date/resources/star/35.png' width='120' height='25' style='margin:0px 0px 0px 107px;'/>";}
-					   				if(data[i].place_star <= 4 && data[i].place_star < 4.5){
-					   					placeList +="<img src='/date/resources/star/40.png' width='120' height='25' style='margin:0px 0px 0px 107px;'/>";}
-					   				if(data[i].place_star <= 4.5 && data[i].place_star < 5){
-					   					placeList +="<img src='/date/resources/star/45.png' width='120' height='25' style='margin:0px 0px 0px 107px;'/>";} 
-					   				if(data[i].place_star == 5){
-					   					placeList +="<img src='/date/resources/star/50.png' width='120' height='25' style='margin:0px 0px 0px 107px;'/>";} 
-					   			placeList += "</div>"
-					   				+ "<a href='/date/placeBoard/reviewBoard.do?place_code="+data[i].place_code+"'>상세보기</a>"
-					   				+ "</figcaption>"
-					   				+ "</figure>"
-									+ "<div class=placeContent>장소설명 : "
-									+ data[i].place_content + "<br/></div>"
-									+ "</div>";
+								+ "<div class=placeImgTitle>"+data[i].place_name+"</div>"
+								+ "<figure class='figurefx default'>"
+								+ "<img src='"+root+data[i].place_photo+"' width='348' height='250' class='placeImg'>"
+								+ "<figcaption>"
+				   				+ "<div>";
+			   				if(data[i].place_star <= 0 && data[i].place_star < 0.5){
+			   					placeList +="<img src='/date/resources/star/00.png' width='120' height='25' style='margin:0px 0px 0px 107px;'/>";}
+			   				if(data[i].place_star <= 0.5 && data[i].place_star < 1){
+			   					placeList +="<img src='/date/resources/star/05.png' width='120' height='25' style='margin:0px 0px 0px 107px;'/>";}
+			   				if(data[i].place_star <= 1 && data[i].place_star < 1.5){
+			   					placeList +="<img src='/date/resources/star/10.png' width='120' height='25' style='margin:0px 0px 0px 107px;'/>";}
+			   				if(data[i].place_star <= 1.5 && data[i].place_star < 2){
+			   					placeList +="<img src='/date/resources/star/15.png' width='120' height='25' style='margin:0px 0px 0px 107px;'/>";}
+			   				if(data[i].place_star <= 2 && data[i].place_star < 2.5){
+			   					placeList +="<img src='/date/resources/star/20.png' width='120' height='25' style='margin:0px 0px 0px 107px;'/>";}
+			   				if(data[i].place_star <= 2.5 && data[i].place_star < 3){
+			   					placeList +="<img src='/date/resources/star/25.png' width='120' height='25' style='margin:0px 0px 0px 107px;'/>";}
+			   				if(data[i].place_star <= 3 && data[i].place_star < 3.5){
+			   					placeList +="<img src='/date/resources/star/30.png' width='120' height='25' style='margin:0px 0px 0px 107px;'/>";}
+			   				if(data[i].place_star <= 3.5 && data[i].place_star < 4){
+			   					placeList +="<img src='/date/resources/star/35.png' width='120' height='25' style='margin:0px 0px 0px 107px;'/>";}
+			   				if(data[i].place_star <= 4 && data[i].place_star < 4.5){
+			   					placeList +="<img src='/date/resources/star/40.png' width='120' height='25' style='margin:0px 0px 0px 107px;'/>";}
+			   				if(data[i].place_star <= 4.5 && data[i].place_star < 5){
+			   					placeList +="<img src='/date/resources/star/45.png' width='120' height='25' style='margin:0px 0px 0px 107px;'/>";} 
+			   				if(data[i].place_star == 5){
+			   					placeList +="<img src='/date/resources/star/50.png' width='120' height='25' style='margin:0px 0px 0px 107px;'/>";} 
+				   			placeList +="</div>"
+				   				+"<input type='button' value='상세보기' onclick='placeContentOpen("+i+")'/>"
+				   				+"</figcaption>"
+				   				+"</figure>"
+								+"<div class=placeContent>장소설명 : "
+								+data[i].place_content + "<br/></div>"
+								+"</div>";
+							place_code+=data[i].place_code+",";
 						}
-
 						$("#place").empty();
 						$("#place").append(placeList);
 			//ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
@@ -268,14 +271,18 @@ function randomPlaceEnd(questionAnswer){
 			$("#re1").attr("onclick","javascript:searchPlaces()");
 			
 			$("#re1").val("선택");
-			//$("#re1").attr("onclick","javascript:randomPlaceStart(\'"+root+"\','"+reAqustion+"')");
+			$("#re1").attr("onclick","javascript:saveCourses('"+data[0].place_code+"','"+data[1].place_code+"','"+id+"')");
 			$("#re2").val("다시");
-			$("#re2").attr("onclick","javascript:randomPlaceStart(\'"+root+"\','"+reAqustion+"')");
+			$("#re2").attr("onclick","javascript:randomPlaceStart(\'"+root+"\','"+reAqustion+"','"+id+"')");
 		},
 		error:function(){
 			alert("마지막안됭");
 		}
 	});
+}
+function placeContentOpen(i){
+	var replace_code=place_code.split(",");
+	window.open("/date/placeBoard/reviewBoard.do?place_code="+replace_code[i]);
 }
 function placeMapReset(place_cordi1,place_cordi2,place_cordi3,place_cordi4,place_name1,place_name2){
 	var place_name=[place_name1,place_name2];
@@ -306,6 +313,10 @@ function placeMapReset(place_cordi1,place_cordi2,place_cordi3,place_cordi4,place
 	// 이때 지도의 중심좌표와 레벨이 변경될 수 있습니다
 	map.setBounds(bounds);
 }
+
+function saveCourses(place1,place2,id){
+	location.href=root+"/randomplace/randomPlaceSaveCourse.do?place1="+place1+"&place2="+place2+"&id="+id;
+}
 </script>
 <title>Insert title here</title>
 </head>
@@ -319,13 +330,13 @@ function placeMapReset(place_cordi1,place_cordi2,place_cordi3,place_cordi4,place
 		<div id="randomPlaceMain">
 			<div id="start">
 				<input type="button" value="시작" id="startButton" class="btn btn-default"
-					onclick="randomPlaceStart('${root}',${aquestion})"> 
+					onclick="randomPlaceStart('${root}',${aquestion},${id})"> 
 			</div>
 			<div id="question"></div> 
 			<div id="button">
 				<input id="re1" type="button" class="btn btn-default"/> 
 				<input id="re2" type="button" class="btn btn-default"/>
-			</div>		
+			</div>
 		</div>
 	</div>
 </body>

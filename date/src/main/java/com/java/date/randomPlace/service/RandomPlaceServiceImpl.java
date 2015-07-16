@@ -112,4 +112,25 @@ public class RandomPlaceServiceImpl implements RandomPlaceService {
 		
 		return randomPlaceDao.randomPlace(hMap);
 	}
+
+	@Override
+	public void randomPlaceSaveCourse(ModelAndView mav) {
+		Map<String, Object> map= mav.getModelMap();
+		HttpServletRequest request=(HttpServletRequest) map.get("request");
+		String place1=request.getParameter("place1");
+		String place2=request.getParameter("place2");
+		String id=request.getParameter("id");
+		System.out.println(place1+","+place2+","+id);
+		String random="random";
+		HashMap<String, String> hMap=new HashMap<String, String>();
+		hMap.put("place1", place1);
+		hMap.put("place2", place2);
+		hMap.put("id", id);
+		hMap.put("random", random);
+		
+		int check=randomPlaceDao.randomPlaceSaveCourse(hMap);
+		logger.info("course check:"+check);
+		
+		mav.setViewName("mypage/mycourse");
+	}
 }
