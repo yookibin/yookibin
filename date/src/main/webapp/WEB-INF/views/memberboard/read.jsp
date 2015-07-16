@@ -84,24 +84,37 @@
 			
 			
 			<%-- <input type="button" value="추천" id="recom_button" onclick="recommend('${root }', '${memberBoard.board_num}', '${memberBoard.board_recom}', '${pageNumber}', '${nickName}', '${id }')"/> --%>
-			<button style="margin-left:50%" type="button" class="btn btn-danger btn-circle-lg" value="추천" id="recom_button" onclick="recommend('${root }', '${memberBoard.board_num}', '${memberBoard.board_recom}', '${pageNumber}', '${nickName}', '${id }')"><i class="fa fa-heart">${memberBoard.board_recom}</i>
+			<button style="margin-left:50%; margin-top:2%" type="button" class="btn btn-danger btn-circle-lg" value="추천" id="recom_button" onclick="recommend('${root }', '${memberBoard.board_num}', '${memberBoard.board_recom}', '${pageNumber}', '${nickName}', '${id }')"><i class="fa fa-heart">${memberBoard.board_recom}</i>
             </button>
-			
-			<input style="margin-left:80%" type="button" align="middle" value="글목록" onclick="location.href='${root}/memberboard/list.do?pageNumber=${pageNumber}'"/>
+            
+           
+			<%-- <input style="margin-left:80%" type="button" align="middle" value="글목록" onclick="location.href='${root}/memberboard/list.do?pageNumber=${pageNumber}'"/> --%>
 			<c:if test="${memberBoard.board_writer==nickName}">
 				<input type="button" value="글수정" onclick="updateFun('${root}','${memberBoard.board_num }', '${pageNumber}')" />
 				<input type="button" value="글삭제" onclick="deleteFun('${root}','${memberBoard.board_num }', '${pageNumber}')"/>
 			</c:if>
-			<br/>
+			<br/><br/>
 				<%-- <input type="button" value="글목록" onclick="location.href='${root}/memberboard/list.do'"/> --%>
 			<span>
-				<input style="margin-left:15%" type="button" id="replyView" value="댓글보기"/> 
+				<input class="btn btn-outline btn-warning" style="margin-left:15%; font-size: 11px;" type="button" id="replyView" value="댓글보기"/>
+				<button style="margin-left:55%;" type="button" class="btn btn-warning" onclick="location.href='${root}/memberboard/list.do?pageNumber=${pageNumber}'"><i class="fa fa-list" style="font-size: 11px;">글목록</i>
+           		</button> 
 			</span>
+			<br/>
+			<!-- <input style="width:200px; height:100px;" type="button" name="reply_content" class="replyWrite" id="reply" style="display:none;"/> -->
+			<div style="padding-left: 15%; margin-right:39%;" class="form-group">
+				<div class="replyWrite" style="padding: 6px 6px 6px 6px; background-color:lightgray; display:none;">
+					<textarea rows="3" cols="50" name="reply_content" class="replyWrite" id="reply" style="display:none;"></textarea>
+					<span class="replyBtn">
+					<input type="button" value="댓글작성" class="replyWrite" onclick="writeReply('${root}','${memberBoard.board_num}', '${nickName}')" style="display:none; width:100px; height:66px;"/>
+				</span>
+				</div>
+			</div>
+
+</div>
 			
-			<input type="text" name="reply_content" class="replyWrite" id="reply" style="display:none;"/>
-			<input type="button" value="댓글작성" class="replyWrite" onclick="writeReply('${root}','${memberBoard.board_num}', '${nickName}')" style="display:none;"/>
-		
-		<div id="replyAll" style="display:none;">
+			
+		<div id="replyAll" style="display:none;  margin: 0% 15% 0% 15%">
 			
 			
 			<div class="replyDivs" style="display:none;">
@@ -115,14 +128,16 @@
 				</span>
 			</div>
 			
-	
+			
 			<c:forEach var="memberReplyList" items="${memberReplyList}" begin="${startRow }" step="1">
 			
-				<div style="margin-left:15%" class="replyDiv" id="${memberReplyList.reply_num}" style="display:block;">
-					<span>${memberReplyList.reply_num}</span>
-					<span>${memberReplyList.reply_content}</span>
-					<span>${memberReplyList.reply_writer}</span>
-					<span>${memberReplyList.reply_time}</span>
+				<div class="replyDiv" id="${memberReplyList.reply_num}" style="display:block;">
+					<%-- <span>${memberReplyList.reply_num}</span> --%>
+					
+					<span class="name">${memberReplyList.reply_writer}</span>
+					<span class="date">${memberReplyList.reply_time}</span>
+					<br/>
+					<span>${ memberReplyList.reply_content}</span>
 					<%-- <fmt:formatDate value="${memberReplyList.reply_time }" type="date"/> --%>
 					<c:if test="${nickName==memberReplyList.reply_writer }">
 						<a href="javascript:updateReply('${memberReplyList.reply_num}','${root}')">수정</a>
@@ -130,11 +145,9 @@
 					</c:if>
 				</div>
 			</c:forEach>
-			
-			
-			<input style="margin-left:15%" type="button" id="moreComment" onclick="moreComment()" style="display:none;" value="댓글 더 보기"/>
+			<input class="btn btn-outline btn-warning" style="margin-left:30%; font-size: 11px;" type="button" id="moreComment" onclick="moreComment()" style="display:none;" value="댓글 더 보기"/>
 		</div>
 	</div>
-</div>
+
 </body>
 </html>
