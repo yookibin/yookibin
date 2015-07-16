@@ -30,4 +30,6 @@ public interface RecommandPlaceService {
 	public int saveCourse(String place_code1, String place_code2);
 
 	public void moveMypage(ModelAndView mav);
+
+	public void findPlace(ModelAndView mav);
 }

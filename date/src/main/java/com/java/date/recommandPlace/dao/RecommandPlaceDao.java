@@ -9,6 +9,7 @@ public interface RecommandPlaceDao {
 
 
 	public List<PlaceDto> getPlaceDtoList(PlaceDto dto);
+	public List<PlaceDto> getPlaceDtoList();
 
 	public int getPrice(String name);
 

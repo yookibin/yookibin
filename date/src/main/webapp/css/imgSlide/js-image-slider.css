@@ -9,10 +9,10 @@
 #sliderFrame 
 {
     box-sizing: content-box;
-    width:920px;
+    width:923px;
     margin:0 auto; /*center-aligned*/
     padding:20px;
-    box-shadow: 0 0 5px #BBB;border:1px solid #CCC; background-color:#FFF;
+    box-shadow: 0 0 5px #FFF;border:1px solid #FFF; background-color:#FFF;
 }
 
 #slider, #slider div.sliderInner {

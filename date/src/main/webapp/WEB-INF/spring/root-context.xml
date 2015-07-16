@@ -7,8 +7,9 @@
 	<!-- DB환경 설정 -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
   			<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
-			<property name="url" value="jdbc:oracle:thin:@192.168.7.114:1521:xe"/>
-  			<property name="username" value="date3"/>
+			<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+<!-- 			<property name="url" value="jdbc:oracle:thin:@192.168.7.114:1521:xe"/> -->
+  			<property name="username" value="date"/>
   			<property name="password" value="1234"/>
   			<property name="maxActive" value="30"/>
   			<property name="maxIdle" value="30"/>

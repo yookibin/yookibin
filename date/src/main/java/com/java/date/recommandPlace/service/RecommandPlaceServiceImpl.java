@@ -27,15 +27,15 @@ public class RecommandPlaceServiceImpl implements RecommandPlaceService {
 		// TODO Auto-generated method stub
 		Map<String, Object> map = mav.getModelMap();
 
-		HttpServletRequest request = (HttpServletRequest) map.get("request");
-		String place_name = request.getParameter("place_name");
+		/*HttpServletRequest request = (HttpServletRequest) map.get("request");*/
+		/*String place_gu = request.getParameter("place_gu");
 		String place_season = request.getParameter("place_season");
 		String place_weather = request.getParameter("place_weather");
 		String place_time = request.getParameter("place_time");
-		String place_price = request.getParameter("place_price");
+		String place_price = request.getParameter("place_price");*/
 		
 		PlaceDto dto = (PlaceDto) map.get("placeDto");
-		logger.info("잘나오나" + dto.getPlace_name());
+		logger.info("잘나오나" + dto.getPlace_gu());
 		logger.info("잘나오나" + dto.getPlace_season());
 		logger.info("잘나오나" + dto.getPlace_weather());
 		logger.info("잘나오나" + dto.getPlace_time());
@@ -221,6 +221,14 @@ public class RecommandPlaceServiceImpl implements RecommandPlaceService {
 		mav.addObject("lList", lList);
 		mav.setViewName("mypage/mycourse");
 		
+	}
+
+	@Override
+	public void findPlace(ModelAndView mav) {
+		// TODO Auto-generated method stub
+		List<PlaceDto> list = dao.getPlaceDtoList();
+		mav.addObject("list", list);
+		mav.setViewName("recommandPlace/recommandPlace");
 	}
 }
 

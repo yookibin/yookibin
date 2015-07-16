@@ -23,6 +23,12 @@ public class RecommandPlaceDaoImpl implements RecommandPlaceDao {
 		
 		return sqlSession.selectList("dao.recommandPlaceMapper.getPlaceList");
 	}
+	@Override
+	public List<PlaceDto> getPlaceDtoList() {
+		// TODO Auto-generated method stub
+		
+		return sqlSession.selectList("dao.recommandPlaceMapper.getPlaceList");
+	}
 
 	@Override
 	public int getPrice(String name) {
