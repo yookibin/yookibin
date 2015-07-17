@@ -409,3 +409,13 @@
 </body>
 
 </html>
+		<input type="radio" name="place_location" value="신림">신림 &nbsp;
+					<input type="radio" name="place_location" value="신사">신사 <br/>
+					<input type="radio" name="place_location" value="신천">신천 &nbsp;
+					<input type="radio" name="place_location" value="압구정">압구정 &nbsp;
+					<input type="radio" name="place_location" value="여의도">여의도 &nbsp;
+					<input type="radio" name="place_location" value="영등포">영등포 &nbsp;
+					<input type="radio" name="place_location" value="천호">천호 &nbsp;
+					<input type="radio" name="place_location" value="상암">상암 &nbsp;
+					<input type="radio" name="place_location" value="기타">기타 &nbsp;<br/><br/>
+					<input type="submit" class="btn btn-danger" value="검색하기">

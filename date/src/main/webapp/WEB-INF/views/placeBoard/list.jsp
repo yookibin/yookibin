@@ -15,10 +15,146 @@
 </head>
 <body>
 	<jsp:include page="/youAndITop.jsp"/><br/>	
-	<div style="width:1200px; height:1200px; margin-left:auto; margin-right:auto;">
-		<div class="panel panel-warning" style="text-align:center; width:500px; height:200px; margin-left:auto; margin-right:auto;">
+	<div style="width:1200px; height:auto; margin-left:auto; margin-right:auto;">
+	
+	<div id="wrapbody" align="center" style="height:300px;">
+		<div class="date_n_finder" >
+			<div class="date_n_top">
+				<h3 class="tit_date_n"><span><img src="http://image2.yanolja.com/site/imageFile/images/V2/dateCourse/images/20141023/txt_datearea.png" alt="데이트 장소 찾기" /></span></h3>
+			</div>
+	
+			<!-- 지역, 테마, 가격대, 쿠폰 선택박스 -->
+			<div id="finderbox" style="height:200px;">
+				<div class="finder_inner">
+					<dl class="finder_list_2014" id='locationlist'>
+						<dt><strong><img src="http://image2.yanolja.com/site/imageFile/images/V2/dateCourse/images/20141023/txt_area.png" width="60" height="14" alt="지역" /></strong></dt>
+						<dd>
+							<form action="${root}/placeBoard/boardList.do" onsubmit="return placeListForm(this)">
+								<ul class="opt_rap">
+									<li>
+										<input type="radio" name="place_location" value="강남">강남
+									</li>
+									<li>
+										<input type="radio" name="place_location" value="송파">송파
+									</li>
+									<li>
+										<input type="radio" name="place_location" value="종로">종로 
+									</li>
+									<li>
+										<input type="radio" name="place_location" value="사당">사당 
+									</li>
+									<li>
+										<input type="radio" name="place_location" value="삼성">삼성 
+									</li>
+									<li>
+										<input type="radio" name="place_location" value="서래마을">서래마을  
+									</li>
+									<li>
+										<input type="radio" name="place_location" value="신림">신림 
+									</li>
+									<li>
+										<input type="radio" name="place_location" value="신사">신사 
+									</li>
+									<li>
+										<input type="radio" name="place_location" value="신천">신천 
+									</li>
+									<li>
+										<input type="radio" name="place_location" value="영등포">영등포 
+									</li>
+									<li>
+										<input type="radio" name="place_location" value="천호">천호 
+									</li>
+									<li>
+										<input type="submit" class="btn btn-danger" value="검색하기"> 
+									</li>
+								</ul>
+							</form>
+						</dd>			
+					 </dl>
+		
+				<dl id='themelist' class="finder_list_2014">
+					<dt><strong><img src="http://image2.yanolja.com/site/imageFile/images/V2/dateCourse/images/20141023/txt_thema.png" width="60" height="14" alt="테마" /></strong></dt>
+						<dd>
+							<ul class="opt_rap">
+								<li>
+									<input type="radio" name="place_location" value="강남">카페	
+								</li>
+								<li>
+									<input type="radio" name="place_location" value="송파">영화
+								</li>
+								<li>
+									<input type="radio" name="place_location" value="종로">공원 
+								</li>
+								<li>
+									<input type="radio" name="place_location" value="사당">쇼핑
+								</li>
+								<li>
+									<input type="radio" name="place_location" value="삼성">테마파크 
+								</li>
+								<li>
+									<input type="radio" name="place_location" value="서래마을">축제	 
+								</li>
+								<li>
+									<input type="radio" name="place_location" value="신림">문화
+								</li>
+								<li>
+									<input type="radio" name="place_location" value="신사">자연명소
+								</li>
+								<li>
+									<input type="submit" class="btn btn-danger" value="검색하기"> 
+								</li>
+							</ul>
+						</dd>
+					</dl>
+	
+					<dl id="price" class="finder_list_2014">
+						<dt><strong><img src="http://image2.yanolja.com/site/imageFile/images/V2/dateCourse/images/20141023/txt_money.png" width="60" height="14" alt="가격대" /></strong></dt>
+						<dd>
+							<ul class="opt_rap">
+									<li>
+									<input type="radio" name="place_location" value="강남">1만원이하	
+								</li>
+								<li>
+									<input type="radio" name="place_location" value="송파">1만원대
+								</li>
+								<li>
+									<input type="radio" name="place_location" value="종로">2만원대
+								</li>
+								<li>
+									<input type="radio" name="place_location" value="사당">3만원대
+								</li>
+								<li>
+									<input type="radio" name="place_location" value="삼성">4만원대
+								</li>
+								<li>
+									<input type="radio" name="place_location" value="서래마을">5만원대 
+								</li>
+								<li>
+									<input type="radio" name="place_location" value="신림">6만원이상
+								</li>
+								<li>
+									<input type="submit" class="btn btn-danger" value="검색하기"> 
+								</li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
+	        </div>
+	    </div>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		<%-- <div class="panel panel-danger" style="text-align:center; width:500px; height:200px; margin-left:auto; margin-right:auto;">
   			<div class="panel-heading" style="width:500px; height:80px">
-   			 	<h4 class="panel-body">지역으로 장소 찾기</h4>
+   			 	<p class="panel-body">지역으로 장소 찾기</p>
 			</div>
 			<div class="panel-body">
 				<form action="${root}/placeBoard/boardList.do" onsubmit="return placeListForm(this)">
@@ -36,19 +172,24 @@
 					<input type="radio" name="place_location" value="영등포">영등포 &nbsp;
 					<input type="radio" name="place_location" value="천호">천호 &nbsp;
 					<input type="radio" name="place_location" value="상암">상암 &nbsp;
-					<input type="radio" name="place_location" value="기타">기타 &nbsp;<br/>
+					<input type="radio" name="place_location" value="기타">기타 &nbsp;<br/><br/>
 					<input type="submit" class="btn btn-danger" value="검색하기">
 				</form>
 			</div>
 		</div>
-	
-		<div style="width:1080px; height:680px; margin-left:auto; margin-right:auto; text-align:center; ">
+	 --%>
+		<div style="width:1080px; height:680px; margin-left:auto; margin-right:auto; ">
+			<div class="line1">
+				<p class="orangeLine" align="center"></p>
+			</div>
+			<a>신규순</a>&nbsp;||&nbsp;<a>조회순</a>
+			
 			<div class="line1">
 				<p class="orangeLine"></p>
 			</div>
-		<h3>검색결과</h3>
+			
 			<c:forEach var="placeBoard" items="${boardList}">
-				<div style="float:left; width:270px; height:230px">
+				<div style="float:left; width:270px; height:auto;" >
 					<figure class="figurefx default">
 			   			<img src="${root}${placeBoard.place_photo}" width="250" height="180"> 
 			   			<figcaption> 
@@ -100,6 +241,11 @@
 				</c:if>
 			</c:if>
 		</div>
-	</div>
+			<div style="width:1080px; height:680px; margin-left:auto; margin-right:auto; ">
+				<div class="line1">
+					<p class="orangeLine" align="center"></p>
+				</div>
+			</div>
+		</div>
 </body>
 </html>
