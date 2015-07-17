@@ -21,8 +21,8 @@
 <script type="text/javascript" src="${root}/css/reviewBoard/replyWrite.js"></script>
 <script type="text/javascript" src="${root}/css/reviewBoard/jquery.js"></script>
 </head>
-   <body>
-  
+<body>
+   <jsp:include page="/youAndITop.jsp"/>
    <div id="box">
    <div id="head"style="width:400px; height:400px; border:1px solid red; float:left; margin-right:20px;">
    <center><img src="${root}${placeBoard.place_photo}"></center>

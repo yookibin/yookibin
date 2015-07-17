@@ -14,12 +14,13 @@
 <link type="text/css" rel="stylesheet" href="${root}/css/bootstrap/bootstrap.min.css"/>
 </head>
 <body>
+	<jsp:include page="/youAndITop.jsp"/><br/>	
 	<div style="width:1200px; height:1200px; margin-left:auto; margin-right:auto;">
-		<div class="panel panel-danger" style="text-align:center; width:800px; height:130px; margin-left:auto; margin-right:auto;">
-  			<div class="panel-heading">
-   			 	<h3 class="panel-title">데이트 장소 찾기</h3>
+		<div class="panel panel-warning" style="text-align:center; width:500px; height:200px; margin-left:auto; margin-right:auto;">
+  			<div class="panel-heading" style="width:500px; height:80px">
+   			 	<h4 class="panel-body">지역으로 장소 찾기</h4>
 			</div>
-  			<div class="panel-body">
+			<div class="panel-body">
 				<form action="${root}/placeBoard/boardList.do" onsubmit="return placeListForm(this)">
 					<input type="radio" name="place_location" value="강남">강남 &nbsp;
 					<input type="radio" name="place_location" value="송파">송파 &nbsp;
@@ -35,13 +36,16 @@
 					<input type="radio" name="place_location" value="영등포">영등포 &nbsp;
 					<input type="radio" name="place_location" value="천호">천호 &nbsp;
 					<input type="radio" name="place_location" value="상암">상암 &nbsp;
-					<input type="radio" name="place_location" value="기타">기타 &nbsp;
-					<input type="submit" class="btn btn-danger" value="검색">
+					<input type="radio" name="place_location" value="기타">기타 &nbsp;<br/>
+					<input type="submit" class="btn btn-danger" value="검색하기">
 				</form>
 			</div>
-		</div>	
+		</div>
 	
 		<div style="width:1080px; height:680px; margin-left:auto; margin-right:auto; text-align:center; ">
+			<div class="line1">
+				<p class="orangeLine"></p>
+			</div>
 		<h3>검색결과</h3>
 			<c:forEach var="placeBoard" items="${boardList}">
 				<div style="float:left; width:270px; height:230px">

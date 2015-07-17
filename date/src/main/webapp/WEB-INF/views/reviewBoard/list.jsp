@@ -34,8 +34,10 @@
 </script>
 </head>
 <body>
-	<div style="width:1200px; height:1200px; margin-left:auto; margin-right:auto; border:1px solid black;" >
-		<div id="picture" style="border:1px solid red;">
+	<jsp:include page="/youAndITop.jsp"/><br/>
+	<div class="col-lg-12">
+	<div style="width:1200px; height:1200px; margin-left:auto; margin-right:auto;" >
+		<div id="picture">
 			<img src="${root}${placeBoard.place_photo}" width="300" height="250"/>
 			<div id="starDiv">
 				<c:if test="${placeBoard.place_star==0}"><img src="${root}/resources/star/00.png" width="120" height="25" style="margin:0px 0px 0px 52px;"/></c:if>	
@@ -53,11 +55,11 @@
 			</div>
 		</div>
 		
-		<div id="content" style="border:1px solid blue;">
-			<b style="font-size:20px;">${placeBoard.place_name}</b>
+		<div id="content">
+			<b style="font-size:20px;">${placeBoard.place_name}</b><br/>
 			<ul>
 				<li>
-					<b>주          소</b>
+					<b>주 &nbsp; 소</b>
 					<span>${placeBoard.place_location}</span>
 				</li>
 				
@@ -81,7 +83,7 @@
 		</div>
 		
 			
-		<div class="commentList" style="border:1px solid green;">
+		<div class="commentList">
 		
 	 <c:forEach var="reviewList" items="${reviewList}">
 				<div class="replyDiv" id="${reviewList.review_code}">
@@ -131,6 +133,7 @@
 					<input type="text" value="로그인 후 댓글작성이 가능합니다" name="write" size="45" disabled="disabled" /> <input type="button" value="평가하기" />
 				</div>
 			</c:if>
+		</div>
 		</div>
 	</div>	
 </body>

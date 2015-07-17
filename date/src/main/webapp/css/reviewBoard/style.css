@@ -1,15 +1,15 @@
 #picture {
 	float:left;
-	width:300px;
-	height:350px;
+	width:350px;
+	height:320px;
 	text-align:center; 
-	padding:0 0 0 15%;
+	margin-left:15%;
 }
 
 #content {
 	float:left;
 	width:500px;
-	height:350px;
+	height: auto;
 }
 
 .commentList{
@@ -71,5 +71,15 @@
 	width: 880px;
 	height: 28px;
 	text-align:center;
+	margin-left: 15%;
+}
+
+.orangeLine{
+	border-style:solid;border-width:2px;border-color:#F05F40;
+}
+
+
+.line1{
+	width: 70%;
 	margin-left: 15%;
 }
