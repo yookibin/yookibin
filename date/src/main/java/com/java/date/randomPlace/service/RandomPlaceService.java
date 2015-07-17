@@ -13,4 +13,5 @@ public interface RandomPlaceService {
 	
 	public List<PlaceDto> randomPlaceEnd(String place,String weather,String time);
 
+	public void randomPlaceSaveCourse(ModelAndView mav);
 }

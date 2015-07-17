@@ -1,58 +1,79 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<c:set var="root" value="${pageContext.request.contextPath }"/>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link href="${root}/css/imgSlide/js-image-slider.css" rel="stylesheet"
+	type="text/css" />
+<script src="${root}/css/imgSlide/js-image-slider.js"
+	type="text/javascript"></script>
+<link href="${root}/css//imgSlide/generic.css" rel="stylesheet"
+	type="text/css" />
 </head>
 <body>
-<div style="width:760px; height:830px;">
-	<c:forEach var="placeBoard" items="${boardList}" varStatus="status">
-		<div style="float:left">
-			<div id="starDiv" style="display:none">
-				<c:if test="${placeBoard.place_star==0 || placeBarod.place_star<0.5}">
-					<img src="${root}/resources/img/shopping.png"></c:if>
-					
-				<c:if test="${placeBoard.place_star==0.5 || placeBarod.place_star<1}">
-					<img src="${root}/resources/img/shopping.png"></c:if>
-					
-				<c:if test="${placeBoard.place_star==1 || placeBarod.place_star<1.5}">
-					<img src="${root}/resources/img/shopping.png"></c:if>
-					
-				<c:if test="${placeBoard.place_star==1.5 || placeBarod.place_star<2}">
-					<img src="${root}/resources/img/shopping.png"></c:if>
-					
-				<c:if test="${placeBoard.place_star==2 || placeBarod.place_star<2.5}">
-					<img src="${root}/resources/img/shopping.png"></c:if>
-					
-				<c:if test="${placeBoard.place_star==2.5 || placeBarod.place_star<3}">
-					<img src="${root}/resources/img/shopping.png"></c:if>
-					
-				<c:if test="${placeBoard.place_star==3 || placeBarod.place_star<3.5}">
-					<img src="${root}/resources/img/shopping.png"></c:if>
-				
-				<c:if test="${placeBoard.place_star==3.5 || placeBarod.place_star<4}">
-					<img src="${root}/resources/img/shopping.png"></c:if>
-					
-				<c:if test="${placeBoard.place_star==4 || placeBarod.place_star<4.5}">
-					<img src="${root}/resources/img/shopping.png"></c:if>
-				
-				<c:if test="${placeBoard.place_star==4.5|| placeBarod.place_star<5}">
-					<img src="${root}/resources/img/shopping.png"></c:if>
+	<div id="sliderFrame">
+		<div id="slider">
+			<a href="http://www.menucool.com/jquery-slider" target="_blank">
+				<img src="${root}/css/imgSlide/images/image-slider-1.jpg"
+				alt="Welcome to jQuery Slider" />
+			</a> <a class="lazyImage"
+				href="${root}/css/imgSlide/images/image-slider-2.jpg"
+				title="Pure Javascript. No jQuery. No Flash.">Pure JavaScript</a> <a
+				href="http://www.menucool.com/javascript-image-slider"><b
+				data-src="${root}/css/imgSlide/images/image-slider-3.jpg">Image
+					Slider</b></a> <a class="lazyImage"
+				href="${root}/css/imgSlide/images/image-slider-4.jpg" title="">Slide
+				4</a>
+		</div>
+		<!--thumbnails-->
+		<div id="thumbs">
+			<div class="thumb">
+				<div class="frame">
+					<img src="${root}/css/imgSlide/images/thumb1.jpg" />
 				</div>
-			
-	 		<span id="${status.index}" onmouseover="mouseOver('${placeBoard.place_star}','${status.index}','${placeBoard.place_code}')" onmouseout="mouseOut('${status.index}', '${placeBoard.place_code}')" style="position:relative; width:60; height:60;">
-	  			<img src="${root}${placeBoard.place_photo}" width="180" height="180"/>
-			</span><br/>
-			
-			<span style="text-align:center;">${placeBoard.place_name}</span><br/>
-			
-		    <span id="${placeBoard.place_code}" style="position: relative; top:-120px; width:40; height:40;"></span><br/>
-		    
-			<a href="${root}/placeBoard/reviewBoard.do?place_code=${placeBoard.place_code}">평가하기</a><br/><br/><br/>
-		</div>  
-	</c:forEach><br/>
+				<div class="thumb-content">
+					<p>HTML Content</p>
+					Thumbnails allows any HTML content
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+			<div class="thumb">
+				<div class="frame">
+					<img src="${root}/css/imgSlide/images/thumb2.jpg" />
+				</div>
+				<div class="thumb-content">
+					<p>Customizable</p>
+					Thumbnail style is customizable
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+			<div class="thumb">
+				<div class="frame">
+					<img src="${root}/css/imgSlide/images/thumb3.jpg" />
+				</div>
+				<div class="thumb-content">
+					<p>Variety of Layouts</p>
+					Just a CSS tweak.
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+			<div class="thumb">
+				<div class="frame">
+					<img src="${root}/css/imgSlide/images/thumb4.jpg" />
+				</div>
+				<div class="thumb-content">
+					<p>Integration</p>
+					Built-in functions for the thumbnails
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+		</div>
+		<!--clear above float:left elements. It is required if above #slider is styled as float:left. -->
+		<div style="clear: both; height: 0;"></div>
 	</div>
 </body>
 </html>

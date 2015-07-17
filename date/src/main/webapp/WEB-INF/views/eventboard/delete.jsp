@@ -8,8 +8,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>게시판 삭제</title>
-<script type="text/javascript" src="script.js"></script>
-<link rel="stylesheet" type="text/css" href="style.css">
+<script type="text/javascript" src="${root }/css/eventBoard/script.js"></script>
+<link href="${root }/css/eventBoard/style.css" rel="stylesheet"/>
 </head>
 <body>
 	<c:set var="root" value="${pageContext.request.contextPath }"/>
@@ -24,6 +24,12 @@
 			
 			if(input==true){
 				document.deleteForm.submit();
+			}
+			if(input==false){
+				//alert("gkgk");
+				//var url=${root }+"/eventBoard/list.do";
+				//alert(url);
+				//location.href=url;
 			}
 			
 		</script>

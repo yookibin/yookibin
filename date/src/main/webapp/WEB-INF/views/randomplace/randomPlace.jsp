@@ -10,11 +10,9 @@
 <script type="text/javascript" src="${root}/css/jquery.js"></script>
 <script type="text/javascript"
 	src="//apis.daum.net/maps/maps3.js?apikey=4b1c3ff87f73232dda30873bb5e65f33&libraries=services"></script>
-<script type="text/javascript"
-	src="//apis.daum.net/maps/maps3.js?apikey=4b1c3ff87f73232dda30873bb5e65f33"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="${root}/css/placeBoard/style.css"/>
 <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-
 <style type="text/css">
 #randomPlace{
 	width:1100px;
@@ -75,13 +73,7 @@
 	color: white;
 }
 
-#fristPlace{
-	float:left;
-	width: 50%;
-	height: 450px;
-}
-
-#secondPlace{
+.place{
 	float:left;
 	width: 50%;
 	height: 450px;
@@ -112,8 +104,11 @@
 	var reAqustion=null;
 	var place=null;
 	var weather=null;
-	
-function randomPlaceStart(thisroot,aquestion){
+	var place_code=[];
+	var id=null;
+function randomPlaceStart(thisroot,aquestion,sessionId){
+	place_code=[];
+	id=sessionId
 	$("#randomPlaceResult").slideUp();
 	$("#start").slideUp();
 	root=thisroot;
@@ -202,7 +197,7 @@ function randomPlaceEnd(questionAnswer){
 					center: new daum.maps.LatLng(34.450701, 126.570667),
 					level: 3
 				};
-			var map=new daum.maps.Map(mapContainer, mapOptions);
+			map=new daum.maps.Map(mapContainer, mapOptions);
 			var points = [ 
 		 		new daum.maps.LatLng(data[0].place_cordi1, data[0].place_cordi2),
 				new daum.maps.LatLng(data[1].place_cordi1, data[1].place_cordi2)
@@ -227,31 +222,67 @@ function randomPlaceEnd(questionAnswer){
 			// LatLngBounds 객체에 추가된 좌표들을 기준으로 지도의 범위를 재설정합니다
 			// 이때 지도의 중심좌표와 레벨이 변경될 수 있습니다
 			map.setBounds(bounds);
-
-			// ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
-			
-			$("#fristPlace > img").attr("src",root+data[0].place_photo);
-			$("#fristPlace > .placeContent").text(data[0].place_content);
-			$("#fristPlace > .placeImgTitle").text(data[0].place_name);
-			
-			$("#secondPlace > img").attr("src",root+data[1].place_photo);
-			$("#secondPlace > .placeContent").text(data[1].place_content);
-			$("#secondPlace > .placeImgTitle").text(data[1].place_name);
+			//희준이별점부분ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+			var placeList = "";
+						for (var i = 0; i < data.length;i++) {
+							placeList += "<div class='place'>"
+								+ "<div class=placeImgTitle>"+data[i].place_name+"</div>"
+								+ "<figure class='figurefx default'>"
+								+ "<img src='"+root+data[i].place_photo+"' width='348' height='250' class='placeImg'>"
+								+ "<figcaption>"
+				   				+ "<div>";
+			   				if(data[i].place_star <= 0 && data[i].place_star < 0.5){
+			   					placeList +="<img src='/date/resources/star/00.png' width='120' height='25' style='margin:0px 0px 0px 107px;'/>";}
+			   				if(data[i].place_star <= 0.5 && data[i].place_star < 1){
+			   					placeList +="<img src='/date/resources/star/05.png' width='120' height='25' style='margin:0px 0px 0px 107px;'/>";}
+			   				if(data[i].place_star <= 1 && data[i].place_star < 1.5){
+			   					placeList +="<img src='/date/resources/star/10.png' width='120' height='25' style='margin:0px 0px 0px 107px;'/>";}
+			   				if(data[i].place_star <= 1.5 && data[i].place_star < 2){
+			   					placeList +="<img src='/date/resources/star/15.png' width='120' height='25' style='margin:0px 0px 0px 107px;'/>";}
+			   				if(data[i].place_star <= 2 && data[i].place_star < 2.5){
+			   					placeList +="<img src='/date/resources/star/20.png' width='120' height='25' style='margin:0px 0px 0px 107px;'/>";}
+			   				if(data[i].place_star <= 2.5 && data[i].place_star < 3){
+			   					placeList +="<img src='/date/resources/star/25.png' width='120' height='25' style='margin:0px 0px 0px 107px;'/>";}
+			   				if(data[i].place_star <= 3 && data[i].place_star < 3.5){
+			   					placeList +="<img src='/date/resources/star/30.png' width='120' height='25' style='margin:0px 0px 0px 107px;'/>";}
+			   				if(data[i].place_star <= 3.5 && data[i].place_star < 4){
+			   					placeList +="<img src='/date/resources/star/35.png' width='120' height='25' style='margin:0px 0px 0px 107px;'/>";}
+			   				if(data[i].place_star <= 4 && data[i].place_star < 4.5){
+			   					placeList +="<img src='/date/resources/star/40.png' width='120' height='25' style='margin:0px 0px 0px 107px;'/>";}
+			   				if(data[i].place_star <= 4.5 && data[i].place_star < 5){
+			   					placeList +="<img src='/date/resources/star/45.png' width='120' height='25' style='margin:0px 0px 0px 107px;'/>";} 
+			   				if(data[i].place_star == 5){
+			   					placeList +="<img src='/date/resources/star/50.png' width='120' height='25' style='margin:0px 0px 0px 107px;'/>";} 
+				   			placeList +="</div>"
+				   				+"<input type='button' value='상세보기' onclick='placeContentOpen("+i+")'/>"
+				   				+"</figcaption>"
+				   				+"</figure>"
+								+"<div class=placeContent>장소설명 : "
+								+data[i].place_content + "<br/></div>"
+								+"</div>";
+							place_code+=data[i].place_code+",";
+						}
+						$("#place").empty();
+						$("#place").append(placeList);
+			//ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 			
 			$("#placeMapReset").attr("onclick","javascript:placeMapReset('"+data[0].place_cordi1+"','"+data[0].place_cordi2+"','"+data[1].place_cordi1+"','"+data[1].place_cordi2+"','"+data[0].place_name+"','"+data[1].place_name+"')");
 			
 			$("#re1").attr("onclick","javascript:searchPlaces()");
 			
 			$("#re1").val("선택");
-			//$("#re1").attr("onclick","javascript:randomPlaceStart(\'"+root+"\','"+reAqustion+"')");
+			$("#re1").attr("onclick","javascript:saveCourses('"+data[0].place_code+"','"+data[1].place_code+"','"+id+"')");
 			$("#re2").val("다시");
-			$("#re2").attr("onclick","javascript:randomPlaceStart(\'"+root+"\','"+reAqustion+"')");
+			$("#re2").attr("onclick","javascript:randomPlaceStart(\'"+root+"\','"+reAqustion+"','"+id+"')");
 		},
 		error:function(){
 			alert("마지막안됭");
 		}
 	});
-	
+}
+function placeContentOpen(i){
+	var replace_code=place_code.split(",");
+	window.open("/date/placeBoard/reviewBoard.do?place_code="+replace_code[i]);
 }
 function placeMapReset(place_cordi1,place_cordi2,place_cordi3,place_cordi4,place_name1,place_name2){
 	var place_name=[place_name1,place_name2];
@@ -282,35 +313,30 @@ function placeMapReset(place_cordi1,place_cordi2,place_cordi3,place_cordi4,place
 	// 이때 지도의 중심좌표와 레벨이 변경될 수 있습니다
 	map.setBounds(bounds);
 }
+
+function saveCourses(place1,place2,id){
+	location.href=root+"/randomplace/randomPlaceSaveCourse.do?place1="+place1+"&place2="+place2+"&id="+id;
+}
 </script>
 <title>Insert title here</title>
 </head>
 <body>
 	<div id="randomPlace">
 		<div id="randomPlaceResult">
-			<div id="fristPlace">
-				<div class=placeImgTitle></div>
-				<img width="250px" height="250px" id="img1">
-				<div class=placeContent></div>
-			</div>
-			<div id="secondPlace">
-				<div class=placeImgTitle></div>
-				<img width="250px" height="250px" id="img2">
-				<div class=placeContent></div>
-			</div>
+			<div id="place"></div>
 			<input id="placeMapReset" type="button" value="처음위치" class="btn btn-default">
 			<div id="map"></div>
 		</div>
 		<div id="randomPlaceMain">
 			<div id="start">
 				<input type="button" value="시작" id="startButton" class="btn btn-default"
-					onclick="randomPlaceStart('${root}',${aquestion})"> 
+					onclick="randomPlaceStart('${root}',${aquestion},${id})"> 
 			</div>
 			<div id="question"></div> 
 			<div id="button">
 				<input id="re1" type="button" class="btn btn-default"/> 
 				<input id="re2" type="button" class="btn btn-default"/>
-			</div>		
+			</div>
 		</div>
 	</div>
 </body>

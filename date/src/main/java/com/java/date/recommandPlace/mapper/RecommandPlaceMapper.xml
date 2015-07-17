@@ -6,7 +6,6 @@
    <select id="getPlaceList" resultType="com.java.date.recommandPlace.dto.PlaceDto">
       select * from place
       
-      
    </select>
    <select id="getPrice" resultType="Integer" parameterType="String">
       select place_star from place where place_name=#{name}

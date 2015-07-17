@@ -25,6 +25,8 @@ public class MemberManagerController {
 		ModelAndView mav=new ModelAndView();
 		
 		memberManagerService.memberManager(mav);
+		//삭제해야될부분
+	//	mav.setViewName("membermanager/memberManager");
 		
 		return mav;
 	}

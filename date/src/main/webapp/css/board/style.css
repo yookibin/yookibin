@@ -1,9 +1,27 @@
 @CHARSET "UTF-8";
 
 /* -- DEFUAL STYLE START ---------------------------------------- */
+/* 댓글 리스트 css */
+.comment {width:608px; border:1px solid #F0F0F0; background:#f9f9f9; padding:5px 5px 0 5px; overflow:hidden;
+
+}
+
+/* 댓글 날짜 관련 css */
+.date{ font:0.9em Verdana, Helvetica, Arial, Gulim, sans_serif;color:#777;}
+
+/* 댓글 작성자 */
+.name{color:#666; font-weight:bold;}
+
+/* 댓글 구분 선 */
+.replyDiv{
+	border-bottom:dotted thin aqua;
+	width:800px; background:#f9f9f9; padding:5px 5px 0 5px; overflow:hidden;
+}
+
 .centers {
     border:0px solid #8AC007;
-    padding: 10px;
+    
+    
 }
 
 .line1{
@@ -22,9 +40,9 @@
 }
 
 .line3{	
-	width:650px;height:40px;float:left;
+	width:650px;height:80px;float:left;
 	border-style:solid;border-width:0px;border-color:#000000;
-	margin:0px 0px 0px 0px;padding:0px 0px 0px 0px;text-align:left; 
+	margin:0px 0px 0px 0px;padding:0px 0px 0px 0px;text-align:left;
 }
 
 .orangeLine{
@@ -39,8 +57,8 @@
 
 .totalDiv{
 	width:1200px;
-	height:1200px;
-	margin:0% auto 0% auto;
+	margin:auto auto auto auto;
+	
 }
 /* */
  .myTh {
@@ -51,8 +69,6 @@ body{
    font-size:12px;
    font-family:Gulim, dotum, sans-serif;
 }
-
-
 
 a:link {
 	text-decoration:none;
@@ -68,13 +84,18 @@ a:hover {
 	text-decoration:underline;
 	color:black
 }
+
+/* 댓글 버튼  */
+.replyBtn{
+	  position: absolute;
+}
 /* -- DEFUAL STYLE START ----------------------------------------- */
 
 
 /* -- WRITE UPDATE STYLE START -------------------------------- */
 .form_style{
-	width:1000px; height:420px;
-	margin:0px 0px 0px 100px
+	width:700px; height:420px;
+	margin:auto auto 0% auto;
 	/*border-style:dotted;border-width:1px;border-color:red;*/
 }
 
@@ -84,8 +105,14 @@ a:hover {
 	margin:0px 0px 0px 0px;padding:0px 0px 0px 0px;text-align:left; 
 }
 
+.line4{
+	width:650px;height:30px;float:left;
+	border-style:solid;border-width:0px;border-color:#000000;
+	margin:0px 0px 0px 0px;padding:0px 0px 0px 0px;text-align:left; 
+}
+
 .title{
-	width:96px;height:12px;float:left;
+	width:70px;height:12px;float:left;
 	border-style:solid;border-width:0px;border-color:#000000;
 	border-right-width:0px;border-bottom-width:0px;
     padding:8px 0px 8px 2px;text-align:left; 

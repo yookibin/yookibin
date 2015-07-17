@@ -81,4 +81,9 @@ public class RandomPlaceDaoImpl implements RandomPlaceDao {
 		return list;
 	}
 
+	@Override
+	public int randomPlaceSaveCourse(HashMap<String, String> hMap) {
+		return sqlSession.insert("dao.randomPlaceMapper.saveCourse", hMap);
+	}
+
 }

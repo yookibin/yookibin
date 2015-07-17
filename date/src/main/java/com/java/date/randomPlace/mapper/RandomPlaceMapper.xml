@@ -27,4 +27,10 @@
 			select * from place where place_gu=#{endPlace} and place_time=#{endTime} and place_weather like #{endWeather} ||'%'
 		]]>
 	</select>
+	
+	<insert id="saveCourse" parameterType="java.util.HashMap">
+		<![CDATA[
+			insert into save_coursee values (num_save_coursee_seq.nextval, #{id}, #{place1}, #{place2}, TO_CHAR(sysdate,'yy-mm-dd'), #{random}) 
+		]]>
+	</insert>
 </mapper>

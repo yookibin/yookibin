@@ -28,8 +28,13 @@ public class RecommandPlaceController {
 	 * @description : 코스추천페이지로 이동한다.
 	 */
 	@RequestMapping("/recommandPlace/findPlace.do")
-	public String findPlace() {
-		return "recommandPlace/recommandPlace";
+	public ModelAndView findPlace(HttpServletRequest request,
+			HttpServletResponse response) {
+		logger.info("findPlace ㅋㅋ");
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("request", request);
+		service.findPlace(mav);
+		return mav;
 	}
 	
 	/**

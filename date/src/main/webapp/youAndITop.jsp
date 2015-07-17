@@ -46,77 +46,85 @@
 </head>
 
 <body>
+	<i style="width:30px; height:30px" class="fa fa-4x fa-diamond wow bounceIn text-primary"></i>
 
-	
-		<div class="container" style="height: 120px;">
+	<div class="container" style="height: 120px;">
 
-			<div class="row">
-				<div class="col-lg-3 col-md-6 text-center">
-					<div class="service-box">
-						<!-- fa-diamond이부분이 그림 사진으로 변경가능 -->
-						<i class="fa fa-4x fa-diamond wow bounceIn text-primary"></i>
-						<!-- <p class="text-muted">Our templates are updated regularly so they don't break.</p> -->
-						<div id="topMenu">
-							<ul>
-								<li class="topMenuLi" style="margin:0 0 0 14px;"><a class="menuLink" href="">데이트
-										코스추천</a>
-									<ul class="submenu" style="position: relative; z-index: 1;">
-										<li><a href="" class="submenuLink longLink">데이트코스 추천</a></li>
-										<li><a href="" class="submenuLink longLink">랜덤데이트 추천</a></li>
-										<li><a href="" class="submenuLink longLink">테마별장소 선택</a></li>
-									</ul></li>
-							</ul>
-						</div>
+		<div class="row">
+			<div class="col-lg-3 col-md-6 text-center">
+				<div class="service-box">
+					<!-- fa-diamond이부분이 그림 사진으로 변경가능 -->
+					<i class="fa fa-4x fa-diamond wow bounceIn text-primary"></i>
+					<!-- <p class="text-muted">Our templates are updated regularly so they don't break.</p> -->
+					<div id="topMenu">
+						<ul>
+							<li class="topMenuLi" style="margin: 0 0 0 14px;"><a
+								class="menuLink"
+								href="http://unikys.tistory.com/category/Programming%20Lecture">데이트
+									코스추천</a>
+								<ul class="submenu" style="z-index:1;">
+									<li><a href="${root }/recommandPlace/findPlace.do"
+										class="submenuLink">데이트코스 추천</a></li>
+									<li><a href="${root}/randomplace/randomPlaceStart.do"
+										class="submenuLink">랜덤데이트 추천</a></li>
+									<li><a href="${root }/placesearch/choice.do"
+										class="submenuLink">테마별장소 선택</a></li>
+								</ul></li>
+						</ul>
+					</div>
 
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6 text-center">
+				<div class="service-box">
+
+					<!-- fa-paper-plane 부분이 그림으로 사진 -->
+					<i class="fa fa-4x fa-paper-plane wow bounceIn text-primary"
+						data-wow-delay=".1s"></i>
+					<!-- <p class="text-muted">You can use this theme as is, or you can make changes!</p> -->
+					<div id="topMenu">
+						<ul>
+							<li class="topMenuLi" style="margin: 0 0 0 14px;"><a
+								class="menuLink" href="${root }/memberboard/list.do">회원추천
+									게시판</a></li>
+						</ul>
+					</div>
+
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6 text-center">
+				<div class="service-box">
+
+					<!-- fa-newspaper-o 부분이 그림 -->
+					<i class="fa fa-4x fa-newspaper-o wow bounceIn text-primary"
+						data-wow-delay=".2s"></i>
+					<!-- <p class="text-muted">We update dependencies to keep things fresh.</p> -->
+					<div id="topMenu">
+						<ul>
+							<li class="topMenuLi" style="margin: 0 0 0 14px;"><a
+								class="menuLink" href="${root }/placeBoard/boardList.do">장소
+									게시판</a></li>
+						</ul>
 					</div>
 				</div>
-				<div class="col-lg-3 col-md-6 text-center">
-					<div class="service-box">
+			</div>
+			<div class="col-lg-3 col-md-6 text-center">
+				<div class="service-box">
 
-						<!-- fa-paper-plane 부분이 그림으로 사진 -->
-						<i class="fa fa-4x fa-paper-plane wow bounceIn text-primary"
-							data-wow-delay=".1s"></i>
-						<!-- <p class="text-muted">You can use this theme as is, or you can make changes!</p> -->
-						<div id="topMenu">
-							<ul>
-								<li class="topMenuLi" style="margin:0 0 0 14px;"><a class="menuLink" href="">회원추천
-										게시판</a></li>
-							</ul>
-						</div>
-
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6 text-center">
-					<div class="service-box">
-
-						<!-- fa-newspaper-o 부분이 그림 -->
-						<i class="fa fa-4x fa-newspaper-o wow bounceIn text-primary"
-							data-wow-delay=".2s"></i>
-						<!-- <p class="text-muted">We update dependencies to keep things fresh.</p> -->
-						<div id="topMenu">
-							<ul>
-								<li class="topMenuLi" style="margin:0 0 0 14px;"><a class="menuLink" href="">장소
-										게시판</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6 text-center">
-					<div class="service-box">
-
-						<!-- fa-heart 부분이 그림 -->
-						<i class="fa fa-4x fa-heart wow bounceIn text-primary"
-							data-wow-delay=".3s"></i>
-						<!-- <p class="text-muted">You have to make your websites with love these days!</p> -->
-						<div id="topMenu">
-							<ul>
-								<li class="topMenuLi" style="margin:0 0 0 14px;"><a class="menuLink" href="">이벤트 게시판</a></li>
-							</ul>
-						</div>
+					<!-- fa-heart 부분이 그림 -->
+					<i class="fa fa-4x fa-heart wow bounceIn text-primary"
+						data-wow-delay=".3s"></i>
+					<!-- <p class="text-muted">You have to make your websites with love these days!</p> -->
+					<div id="topMenu">
+						<ul>
+							<li class="topMenuLi" style="margin: 0 0 0 14px;"><a
+								class="menuLink" href="${root }/eventBoard/list.do">이벤트 게시판</a></li>
+						</ul>
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
 
 
 

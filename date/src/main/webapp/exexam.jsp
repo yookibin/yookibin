@@ -86,9 +86,9 @@
 			<li class="topMenuLi"><a class="menuLink"
 				href="http://unikys.tistory.com/category/Programming%20Lecture">데이트 코스추천</a>
 				<ul class="submenu">
-					<li><a href="" class="submenuLink longLink">속깊은 자바스크립트 강좌</a></li>
-					<li><a href="" class="submenuLink longLink">밑바닥부터 홈페이지 만들기</a></li>
-					<li><a href="" class="submenuLink longLink">안드로이드 앱 개발</a></li>
+					<li><a href="" class="submenuLink">속깊은 자바스크립트 강좌</a></li>
+					<li><a href="" class="submenuLink">밑바닥부터 홈페이지 만들기</a></li>
+					<li><a href="" class="submenuLink">안드로이드 앱 개발</a></li>
 				</ul></li>
 			<li>|</li>
 			<li class="topMenuLi"><a class="menuLink"
