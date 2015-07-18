@@ -38,28 +38,6 @@
 
 </head>
 <body>
-<%-- 	
-	<form action="${root }/member/login.do" method="post">
-		<table border="1" align="center" cellpadding="2" cellspacing="0">
-			<tr>
-				<td>회원ID</td>
-				<td><input type="text" name="id"/></td>
-			</tr>
-			
-			<tr>
-				<td>비밀번호</td>
-				<td><input type="password" name="password" /></td>
-			</tr>
-			
-			<tr>
-				<td colspan="2" align="center">
-					<input type="submit" value="확인"/>
-					<input type="reset" value="취소"/>
-				</td>
-			</tr>
-		</table>
-	   </form> --%>
-<!-- ///////////////////////////////////////////////////////////// -->	
 
 	    <div class="container">
         <div class="row">
@@ -72,7 +50,7 @@
                         <form action="${root }/member/login.do" method="post">
                             <fieldset>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="E-mail" name="id" type="text" autofocus>
+                                    <input class="form-control" placeholder="ID" name="id" type="text" autofocus>
                                 </div>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Password" name="password" type="password" value="">

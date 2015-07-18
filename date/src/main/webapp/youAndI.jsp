@@ -194,9 +194,9 @@
 					</div>
      
 					
-
+	<div class="well" style="background-color:#FAF4C0">
 	<section id="services">
-		<div class="container">
+		<div class="container" >
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">Menu</h2>
@@ -277,7 +277,7 @@
 
 
 	</section>
-	
+	</div>
 
 	<section class="no-padding" id="portfolio">
 		<div class="container-fluid">

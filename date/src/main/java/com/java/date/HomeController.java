@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Handles requests for the application home page.
@@ -114,7 +115,7 @@ public class HomeController {
 		System.out.println("8");
 		String file_result ="";
 		// 추가 
-		String dir="C:\\Users\\KOSTA\\date\\date\\src\\main\\webapp\\resources\\eventBoard";
+		//String dir="C:\\Users\\KOSTA\\date\\date\\src\\main\\webapp\\resources\\eventBoard";
 		try{
 			//파일이 존재하면
 			if(file_data !=null && file_data.getOriginalFilename()!=null){
@@ -164,7 +165,7 @@ public class HomeController {
 	@RequestMapping(value="/multipleAjax", method=RequestMethod.POST)
 	public void multipleAjax(HttpServletRequest request, HttpServletResponse response){
 		// 추가 
-		String dir="C:\\Users\\KOSTA\\date\\date\\src\\main\\webapp\\";
+		//String dir="C:\\Users\\KOSTA\\date\\date\\src\\main\\webapp\\";
 		System.out.println("9");
 		try{
 			String sFileInfo=""; // 파일 정보
@@ -227,6 +228,6 @@ public class HomeController {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-	}
+	}	
 	
 }
