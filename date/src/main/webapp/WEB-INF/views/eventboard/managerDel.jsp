@@ -30,6 +30,9 @@
 			
 			if(input==true){
 				document.deleteForm.submit();
+			}else{
+				var url="${root}/eventBoard/managerList.do?event_code=${event_code}&group_number=${group_number}&sequence_number=${sequence_number}&sequence_level=${sequence_level}&pageNumber=${pageNumber}";
+				location.href=url;
 			}
 			
 		</script>

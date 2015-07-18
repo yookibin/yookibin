@@ -30,6 +30,8 @@
 				//var url=${root }+"/eventBoard/list.do";
 				//alert(url);
 				//location.href=url;
+				var url="${root}/eventBoard/list.do";
+				location.href=url;
 			}
 			
 		</script>

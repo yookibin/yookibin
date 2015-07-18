@@ -7,7 +7,39 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
 <title>Insert title here</title>
+<!-- Pagination -->
+<link href="${root }/css/eventBoard/style.css" rel="stylesheet"/>
+
+<!-- Bootstrap Core CSS -->
+  <link href="${root }/css/bootstrap/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- MetisMenu CSS -->
+  <link href="${root }/css/bootstrap/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+
+  <!-- DataTables CSS -->
+  <link href="${root }/css/bootstrap/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
+
+  <!-- DataTables Responsive CSS -->
+  <link href="${root }/css/bootstrap/bower_components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link href="${root }/css/bootstrap/dist/css/sb-admin-2.css" rel="stylesheet">
+
+  <!-- Custom Fonts -->
+  <link href="${root }/css/bootstrap/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  
 <script type="text/javascript">
 	function randomFun(root, event_code, group_number, sequence_number, sequence_level, pageNumber, count, event_period){
 		//alert("하하하 랜덤추첨!!");
@@ -72,75 +104,91 @@
 </script>
 </head>
 <body>
-<a href="${root}/eventBoard/list.do?pageNumber=${pageNumber}">이벤트list로 가기</a><br/>
-<input type="button" value="당첨자 발표 글 쓰기(랜덤당첨)" onclick="randomFun('${root }','${event_code}','${group_number }','${sequence_number }','${sequence_level }','${pageNumber }','${count }','${event_period }')" />
-<input type="button" value="당첨자 발표 글 쓰기(수동서기)" onclick="noRandomFun('${root }','${event_code}','${group_number }','${sequence_number }','${sequence_level }','${pageNumber }','${count }','${event_period }')" />
-<br/><br/>
+<jsp:include page="/youAndITop.jsp"/>
 
-	<c:if test="${count==0 }">		
-		<h4>해당 이벤트에 참가한 글이 없습니다.</h4>		
-	</c:if>
+    <div class="totalDiv">    
+        <div class="col-lg-12">
+            <div class="panel panel-default">             
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="dataTable_wrapper">
 
-	<c:if test="${count!=0 }">		
-
-<%-- 			
-			<h4>이벤트 번호 : ${event_code }</h4><br/>
-			<h4>group_number : ${group_number }</h4>
-			<h4>sequence_number : ${sequence_number }</h4>
-			<h4>sequence_level : ${sequence_level }</h4> 
---%>
+						<a href="${root}/eventBoard/list.do?pageNumber=${pageNumber}">이벤트list로 가기</a><br/>
+						<input type="button" value="당첨자 발표 글 쓰기(랜덤당첨)" onclick="randomFun('${root }','${event_code}','${group_number }','${sequence_number }','${sequence_level }','${pageNumber }','${count }','${event_period }')" />
+						<input type="button" value="당첨자 발표 글 쓰기(수동서기)" onclick="noRandomFun('${root }','${event_code}','${group_number }','${sequence_number }','${sequence_level }','${pageNumber }','${count }','${event_period }')" />
+						<br/><br/>
+					
+						<c:if test="${count==0 }">		
+							<center>해당 이벤트에 참가한 글이 없습니다.</center>		
+						</c:if>
+					
+						<c:if test="${count!=0 }">								
+							<div style="height:400px;">
+								<table class="table table-striped table-bordered table-hover" id="dataTables-example">
+		                            <thead>
+		                                <tr>
+		                                   <!--  <th class="myTh"></th> -->
+		                                    <th class="myTh" colspan="2">제목</th>
+		                                    <th class="myTh">아이디</th>
+		                                    <th class="myTh">작성자</th>
+		                                </tr>
+		                            </thead>
+		                            <tbody>
+		                                <c:forEach var="eventMember" items="${list }">
+		                                	<tr class="odd gradeX">
+		                                     <td>${eventMember.join_code }</td>
+		                                     <td><a style="color:black;" href="${root }/eventBoard/managerRead.do?join_code=${eventMember.join_code }&eventPageNumber=${eventPageNumber}&event_code=${eventMember.event_code}&pageNumber=${pageNumber}&group_number=${group_number}&sequence_number=${sequence_number}&sequence_level=${sequence_level}">${eventMember.join_title }</a>	</td>
+		                                     <td class="center">${eventMember.id }</td>
+		                                     <td class="center">${eventMember.join_writer }</td>
+		                                 </tr>	                                
+		                                </c:forEach>	                               
+		                            </tbody>
+		                        </table>
+							</div>							
+						</c:if>					
+					
+						<!-- 페이지 번호 -->
+						<center>
+							<c:if test="${count>0 }">
+								<c:set var="pageBlock" value="${3 }"/>
+								
+								<c:set var="pageCount" value="${count/boardSize+(count%boardSize==0?0:1) }"/>
+								
+								<fmt:parseNumber var="rs" value="${(eventPageNumber-1)/pageBlock }" integerOnly="true"/>
+								<c:set var="startPage" value="${rs*pageBlock+1 }"/>
+								
+								<c:set var="endPage" value="${startPage+pageBlock-1}"/>
+								<c:if test="${endPage>pageCount}">
+									<c:set var="endPage" value="${pageCount }"/>
+								</c:if>
+								
+								<!--------------------------------------------------------------->								
+								<ul class="pagination">
+									<c:if test="${startPage>pageBlock }">
+										<li>
+											<a style="background-color: #F05F40; color:black;" href="${root}/eventBoard/managerList.do?eventPageNumber=${startPage-pageBlock}&pageNumber=${pageNumber}&event_code=${event_code}&group_number=${group_number}&sequence_number=${sequence_number}&sequence_level=${sequence_level}">이전</a>
+										</li>
+									</c:if>
+									
+									<c:forEach var="i" begin="${startPage }" end="${endPage }" step="1" >
+										<li>
+											<a style="color:black;" href="${root}/eventBoard/managerList.do?eventPageNumber=${i}&pageNumber=${pageNumber}&event_code=${event_code}&group_number=${group_number}&sequence_number=${sequence_number}&sequence_level=${sequence_level}">${i }</a>
+										</li>
+									</c:forEach>
+									
+									<c:if test="${endPage<pageCount }">
+										<li>
+											<a style="background-color: #F05F40; color:black;" href="${root}/eventBoard/managerList.do?eventPageNumber=${startPage+pageBlock}&pageNumber=${pageNumber}&event_code=${event_code}&group_number=${group_number}&sequence_number=${sequence_number}&sequence_level=${sequence_level}">다음</a>
+										</li>
+									</c:if>
+								</ul>					
+							</c:if>
+						</center> 						
+					</div>                    
+                </div>
+            </div>
+        </div>        
+    </div>
 	
-			<!-- Board List -->
-			<c:forEach var="eventMember" items="${list }">
-			
-				${eventMember.join_code }
-				
-	<%-- 		<c:if test="${eventMember.join_fileSize!=0 }">											
-					<img src="${root}/resources/eventBoard/${eventMember.join_filePath }" width="150" height="150"/>						
-					${eventMember.join_filePath }		
-				</c:if> --%>
-				
-				<a href="${root }/eventBoard/managerRead.do?join_code=${eventMember.join_code }&eventPageNumber=${eventPageNumber}&event_code=${eventMember.event_code}&pageNumber=${pageNumber}&group_number=${group_number}&sequence_number=${sequence_number}&sequence_level=${sequence_level}">${eventMember.join_title }</a>		
-				${eventMember.id }			
-				${eventMember.join_writer }		
-				<br/><br/>
-			</c:forEach>
-		
-		<br/><br/>
-		
-	</c:if>
-
-
-
-<!-- 페이지 번호 -->
-	<center>
-		<c:if test="${count>0 }">
-			<c:set var="pageBlock" value="${3 }"/>
-			
-			<c:set var="pageCount" value="${count/boardSize+(count%boardSize==0?0:1) }"/>
-			
-			<fmt:parseNumber var="rs" value="${(eventPageNumber-1)/pageBlock }" integerOnly="true"/>
-			<c:set var="startPage" value="${rs*pageBlock+1 }"/>
-			
-			<c:set var="endPage" value="${startPage+pageBlock-1}"/>
-			<c:if test="${endPage>pageCount}">
-				<c:set var="endPage" value="${pageCount }"/>
-			</c:if>
-			
-			<!--------------------------------------------------------------->
-			<c:if test="${startPage>pageBlock }">
-				<a href="${root}/eventBoard/managerList.do?eventPageNumber=${startPage-pageBlock}&pageNumber=${pageNumber}&event_code=${event_code}&group_number=${group_number}&sequence_number=${sequence_number}&sequence_level=${sequence_level}">[이전]</a>
-			</c:if>
-			
-			<c:forEach var="i" begin="${startPage }" end="${endPage }" step="1" >
-				<a href="${root}/eventBoard/managerList.do?eventPageNumber=${i}&pageNumber=${pageNumber}&event_code=${event_code}&group_number=${group_number}&sequence_number=${sequence_number}&sequence_level=${sequence_level}">[${i }]</a>
-			</c:forEach>
-			
-			<c:if test="${endPage<pageCount }">
-				<a href="${root}/eventBoard/managerList.do?eventPageNumber=${startPage+pageBlock}&pageNumber=${pageNumber}&event_code=${event_code}&group_number=${group_number}&sequence_number=${sequence_number}&sequence_level=${sequence_level}">[다음]</a>
-			</c:if>
-			
-		</c:if>
-	</center> 
 </body>
 </html>
