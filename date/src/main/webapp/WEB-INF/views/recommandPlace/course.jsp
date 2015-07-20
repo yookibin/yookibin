@@ -80,6 +80,7 @@
 .distanceInfo .label {
 	display: inline-block;
 	width: 50px;
+	color:red;
 }
 
 .distanceInfo:after {
@@ -305,7 +306,7 @@
 <script type="text/javascript"
 	src="//apis.daum.net/maps/maps3.js?apikey=cd16bfc3926d034f1176275f760bd0ff&libraries=services"></script>
 <script type="text/javascript">
-	function saveCourse(root, place_code1, place_code2) {
+	function saveCourse(root, place_code1, place_code2, id) {
 		alert(root)
 		alert(place_code1 + "," + place_code2);
 		$.ajax({
@@ -313,7 +314,8 @@
 					type : "post",
 					data : {
 						place_code1 : place_code1,
-						place_code2 : place_code2
+						place_code2 : place_code2,
+						id: id
 					},
 					success : function(data) {
 						console.log(data);
@@ -324,8 +326,8 @@
 				});
 	}
 	
-	function moveMypage(root, id){
-		window.location.href=root+"/recommandPlace/moveMypage.do?id=rkaqo2"; 
+	function moveMypage(root){
+		window.location.href=root+"/recommandPlace/moveMypage.do"; 
 		
 	}
 </script>
@@ -370,9 +372,9 @@
 		</div>
 		<div class="map_button">
 			<input type="button" class="btn btn-primary btn-lg" value="장소저장하기"
-				onclick="saveCourse('${root}','${placeDtoList[0].place_code}','${placeDtoList[1].place_code}')">
+				onclick="saveCourse('${root}','${placeDtoList[0].place_code}','${placeDtoList[1].place_code}','${id}')">
 			<input type="button" class="btn btn-primary btn-lg" value="마이페이지이동"
-				onclick="moveMypage('${root}','${id}')">
+				onclick="moveMypage('${root}')">
 		</div>
 
 		<script>

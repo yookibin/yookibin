@@ -20,37 +20,62 @@
 
 </script>
 
+<!-- Bootstrap Core CSS -->
+    <link href="${root }/css/bootstrap/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="${root }/css/bootstrap/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+
+    <!-- DataTables CSS -->
+    <link href="${root }/css/bootstrap/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
+
+    <!-- DataTables Responsive CSS -->
+    <link href="${root }/css/bootstrap/bower_components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="${root }/css/bootstrap/dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="${root }/css/bootstrap/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
 <body>
-	
-	<form action="${root }/member/zipcodeCheck.do" method="POST">
-		<input type="text" name="dong"/>
-		<input type="submit" value="검색"/>
-	</form>
+	<div style="padding: 20px 10px 10px 70px">
+		<form action="${root }/member/zipcodeCheck.do" method="POST">
+			<input type="text" class="form-control" name="dong"/>
+			<input type="submit" class="btn btn-primary" value="검색"/>
+		</form>
 
 	
-	<c:if test="${list==null }">
-	<div align="center">
-		다시검색해주세요.
+		<c:if test="${list==null }">
+		<div style="padding: 50px 10px 10px 100px">
+			다시검색해주세요.
+		</div>
+		</c:if>
+		
+		<c:if test="${list!=null }">
+		<div align="center">
+			<table>
+				<c:forEach begin="0" end="${list.size() }" var="zipDto" items="${list }">
+					<tr>
+						<%-- <c:set var="address" value="${zipDto.sido } ${zipDto.gugun } ${zipDto.dong } ${zipDto.ri } ${zipDto.bunji }"/> --%>
+						<td>
+							<a class="aZip" href="javascript:sendAddress('${zipDto.zipcode }', '${zipDto.sido }', '${zipDto.gugun }', '${zipDto.dong }', '${zipDto.ri }', '${zipDto.bunji }')">
+								${zipDto.zipcode } ${zipDto.sido } ${zipDto.gugun } ${zipDto.dong } ${zipDto.ri } ${zipDto.bunji }
+							</a>
+						</td>
+					</tr>
+				</c:forEach>
+			</table>
+		</div>
+		</c:if> 
 	</div>
-	</c:if>
-	
-	<c:if test="${list!=null }">
-	<div align="center">
-		<table>
-			<c:forEach begin="0" end="${list.size() }" var="zipDto" items="${list }">
-				<tr>
-					<%-- <c:set var="address" value="${zipDto.sido } ${zipDto.gugun } ${zipDto.dong } ${zipDto.ri } ${zipDto.bunji }"/> --%>
-					<td>
-						<a href="javascript:sendAddress('${zipDto.zipcode }', '${zipDto.sido }', '${zipDto.gugun }', '${zipDto.dong }', '${zipDto.ri }', '${zipDto.bunji }')">
-							${zipDto.zipcode } ${zipDto.sido } ${zipDto.gugun } ${zipDto.dong } ${zipDto.ri } ${zipDto.bunji }
-						</a>
-					</td>
-				</tr>
-			</c:forEach>
-		</table>
-	</div>
-	</c:if> 
 	
 </body>
 </html>

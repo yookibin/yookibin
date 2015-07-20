@@ -9,9 +9,30 @@
 <title>Insert title here</title>
 	<script type="text/javascript" src="${root}/css/board/script.js"></script>
 	<script type="text/javascript" src="${root }/css/jquery.js"></script>
+	
+	<!-- Bootstrap Core CSS -->
+<link
+	href="${root}/css/bootstrap/bower_components/bootstrap/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+
+<!-- MetisMenu CSS -->
+<link
+	href="${root}/css/bootstrap/bower_components/metisMenu/dist/metisMenu.min.css"
+	rel="stylesheet">
+
+<!-- Social Buttons CSS -->
+<link
+	href="${root}/css/bootstrap/bower_components/bootstrap-social/bootstrap-social.css"
+	rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="${root}/css/bootstrap/dist/css/sb-admin-2.css"
+	rel="stylesheet">
+	
 </head>
 
 <body>
+
 	<a href="${root }">기본 제공 HomeController</a><br/><br/>
 	<%-- <a href="${root }/memberboard/write.do">글쓰기</a> --%>
 	<a id="writeA" href="" onclick="writeFun('${root}', '${nickName}')">글쓰기</a>
@@ -28,7 +49,8 @@
  
 	<c:if test="${id==null}">
 		<a href="${root }/member/register.do">회원가입</a>
-		<a href="${root }/member/login.do">로그인</a>
+		<a href="${root }/member/login.do">로그인</a> 
+		
 	</c:if>
 	
 	<c:if test="${id!=null}">

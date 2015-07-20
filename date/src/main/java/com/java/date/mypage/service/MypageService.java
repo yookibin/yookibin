@@ -11,7 +11,7 @@ public interface MypageService {
 
 	public int delete(int num);
 
-	public List<LoadCourseDto> getMyCourse(String id);
+	public List<LoadCourseDto> getMyCourse(String id,String like);
 
 	//public void pointCheck(ModelAndView mav);
 

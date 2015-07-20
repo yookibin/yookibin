@@ -12,7 +12,7 @@
 <link
 	href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
 	rel='stylesheet' type='text/css'>
-	
+
 <link rel="stylesheet"
 	href="${root}/resources/font-awesome/css/font-awesome.min.css"
 	type="text/css">
@@ -23,200 +23,288 @@
 	type="text/javascript"></script>
 <link href="${root}/css//imgSlide/generic.css" rel="stylesheet"
 	type="text/css" />
-<link rel="stylesheet" href="${root}/resources/css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="${root}/resources/css/bootstrap.min.css"
+	type="text/css">
 <!-- Custom Fonts -->
-<link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+<link
+	href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic'
+	rel='stylesheet' type='text/css'>
 <!-- Custom CSS -->
-<link rel="stylesheet" href="${root}/resources/css/creative.css" type="text/css">
+<link rel="stylesheet" href="${root}/resources/css/creative.css"
+	type="text/css">
+<link rel="stylesheet" href="${root}/css/slide/unit.css" />
+<link rel="stylesheet" href="${root}/css/slide/common.css" />
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script
+	src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.17.0/TweenMax.min.js"></script>
+<script type="text/javascript" src="${root}/css/slide/controller.js"></script>
+<script type="text/javascript"
+	src="${root}/css/slide/eventController.js"></script>
 <style type="text/css">
-.AllAll{
-	width:1100px;
-	height:1111px;
+.AllAll {
+	width: 1100px;
+	height: 1111px;
 	margin-left: auto;
 	margin-right: auto;
-	border:1px black solid;
+	/* border:1px black solid; */
 }
-	.menu-A{
-		width:1100px;
-		height:100px;
-		margin-left: auto;
-		margin-right: auto;
-		margin-top:20px;
-	}
-	.menu-Aa{
-		float:left;
-		width:150px;
-	}
-	.menu-Aaa{
-		margin:0 0 0 98px;
-	}
-	.event-A{
-		border:solid 1px black;
-		float:left;
-		width:300px;
-		height:200px;
-	}
+
+.menu-A {
+	width: 1100px;
+	height: 100px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+}
+
+.menu-B {
+	width: 1100px;
+	height: 30px;
+	/* margin-left: auto; */
+	/* margin-right: 230px; */
+	/* margin-top: 20px; */
+	text-align: right;
+}
+
+.menu-Aa {
+	float: left;
+	width: 150px;
+}
+
+.menu-Aaa {
+	margin: 0 0 0 55px;
+}
 </style>
 </head>
 <body>
-<div class="AllAll">
-	<div class="menu-A">
-		<div class="menu-Aa" style="margin:0 0 0 92px;">
-			<a href="#">
-				<img alt="" src="${root}/resources/logo.gif" width="200" height="95">
-			</a>
-		</div>
-		<div class="menu-Aa">
-			<div class="menu-Aaa">
-				<i class="fa fa-4x fa-diamond wow bounceIn text-primary"></i> 
+	<div class="AllAll">
+		<c:if test="${id==null}">
+			<div class="menu-B">
+				<div
+					style="width: 100px; height: 40px; float: right; margin-right: 100px;">
+					<a href="${root }/member/login.do"><img alt=""
+						src="${root}/resources/main/login.png" width="95" height="30">
+					</a>
+				</div>
+				&nbsp;&nbsp;&nbsp;
+				<div style="width: 100px; height: 40px; float: right;">
+					<a href="${root }/member/register.do"><img alt=""
+						src="${root}/resources/main/memberUp.png" width="95" height="30"></a>
+				</div>
 			</div>
-			<div id="topMenu">
-				<ul>
-					<li class="topMenuLi" style="margin: 0 0 0 14px;"><a
-						class="menuLink"
-						href="http://unikys.tistory.com/category/Programming%20Lecture">데이트
-							코스추천</a>
-						<ul class="submenu" style="z-index: 1;">
-							<li><a href="${root }/recommandPlace/findPlace.do"
-								class="submenuLink">데이트코스 추천</a></li>
-							<li><a href="${root}/randomplace/randomPlaceStart.do"
-								class="submenuLink">랜덤데이트 추천</a></li>
-							<li><a href="${root }/placesearch/choice.do"
-								class="submenuLink">테마별장소 선택</a></li>
-						</ul></li>
-				</ul>
+		</c:if>
+
+		<c:if test="${id!=null}">
+			<div class="menu-B">
+				<div
+					style="width: 100px; height: 40px; float: right; margin-right: 100px;">
+					<a href="${root }/member/logout.do"><img alt=""
+						src="${root}/resources/main/logout.png" width="95" height="30"></a>
+				</div>
+				<div style="width: 100px; height: 40px; float: right;">
+					<a href="${root }/member/update.do?id=${id}"><img alt=""
+						src="${root}/resources/main/memberUpdate.png" width="95"
+						height="30"></a>
+				</div>
+				<div style="width: 100px; height: 40px; float: right;">
+					<a href="${root }/member/delete.do"><img alt=""
+						src="${root}/resources/main/memberEnd.png" width="95" height="30"></a>
+				</div>
+				<c:if test="${memberLevel=='AA'}">
+					<div style="width: 100px; height: 40px; float: right;">
+						<a href="${root }/eventBoard/write.do"><img alt=""
+							src="${root}/resources/main/event.png" width="85" height="30"></a>
+					</div>
+					<div style="width: 100px; height: 40px; float: right;">
+						<a href="${root }/recommandPlace/insertM.do"><img alt=""
+							src="${root}/resources/main/place.png" width="70" height="30"></a>
+						<br />
+					</div>
+				</c:if>
 			</div>
-		</div>
-		<div class="menu-Aa">
-			<div class="menu-Aaa">
-				<i class="fa fa-4x fa-paper-plane wow bounceIn text-primary"></i>
+		</c:if>
+		<div class="menu-A">
+			<div class="menu-Aa" style="margin: 0 0 0 80px;">
+				<a href="#"> <img alt="" src="${root}/resources/main/logo.gif"
+					width="200" height="95">
+				</a>
 			</div>
-			<div id="topMenu">
-				<ul>
-					<li class="topMenuLi" style="margin: 0 0 0 14px;"><a
-						class="menuLink" href="${root }/memberboard/list.do">회원추천
-									게시판</a></li>
-				</ul>
+			<div class="menu-Aa" style="margin: 0 0 0 50px;">
+				<div class="menu-Aaa">
+					<i class="fa fa-4x fa-diamond wow bounceIn text-primary"></i>
+				</div>
+				<div id="topMenu">
+					<ul>
+						<li class="topMenuLi" style="margin: 0 0 0 14px;"><a
+							class="menuLink"
+							href="http://unikys.tistory.com/category/Programming%20Lecture">데이트
+								코스추천</a>
+							<ul class="submenu" style="z-index: 1;">
+								<li><a href="${root }/recommandPlace/findPlace.do"
+									class="submenuLink">데이트코스 추천</a></li>
+								<li><a href="${root}/randomplace/randomPlaceStart.do"
+									class="submenuLink">랜덤데이트 추천</a></li>
+								<li><a href="${root }/placesearch/choice.do"
+									class="submenuLink">테마별장소 선택</a></li>
+							</ul></li>
+					</ul>
+				</div>
 			</div>
-		</div> 
-		<div class="menu-Aa">
-			<div class="menu-Aaa">
-				<i class="fa fa-4x fa-newspaper-o wow bounceIn text-primary"></i> 
+			<div class="menu-Aa">
+				<div class="menu-Aaa" style="margin-left: 65px;">
+					<i class="fa fa-4x fa-paper-plane wow bounceIn text-primary"></i>
+				</div>
+				<div id="topMenu">
+					<ul>
+						<li class="topMenuLi" style="margin: 0 0 0 14px;"><a
+							class="menuLink" href="${root }/memberboard/list.do">회원추천 게시판</a></li>
+					</ul>
+				</div>
 			</div>
-			<div id="topMenu">
-				<ul>
-					<li class="topMenuLi" style="margin: 0 0 0 14px;"><a
-						class="menuLink" href="${root }/placeBoard/boardList.do">장소
-							게시판</a></li>
-				</ul>
+			<div class="menu-Aa">
+				<div class="menu-Aaa">
+					<i class="fa fa-4x fa-newspaper-o wow bounceIn text-primary"></i>
+				</div>
+				<div id="topMenu">
+					<ul>
+						<li class="topMenuLi" style="margin: 0 0 0 14px;"><a
+							class="menuLink" href="${root }/placeBoard/boardList.do">장소
+								게시판</a></li>
+					</ul>
+				</div>
 			</div>
-		</div>
-		<div class="menu-Aa">
-			<div class="menu-Aaa">
-				<i class="fa fa-4x fa-heart wow bounceIn text-primary"></i>
-			</div>
-			<div id="topMenu">
-				<ul>
-					<li class="topMenuLi" style="margin: 0 0 0 14px;"><a
+			<div class="menu-Aa">
+				<div class="menu-Aaa" style="margin-left: 65px;">
+					<i class="fa fa-4x fa-heart wow bounceIn text-primary"></i>
+				</div>
+				<div id="topMenu">
+					<ul>
+						<li class="topMenuLi" style="margin: 0 0 0 14px;"><a
 							class="menuLink" href="${root }/eventBoard/list.do">이벤트 게시판</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="menu-Aa" style="margin: 0 0 0 35px;">
+				<a href="#"> <img alt="" src="${root}/resources/main/chat.png"
+					width="95" height="95">
+				</a>
+			</div>
+		</div>
+		<div id="sliderFrame">
+			<div id="slider">
+				<a href="${root}/placeBoard/reviewBoard.do?place_code=kang007"
+					target="_blank"> <img
+					src="${root}/css/imgSlide/images/amain1.png" alt="전망보고 영화보고~" />
+				</a> <a href="${root}/placeBoard/reviewBoard.do?place_code=jong008"
+					target="_blank"> <img
+					src="${root}/css/imgSlide/images/amain2.JPG" alt="와 저높은 빌딩은 뭐야~!?" />
+				</a> <a href="${root}/placeBoard/reviewBoard.do?place_code=song014"
+					target="_blank"> <img
+					src="${root}/css/imgSlide/images/amain3.png" alt="롯데월드는 지헤공주와 함께~" />
+				</a> <a href="${root}/placeBoard/reviewBoard.do?place_code=song010"
+					target="_blank"> <img
+					src="${root}/css/imgSlide/images/amain4.png" alt="으헤헤헤헤우하하하하" />
+				</a>
+			</div>
+			<!--thumbnails-->
+			<div id="thumbs">
+				<div class="thumb">
+					<div class="frame">
+						<img href="#" src="${root}/css/imgSlide/images/amain1.png" />
+					</div>
+					<div class="thumb-content">
+						<p>청담동 CGV</p>
+						넓고 쾌적한 환경의 영화관
+					</div>
+					<div style="clear: both;"></div>
+				</div>
+				<div class="thumb">
+					<div class="frame">
+						<img src="${root}/css/imgSlide/images/amain2.JPG" />
+					</div>
+					<div class="thumb-content">
+						<p>종로타워</p>
+						종로의 명소, 한번은 꼭 가야할 그 곳
+					</div>
+					<div style="clear: both;"></div>
+				</div>
+				<div class="thumb">
+					<div class="frame">
+						<img src="${root}/css/imgSlide/images/amain3.png" />
+					</div>
+					<div class="thumb-content">
+						<p>롯데월드몰</p>
+						쇼핑하기에 너무나도 좋은 롯데월드몰~!
+					</div>
+					<div style="clear: both;"></div>
+				</div>
+				<div class="thumb">
+					<div class="frame">
+						<img src="${root}/css/imgSlide/images/amain4.png" />
+					</div>
+					<div class="thumb-content">
+						<p>송파CGV</p>
+						송파에서 가장 큰 영화관~!
+					</div>
+					<div style="clear: both;"></div>
+				</div>
+			</div>
+			<!--clear above float:left elements. It is required if above #slider is styled as float:left. -->
+			<div style="clear: both; height: 0;"></div>
+		</div>
+		<div style="margin: 0 0 0 86px; height: 300px;">
+			<div class="event-A">
+				<button class="prev-A" type="button">
+					<img alt="" src="${root}/css/imgSlide/images/left.png">
+				</button>
+				<ul>
+					<li><img src="${root}/css/imgSlide/images/slide_1.png" alt=""
+						onclick="javascript:place_A('${root}','kang001')"></li>
+					<li><img src="${root}/css/imgSlide/images/slide_2.png" alt=""
+						onclick="javascript:place_A('${root}','jong001')"></li>
+					<li><img src="${root}/css/imgSlide/images/slide_3.png" alt=""
+						onclick="javascript:place_A('${root}','jong014')"></li>
 				</ul>
+				<button class="next-A" type="button">
+					<img alt="" src="${root}/css/imgSlide/images/rigth.png">
+				</button>
+			</div>
+			<div class="event-B">
+				<button class="prev-B" type="button">
+					<img alt="" src="${root}/css/imgSlide/images/left.png">
+				</button>
+				<ul>
+					<li><div class="event_div" style="background-color: #FFA7A7;"
+							onclick="javascript:events_A('${root}','77','1')">철구를 잡아라 !</div></li>
+					<li><div class="event_div" style="background-color: #98F791;"
+							onclick="javascript:events_A('${root}','78','1')">잠실에 싱크홀이
+							?!</div></li>
+					<li><div class="event_div" style="background-color: #36FFFF;"
+							onclick="javascript:events_A('${root}','84','1')">청정도시 상암</div></li>
+				</ul>
+				<button class="next-B" type="button">
+					<img alt="" src="${root}/css/imgSlide/images/rigth.png">
+				</button>
 			</div>
 		</div>
-		<div class="menu-Aa" style="margin:0 0 0 70px;">
-			<a href="#">
-				<img alt="" src="${root}/resources/chat.png" width="95" height="95">
-			</a>
-		</div>
-	</div>	
-	<div id="sliderFrame">
-		<div id="slider">
-			<a href="${root}/placeBoard/reviewBoard.do?place_code=kang007" target="_blank">
-				<img src="${root}/css/imgSlide/images/amain1.png"
-				alt="전망보고 영화보고~" />
-			</a> 
-			<a href="${root}/placeBoard/reviewBoard.do?place_code=jong008" target="_blank">
-				<img src="${root}/css/imgSlide/images/amain2.JPG"
-				alt="와 저높은 빌딩은 뭐야~!?" />
-			</a> 
-			<a href="${root}/placeBoard/reviewBoard.do?place_code=song014" target="_blank">
-				<img src="${root}/css/imgSlide/images/amain3.png"
-				alt="롯데월드는 지헤공주와 함께~" />
-			</a> 
-			<a href="${root}/placeBoard/reviewBoard.do?place_code=song010" target="_blank">
-				<img src="${root}/css/imgSlide/images/amain4.png"
-				alt="으헤헤헤헤우하하하하" />
-			</a> 
-		</div>
-		<!--thumbnails-->
-		<div id="thumbs">
-			<div class="thumb">
-				<div class="frame">
-					<img href="#" src="${root}/css/imgSlide/images/amain1.png"/>
+		<div>
+			<section class="bg-primary" id="about">
+				<div class="container" id="footer">
+					<div class="row">
+						<div class="col-lg-8 col-lg-offset-2 text-center">
+							<h2 class="section-heading">We've got what you need!</h2>
+							<hr class="light">
+							<p class="text-faded">Start Bootstrap has everything you need
+								to get your new website up and running in no time! All of the
+								templates and themes on Start Bootstrap are open source, free to
+								download, and easy to use. No strings attached!</p>
+							<a href="#" class="btn btn-default btn-xl">Get Started!</a>
+						</div>
+					</div>
 				</div>
-				<div class="thumb-content">
-					<p>청담동 CGV</p>
-					넓고 쾌적한 환경의 영화관
-				</div>
-				<div style="clear: both;"></div>
-			</div>
-			<div class="thumb">
-				<div class="frame">
-					<img src="${root}/css/imgSlide/images/amain2.JPG" />
-				</div>
-				<div class="thumb-content">
-					<p>종로타워</p>
-					종로의 명소, 한번은 꼭 가야할 그 곳
-				</div>
-				<div style="clear: both;"></div>
-			</div>
-			<div class="thumb">
-				<div class="frame">
-					<img src="${root}/css/imgSlide/images/amain3.png" />
-				</div>
-				<div class="thumb-content">
-					<p>롯데월드몰</p>
-					쇼핑하기에 너무나도 좋은 롯데월드몰~!
-				</div>
-				<div style="clear: both;"></div>
-			</div>
-			<div class="thumb">
-				<div class="frame">
-					<img src="${root}/css/imgSlide/images/amain4.png" />
-				</div>
-				<div class="thumb-content">
-					<p>송파CGV</p>
-					송파에서 가장 큰 영화관~!
-				</div>
-				<div style="clear: both;"></div>
-			</div>
-		</div>
-		<!--clear above float:left elements. It is required if above #slider is styled as float:left. -->
-		<div style="clear: both; height: 0;"></div>
-	</div>
-	<div style="margin:0 0 0 92px; height:300px;">
-		<div class="event-A">
-			
-		</div>
-		<div class="event-A">
-		</div>
-		<div class="event-A">
+			</section>
 		</div>
 	</div>
-	<div>
-		<section class="bg-primary" id="about">
-	        <div class="container" id="footer">
-	            <div class="row">
-	                <div class="col-lg-8 col-lg-offset-2 text-center">
-	                    <h2 class="section-heading">We've got what you need!</h2>
-	                    <hr class="light">
-	                    <p class="text-faded">Start Bootstrap has everything you need to get your new website up and running in no time! All of the templates and themes on Start Bootstrap are open source, free to download, and easy to use. No strings attached!</p>
-	                    <a href="#" class="btn btn-default btn-xl">Get Started!</a>
-	                </div>
-	            </div>
-	        </div>
-	    </section>
-    </div>
-</div>
 
 </body>
 

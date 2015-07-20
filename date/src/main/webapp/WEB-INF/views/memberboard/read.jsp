@@ -8,8 +8,8 @@
 <script type="text/javascript" src="${root }/css/board/script.js"></script>
 <script type="text/javascript" src="${root }/css/jquery.js"></script>
 <script type="text/javascript">
-	function deleteFun(root, board_num, pageNumber){
-		var url=root + "/memberboard/delete.do?board_num="+board_num+"&pageNumber="+pageNumber;
+	function deleteFun(root, board_num, pageNumber, memberLevel){
+		var url=root + "/memberboard/delete.do?board_num="+board_num+"&pageNumber="+pageNumber+"&memberLevel="+memberLevel;
 		//alert(url);
 		location.href=url;
 	}
@@ -60,7 +60,6 @@
 </head>
 <body>
 <jsp:include page="/youAndITop.jsp"/>
-
 <div class="totalDiv">
 	<div class="col-lg-12">
 	<div class="line1">
@@ -89,15 +88,22 @@
             
            
 			<%-- <input style="margin-left:80%" type="button" align="middle" value="글목록" onclick="location.href='${root}/memberboard/list.do?pageNumber=${pageNumber}'"/> --%>
-			<c:if test="${memberBoard.board_writer==nickName}">
-				<input type="button" value="글수정" onclick="updateFun('${root}','${memberBoard.board_num }', '${pageNumber}')" />
-				<input type="button" value="글삭제" onclick="deleteFun('${root}','${memberBoard.board_num }', '${pageNumber}')"/>
-			</c:if>
+			
 			<br/><br/>
 				<%-- <input type="button" value="글목록" onclick="location.href='${root}/memberboard/list.do'"/> --%>
 			<span>
 				<input class="btn btn-outline btn-warning" style="margin-left:15%; font-size: 11px;" type="button" id="replyView" value="댓글보기"/>
-				<button style="margin-left:55%;" type="button" class="btn btn-warning" onclick="location.href='${root}/memberboard/list.do?pageNumber=${pageNumber}'"><i class="fa fa-list" style="font-size: 11px;">글목록</i>
+				
+				<c:if test="${memberBoard.board_writer==nickName}">
+					<input type="button" class="btn btn-warning" value="글삭제" style=" margin-left:50%; font-size: 11px;" onclick="deleteFun('${root}','${memberBoard.board_num }', '${pageNumber}', '${memberLevel}')"/>
+					<input type="button" class="btn btn-warning" value="글수정" style="font-size: 11px;" onclick="updateFun('${root}','${memberBoard.board_num }', '${pageNumber}')" />
+					
+				</c:if>
+				
+				<c:if test="${memberLevel=='AA' }">
+					<input type="button" class="btn btn-warning" style="margin-left:50%; font-size: 11px;" value="글삭제" onclick="deleteFun('${root}','${memberBoard.board_num }', '${pageNumber}', '${memberLevel}')"/>
+				</c:if>
+				<button  type="button" class="btn btn-warning" onclick="location.href='${root}/memberboard/list.do?pageNumber=${pageNumber}'"><i class="fa fa-list" style="font-size: 11px;">글목록</i>
            		</button> 
 			</span>
 			<br/>
@@ -110,8 +116,7 @@
 				</span>
 				</div>
 			</div>
-
-</div>
+		</div>
 			
 			
 		<div id="replyAll" style="display:none;  margin: 0% 15% 0% 15%">

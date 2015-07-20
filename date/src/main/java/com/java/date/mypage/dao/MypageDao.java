@@ -9,7 +9,7 @@ public interface MypageDao {
 
 	public int delete(int num);
 
-	public List<SaveCourseDto> getMyCourse(String id);
+	public List<SaveCourseDto> getMyCourse(String id, String like);
 
 	public List<MypageDto> point(String id);
 

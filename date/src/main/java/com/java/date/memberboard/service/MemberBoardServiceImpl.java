@@ -331,6 +331,9 @@ public class MemberBoardServiceImpl implements MemberBoardService {
 		HttpServletRequest request=(HttpServletRequest)map.get("request");
 		int board_num=Integer.parseInt(request.getParameter("board_num"));
 		String pageNumber=request.getParameter("pageNumber");
+		String member_level=request.getParameter("memberLevel");
+		
+		logger.info("delete --member_level:"+member_level);
 		logger.info("delete --board_num:"+board_num);
 		/*mav.addObject("board_num", board_num);*/
 		mav.addObject("pageNumber", pageNumber);
@@ -405,7 +408,12 @@ public class MemberBoardServiceImpl implements MemberBoardService {
 		String recommend_nickName=request.getParameter("recommend_nickName");
 		logger.info("recommendBoard:"+pageNumber+","+board_num+","+board_recom+","+recommend_nickName);
 		
-		int check=memberBoardDao.selectRecommend(board_num, recommend_nickName);
+		int check=1;
+		
+		if(!(recommend_nickName.equals(null))&&!(recommend_nickName.equals(""))){
+			check=memberBoardDao.selectRecommend(board_num, recommend_nickName);
+		}
+		
 		logger.info("check:"+check);
 		
 		//logger.info("띠로리"+recom.getBoard_num()+","+recom.getRecommend_check()+","+recom.getRecommend_code()+","+recom.getRecommend_nickName());
@@ -434,7 +442,6 @@ public class MemberBoardServiceImpl implements MemberBoardService {
 				e.printStackTrace();
 			}
 		}
-		
 	}
 }
 
