@@ -33,7 +33,6 @@
 
 <body>
 
-
 	<a href="${root }">기본 제공 HomeController</a><br/><br/>
 	<%-- <a href="${root }/memberboard/write.do">글쓰기</a> --%>
 	<a id="writeA" href="" onclick="writeFun('${root}', '${nickName}')">글쓰기</a>
