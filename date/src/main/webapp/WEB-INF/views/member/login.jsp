@@ -39,12 +39,12 @@
 </head>
 <body>
 
-	    <div class="container">
+	      <div class="container">
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
                 <div class="login-panel panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Please Sign In</h3>
+                        <h3 class="panel-title">Login</h3>
                     </div>
                     <div class="panel-body">
                         <form action="${root }/member/login.do" method="post">
@@ -55,13 +55,17 @@
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Password" name="password" type="password" value="">
                                 </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input name="remember" type="checkbox" value="Remember Me">Remember Me
-                                    </label>
-                                </div>
+                               	
+                               	<div class="join_wrap">
+						            <div class="rbtn">
+						                <a href="" class="btn_txt_brown mr5"><span>아이디 찾기</span> <strong>&gt;</strong></a>
+						                <a href="" class="btn_txt_brown"><span>비밀번호 찾기</span> <strong>&gt;</strong></a>
+						            </div>
+						            
+						        </div>
+                               	
                                 <!-- Change this to a button or input when using this as a form -->
-                                <input type="submit" class="btn btn-lg btn-success btn-block" value="Login"/>
+                                <input type="submit" class="btn btn-lg btn-success btn-block" value="로그인"/>
                             </fieldset>
                         </form>
                     </div>
