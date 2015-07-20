@@ -17,6 +17,5 @@ public interface ReviewBoardDao {
 	
 	public int reviewStar(String place_code);
 	
-	public int reviewStarCheck(String place_code); 
-	
+	public int reviewStarCheck(String place_code);
 }

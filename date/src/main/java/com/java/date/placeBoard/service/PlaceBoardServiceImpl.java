@@ -30,7 +30,7 @@ public class PlaceBoardServiceImpl implements PlaceBoardService {
 	 * @name : placeList
 	 * @date : 2015. 6. 23.
 	 * @author : 정희준
-	 * @description : controller에서 plce_location 넘어온 값이 없다면 디폴트값을 gangNam으로 설정해주는 함수
+	 * @description : controller에서 plce_gu 넘어온 값이 없다면 전체출력 하게끔 설정해주는 함수
 	 *                페이지넘버 설정 함수
 	 */
 	
@@ -39,47 +39,93 @@ public class PlaceBoardServiceImpl implements PlaceBoardService {
 		Map<String,Object> map=mav.getModelMap();
 		HttpServletRequest request=(HttpServletRequest)map.get("request");
 		
-		String place_location="";
-		if(request.getParameter("place_location")==null){
-			place_location="강남";
-		}else{
-			place_location=request.getParameter("place_location");
-		}
-		logger.info("place_location:"+place_location);
+		String place_gu=request.getParameter("place_gu");
+		String place_thema=request.getParameter("place_thema");
+		String place_balance=request.getParameter("place_balance");
 		
-		String pageNumber=request.getParameter("pageNumber");
-		if(pageNumber==null) pageNumber="1";
-		
-		int boardSize=12;
-		int currentPage=Integer.parseInt(pageNumber);
-		int startRow=(currentPage-1)*boardSize+1;
-		int endRow=currentPage*boardSize;
-		logger.info("boardList startRow: "+startRow+", endRow: "+endRow);
-		
-		int count=placeBoardDao.getBoardCount(place_location);
-		logger.info("boardList count: "+count);
-		
-		List<PlaceDto> boardList=null;
-		if(count>0){
-			boardList=placeBoardDao.getPlaceList(startRow, endRow, place_location);
-		}
-		logger.info("boardList size: "+boardList.size());
-		
-		//place_laction이 강남에 해당하는 레코드를 뽑아 List로 담아 준다.
-		
-		logger.info("boardSize"+boardSize);
-		logger.info("currentPage"+currentPage);
-		logger.info("count"+count);
-
-		mav.addObject("boardList",boardList);
-		mav.addObject("boardSize", boardSize);
-		mav.addObject("currentPage", currentPage);
-		mav.addObject("count", count);
-		
-		mav.setViewName("placeBoard/list");
-	}
-
+		if(request.getParameter("place_gu")==null){
+			place_gu="전체";
+			place_thema="전체";
+			place_balance="전체";
+			
+			String pageNumber=request.getParameter("pageNumber");
+			if(pageNumber==null) pageNumber="1";
+			
+			int boardSize=12;
+			int currentPage=Integer.parseInt(pageNumber);
+			int startRow=(currentPage-1)*boardSize+1;
+			int endRow=currentPage*boardSize;
+			logger.info("boardList startRow: "+startRow+", endRow: "+endRow);
+			
+			int count=placeBoardDao.getGuCount(place_gu);
+			logger.info("boardList count: "+count);
+			
+			List<PlaceDto> boardList=null;
+			if(count>0){
+				boardList=placeBoardDao.placeList(startRow, endRow);
+			}
+			logger.info("boardList size: "+boardList.size());
+			 
+			//place_laction이 강남에 해당하는 레코드를 뽑아 List로 담아 준다.
+			
+			logger.info("boardSize"+boardSize);
+			logger.info("currentPage"+currentPage);
+			logger.info("count"+count);
 	
+			mav.addObject("place_gu",place_gu);
+			mav.addObject("place_thema",place_thema);
+			mav.addObject("place_balance",place_balance);
+			
+			mav.addObject("boardList",boardList);
+			mav.addObject("boardSize", boardSize);
+			mav.addObject("currentPage", currentPage);
+			mav.addObject("count", count);
+			
+			mav.setViewName("placeBoard/list");
+			
+		}else{
+			logger.info("place_gu:"+place_gu);
+			logger.info("place_thema="+place_thema);
+			logger.info("place_balance="+place_balance);
+			
+			String pageNumber=request.getParameter("pageNumber");
+			if(pageNumber==null) pageNumber="1";
+			
+			int boardSize=12;
+			int currentPage=Integer.parseInt(pageNumber);
+			int startRow=(currentPage-1)*boardSize+1;
+			int endRow=currentPage*boardSize;
+			logger.info("boardList startRow: "+startRow+", endRow: "+endRow);
+			
+			int count=placeBoardDao.getGuCount(place_gu);
+			logger.info("boardList count: "+count);
+			
+			List<PlaceDto> boardList=null;
+			if(count>0){
+				boardList=placeBoardDao.getPlaceList(startRow, endRow, place_gu,place_thema,place_balance);
+			}
+			logger.info("boardList size: "+boardList.size());
+			 
+			//place_laction이 강남에 해당하는 레코드를 뽑아 List로 담아 준다.
+			
+			logger.info("boardSize"+boardSize);
+			logger.info("currentPage"+currentPage);
+			logger.info("count"+count);
+
+			mav.addObject("place_gu",place_gu);
+			mav.addObject("place_thema",place_thema);
+			mav.addObject("place_balance",place_balance);
+			
+			mav.addObject("boardList",boardList);
+			mav.addObject("boardSize", boardSize);
+			mav.addObject("currentPage", currentPage);
+			mav.addObject("count", count);
+			
+			mav.setViewName("placeBoard/list");
+		}
+	}
+	
+
 	/**
 	 * @name : reviewBoard
 	 * @date : 2015. 6. 29.
@@ -119,13 +165,5 @@ public class PlaceBoardServiceImpl implements PlaceBoardService {
 		mav.addObject("reviewList",reviewList);
 		
 		mav.setViewName("reviewBoard/list");
-	}
-
-
-	@Override
-	public void newBoardList(ModelAndView mav) {
-		Map<String,Object> map=mav.getModelMap();
-		HttpServletRequest request=(HttpServletRequest)map.get("request");
-		
 	}
 }

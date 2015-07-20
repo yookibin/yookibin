@@ -18,42 +18,62 @@ public class PlaceBoardDaoImpl implements PlaceBoardDao {
 	/**
 	 * @name : placeBoardList
 	 * @date : 2015. 6. 23.
-	 * @author : 정희준
-	 * @description : place_location <강남>에 해당하는 레코드를 뽑기 위해 mapper클래스로 보내주는 함수
+	 * @author : 정희준 
+	 * @description : place_gu <강남>에 해당하는 레코드를 뽑기 위해 mapper클래스로 보내주는 함수
 	 */
 	
 	@Override
-	public List<PlaceDto> placeBoardList(String place_location){
-		System.out.println("dao String : " + place_location);
-		return sqlSession.selectList("dao.placeBoardMapper.placeBoardList",place_location);
+	public List<PlaceDto> placeBoardList(String place_gu){
+		System.out.println("dao String : " + place_gu);
+		return sqlSession.selectList("dao.placeBoardMapper.placeBoardList",place_gu);
+	}
+
+
+	/**
+	 * @name : getGuCount 
+	 * @date : 2015. 6. 25.
+	 * @author : 정희준
+	 * @description : 게시판테이블에 작성된 '**구'에 해당하는 레코드들의 수를 가져오기 위한 함수.
+	 */
+	
+	
+	
+	@Override
+	public int getGuCount(String place_gu) {
+		return sqlSession.selectOne("dao.placeBoardMapper.getGuCount",place_gu);
 	}
 
 	/**
-	 * @name : getBoardCount 
+	 * @name : placeList
 	 * @date : 2015. 6. 25.
 	 * @author : 정희준
-	 * @description : 게시판테이블에 작성된 레코드들의 수를 가져오기 위한 함수.
+	 * @description : 최초 게시판 접속시 글 목록을 뿌려주기 위해 지정해준 범위내의 레코드를 가져오기 위한 함수
 	 */
 	
 	@Override
-	public int getBoardCount(String place_location) {
+	public List<PlaceDto> placeList(int startRow, int endRow) {
+		HashMap<String, Object> hMap=new HashMap<String, Object>();
+		hMap.put("startRow", startRow);
+		hMap.put("endRow", endRow);
 		
-		return sqlSession.selectOne("dao.placeBoardMapper.getCount",place_location);
+		return sqlSession.selectList("dao.placeBoardMapper.firstList", hMap);
 	}
 	
 	/**
-	 * @name : getBoardList
+	 * @name : getPlaceList
 	 * @date : 2015. 6. 25.
 	 * @author : 정희준
 	 * @description : 게시판에 글 목록을 뿌려주기 위해 지정해준 범위내의 레코드를 가져오기 위한 함수
 	 */
 	
 	@Override
-	public List<PlaceDto> getPlaceList(int startRow, int endRow, String place_location) {
+	public List<PlaceDto> getPlaceList(int startRow, int endRow, String place_gu,String place_thema,String place_balance) {
 		HashMap<String, Object> hMap=new HashMap<String, Object>();
 		hMap.put("startRow", startRow);
 		hMap.put("endRow", endRow);
-		hMap.put("place_location", place_location);
+		hMap.put("place_gu", place_gu);
+		hMap.put("place_thema", place_thema);
+		hMap.put("place_balance", place_balance);
 		return sqlSession.selectList("dao.placeBoardMapper.placeList", hMap);
 	}
 

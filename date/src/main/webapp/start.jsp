@@ -16,9 +16,9 @@
 	<%-- <a href="${root }/memberboard/write.do">글쓰기</a> --%>
 	<a id="writeA" href="" onclick="writeFun('${root}', '${nickName}')">글쓰기</a>
 
-	<a href="${root }/memberboard/list.do">글목록</a>
+	<a href="${root }/memberboard/list.do">글목록</a>`
 	<br/><br/>
-	
+		
 	<a href="${root }/eventBoard/list.do">이벤트 목록보기</a>
 	<br/><br/>
 	

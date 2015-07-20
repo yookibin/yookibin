@@ -5,5 +5,4 @@ import org.springframework.web.servlet.ModelAndView;
 public interface PlaceBoardService {
 	public void placeList(ModelAndView mav);
 	public void reviewBoard(ModelAndView mav);
-	public void newBoardList(ModelAndView mav);
 }

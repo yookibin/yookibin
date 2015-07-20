@@ -13,7 +13,7 @@
 <link type="text/css" rel="stylesheet" href="${root}/css/placeBoard/style.css"/>
 <link type="text/css" rel="stylesheet" href="${root}/css/bootstrap/bootstrap.min.css"/>
 </head>
-<body>
+<body onload="placeListForm()">
 	<jsp:include page="/youAndITop.jsp"/><br/>	
 	<div style="width:1200px; height:auto; margin-left:auto; margin-right:auto;">
 	
@@ -24,47 +24,42 @@
 			</div>
 	
 			<!-- 지역, 테마, 가격대, 쿠폰 선택박스 -->
-			<form action="${root}/placeBoard/boardList.do" onsubmit="return placeListForm(this)">
+			<form action="${root}/placeBoard/boardList.do">
 			<div id="finderbox" style="height:200px;">
 				<div class="finder_inner">
 					<dl class="finder_list_2014" id='locationlist'>
 						<dt><strong><img src="http://image2.yanolja.com/site/imageFile/images/V2/dateCourse/images/20141023/txt_area.png" width="60" height="14" alt="지역" /></strong></dt>
 						<dd>
-								<ul class="opt_rap">
-									<li>
-										<input type="radio" name="place_location" value="강남">강남
-									</li>
-									<li>
-										<input type="radio" name="place_location" value="송파">송파
-									</li>
-									<li>
-										<input type="radio" name="place_location" value="종로">종로 
-									</li>
-									<li>
-										<input type="radio" name="place_location" value="사당">사당 
-									</li>
-									<li>
-										<input type="radio" name="place_location" value="삼성">삼성 
-									</li>
-									<li>
-										<input type="radio" name="place_location" value="서래마을">서래마을  
-									</li>
-									<li>
-										<input type="radio" name="place_location" value="신림">신림 
-									</li>
-									<li>
-										<input type="radio" name="place_location" value="신사">신사 
-									</li>
-									<li>
-										<input type="radio" name="place_location" value="신천">신천 
-									</li>
-									<li>
-										<input type="radio" name="place_location" value="영등포">영등포 
-									</li>
-									<li>
-										<input type="radio" name="place_location" value="천호">천호 
-									</li>
-								</ul>
+							<ul class="opt_rap">
+								<li>
+									<input type="radio" name="place_gu" value="전체">전체
+								</li>
+								<li>
+									<input type="radio" name="place_gu" value="강남구">강남구
+								</li>
+								<li>
+									<input type="radio" name="place_gu" value="송파구">송파구
+								</li>
+								<li>
+									<input type="radio" name="place_gu" value="종로구">종로구
+								</li>
+								<li>
+									<input type="radio" name="place_gu" value="강동구">강동구 
+								</li>
+								<li>
+									<input type="radio" name="place_gu" value="관악구">관악구 
+								</li>
+								<li>
+									<input type="radio" name="place_gu" value="용산구">용산구  
+								</li>
+								<li>
+									<input type="radio" name="place_gu" value="중구">중구
+								</li>
+								<li>
+									<input type="radio" name="place_gu" value="동대문구">동대문구
+								</li>
+							
+							</ul>
 						</dd>			
 					 </dl>
 		
@@ -73,28 +68,31 @@
 						<dd>
 							<ul class="opt_rap">
 								<li>
-									<input type="radio" name="place_thema" value="강남">카페	
+									<input type="radio" name="place_thema" value="전체">전체
 								</li>
 								<li>
-									<input type="radio" name="place_thema" value="송파">영화
+									<input type="radio" name="place_thema" value="카페">카페	
 								</li>
 								<li>
-									<input type="radio" name="place_thema" value="종로">공원 
+									<input type="radio" name="place_thema" value="영화">영화
 								</li>
 								<li>
-									<input type="radio" name="place_thema" value="사당">쇼핑
+									<input type="radio" name="place_thema" value="park">공원 
 								</li>
 								<li>
-									<input type="radio" name="place_thema" value="삼성">테마파크 
+									<input type="radio" name="place_thema" value="쇼핑">쇼핑
 								</li>
 								<li>
-									<input type="radio" name="place_thema" value="서래마을">축제	 
+									<input type="radio" name="place_thema" value="테마파크">테마파크 
 								</li>
 								<li>
-									<input type="radio" name="place_thema" value="신림">문화
+									<input type="radio" name="place_thema" value="축제">축제	 
 								</li>
 								<li>
-									<input type="radio" name="place_thema" value="신사">자연명소
+									<input type="radio" name="place_thema" value="문화">문화
+								</li>
+								<li>
+									<input type="radio" name="place_thema" value="자연명소">자연명소
 								</li>
 							</ul>
 						</dd>
@@ -104,26 +102,26 @@
 						<dt><strong><img src="http://image2.yanolja.com/site/imageFile/images/V2/dateCourse/images/20141023/txt_money.png" width="60" height="14" alt="가격대" /></strong></dt>
 						<dd>
 							<ul class="opt_rap">
-									<li>
-									<input type="radio" name="place_balance" value="강남">1만원이하	
+								<li>
+									<input type="radio" name="place_balance" value="전체">전체
 								</li>
 								<li>
-									<input type="radio" name="place_balance" value="송파">1만원대
+									<input type="radio" name="place_balance" value="1만원">1만원대
 								</li>
 								<li>
-									<input type="radio" name="place_balance" value="종로">2만원대
+									<input type="radio" name="place_balance" value="2만원">2만원대
 								</li>
 								<li>
-									<input type="radio" name="place_balance" value="사당">3만원대
+									<input type="radio" name="place_balance" value="3만원">3만원대
 								</li>
 								<li>
-									<input type="radio" name="place_balance" value="삼성">4만원대
+									<input type="radio" name="place_balance" value="3만원">4만원대
 								</li>
 								<li>
-									<input type="radio" name="place_balance" value="서래마을">5만원대 
+									<input type="radio" name="place_balance" value="5만원">5만원대 
 								</li>
 								<li>
-									<input type="radio" name="place_balance" value="신림">6만원이상
+									<input type="radio" name="place_balance" value="6만원">6만원대
 								</li>
 							</ul>
 						</dd>
@@ -131,112 +129,79 @@
 				</div>
 				<input type="submit" class="btn btn-danger" value="검색하기"> 
 	        </div>
+	        </form>
 	    </div>
 	</div>
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-		<%-- <div class="panel panel-danger" style="text-align:center; width:500px; height:200px; margin-left:auto; margin-right:auto;">
-  			<div class="panel-heading" style="width:500px; height:80px">
-   			 	<p class="panel-body">지역으로 장소 찾기</p>
-			</div>
-			<div class="panel-body">
-				<form action="${root}/placeBoard/boardList.do" onsubmit="return placeListForm(this)">
-					<input type="radio" name="place_location" value="강남">강남 &nbsp;
-					<input type="radio" name="place_location" value="송파">송파 &nbsp;
-					<input type="radio" name="place_location" value="종로">종로 &nbsp;
-					<input type="radio" name="place_location" value="사당">사당 &nbsp;
-					<input type="radio" name="place_location" value="삼성">삼성 &nbsp;
-					<input type="radio" name="place_location" value="서래마을">서래마을 &nbsp;
-					<input type="radio" name="place_location" value="신림">신림 &nbsp;
-					<input type="radio" name="place_location" value="신사">신사 <br/>
-					<input type="radio" name="place_location" value="신천">신천 &nbsp;
-					<input type="radio" name="place_location" value="압구정">압구정 &nbsp;
-					<input type="radio" name="place_location" value="여의도">여의도 &nbsp;
-					<input type="radio" name="place_location" value="영등포">영등포 &nbsp;
-					<input type="radio" name="place_location" value="천호">천호 &nbsp;
-					<input type="radio" name="place_location" value="상암">상암 &nbsp;
-					<input type="radio" name="place_location" value="기타">기타 &nbsp;<br/><br/>
-					<input type="submit" class="btn btn-danger" value="검색하기">
-				</form>
-			</div>
+	<div style="width:1080px; height:680px; margin-left:auto; margin-right:auto; ">
+		<div class="line1">
+			<p class="orangeLine" align="center"></p>
 		</div>
-	 --%>
+		<%-- <a href="${root }/placeBoard/newBoardList.do?place_gu=${place_gu}&place_thema=${place_thema}&place_balance=${place_balance}">인기순으로 보기!</a>
+		<div class="line1">
+			<p class="orangeLine"></p>
+		</div>
+		 --%>
+		
+		<c:forEach var="placeBoard" items="${boardList}">
+			<div style="float:left; width:270px; height:auto;" >
+				<figure class="figurefx default">
+		   			<img src="${root}${placeBoard.place_photo}" width="250" height="180"> 
+		   			<figcaption> 
+		   				<div>
+		   					<c:if test="${placeBoard.place_star==0}"><img src="${root}/resources/star/00.png" width="120" height="25" style="margin:0px 0px 0px 52px;"/></c:if>	
+		   					<c:if test="${placeBoard.place_star>0 && placeBoard.place_star<=0.5}"><img src="${root}/resources/star/05.png" width="120" height="25" style="margin:0px 0px 0px 52px;"/></c:if>
+		   					<c:if test="${placeBoard.place_star>0.5 && placeBoard.place_star<=1}"><img src="${root}/resources/star/10.png" width="120" height="25" style="margin:0px 0px 0px 52px;"/></c:if>
+		   					<c:if test="${placeBoard.place_star>1 && placeBoard.place_star<=1.5}"><img src="${root}/resources/star/15.png" width="120" height="25" style="margin:0px 0px 0px 52px;"/></c:if>
+		   					<c:if test="${placeBoard.place_star>1.5 && placeBoard.place_star<=2}"><img src="${root}/resources/star/20.png" width="120" height="25" style="margin:0px 0px 0px 52px;"/></c:if>
+		   					<c:if test="${placeBoard.place_star>2 && placeBoard.place_star<=2.5}"><img src="${root}/resources/star/25.png" width="120" height="25" style="margin:0px 0px 0px 52px;"/></c:if>
+		   					<c:if test="${placeBoard.place_star>2.5 && placeBoard.place_star<=3}"><img src="${root}/resources/star/30.png" width="120" height="25" style="margin:0px 0px 0px 52px;"/></c:if>
+		   					<c:if test="${placeBoard.place_star>3 && placeBoard.place_star<=3.5}"><img src="${root}/resources/star/35.png" width="120" height="25" style="margin:0px 0px 0px 52px;"/></c:if>
+		   					<c:if test="${placeBoard.place_star>3.5 && placeBoard.place_star<=4}"><img src="${root}/resources/star/40.png" width="120" height="25" style="margin:0px 0px 0px 52px;"/></c:if>
+		   					<c:if test="${placeBoard.place_star>4 && placeBoard.place_star<=4.5}"><img src="${root}/resources/star/45.png" width="120" height="25" style="margin:0px 0px 0px 52px;"/></c:if>
+		   					<c:if test="${placeBoard.place_star>4.5 && placeBoard.place_star<=5}"><img src="${root}/resources/star/50.png" width="120" height="25" style="margin:0px 0px 0px 52px;"/></c:if>
+		   					${placeBoard.place_star}점
+		   				</div>
+		   				<a href="${root}/placeBoard/reviewBoard.do?place_code=${placeBoard.place_code}">상세보기</a>
+		   			</figcaption>
+				</figure>
+				<div align="center">${placeBoard.place_name}</div>
+			</div>
+		</c:forEach>
+	</div>
+
+	
+	<div style="width:1080px; text-align:center; margin-left:auto; margin-right:auto;">
+		<c:if test="${count>0}">
+			<c:set var="pageBlock" value="${4}"/>
+			<c:set var="pageCount" value="${count/boardSize+(count%boardSize==0 ? 0:1 )}"/>
+			
+			<fmt:parseNumber var="rs" value="${(currentPage-1)/pageBlock }" integerOnly="true"/>
+			<c:set var="startPage" value="${rs*pageBlock+1 }"/>
+			<c:set var="endPage" value="${startPage+pageBlock-1 }"/>
+			
+			<c:if test="${endPage> pageCount }">
+				<c:set var="endPage" value="${pageCount }"/>
+			</c:if>
+			
+			<c:if test="${startPage>pageBlock }">
+				<a href="${root }/placeBoard/boardList.do?pageNumber=${startPage-pageBlock}&place_gu=${place_gu}&place_thema=${place_thema}&place_balance=${place_balance}">[이전]</a>
+			</c:if>
+			
+			<c:forEach var="i" begin="${startPage }" end="${endPage }">
+				<a href="${root }/placeBoard/boardList.do?pageNumber=${i}&place_gu=${place_gu}&place_thema=${place_thema}&place_balance=${place_balance}">[${i}]</a>
+			</c:forEach>
+			
+			<c:if test="${endPage<pageCount }">
+				<a href="${root }/placeBoard/boardList.do?pageNumber=${startPage+pageBlock}&place_gu=${place_gu}&place_thema=${place_thema}&place_balance=${place_balance}">[다음]</a>
+			</c:if>
+		</c:if>
+	</div>
 		<div style="width:1080px; height:680px; margin-left:auto; margin-right:auto; ">
 			<div class="line1">
 				<p class="orangeLine" align="center"></p>
 			</div>
-			<a href="${root }/placeBoard/newBoardList.do">신규순</a>&nbsp;||&nbsp;<a>조회순</a>
-			
-			<div class="line1">
-				<p class="orangeLine"></p>
-			</div>
-			
-			<c:forEach var="placeBoard" items="${boardList}">
-				<div style="float:left; width:270px; height:auto;" >
-					<figure class="figurefx default">
-			   			<img src="${root}${placeBoard.place_photo}" width="250" height="180"> 
-			   			<figcaption> 
-			   				<div>
-			   					<c:if test="${placeBoard.place_star==0}"><img src="${root}/resources/star/00.png" width="120" height="25" style="margin:0px 0px 0px 52px;"/></c:if>	
-			   					<c:if test="${placeBoard.place_star>0 && placeBoard.place_star<=0.5}"><img src="${root}/resources/star/05.png" width="120" height="25" style="margin:0px 0px 0px 52px;"/></c:if>
-			   					<c:if test="${placeBoard.place_star>0.5 && placeBoard.place_star<=1}"><img src="${root}/resources/star/10.png" width="120" height="25" style="margin:0px 0px 0px 52px;"/></c:if>
-			   					<c:if test="${placeBoard.place_star>1 && placeBoard.place_star<=1.5}"><img src="${root}/resources/star/15.png" width="120" height="25" style="margin:0px 0px 0px 52px;"/></c:if>
-			   					<c:if test="${placeBoard.place_star>1.5 && placeBoard.place_star<=2}"><img src="${root}/resources/star/20.png" width="120" height="25" style="margin:0px 0px 0px 52px;"/></c:if>
-			   					<c:if test="${placeBoard.place_star>2 && placeBoard.place_star<=2.5}"><img src="${root}/resources/star/25.png" width="120" height="25" style="margin:0px 0px 0px 52px;"/></c:if>
-			   					<c:if test="${placeBoard.place_star>2.5 && placeBoard.place_star<=3}"><img src="${root}/resources/star/30.png" width="120" height="25" style="margin:0px 0px 0px 52px;"/></c:if>
-			   					<c:if test="${placeBoard.place_star>3 && placeBoard.place_star<=3.5}"><img src="${root}/resources/star/35.png" width="120" height="25" style="margin:0px 0px 0px 52px;"/></c:if>
-			   					<c:if test="${placeBoard.place_star>3.5 && placeBoard.place_star<=4}"><img src="${root}/resources/star/40.png" width="120" height="25" style="margin:0px 0px 0px 52px;"/></c:if>
-			   					<c:if test="${placeBoard.place_star>4 && placeBoard.place_star<=4.5}"><img src="${root}/resources/star/45.png" width="120" height="25" style="margin:0px 0px 0px 52px;"/></c:if>
-			   					<c:if test="${placeBoard.place_star>4.5 && placeBoard.place_star<=5}"><img src="${root}/resources/star/50.png" width="120" height="25" style="margin:0px 0px 0px 52px;"/></c:if>
-			   					${placeBoard.place_star}점
-			   				</div>
-			   				<a href="${root}/placeBoard/reviewBoard.do?place_code=${placeBoard.place_code}">상세보기</a>
-			   			</figcaption>
-					</figure>
-					<div align="center">${placeBoard.place_name}</div>
-				</div>
-			</c:forEach>
 		</div>
-		
-		<div style="width:1080px; text-align:center; margin-left:auto; margin-right:auto;">
-			<c:if test="${count>0}">
-				<c:set var="pageBlock" value="${5}"/>
-				<c:set var="pageCount" value="${count/boardSize+(count%boardSize==0 ? 0:1 )}"/>
-				
-				<fmt:parseNumber var="rs" value="${(currentPage-1)/pageBlock }" integerOnly="true"/>
-				<c:set var="startPage" value="${rs*pageBlock+1 }"/>
-				<c:set var="endPage" value="${startPage+pageBlock-1 }"/>
-				
-				<c:if test="${endPage> pageCount }">
-					<c:set var="endPage" value="${pageCount }"/>
-				</c:if>
-				
-				<c:if test="${startPage>pageBlock }">
-					<a href="${root }/placeBoard/boardList.do?pageNumber=${startPage-pageBlock}">[이전]</a>
-				</c:if>
-				
-				<c:forEach var="i" begin="${startPage }" end="${endPage }">
-					<a href="${root }/placeBoard/boardList.do?pageNumber=${i}">[${i}]</a>
-				</c:forEach>
-				
-				<c:if test="${endPage<pageCount }">
-					<a href="${root }/placeBoard/boardList.do?pageNumber=${startPage+pageBlock}">[다음]</a>
-				</c:if>
-			</c:if>
-		</div>
-			<div style="width:1080px; height:680px; margin-left:auto; margin-right:auto; ">
-				<div class="line1">
-					<p class="orangeLine" align="center"></p>
-				</div>
-			</div>
-		</div>
+	</div>
 </body>
 </html>

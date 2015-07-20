@@ -3,13 +3,14 @@
 	width:350px;
 	height:320px;
 	text-align:center; 
-	margin-left:15%;
+	margin:3% 0 0 19%;
 }
 
 #content {
 	float:left;
 	width:500px;
 	height: auto;
+	margin:3% 0 0 2%;
 }
 
 .commentList{
