@@ -17,7 +17,7 @@
 			alert("회원가입이 완료 되었습니다.");
 			//location.href="${root}/member/register.do";
 			//나중에 마이페이지로 이동하게하면 좋을 거 같아요.
-			$(location).attr("href", "${root}/start.jsp");
+			$(location).attr("href", "${root}/member/login.do");
 		</script>
 	</c:if>
 	
