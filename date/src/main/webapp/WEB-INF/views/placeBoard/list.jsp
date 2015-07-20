@@ -24,12 +24,12 @@
 			</div>
 	
 			<!-- 지역, 테마, 가격대, 쿠폰 선택박스 -->
+			<form action="${root}/placeBoard/boardList.do" onsubmit="return placeListForm(this)">
 			<div id="finderbox" style="height:200px;">
 				<div class="finder_inner">
 					<dl class="finder_list_2014" id='locationlist'>
 						<dt><strong><img src="http://image2.yanolja.com/site/imageFile/images/V2/dateCourse/images/20141023/txt_area.png" width="60" height="14" alt="지역" /></strong></dt>
 						<dd>
-							<form action="${root}/placeBoard/boardList.do" onsubmit="return placeListForm(this)">
 								<ul class="opt_rap">
 									<li>
 										<input type="radio" name="place_location" value="강남">강남
@@ -64,11 +64,7 @@
 									<li>
 										<input type="radio" name="place_location" value="천호">천호 
 									</li>
-									<li>
-										<input type="submit" class="btn btn-danger" value="검색하기"> 
-									</li>
 								</ul>
-							</form>
 						</dd>			
 					 </dl>
 		
@@ -77,31 +73,28 @@
 						<dd>
 							<ul class="opt_rap">
 								<li>
-									<input type="radio" name="place_location" value="강남">카페	
+									<input type="radio" name="place_thema" value="강남">카페	
 								</li>
 								<li>
-									<input type="radio" name="place_location" value="송파">영화
+									<input type="radio" name="place_thema" value="송파">영화
 								</li>
 								<li>
-									<input type="radio" name="place_location" value="종로">공원 
+									<input type="radio" name="place_thema" value="종로">공원 
 								</li>
 								<li>
-									<input type="radio" name="place_location" value="사당">쇼핑
+									<input type="radio" name="place_thema" value="사당">쇼핑
 								</li>
 								<li>
-									<input type="radio" name="place_location" value="삼성">테마파크 
+									<input type="radio" name="place_thema" value="삼성">테마파크 
 								</li>
 								<li>
-									<input type="radio" name="place_location" value="서래마을">축제	 
+									<input type="radio" name="place_thema" value="서래마을">축제	 
 								</li>
 								<li>
-									<input type="radio" name="place_location" value="신림">문화
+									<input type="radio" name="place_thema" value="신림">문화
 								</li>
 								<li>
-									<input type="radio" name="place_location" value="신사">자연명소
-								</li>
-								<li>
-									<input type="submit" class="btn btn-danger" value="검색하기"> 
+									<input type="radio" name="place_thema" value="신사">자연명소
 								</li>
 							</ul>
 						</dd>
@@ -112,33 +105,31 @@
 						<dd>
 							<ul class="opt_rap">
 									<li>
-									<input type="radio" name="place_location" value="강남">1만원이하	
+									<input type="radio" name="place_balance" value="강남">1만원이하	
 								</li>
 								<li>
-									<input type="radio" name="place_location" value="송파">1만원대
+									<input type="radio" name="place_balance" value="송파">1만원대
 								</li>
 								<li>
-									<input type="radio" name="place_location" value="종로">2만원대
+									<input type="radio" name="place_balance" value="종로">2만원대
 								</li>
 								<li>
-									<input type="radio" name="place_location" value="사당">3만원대
+									<input type="radio" name="place_balance" value="사당">3만원대
 								</li>
 								<li>
-									<input type="radio" name="place_location" value="삼성">4만원대
+									<input type="radio" name="place_balance" value="삼성">4만원대
 								</li>
 								<li>
-									<input type="radio" name="place_location" value="서래마을">5만원대 
+									<input type="radio" name="place_balance" value="서래마을">5만원대 
 								</li>
 								<li>
-									<input type="radio" name="place_location" value="신림">6만원이상
-								</li>
-								<li>
-									<input type="submit" class="btn btn-danger" value="검색하기"> 
+									<input type="radio" name="place_balance" value="신림">6만원이상
 								</li>
 							</ul>
 						</dd>
 					</dl>
 				</div>
+				<input type="submit" class="btn btn-danger" value="검색하기"> 
 	        </div>
 	    </div>
 	</div>
@@ -182,7 +173,7 @@
 			<div class="line1">
 				<p class="orangeLine" align="center"></p>
 			</div>
-			<a>신규순</a>&nbsp;||&nbsp;<a>조회순</a>
+			<a href="${root }/placeBoard/newBoardList.do">신규순</a>&nbsp;||&nbsp;<a>조회순</a>
 			
 			<div class="line1">
 				<p class="orangeLine"></p>

@@ -120,4 +120,12 @@ public class PlaceBoardServiceImpl implements PlaceBoardService {
 		
 		mav.setViewName("reviewBoard/list");
 	}
+
+
+	@Override
+	public void newBoardList(ModelAndView mav) {
+		Map<String,Object> map=mav.getModelMap();
+		HttpServletRequest request=(HttpServletRequest)map.get("request");
+		
+	}
 }
