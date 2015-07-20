@@ -109,13 +109,15 @@ public class RecommandPlaceDaoImpl implements RecommandPlaceDao {
 	 * @description : 사용자가 선택한 코스를 저장하는 함수.
 	 */
 	@Override
-	public int saveCourse(String place_code1, String place_code2) {
+	public int saveCourse(String place_code1, String place_code2, String id) {
 		System.out.println("here DAO");
 		System.out.println(place_code1);
 		System.out.println(place_code2);
-		String cid = "rkaqo2";
+		String cid = id;
+		String recom = "recom";
 		Map<String, String> hMap = new HashMap<String, String>();
 		hMap.put("cid", cid);
+		hMap.put("recom", recom);
 		hMap.put("place_code1", place_code1);
 		hMap.put("place_code2", place_code2);
 		return sqlSession.insert("dao.recommandPlaceMapper.saveCourse", hMap);
@@ -125,5 +127,11 @@ public class RecommandPlaceDaoImpl implements RecommandPlaceDao {
 	public List<SaveCourseDto> moveMypageGetCourse(String cid) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("dao.recommandPlaceMapper.getMyCourseList", cid);
+	}
+	@Override
+	public int insertMap(PlaceDto dto) {
+		// TODO Auto-generated method stub
+		
+		return sqlSession.insert("dao.recommandPlaceMapper.insertMap", dto);
 	}
 }

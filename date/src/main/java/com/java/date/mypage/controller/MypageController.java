@@ -53,10 +53,10 @@ public class MypageController {
 	 */
 	@RequestMapping("/mypage/getMyCourse.do")
 	@ResponseBody
-	public List<LoadCourseDto> getMyCourse(String id) {
+	public List<LoadCourseDto> getMyCourse(String id,String like) {
 		logger.info("getMyCourse Start----------------" + id);
 		System.out.println("getMyCourse");
-		return mypageService.getMyCourse(id);
+		return mypageService.getMyCourse(id, like);
 	}
 	@RequestMapping("/mypage/point.do")
 	@ResponseBody

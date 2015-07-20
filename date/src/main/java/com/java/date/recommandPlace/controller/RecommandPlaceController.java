@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.java.date.recommandPlace.dto.PlaceDto;
@@ -21,6 +22,13 @@ public class RecommandPlaceController {
 	Logger logger = Logger.getLogger(this.getClass().getName());
 	@Autowired
 	private RecommandPlaceService service;
+	
+	
+	@RequestMapping("/recommandPlace/helpMap.do")
+	public String helpMap(){
+		
+		return "recommandPlace/helpMapCordi";
+	}
 	/**
 	 * @name : RecommandPlaceController
 	 * @date : 2015. 6. 22.
@@ -36,7 +44,7 @@ public class RecommandPlaceController {
 		service.findPlace(mav);
 		return mav;
 	}
-	
+
 	/**
 	 * @name : RecommandPlaceController
 	 * @date : 2015. 6. 22.
@@ -48,7 +56,7 @@ public class RecommandPlaceController {
 	public PlaceDto getInfo(String code) {
 		return service.getInfo(code);
 	}
-	
+
 	/**
 	 * @name : RecommandPlaceController
 	 * @date : 2015. 6. 22.
@@ -57,7 +65,8 @@ public class RecommandPlaceController {
 	 */
 	@RequestMapping("/recommandPlace/select2.do")
 	@ResponseBody
-	public List<PlaceDto> select2(String place_gu,String place_season,String place_weather,String place_time,String place_balance) {
+	public List<PlaceDto> select2(String place_gu, String place_season,
+			String place_weather, String place_time, String place_balance) {
 		logger.info("이것이 실행되어야함?");
 		System.out.println(place_gu);
 		System.out.println(place_season);
@@ -72,7 +81,7 @@ public class RecommandPlaceController {
 		dto.setPlace_balance(place_balance);
 		return service.placeList(dto);
 	}
-	
+
 	/**
 	 * @name : RecommandPlaceController
 	 * @date : 2015. 6. 22.
@@ -88,6 +97,7 @@ public class RecommandPlaceController {
 		service.selectCourse(mav);
 		return mav;
 	}
+
 	/**
 	 * @name : RecommandPlaceController
 	 * @date : 2015. 7. 10.
@@ -96,20 +106,21 @@ public class RecommandPlaceController {
 	 */
 	@RequestMapping("/recommandPlace/saveCourse.do")
 	@ResponseBody
-	public int saveCourse(String place_code1, String place_code2) {
+	public int saveCourse(String place_code1, String place_code2, String id) {
 		System.out.println("지금은 여기로 오는게 맞는가???");
 		System.out.println(place_code1);
 		System.out.println(place_code2);
-		return service.saveCourse(place_code1, place_code2);
+		System.out.println("id" + id);
+		return service.saveCourse(place_code1, place_code2, id);
 	}
-	
+
 	/**
 	 * @name : RecommandPlaceController
 	 * @date : 2015. 7. 12.
 	 * @author : 종현
 	 * @description : 마이페이지의 내 저장된 코스보기로 이동.
 	 */
-	@RequestMapping(value="/recommandPlace/moveMypage.do", method=RequestMethod.GET)
+	@RequestMapping(value = "/recommandPlace/moveMypage.do", method = RequestMethod.GET)
 	public ModelAndView moveMypage(HttpServletRequest request,
 			HttpServletResponse response) {
 		logger.info("moveMypage ㅋㅋ");
@@ -118,35 +129,45 @@ public class RecommandPlaceController {
 		service.moveMypage(mav);
 		return mav;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+	/**
+	 * @name : RecommandPlaceController
+	 * @date : 2015. 7. 12.
+	 * @author : 종현
+	 * @description : 운영자가 장소추가(placeDto를 Multi형식으로 넘김)
+	 */
+	@RequestMapping(value="/recommandPlace/insertMap.do", method=RequestMethod.POST)
+	public ModelAndView insertMap(MultipartHttpServletRequest request) {
+		logger.info("insertMap insertMap----------");
+		System.out.println("이zz동합zz니z다.");
+
+		ModelAndView mav = new ModelAndView();
+
+		mav.addObject("request", request);
+
+		service.insertMap(mav);
+
+		return mav;
+	}
+	@RequestMapping(value="/recommandPlace/insertM.do")
+	public String insertM(){
+		System.out.println("이동합니다.");
+		return "recommandPlace/insertMap";
+	}
+
 	/*--------------------아래함수들은 테스트 함수들입니다.----------------------------------------------------*/
-	
+
 	@RequestMapping("/recommandPlace/map.do")
 	public String map() {
 		logger.info("map");
 		return "recommandPlace/map";
 	}
+
 	/**
 	 * @name : RecommandPlaceController
 	 * @date : 2015. 6. 22.
 	 * @author : 종현
-	 * @description : 사용자선택에 의한 장소들을 가져온다
-	 * 					근데 에이젝스가 아니다 이건 지워야할듯?.
+	 * @description : 사용자선택에 의한 장소들을 가져온다 근데 에이젝스가 아니다 이건 지워야할듯?.
 	 */
 	@RequestMapping(value = "/recommandPlace/select.do", method = RequestMethod.POST)
 	public ModelAndView placeCourseList(HttpServletRequest request,
@@ -159,7 +180,6 @@ public class RecommandPlaceController {
 		return mav;
 	}
 
-
 	@RequestMapping(value = "/recommandPlace/selectMap.do", method = RequestMethod.GET)
 	public ModelAndView selectMap(HttpServletRequest request) {
 		logger.info("selectMap");
@@ -168,6 +188,7 @@ public class RecommandPlaceController {
 		service.selectMap(mav);
 		return mav;
 	}
+
 	@RequestMapping(value = "/recommandPlace/selectMap0.do", method = RequestMethod.GET)
 	public ModelAndView selectMap0(HttpServletRequest request) {
 		logger.info("selectMap");
@@ -194,6 +215,7 @@ public class RecommandPlaceController {
 		service.selectMap3(mav);
 		return mav;
 	}
+
 	@RequestMapping(value = "/recommandPlace/daumMap.do", method = RequestMethod.POST)
 	public ModelAndView daumMap(HttpServletRequest request,
 			HttpServletResponse response, PlaceDto placeDto) {
@@ -205,21 +227,19 @@ public class RecommandPlaceController {
 		return mav;
 	}
 
-	/*@RequestMapping(value = "/recommandPlace/selectMap.do", method = RequestMethod.POST)
-	public ModelAndView selectMap(HttpServletRequest request,
-			HttpServletResponse response) {
-		logger.info("selectMap");
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("request", request);
-		service.selectMap(mav);
-		return mav;
-	}*/
-	/* @RequestMapping(value="/recommandPlace/??.do", method=RequestMethod.POST)
-	  public ModelAndView placeList(HttpServletRequest request,
-	  HttpServletResponse response){
-		  ModelAndView mav = new ModelAndView();
-		  mav.addObject("request", request); service.placeCourseList(mav);
-
-	  return mav; 
-	  }*/
+	/*
+	 * @RequestMapping(value = "/recommandPlace/selectMap.do", method =
+	 * RequestMethod.POST) public ModelAndView selectMap(HttpServletRequest
+	 * request, HttpServletResponse response) { logger.info("selectMap");
+	 * ModelAndView mav = new ModelAndView(); mav.addObject("request", request);
+	 * service.selectMap(mav); return mav; }
+	 */
+	/*
+	 * @RequestMapping(value="/recommandPlace/??.do", method=RequestMethod.POST)
+	 * public ModelAndView placeList(HttpServletRequest request,
+	 * HttpServletResponse response){ ModelAndView mav = new ModelAndView();
+	 * mav.addObject("request", request); service.placeCourseList(mav);
+	 * 
+	 * return mav; }
+	 */
 }

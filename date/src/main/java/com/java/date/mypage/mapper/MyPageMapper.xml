@@ -7,8 +7,8 @@
 		delete save_courses where num=#{num}
 	</delete>
 	
-	<select id="getMyCourse" parameterType="String" resultType="com.java.date.recommandPlace.dto.SaveCourseDto">
-		select * from save_courses where save_cid=#{id}
+	<select id="getMyCourse" parameterType="java.util.Map" resultType="com.java.date.recommandPlace.dto.SaveCourseDto">
+		select * from save_courses where save_cid=#{id} and save_thema=#{like}
 	</select>
 	
 	<select id="pointcheck" parameterType="String" resultType="com.java.date.mypage.dto.MypageDto">

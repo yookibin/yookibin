@@ -135,13 +135,14 @@
 </style>
 <title>Insert title here</title>
 <script type="text/javascript">
-	function myCourse(root, id) {
+	function myCourse(root, id, like) {
 		
 				$.ajax({
 					url : root + "/mypage/getMyCourse.do",
 					type : "post",
 					data : {
-						id : id
+						id : id,
+						like : like
 					},
 					success : function(data) {
 						console.log(data);
@@ -178,6 +179,7 @@
 									/* + "<div class='ab'>"
 									+ "date : "
 									+ data[i].save_date */
+									/* + "<br> <input type='button' class='btn btn-outline btn-danger' value='확인' onclick='okCourse('"+data[i].save_cplace1+"')'>"  */   
 									+ "<br> <input type='button' class='btn btn-outline btn-danger' value='삭제' onclick='deleteCourse("+data[i].num+")'>"    
 									/* + "</div>"  */
 									+ "</div>"
@@ -189,7 +191,6 @@
 				});
 	}
 	function deleteCourse(num) {
-		/* alert(num); */
 		alert(num);
 		$.ajax({
 			url : "/date/mypage/delete.do",
@@ -204,6 +205,9 @@
 				}
 			}
 		});
+	}
+	function okCourse(code1){
+		alert(code1);
 	}
 	 function myPoint(root, id) {
 	      //alert("root"+root);
@@ -261,6 +265,61 @@
 	         }
 	         
 	      });
+	   }
+	   
+	   function myRandomCourse(root, id, like){
+		   $.ajax({
+				url : root + "/mypage/getMyCourse.do",
+				type : "post",
+				data : {
+					id : id,
+					like : like
+				},
+				success : function(data) {
+					console.log(data);
+
+					var str = "<div class='modal-header'>"
+						+"<button type='button' class='close' data-dismiss='modal'"
+						+"aria-hidden='true'>&times;</button>"
+						+"<h4 class='modal-title' id='myModalLabel'>나의랜덤코스</h4>"
+						+"</div>";
+					for (var i = 0; i < data.length; i++){
+						str += "<div class='a' id="+data[i].num+">"
+								+ "<div class='a1'>" + "<span> &nbsp;"
+								+ (i + 1)
+								+ "</span>"
+								+ "</div>"
+								+ "<div class='a2'>"
+								+ "<div>"
+								+ "<img alt='' src='"+root+data[i].save_cplace1.place_photo+"' width='250' height='150'>"
+								+ "</div>"
+								+ "<div>"
+								+ data[i].save_cplace1.place_name
+								+ "<br>"
+								+ "</div>"
+								+ "</div>"
+								+ "<div class='a3'>"
+								+ "<div>"
+								+ "<img alt='' src='"+root+data[i].save_cplace2.place_photo+"' width='250' height='150'>"
+								+ "</div>"
+								+ "<div>"
+								+ data[i].save_cplace2.place_name
+								+ "<br>"
+								+ "</div>"
+								+ "</div>"
+								/* + "<div class='ab'>"
+								+ "date : "
+								+ data[i].save_date */
+								/* + "<br> <input type='button' class='btn btn-outline btn-danger' value='확인' onclick='okCourse('"+data[i].save_cplace1+"')'>"  */   
+								+ "<br> <input type='button' class='btn btn-outline btn-danger' value='삭제' onclick='deleteCourse("+data[i].num+")'>"    
+								/* + "</div>"  */
+								+ "</div>"
+					}
+					
+					$("#loadMyRandomCourse").empty();
+					$("#loadMyRandomCourse").append(str);
+				}
+			});
 	   }
 </script>
 </head>
@@ -346,7 +405,21 @@
 		<!-- /.modal-dialog -->
 	</div>
 	<!-- /.modal -->
-
+	<!-- 모달끝 -->
+	
+	<!-- 모달시작 -->
+	<div class="modal fade" id="myRandomCourseLode" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content" id="loadMyRandomCourse">
+			
+			
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
 	<!-- 모달끝 -->
 
 
@@ -379,8 +452,8 @@
 									<div class="ch-info">
 										<div class="ch-info-front ch-img-1"></div>
 										<div class="ch-info-back" data-toggle="modal"
-											data-target="#myCourseLode" onclick="myCourse('${root}','rkaqo2')">
-											<h3>나의추천코스</h3>
+											data-target="#myCourseLode" onclick="myCourse('${root}','${id}','recom')">
+											<h3>${id}추천코스</h3>
 											<p>by Gumball Creative View on choiceCourse</p>
 										</div>
 									</div>
@@ -392,11 +465,10 @@
 								<div class="ch-info-wrap">
 									<div class="ch-info">
 										<div class="ch-info-front ch-img-2"></div>
-										<div class="ch-info-back">
-											<a href="${root}/mypage/randomcourse.do">
+										<div class="ch-info-back"  data-toggle="modal"
+											data-target="#myRandomCourseLode" onclick="myRandomCourse('${root}','${id}','random')">
 												<h3>랜덤코스</h3>
 												<p>by Brian Hurst View on RandomCourse</p>
-											</a>
 										</div>
 									</div>
 								</div>

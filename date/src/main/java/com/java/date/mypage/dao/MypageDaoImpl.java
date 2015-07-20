@@ -1,6 +1,8 @@
 package com.java.date.mypage.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Logger;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -30,10 +32,12 @@ public class MypageDaoImpl implements MypageDao {
 	 * @description : 나의코스를 id로 찾아옴
 	 */
 	@Override
-	public List<SaveCourseDto> getMyCourse(String id) {
+	public List<SaveCourseDto> getMyCourse(String id, String like) {
 		// TODO Auto-generated method stub
-		System.out.println("여긴디에요?");
-		return sqlSession.selectList("dao.myPageMapper.getMyCourse", id);
+		Map<String, String> hMap = new HashMap<String, String>();
+		hMap.put("id", id);
+		hMap.put("like", like);
+		return sqlSession.selectList("dao.myPageMapper.getMyCourse", hMap);
 	}
 
 	@Override

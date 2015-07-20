@@ -1,5 +1,6 @@
 package com.java.date.recommandPlace.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.java.date.recommandPlace.dto.PlaceDto;
@@ -21,9 +22,10 @@ public interface RecommandPlaceDao {
 
 	public List<Object> test12();
 
-	public int saveCourse(String place_code1, String place_code2);
+	public int saveCourse(String place_code1, String place_code2,String id);
 
 	public List<SaveCourseDto> moveMypageGetCourse(String cid);
+	public int insertMap(PlaceDto dto);
 	
 
 }

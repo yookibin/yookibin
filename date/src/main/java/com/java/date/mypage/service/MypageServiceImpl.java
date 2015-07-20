@@ -38,10 +38,10 @@ public class MypageServiceImpl implements MypageService {
 	 *@description : 나의코스를 id로 찾아옴 
 	 */
 	@Override
-	public List<LoadCourseDto> getMyCourse(String id) {
+	public List<LoadCourseDto> getMyCourse(String id, String like) {
 		// TODO Auto-generated method stub
 		System.out.println("여긴 서비스");
-		List<SaveCourseDto>	sList = mypagedao.getMyCourse(id);
+		List<SaveCourseDto>	sList = mypagedao.getMyCourse(id, like);
 		List<LoadCourseDto> lList = new ArrayList<LoadCourseDto>();
 		for(int i = 0; i< sList.size();i++){
 			LoadCourseDto dto = new LoadCourseDto();

@@ -33,8 +33,10 @@
 <script type="text/javascript"
 	src="${root}/css/recommandPlace/script.js"></script>
 <script type="text/javascript">
+	var addNumber = 10;
 	function test(root) {
 		$("#course").css("display", "block");
+		$("#addButton").css("display", "block");
 		$
 				.ajax({
 					url : root + "/recommandPlace/select2.do",
@@ -59,7 +61,7 @@
 						$("#courseSelect").append(courseList);
 
 						var placeList = "";
-						for (var i = 0; i < data.length; i = i + 1) {
+						for (var i = 0; i < addNumber; i = i + 1) {
 							placeList += "<div>"
 
 									+ "<div id='title'>"
@@ -126,10 +128,16 @@
 									+ "<div id='"+data[i].place_code+"'>"
 									+ "</div></div></div></div>";
 						}
-
 						$("#place").empty();
-						$("#place").append(placeList); 
-						
+						$("#place").append(placeList);
+						if ((addNumber + 10) < data.length) {
+							addNumber += 10;
+						} else if ((addNumber + 10) >= data.length) {
+							addNumber = data.length;
+						} else if(addNumber == data.length){
+							$("#addButton").css("display", "none");
+						}
+
 					}
 				});
 	}
@@ -157,67 +165,111 @@
 
 .allView {
 	width: 1100px;
-	height:500px;
+	height: 500px;
 	margin-left: auto;
 	margin-right: auto;
-	font-size: 15px;
 	font-size: 20px;
 	font-family: "돋움", "돋움체", "굴림", "굴림체", "나눔고딕";
+}
+
+.date_n_finder {
+	width: 100%;
+	height: 50px;
+}
+
+.date_n_top {
+	position: relative;
+	overflow: hidden;
+	width: 100%;
+	height: 40px;
+	background: #5a474a
+		url('http://image2.yanolja.com/site/imageFile/images/V2/dateCourse/images/20141023/bg_date_n_top.png')
+		no-repeat 0 top;
+}
+
+.date_n_top .tit_date_n {
+	float: left;
+	margin: 12px 0 0 20px;
+	size: 20px;
+}
+
+.date_n_top .tit_date_n img {
+	vertical-align: middle;
+}
+
+.date_n_top .rankingup {
+	float: right;
+	position: relative;
+	width: 292px;
+	margin: 12px 20px 0 0;
 }
 </style>
 </head>
 <body>
 
-		<jsp:include page="/thisIndex.jsp" />
-					<div style="width:1050px; margin-left: auto;margin-right: auto;">
-							<table class="table table-striped table-bordered table-hover"
-								id="dataTables-example">
-								<thead>
-									<tr>
-										<th>번호</th>
-										<th>장소명</th>
-										<th>지역명</th>
-										<th>날씨</th>
-										<th>별점</th>
-									</tr>
-								</thead>
-								<tbody id="tbody">
-									<c:forEach var="list" items="${list }" varStatus="status">
-										<tr>
-											<td><a href="/date/placeBoard/reviewBoard.do?place_code=${list.place_code }">${status.index+1}</a></td> 
-											<td><a href="/date/placeBoard/reviewBoard.do?place_code=${list.place_code }">${list.place_name }</a></td>
-											<td><a href="/date/placeBoard/reviewBoard.do?place_code=${list.place_code }">${list.place_gu }</a>
-											</td>
-											<td class="center"><a href="/date/placeBoard/reviewBoard.do?place_code=${list.place_code }">${list.place_weather }</a></td>
-											<td class="center"><a href="/date/placeBoard/reviewBoard.do?place_code=${list.place_code }">${list.place_star }</a></td>
-										</tr>
-									</c:forEach>
-								</tbody>
-							</table>
-						</div>
+	<jsp:include page="/TOP.jsp" />
+	<div style="width: 1050px; margin-left: auto; margin-right: auto;">
+		<table class="table table-striped table-bordered table-hover"
+			id="dataTables-example">
+			<thead>
+				<tr>
+					<th>번호</th>
+					<th>장소명</th>
+					<th>지역명</th>
+					<th>날씨</th>
+					<th>별점</th>
+				</tr>
+			</thead>
+			<tbody id="tbody">
+				<c:forEach var="list" items="${list }" varStatus="status">
+					<tr>
+						<td><a
+							href="/date/placeBoard/reviewBoard.do?place_code=${list.place_code }">${status.index+1}</a></td>
+						<td><a
+							href="/date/placeBoard/reviewBoard.do?place_code=${list.place_code }">${list.place_name }</a></td>
+						<td><a
+							href="/date/placeBoard/reviewBoard.do?place_code=${list.place_code }">${list.place_gu }</a>
+						</td>
+						<td class="center"><a
+							href="/date/placeBoard/reviewBoard.do?place_code=${list.place_code }">${list.place_weather }</a></td>
+						<td class="center"><a
+							href="/date/placeBoard/reviewBoard.do?place_code=${list.place_code }">${list.place_star }</a></td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+	</div>
 
 	<div class="allView">
-		환영합니다.
+		<div class="date_n_finder"
+			style="background: gray; font-size: 20px; color: white;">
+			<div class="date_n_top">
+				<h3 class="date_n_top">
+					<span> <img
+						src="http://image2.yanolja.com/site/imageFile/images/V2/dateCourse/images/20141023/txt_datearea.png"
+						alt="데이트 장소 찾기" />
+					</span>
+				</h3>
+			</div>
+
+		</div>
 		<form action="${root}/recommandPlace/select.do" method="POST">
-			지역을 선택하세요<br>
 			<div class="questAll">
 				<div class="ques">
 					<p>
 						지 역 :<br> <select id="place_gu"
-							style="color: black; border-radius: 5px;"
-							name="place_gu">
+							style="color: black; border-radius: 5px;" name="place_gu">
 							<option value="무관">무관</option>
-							<option value="강남구">강남</option>
-							<option value="송파구">송파</option>
-							<option value="종로구">종로</option>
+							<c:forEach var="guList" items="${guList }">
+								<option>${guList}</option>
+							</c:forEach>
 						</select><br>
 					</p>
 				</div>
 				<div class="ques">
 					<p>
 						계 절 : <br> <select id="place_season"
-							style="color: black; border-radius: 5px;"
-							name="place_season">
+							style="color: black; border-radius: 5px;" name="place_season">
 							<option value="">무관</option>
 							<option>봄</option>
 							<option>여름</option>
@@ -229,8 +281,7 @@
 				<div class="ques">
 					<p>
 						날 씨 :<br> <select id="place_weather"
-							style="color: black; border-radius: 5px;"
-							name="place_weather">
+							style="color: black; border-radius: 5px;" name="place_weather">
 							<option value="">무관</option>
 							<option>맑음</option>
 							<option>흐림</option>
@@ -242,8 +293,7 @@
 				<div class="ques">
 					<p>
 						시간대 :<br> <select id="place_time"
-							style="color: black; border-radius: 5px;"
-							name="place_time">
+							style="color: black; border-radius: 5px;" name="place_time">
 							<option value="무관">무관</option>
 							<option value="1">0시~4시</option>
 							<option value="2">4시~8시</option>
@@ -257,8 +307,7 @@
 				<div class="ques">
 					<p>
 						가격대 :<br> <select id="place_balance"
-							style="color: black; border-radius: 5px;"
-							name="place_balance">
+							style="color: black; border-radius: 5px;" name="place_balance">
 							<option value="무관">무관</option>
 							<option value="1만원">1만원</option>
 							<option value="2만원">2만원</option>
@@ -291,17 +340,27 @@
 
 				<p>
 					코스추천 : <select id="courseSelect"
-						style="color: black; border-radius: 5px;"
-						name="courseSelect">
+						style="color: black; border-radius: 5px;" name="courseSelect">
 						<option>--코스선택--</option>
 					</select>&nbsp;&nbsp;
 				</p>
 				<input type="submit" class="btn btn-warning" value="코스자세히보기">
 			</div>
 		</form>
-		<div id="place"></div>
-	</div>
+		<div id="place"
+			style="border: 1px solid black; width: 1000px; height: auto;">
 
+		</div>
+
+	</div>
+	<div class="ques7" id="addButton"
+		style="display: none; text-align: right; width: 1000px; height: 50px;">
+		<div>
+			<input type="button" id="btn" class="btn btn-warning" value="더보기"
+				onclick="test('${root }')">
+		</div>
+
+	</div>
 
 	<!-- jQuery -->
 	<script
