@@ -26,7 +26,7 @@
 }
 
 .valueData {
-	width: 242px;
+	width: 220px;
 	height: 50px;
 	float: left;
 	border: 1px black solid;
