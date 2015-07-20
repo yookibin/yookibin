@@ -1,6 +1,7 @@
 package com.java.date.member.service;
 
 import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -221,5 +222,61 @@ public class MemberServiceImpl implements MemberService {
 		logger.info("check:"+check);
 		mav.addObject("check", check);
 		mav.setViewName("member/updateOk");
+	}
+	
+	/**
+	 * @name : findID
+	 * @date : 2015. 7. 20.
+	 * @author : JeongSuhyun
+	 * @description : 넘겨받은 nickName과 phone을 DB에서 비교하여 해당 id를 반환받아 jsp페이지로 이동한다.
+	 */
+	@Override
+	public void findID(ModelAndView mav) {
+		Map<String, Object> map=mav.getModelMap();
+		HttpServletRequest request=(HttpServletRequest)map.get("request");
+		
+		String nickName=request.getParameter("nickName");
+		String phone=request.getParameter("phone");
+		logger.info("nickName: "+nickName+" phone: "+phone);
+		
+		HashMap<String, String> hMap=new HashMap<String, String>();
+		hMap.put("nickName", nickName);
+		hMap.put("phone", phone);
+		
+		String id=memberDao.findID(hMap);
+		logger.info("findID: "+id);
+		
+		mav.addObject("id",id);
+		
+		mav.setViewName("member/findID");
+		
+	}
+
+	/**
+	 * @name : findPW
+	 * @date : 2015. 7. 20.
+	 * @author : JeongSuhyun
+	 * @description : 넘겨받은 id과 phone을 DB에서 비교하여 해당 password를 반환받아 jsp페이지로 이동한다.
+	 */
+	@Override
+	public void findPW(ModelAndView mav) {
+		Map<String, Object> map=mav.getModelMap();
+		HttpServletRequest request=(HttpServletRequest)map.get("request");
+		
+		String id=request.getParameter("id");
+		String phone=request.getParameter("phone");
+		logger.info("id: "+id+" phone: "+phone);
+		
+		HashMap<String, String> hMap=new HashMap<String, String>();
+		hMap.put("id", id);
+		hMap.put("phone", phone);
+		
+		String password=memberDao.findPW(hMap);
+		logger.info("findPW: "+password);
+		
+		mav.addObject("password",password);
+		
+		mav.setViewName("member/findPW");
+		
 	}
 }

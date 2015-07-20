@@ -38,4 +38,12 @@
 	<insert id="memberPoint" parameterType="String">
 		<![CDATA[ insert into point values(point_point_code_seq.nextval,#{id},'+1000','1000','회원가입기념 포인트 지급',sysdate) ]]>
 	</insert>
+	
+	<select id="findID" parameterType="java.util.HashMap" resultType="String">
+		<![CDATA[ select id from member where nickName=#{nickName} and phone=#{phone} ]]>
+	</select>
+	
+	<select id="findPW" parameterType="java.util.HashMap" resultType="String">
+		<![CDATA[ select pw from member where id=#{id} and phone=#{phone} ]]>
+	</select>
 </mapper>

@@ -63,4 +63,8 @@ public interface MemberService {
 	
 	public void updateOk(ModelAndView mav);
 	
+	public void findID(ModelAndView mav);
+	
+	public void findPW(ModelAndView mav);
+	
 }

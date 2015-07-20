@@ -208,4 +208,38 @@ public class MemberController {
 		return mav;
 	}
 	
+	/**
+	 * @name : findID
+	 * @date : 2015. 7. 20.
+	 * @author : jeongsuhyun
+	 * @description : 닉네임과 휴대폰번호의 정보를 입력받아 DB에서 비교하는 함수로 이동한다.
+	 */
+	@RequestMapping(value="/member/findID.do", method=RequestMethod.POST)
+	public ModelAndView findID(HttpServletRequest request){
+		logger.info("findID---------------");
+		ModelAndView mav=new ModelAndView();
+		
+		mav.addObject("request",request);
+		memberService.findID(mav);
+		
+		return mav;
+	}
+	
+	/**
+	 * @name : findPW
+	 * @date : 2015. 7. 20.
+	 * @author : jeongsuhyun
+	 * @description : 아이디와 휴대폰번호의 정보를 입력받아 DB에서 비교하는 함수로 이동한다.
+	 */
+	@RequestMapping(value="/member/findPW.do", method=RequestMethod.POST)
+	public ModelAndView findPW(HttpServletRequest request){
+		logger.info("findPW---------------");
+		ModelAndView mav=new ModelAndView();
+		
+		mav.addObject("request",request);
+		memberService.findPW(mav);
+		
+		return mav;
+	}
+	
 }
