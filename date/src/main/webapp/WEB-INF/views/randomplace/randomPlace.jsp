@@ -330,7 +330,7 @@ function saveCourses(place1,place2,id){
 		<div id="randomPlaceMain">
 			<div id="start">
 				<input type="button" value="시작" id="startButton" class="btn btn-default"
-					onclick="randomPlaceStart('${root}',${aquestion},${id})"> 
+					onclick="randomPlaceStart('${root}',${aquestion},'${id}')"> 
 			</div>
 			<div id="question"></div> 
 			<div id="button">

@@ -28,13 +28,19 @@
 <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
 <!-- Custom CSS -->
 <link rel="stylesheet" href="${root}/resources/css/creative.css" type="text/css">
+<link rel="stylesheet" href="${root}/css/slide/unit.css"/>
+<link rel="stylesheet" href="${root}/css/slide/common.css"/>
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.17.0/TweenMax.min.js"></script>
+<script type="text/javascript" src="${root}/css/slide/controller.js"></script>
+<script type="text/javascript" src="${root}/css/slide/eventController.js"></script>
 <style type="text/css">
 .AllAll{
 	width:1100px;
 	height:1111px;
 	margin-left: auto;
 	margin-right: auto;
-	border:1px black solid;
+	/* border:1px black solid; */
 }
 	.menu-A{
 		width:1100px;
@@ -48,25 +54,20 @@
 		width:150px;
 	}
 	.menu-Aaa{
-		margin:0 0 0 98px;
+		margin:0 0 0 55px;
 	}
-	.event-A{
-		border:solid 1px black;
-		float:left;
-		width:300px;
-		height:200px;
-	}
+
 </style>
 </head>
 <body>
 <div class="AllAll">
 	<div class="menu-A">
-		<div class="menu-Aa" style="margin:0 0 0 92px;">
+		<div class="menu-Aa" style="margin:0 0 0 80px;">
 			<a href="#">
 				<img alt="" src="${root}/resources/logo.gif" width="200" height="95">
 			</a>
 		</div>
-		<div class="menu-Aa">
+		<div class="menu-Aa" style="margin:0 0 0 50px;">
 			<div class="menu-Aaa">
 				<i class="fa fa-4x fa-diamond wow bounceIn text-primary"></i> 
 			</div>
@@ -88,7 +89,7 @@
 			</div>
 		</div>
 		<div class="menu-Aa">
-			<div class="menu-Aaa">
+			<div class="menu-Aaa" style="margin-left:65px;">
 				<i class="fa fa-4x fa-paper-plane wow bounceIn text-primary"></i>
 			</div>
 			<div id="topMenu">
@@ -112,7 +113,7 @@
 			</div>
 		</div>
 		<div class="menu-Aa">
-			<div class="menu-Aaa">
+			<div class="menu-Aaa" style="margin-left:65px;">
 				<i class="fa fa-4x fa-heart wow bounceIn text-primary"></i>
 			</div>
 			<div id="topMenu">
@@ -193,13 +194,24 @@
 		<!--clear above float:left elements. It is required if above #slider is styled as float:left. -->
 		<div style="clear: both; height: 0;"></div>
 	</div>
-	<div style="margin:0 0 0 92px; height:300px;">
+	<div style="margin:0 0 0 86px; height:300px;">
 		<div class="event-A">
-			
+			<button class="prev-A" type="button"><img alt="" src="${root}/css/imgSlide/images/left.png"></button>
+			<ul>
+				<li><img src="${root}/css/imgSlide/images/slide_1.png" alt="" onclick="javascript:place_A('${root}','kang001')"></li>
+				<li><img src="${root}/css/imgSlide/images/slide_2.png" alt="" onclick="javascript:place_A('${root}','jong001')"></li>
+				<li><img src="${root}/css/imgSlide/images/slide_3.png" alt="" onclick="javascript:place_A('${root}','jong014')"></li>
+			</ul>		
+			<button class="next-A" type="button"><img alt="" src="${root}/css/imgSlide/images/rigth.png"></button>
 		</div>
-		<div class="event-A">
-		</div>
-		<div class="event-A">
+		<div class="event-B">
+			<button class="prev-B" type="button"><img alt="" src="${root}/css/imgSlide/images/left.png"></button>
+			<ul>
+				<li><div class="event_div" style="background-color: #FFA7A7;" onclick="javascript:events_A('${root}','77','1')">철구를 잡아라 !</div></li>
+				<li><div class="event_div" style="background-color: #98F791;" onclick="javascript:events_A('${root}','78','1')">잠실에 싱크홀이 ?!</div></li>
+				<li><div class="event_div" style="background-color: #36FFFF;" onclick="javascript:events_A('${root}','84','1')">청정도시 상암</div></li>
+			</ul>
+			<button class="next-B" type="button"><img alt="" src="${root}/css/imgSlide/images/rigth.png"></button>
 		</div>
 	</div>
 	<div>
