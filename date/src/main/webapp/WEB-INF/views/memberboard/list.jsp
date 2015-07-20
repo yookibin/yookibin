@@ -59,8 +59,10 @@
                 <div class="panel-body">
                     <div class="dataTable_wrapper">
                     
-                    <a href="${root }/memberboard/write.do">글쓰기</a><br/><br/>
-
+                    <c:if test="${id!=null }">
+                    	<a href="${root }/memberboard/write.do">글쓰기</a><br/><br/>
+					</c:if>
+					
 					<c:if test="${count==0 }">
 					   <center>게시판에 저장된 글이 없습니다.</center>
 					</c:if>

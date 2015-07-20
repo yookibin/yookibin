@@ -128,7 +128,7 @@
 						<label class="col-sm-2 control-label">우편번호</label>
 						<div class="col-sm-4">
 							<input type="text" class="form-control" name="zipcode" placeholder="우편번호"/>
-							<input type="button" class="btn btn-primary" value="우편번호검색" onclick="zipcodeCheck(memberForm, '${root}')"/>
+							<input type="button" class="btn btn-primary" value="우편번호검색" onclick="zipcodeCheck(memberForm, '${root}')"/> 
 						</div>
 				  	</div>
 				  	
@@ -146,8 +146,8 @@
 				    	<button type="submit" class="btn btn-primary">회원가입</button>
 	    			</div>
 	    		</div>
-	    	</form>
+	    	</form>	  
 	  	</article>
-	</div>
+	</div>	
 </body>
 </html>
