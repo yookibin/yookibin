@@ -93,4 +93,28 @@ public class MemberDaoImpl implements MemberDao {
 		return sqlSession.update("dao.memberMapper.update", member);
 		//return 0;
 	}
+
+	/**
+	 * @name : findID
+	 * @date : 2015. 7. 20.
+	 * @author : JeongSuhyun
+	 * @description : 넘겨받은 hMap의 데이터를 DB에서 비교하여 해당하는 id를 반환한다.
+	 */
+	@Override
+	public String findID(HashMap<String, String> hMap) {
+		
+		return sqlSession.selectOne("dao.memberMapper.findID",hMap);
+	}
+
+	/**
+	 * @name : findPW
+	 * @date : 2015. 7. 20.
+	 * @author : JeongSuhyun
+	 * @description : 넘겨받은 hMap의 데이터를 DB에서 비교하여 해당하는 password를 반환한다.
+	 */
+	@Override
+	public String findPW(HashMap<String, String> hMap) {
+		
+		return sqlSession.selectOne("dao.memberMapper.findPW",hMap);
+	}
 }

@@ -37,6 +37,7 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
 </head>
 <body>
 	
@@ -50,7 +51,7 @@
     					<label for="inputEmail" class="col-sm-2 control-label">아이디</label>
     					<div class="col-sm-4">
     						<input type="text" class="form-control" id="inputEmail" name="id" placeholder="아이디">
-    						<input type="button" value="아이디중복" onclick="idCheck(memberForm, '${root}')" />
+    						<input type="button" class="btn btn-primary" value="아이디중복" onclick="idCheck(memberForm, '${root}')" />
     					</div>
     				</div>
     				<div class="form-group">
@@ -71,7 +72,7 @@
     					<label for="inputRipple" class="col-sm-2 control-label">닉네임</label>
    					 	<div class="col-sm-4">
     						<input type="text" class="form-control" name="nickName" id="inputRipple" placeholder="닉네임">
-    						<input type="button" value="닉네임중복" onclick="nickNameCheck(memberForm, '${root}')" />
+    						<input type="button" class="btn btn-primary" value="닉네임중복" onclick="nickNameCheck(memberForm, '${root}')" />
     					</div>
     				</div>
     				<div class="form-group">
@@ -127,7 +128,7 @@
 						<label class="col-sm-2 control-label">우편번호</label>
 						<div class="col-sm-4">
 							<input type="text" class="form-control" name="zipcode" placeholder="우편번호"/>
-							<input type="button" value="우편번호검색" onclick="zipcodeCheck(memberForm, '${root}')"/>
+							<input type="button" class="btn btn-primary" value="우편번호검색" onclick="zipcodeCheck(memberForm, '${root}')"/>
 						</div>
 				  	</div>
 				  	

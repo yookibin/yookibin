@@ -6,9 +6,31 @@ body{
    font-family:Gulim, dotum, sans-serif;	
 }
 
+Alert{
+	roundedBottom Corners:true;
+	color: #124332;
+	background-color: #ffffff;
+	header-colors:#73c7ea, #0156a9;
+	header-height:19;
+	drop-shadow-enabled:true;
+	drop-shadow-color:#243322;
+	corner-radius:15;
+	border-style:solid;
+	border-thickness:2;
+	border-thickness-top:0;
+	border-thickness-bottom:0;
+	borderThicknessLeft:5;
+	borderThicknessRight:5;
+	border-color:#0156a9;
+	footer-color:#243322, #ffffff;
+	title-style-name:"title";
+	message-style-name:"messageStyle";
+	button-style-name:"AlertButtons";
+}
+
 a:link {
 	text-decoration:none;
-	color:blue
+	color:#000000;
 }
 
 a:visited {

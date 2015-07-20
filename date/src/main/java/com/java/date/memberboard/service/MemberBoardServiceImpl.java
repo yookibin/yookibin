@@ -331,6 +331,9 @@ public class MemberBoardServiceImpl implements MemberBoardService {
 		HttpServletRequest request=(HttpServletRequest)map.get("request");
 		int board_num=Integer.parseInt(request.getParameter("board_num"));
 		String pageNumber=request.getParameter("pageNumber");
+		String member_level=request.getParameter("memberLevel");
+		
+		logger.info("delete --member_level:"+member_level);
 		logger.info("delete --board_num:"+board_num);
 		/*mav.addObject("board_num", board_num);*/
 		mav.addObject("pageNumber", pageNumber);

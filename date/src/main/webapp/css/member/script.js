@@ -7,6 +7,7 @@ function registerForm(form){
 	
 	if($("input[name='id']").val()==""){
 		alert("아이디를 입력하세요.");
+		
 		$("input[name='id']").focus();
 		return false;
 	}

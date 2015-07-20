@@ -1,5 +1,6 @@
 package com.java.date.member.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.java.date.member.dto.MemberDto;
@@ -66,4 +67,8 @@ public interface MemberDao {
 	public int update(MemberDto member);
 	
 	public int memberPoint(String id);
+	
+	public String findID(HashMap<String,String> hMap);
+	
+	public String findPW(HashMap<String,String> hMap);
 }
