@@ -55,7 +55,7 @@
 	
 		<c:if test="${list==null }">
 		<div style="padding: 50px 10px 10px 100px">
-			다시검색해주세요.
+			<h4><strong>다시 검색하세요.</strong></h4>
 		</div>
 		</c:if>
 		

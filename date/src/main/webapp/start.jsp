@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 	<script type="text/javascript" src="${root}/css/board/script.js"></script>
 	<script type="text/javascript" src="${root }/css/jquery.js"></script>
-	
+	<link href="${root }/css/board/style.css">
 	<!-- Bootstrap Core CSS -->
 <link
 	href="${root}/css/bootstrap/bower_components/bootstrap/dist/css/bootstrap.min.css"

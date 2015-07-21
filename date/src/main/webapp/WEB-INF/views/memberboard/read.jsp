@@ -118,7 +118,6 @@
 			</div>
 		</div>
 			
-			
 		<div id="replyAll" style="display:none;  margin: 0% 15% 0% 15%">
 			
 			
@@ -133,17 +132,15 @@
 				</span>
 			</div>
 			
-			
 			<c:forEach var="memberReplyList" items="${memberReplyList}" begin="${startRow }" step="1">
 			
 				<div class="replyDiv" id="${memberReplyList.reply_num}" style="display:block;">
 					<%-- <span>${memberReplyList.reply_num}</span> --%>
 					
 					<span class="name">${memberReplyList.reply_writer}</span>
-					<span class="date">${memberReplyList.reply_time}</span>
+					<span class="date"><fmt:formatDate value="${memberReplyList.reply_time }" type="date" pattern="yyyy/MM/dd hh:mm"/></span>
 					<br/>
-					<span>${ memberReplyList.reply_content}</span>
-					<%-- <fmt:formatDate value="${memberReplyList.reply_time }" type="date"/> --%>
+					<span class="replyContent">${ memberReplyList.reply_content}</span>
 					<c:if test="${nickName==memberReplyList.reply_writer }">
 						<a href="javascript:updateReply('${memberReplyList.reply_num}','${root}')">수정</a>
 						<a href="javascript:deleteReply('${memberReplyList.reply_num}','${root}')">삭제</a>
