@@ -44,24 +44,6 @@
 <script type="text/javascript" src="<c:url value="/static/jquery.js"/>"></script>
 <link href="${root }/css/chat/style.css" rel="stylesheet"/>
 <script type="text/javascript">
-/* 	function sleep(num){
-	  var now = new Date();
-	  var stop = now.getTime() + num;
-	  while(true){
-	    now = new Date();
-	    if(now.getTime() > stop)return;
-	  }
-	}
-	
- 	$(document).ready(function(){
-		while(true){	 		
-			location.reload();
-			sleep(500000);
-		}
-	});  */ 
-	
-</script>
-<script type="text/javascript">
 	function makeRoom(root){	
 		
 		var roomName=prompt("방 제목을 입력하세요.","");

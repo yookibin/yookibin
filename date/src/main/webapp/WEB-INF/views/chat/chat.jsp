@@ -66,8 +66,8 @@
     function onMessage(evt){
     	var data = evt.data;
      	var realData=data.split(",")[0];
-    	var userCount=data.split(",")[1];     	
-    	    	
+    	var userCount=data.split(",")[1];  
+      	
     	$("#data").append(realData);
     	
     	//alert(userCount);
@@ -103,14 +103,14 @@
 		<p class="orangeLine"></p>
 	</div>
 	<div class="form-group">
-      <div class="col-lg-10">
+      <div class="col-lg-10">      
         <textarea class="form-control" id="data" rows="15" cols="20" disabled="disabled"></textarea>
       </div>
     </div>			
 	
 	<div class="form-group">
 	  <div class="input-group" style="width:490px; margin-left: 15px;">
-	    <textarea class="form-control" id="message" onKeyDown="if(event.keyCode==13){sendMessage(); return false;}"></textarea>
+	    <textarea class="form-control" id="message" style="width: 450px;" onKeyDown="if(event.keyCode==13){sendMessage(); return false;}"></textarea>
 	    <span class="input-group-btn">
 	      <button style="height:54px;" class="btn btn-default" id="sendBtn" type="button">SEND</button>
 	    </span>
@@ -118,8 +118,8 @@
 	</div>
 
 	<div style="align:center; width:520px; margin-left: 15px;">
-		<img  src="${root }/resources/chat/chick.png" width="400" height="34"/>
-		<button type="button" style="color:black; background:#F05F40;" class="btn btn-danger" onclick="exit('${root}')">방 나가기</button>
+		<%-- <img  src="${root }/resources/chat/chick.png" width="400" height="34"/>  --%>
+		<button type="button" style="color:black; background:#F05F40; margin-left: 427px;" class="btn btn-danger" onclick="exit('${root}')">방 나가기</button>
 	</div>
 	
 	<!-- jQuery -->

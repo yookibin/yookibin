@@ -67,7 +67,7 @@
 		<p class="orangeLine"></p>
 	</div>
 	
-	<div class="line2">
+	<div class="line6">
 		<span>${eventMember.join_content }</span>
 	</div>
 	<div class="line1">

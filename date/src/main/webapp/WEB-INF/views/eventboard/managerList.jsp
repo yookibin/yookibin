@@ -40,6 +40,9 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
   <![endif]-->
   
+  	<script src="${root }/css/alertify.js-0.3.11/lib/alertify.min.js"></script>
+	<link rel="stylesheet" href="${root }/css/alertify.js-0.3.11/themes/alertify.core.css"/>
+  
 <script type="text/javascript">
 	function randomFun(root, event_code, group_number, sequence_number, sequence_level, pageNumber, count, event_period){
 		//alert("하하하 랜덤추첨!!");
@@ -61,7 +64,7 @@
   		//alert("오늘과의 차이: "+betweenDay);   		
 		
    		if(betweenDay<1){
-  			alert("아직 이벤트 진행기간입니다.");
+   			alertify.alert("아직 이벤트 진행기간입니다.");
   		}else{
   			var num=prompt("현재 응모회원수 : "+count+"\n몇 명의 당첨자?","");
 			//alert(num);

@@ -10,18 +10,20 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Insert title here</title>
+<script src="${root }/css/alertify.js-0.3.11/lib/alertify.min.js"></script>
+<link rel="stylesheet" href="${root }/css/alertify.js-0.3.11/themes/alertify.core.css"/>
 </head>
 <body>	
 	<c:if test="${check>0 }">
 		<script type="text/javascript">
-			alert("글쓰기를 성공하였습니다.");
+			alertify.alert("글쓰기를 성공하였습니다.");
 			location.href="${root}/eventBoard/list.do?pageNumber=${pageNumber}";
 		</script>
 	</c:if>
 	
 	<c:if test="${check==0 }">
 		<script type="text/javascript">
-			alert("글쓰기를 실패하였습니다.");
+			alertify.alert("글쓰기를 실패하였습니다.");
 			location.href="${root}/eventBoard/list.do?pageNumber=${pageNumber}";
 		</script>
 	</c:if>	

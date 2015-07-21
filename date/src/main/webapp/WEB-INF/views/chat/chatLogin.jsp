@@ -32,9 +32,9 @@
 	<input type="button" value="입장하기" onclick="entrance('${root}')"/> --%>
 	
 	<div style="display:table-cell; vertical-align:middle; text-align:center; width:500px; height:500px;">
-		<div style="width:180px; height:50px; position:absolute; top:0; left:0;">
+		<%-- <div style="width:180px; height:50px; position:absolute; top:0; left:0;">
 			<img src="${root }/resources/chat/YouAndI.png" width="180px" height="50px"/>
-		</div> 
+		</div>  --%>
 		<div style="width:500px;height:200px;"> 
 			<img src="${root }/resources/chat/chat.png" width="200px" height="200px"/>
 		</div>

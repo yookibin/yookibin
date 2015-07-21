@@ -75,8 +75,9 @@ public class EchoHandler extends TextWebSocketHandler{
     		// 연결되어있는 모든 클라이언트들에게 메시지를 전송한다
         	for(WebSocketSession sess: sessionList){     
         		//logger.info("sess roomNum: "+hMap2.get(sess.getRemoteAddress()));
-        		if(hMap2.get(sess.getRemoteAddress()).equals(roomNum)){
-        			sess.sendMessage(new TextMessage(chatId+realMessage+"\r\n,"+roomEnterSize));   
+        		if(hMap2.get(sess.getRemoteAddress()).equals(roomNum)){        			
+        			sess.sendMessage(new TextMessage(chatId+realMessage+"\r\n,"+roomEnterSize));
+        			//sess.sendMessage(new TextMessage(chatId+realMessage+"\r\n,"+roomEnterSize+",0"));
         		}
         	}     
         	
@@ -97,6 +98,13 @@ public class EchoHandler extends TextWebSocketHandler{
         	for(WebSocketSession sess: sessionList){  
         		if(hMap2.get(sess.getRemoteAddress()).equals(roomNum)){
         			sess.sendMessage(new TextMessage(chatId+" : "+realMessage+"\t\t"+hour+"\r\n,"+roomEnterSize));
+        		/*	if(session.getRemoteAddress()==sess.getRemoteAddress()){
+        				//자신이 보낸 메시지일 경우 1 -> 오른쪽에 뿌림
+        				sess.sendMessage(new TextMessage(chatId+" : "+realMessage+"\t\t"+hour+"\r\n,"+roomEnterSize+",1"));
+        			}else{
+        				//타인이 보낸 메시지일 경우 2 -> 왼쪽에 뿌림
+        				sess.sendMessage(new TextMessage(chatId+" : "+realMessage+"\t\t"+hour+"\r\n,"+roomEnterSize+",2"));
+        			}*/
         		}
         	}   
     	}    	 	
