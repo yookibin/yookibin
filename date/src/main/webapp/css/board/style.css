@@ -7,15 +7,21 @@
 }
 
 /* 댓글 날짜 관련 css */
-.date{ font:0.9em Verdana, Helvetica, Arial, Gulim, sans_serif;color:#777;}
+.date{ font:0.9em Verdana, Helvetica, Arial, Gulim, sans_serif;color:#CACACA; }
 
 /* 댓글 작성자 */
-.name{color:#666; font-weight:bold;}
+.name{color:#666; font-weight:bold; padding-left: 10px; padding-right:10px;}
 
 /* 댓글 구분 선 */
 .replyDiv{
-	border-bottom:dotted thin aqua;
-	width:800px; background:#f9f9f9; padding:5px 5px 0 5px; overflow:hidden;
+	border-bottom:1px solid;
+	width:800px; height:80px; background:#f9f9f9; padding:20px 10px 0 10px; overflow:hidden;
+}
+/* 댓글 내용 */
+.replyContent{
+	padding-left: 10px;
+	padding-top: 10px;
+	
 }
 
 .centers {
@@ -136,4 +142,22 @@ a:hover {
 	border-color:#000000;border-bottom-width:0px;
 	padding:2px 0px 2px 2px;
 }  
+
+.selectText{
+  width: 300px;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
 /* -- WRITE UPDATE STYLE END -------------------------------------- */

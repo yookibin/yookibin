@@ -25,7 +25,7 @@
 	width: 350px;
 	height: 50px;
 	border-radius:1em/1em;
-	background-color: #F05F40;
+	background-color: #8A4924;
 	color: white;
 }
 
@@ -33,7 +33,7 @@
 	width: 350px;
 	height: 50px;
 	border-radius:1em/1em;
-	background-color: #F05F40;
+	background-color: #8A4924;
 	color: white;
 }
 
@@ -48,12 +48,12 @@
 
 #question{
 	display:none;
-	color:#F05F40;
+	color:#8A4924;
 	margin:0 0 0 200px;
 	width: 700px;
 	height: 300px;
 	border-radius:1em/1em;
-	border: 3px solid #F05F40;
+	border: 3px solid #8A4924;
 	line-height:250px;
 	font-size: 20px;
 }
@@ -69,7 +69,7 @@
 	margin: 15px 0 15px 0;
 	width: 700px;
 	height: 50px;
-	background-color: #F05F40;
+	background-color: #8A4924;
 	color: white;
 }
 
@@ -90,9 +90,9 @@
 	height: 200px;
 	font-size: 30px;
 	
-	color:#F05F40;
+	color:#8A4924;
 	border-radius:1em/1em;
-	border: 3px solid #F05F40;
+	border: 3px solid #8A4924;
 }
 
 .placeContent{

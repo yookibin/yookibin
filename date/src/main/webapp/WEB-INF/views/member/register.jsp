@@ -10,6 +10,10 @@
 <title>회원가입</title>
 <script type="text/javascript" src="${root }/css/member/script.js"></script>
 <script type="text/javascript" src="${root }/css/jquery.js"></script>
+<!-- alert -->
+<script src="${root }/css/alertify.js-0.3.11/lib/alertify.min.js"></script>
+<link rel="stylesheet" href="${root }/css/alertify.js-0.3.11/themes/alertify.core.css"/>
+
 <link rel="stylesheet" type="text/css" href="${root }/css/member/style.css" />
 
 <!--  -->
@@ -93,7 +97,7 @@
 	    			<div class="form-group">
 						<label class="col-sm-2 control-label">생년월일</label>
 						<div class="col-sm-4">
-							<select name="year" >
+							<select name="year" class="selectText">
 								<option></option>
 								<c:forEach var="i" begin="1988" end="2006">
 									<c:if test="${i==1996 }">
@@ -106,14 +110,14 @@
 								</c:forEach>
 							</select>
 							
-							<select name="month">
+							<select name="month" class="selectText">
 								<option></option>
 								<c:forEach var="i" begin="1" end="12">
 									<option value="${i}">${i}</option>
 								</c:forEach>
 							</select>
 							
-							<select name="day">
+							<select name="day" class="selectText">
 								<option></option>
 								<c:forEach var="i" begin="1" end="31">
 									<option value="${i}">${i}</option>

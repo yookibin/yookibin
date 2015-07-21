@@ -183,11 +183,14 @@ function recommend(root, board_num, board_recom, pageNumber, recommend_nickName,
 			var result=data;
 			if(data!=""){
 				$("#board_recom:eq(0)").text(data);
+				$("#recom_button>i").text("");
+				$("#recom_button>i").text(data);
 			}
 			
 			if(data=="") alert("추천을 이미 하셨습니다.");
 			
-			$("#recom_button").attr("disabled", "disabled");
+			/*$("#recom_button").attr("disabled", "disabled");*/
+			
 			//alert(result);
 		}
 		

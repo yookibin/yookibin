@@ -28,7 +28,7 @@
 		animate();
 	}
 	function animate(){
-		var moveX = current * 322;
+		var moveX = current * 392;
 		TweenMax.to(container,0.8, {marginLeft:-moveX, ease:Expo.easeOut});
 	
 		clearInterval(interval);
