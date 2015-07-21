@@ -40,13 +40,18 @@
 <script type="text/javascript" src="${root}/css/slide/controller.js"></script>
 <script type="text/javascript"
 	src="${root}/css/slide/eventController.js"></script>
+<script type="text/javascript">
+function chatStart(root){
+	var url=root+"/chatStart.do";
+	window.open(url,"chating","width=540,height=520,resizable=no");		
+}
+</script>
 <style type="text/css">
 .AllAll {
 	width: 1100px;
 	height: 1111px;
 	margin-left: auto;
 	margin-right: auto;
-	/* border:1px black solid; */
 }
 
 .menu-A {
@@ -68,7 +73,7 @@
 
 .menu-Aa {
 	float: left;
-	width: 150px;
+	width: 175px;
 }
 
 .menu-Aaa {
@@ -81,7 +86,7 @@
 		<c:if test="${id==null}">
 			<div class="menu-B">
 				<div
-					style="width: 100px; height: 40px; float: right; margin-right: 100px;">
+					style="width: 100px; height: 40px; float: right;">
 					<a href="${root }/member/login.do"><img alt=""
 						src="${root}/resources/main/login.png" width="95" height="30">
 					</a>
@@ -124,35 +129,35 @@
 			</div>
 		</c:if>
 		<div class="menu-A">
-			<div class="menu-Aa" style="margin: 0 0 0 80px;">
-				<a href="#"> <img alt="" src="${root}/resources/main/logo.gif"
+			<div class="menu-Aa" style="margin: 0 0 0 20px;">
+				<a href="./thisIndex.jsp"> <img alt="" src="${root}/resources/main/logo.gif"
 					width="200" height="95">
 				</a>
 			</div>
 			<div class="menu-Aa" style="margin: 0 0 0 50px;">
 				<div class="menu-Aaa">
-					<i class="fa fa-4x fa-diamond wow bounceIn text-primary"></i>
+					<i class="fa fa-4x fa-diamond wow bounceIn text-primary" style="color: #8A4924;"></i>
 				</div>
 				<div id="topMenu">
 					<ul>
-						<li class="topMenuLi" style="margin: 0 0 0 14px;"><a
+						<li class="topMenuLi" style="margin: 0 0 0 14px; background:#8A4924;"><a
 							class="menuLink"
-							href="http://unikys.tistory.com/category/Programming%20Lecture">데이트
+							href="http://unikys.tistory.com/category/Programming%20Lecture" style="color: #FFF2E6;">데이트
 								코스추천</a>
 							<ul class="submenu" style="z-index: 1;">
 								<li><a href="${root }/recommandPlace/findPlace.do"
-									class="submenuLink">데이트코스 추천</a></li>
+									class="submenuLink" style="color: #8A4924;">데이트코스 추천</a></li>
 								<li><a href="${root}/randomplace/randomPlaceStart.do"
-									class="submenuLink">랜덤데이트 추천</a></li>
+									class="submenuLink" style="color: #8A4924;">랜덤데이트 추천</a></li>
 								<li><a href="${root }/placesearch/choice.do"
-									class="submenuLink">테마별장소 선택</a></li>
+									class="submenuLink" style="color: #8A4924;">테마별장소 선택</a></li>
 							</ul></li>
 					</ul>
 				</div>
 			</div>
 			<div class="menu-Aa">
 				<div class="menu-Aaa" style="margin-left: 65px;">
-					<i class="fa fa-4x fa-paper-plane wow bounceIn text-primary"></i>
+					<i class="fa fa-4x fa-paper-plane wow bounceIn text-primary" style="color: #8A4924;"></i>
 				</div>
 				<div id="topMenu">
 					<ul>
@@ -163,7 +168,7 @@
 			</div>
 			<div class="menu-Aa">
 				<div class="menu-Aaa">
-					<i class="fa fa-4x fa-newspaper-o wow bounceIn text-primary"></i>
+					<i class="fa fa-4x fa-newspaper-o wow bounceIn text-primary" style="color: #8A4924;"></i>
 				</div>
 				<div id="topMenu">
 					<ul>
@@ -175,7 +180,7 @@
 			</div>
 			<div class="menu-Aa">
 				<div class="menu-Aaa" style="margin-left: 65px;">
-					<i class="fa fa-4x fa-heart wow bounceIn text-primary"></i>
+					<i class="fa fa-4x fa-heart wow bounceIn text-primary" style="color: #8A4924;"></i>
 				</div>
 				<div id="topMenu">
 					<ul>
@@ -184,9 +189,9 @@
 					</ul>
 				</div>
 			</div>
-			<div class="menu-Aa" style="margin: 0 0 0 35px;">
-				<a href="#"> <img alt="" src="${root}/resources/main/chat.png"
-					width="95" height="95">
+			<div class="menu-Aa" style="width:100px;">
+				<a href="#"> <img alt="채팅하기" src="${root}/resources/main/chat.jpg"
+					width="120" height="95" onclick="chatStart('${root}')">
 				</a>
 			</div>
 		</div>

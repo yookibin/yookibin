@@ -52,10 +52,9 @@ a:hover {
 }
 
 #title {
-	width: 400px;
-	height: 400px;
+	width: 300px;
+	height: 300px;
 	float: left;
-	/* border: solid 0px red; */
 	border-width: 2px;
 	/* border-right-width: 0px;
 	border-bottom-width: 0px; */
@@ -65,13 +64,15 @@ a:hover {
 }
 
 #title_a{
-	width: 350px;
-	height: 248px;
+	width: 250px;
+	height: 180px;
 	text-align: center;
+	border:1px black solid;
 }
 
 #title_b {
-	width: 350px;
+	width: 250px;
 	height: 100px;
 	text-align: left;
+	border:1px black solid;
 }

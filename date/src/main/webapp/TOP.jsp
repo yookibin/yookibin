@@ -32,12 +32,21 @@
 <!-- Custom CSS -->
 <link rel="stylesheet" href="${root}/resources/css/creative.css"
 	type="text/css">
+<link rel="stylesheet" href="${root}/css/slide/unit.css" />
+<link rel="stylesheet" href="${root}/css/slide/common.css" />
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script
+	src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.17.0/TweenMax.min.js"></script>
+<script type="text/javascript" src="${root}/css/slide/controller.js"></script>
+<script type="text/javascript"
+	src="${root}/css/slide/eventController.js"></script>
 <style type="text/css">
 .AllAll {
 	width: 1100px;
-	height: auto;
+	height: 1111px;
 	margin-left: auto;
 	margin-right: auto;
+	/* border:1px black solid; */
 }
 
 .menu-A {
@@ -48,32 +57,78 @@
 	margin-top: 20px;
 }
 
+.menu-B {
+	width: 1100px;
+	height: 30px;
+	/* margin-left: auto; */
+	/* margin-right: 230px; */
+	/* margin-top: 20px; */
+	text-align: right;
+}
+
 .menu-Aa {
 	float: left;
 	width: 150px;
 }
 
 .menu-Aaa {
-	margin: 0 0 0 98px;
-}
-
-.event-A {
-	border: solid 1px black;
-	float: left;
-	width: 300px;
-	height: 200px;
+	margin: 0 0 0 55px;
 }
 </style>
 </head>
 <body>
-	<div class="AllAll">
+		<c:if test="${id==null}">
+			<div class="menu-B">
+				<div
+					style="width: 100px; height: 40px; float: right; margin-right: 100px;">
+					<a href="${root }/member/login.do"><img alt=""
+						src="${root}/resources/main/login.png" width="95" height="30">
+					</a>
+				</div>
+				&nbsp;&nbsp;&nbsp;
+				<div style="width: 100px; height: 40px; float: right;">
+					<a href="${root }/member/register.do"><img alt=""
+						src="${root}/resources/main/memberUp.png" width="95" height="30"></a>
+				</div>
+			</div>
+		</c:if>
+
+		<c:if test="${id!=null}">
+			<div class="menu-B">
+				<div
+					style="width: 100px; height: 40px; float: right; margin-right: 100px;">
+					<a href="${root }/member/logout.do"><img alt=""
+						src="${root}/resources/main/logout.png" width="95" height="30"></a>
+				</div>
+				<div style="width: 100px; height: 40px; float: right;">
+					<a href="${root }/member/update.do?id=${id}"><img alt=""
+						src="${root}/resources/main/memberUpdate.png" width="95"
+						height="30"></a>
+				</div>
+				<div style="width: 100px; height: 40px; float: right;">
+					<a href="${root }/member/delete.do"><img alt=""
+						src="${root}/resources/main/memberEnd.png" width="95" height="30"></a>
+				</div>
+				<c:if test="${memberLevel=='AA'}">
+					<div style="width: 100px; height: 40px; float: right;">
+						<a href="${root }/eventBoard/write.do"><img alt=""
+							src="${root}/resources/main/event.png" width="85" height="30"></a>
+					</div>
+					<div style="width: 100px; height: 40px; float: right;">
+						<a href="${root }/recommandPlace/insertM.do"><img alt=""
+							src="${root}/resources/main/place.png" width="70" height="30"></a>
+						<br />
+					</div>
+				</c:if>
+			</div>
+		</c:if>
 		<div class="menu-A">
-			<div class="menu-Aa" style="margin: 0 0 0 92px;">
-				<a href="#"> <img alt="" src="${root}/resources/main/logo.gif"
+			<div class="menu-Aa" style="margin: 0 0 0 80px;">
+				<a href="./thisIndex.jsp"> <img alt="" src="${root}/resources/main/logo.gif"
 					width="200" height="95">
 				</a>
 			</div>
-			<div class="menu-Aa">
+			<div class="menu-Aa" style="margin: 0 0 0 50px;">
 				<div class="menu-Aaa">
 					<i class="fa fa-4x fa-diamond wow bounceIn text-primary"></i>
 				</div>
@@ -95,7 +150,7 @@
 				</div>
 			</div>
 			<div class="menu-Aa">
-				<div class="menu-Aaa">
+				<div class="menu-Aaa" style="margin-left: 65px;">
 					<i class="fa fa-4x fa-paper-plane wow bounceIn text-primary"></i>
 				</div>
 				<div id="topMenu">
@@ -118,7 +173,7 @@
 				</div>
 			</div>
 			<div class="menu-Aa">
-				<div class="menu-Aaa">
+				<div class="menu-Aaa" style="margin-left: 65px;">
 					<i class="fa fa-4x fa-heart wow bounceIn text-primary"></i>
 				</div>
 				<div id="topMenu">
@@ -128,13 +183,12 @@
 					</ul>
 				</div>
 			</div>
-			<div class="menu-Aa" style="margin: 0 0 0 70px;">
+			<div class="menu-Aa" style="margin: 0 0 0 35px;">
 				<a href="#"> <img alt="" src="${root}/resources/main/chat.png"
 					width="95" height="95">
 				</a>
 			</div>
 		</div>
-	</div>
 
 </body>
 

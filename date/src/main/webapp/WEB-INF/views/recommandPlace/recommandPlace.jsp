@@ -34,7 +34,7 @@
 	src="${root}/css/recommandPlace/script.js"></script>
 <script type="text/javascript">
 	var addNumber = 10;
-	function test(root) {
+	function getCourses(root) {
 		$("#course").css("display", "block");
 		$("#addButton").css("display", "block");
 		$
@@ -51,99 +51,113 @@
 					success : function(data) {
 						console.log(data);
 						var courseList = "";
-						for (var i = 0; i < data.length - 1; i = i + 1) {
-							courseList += "<option value='"+data[i].place_code+","+data[i+1].place_code+"'>"
-									+ data[i].place_name
-									+ "ㅡㅡ>"
-									+ data[i + 1].place_name + "</option>"
-						}
-						$("#courseSelect").empty();
-						$("#courseSelect").append(courseList);
-
-						var placeList = "";
-						for (var i = 0; i < addNumber; i = i + 1) {
-							placeList += "<div>"
-
-									+ "<div id='title'>"
-									+ "<div id='title_a'>"
-									+ "<figure class='figurefx default'>"
-									+ "<img src='"+root+data[i].place_photo+"' width='348' height='250'>"
-									+ "<figcaption>" + "<div>";
-							if (data[i].place_star <= 0
-									&& data[i].place_star < 0.5) {
-								placeList += "<img src='/date/resources/star/00.png' width='120' height='25' style='margin:0px 0px 0px 110px;'/>";
-							} else if (data[i].place_star <= 0.5
-									&& data[i].place_star < 1) {
-								placeList += "<img src='/date/resources/star/05.png' width='120' height='25' style='margin:0px 0px 0px 110px;'/>";
-							} else if (data[i].place_star <= 1
-									&& data[i].place_star < 1.5) {
-								placeList += "<img src='/date/resources/star/10.png' width='120' height='25' style='margin:0px 0px 0px 110px;'/>";
-							} else if (data[i].place_star <= 1.5
-									&& data[i].place_star < 2) {
-								placeList += "<img src='/date/resources/star/15.png' width='120' height='25' style='margin:0px 0px 0px 110px;'/>";
-							} else if (data[i].place_star <= 2
-									&& data[i].place_star < 2.5) {
-								placeList += "<img src='/date/resources/star/20.png' width='120' height='25' style='margin:0px 0px 0px 110px;'/>";
-							} else if (data[i].place_star <= 2.5
-									&& data[i].place_star < 3) {
-								placeList += "<img src='/date/resources/star/25.png' width='120' height='25' style='margin:0px 0px 0px 110px;'/>";
-							} else if (data[i].place_star <= 3
-									&& data[i].place_star < 3.5) {
-								placeList += "<img src='/date/resources/star/30.png' width='120' height='25' style='margin:0px 0px 0px 110px;'/>";
-							} else if (data[i].place_star <= 3.5
-									&& data[i].place_star < 4) {
-								placeList += "<img src='/date/resources/star/35.png' width='120' height='25' style='margin:0px 0px 0px 110px;'/>";
-							} else if (data[i].place_star <= 4
-									&& data[i].place_star < 4.5) {
-								placeList += "<img src='/date/resources/star/40.png' width='120' height='25' style='margin:0px 0px 0px 110px;'/>";
-							} else if (data[i].place_star <= 4.5
-									&& data[i].place_star < 5) {
-								placeList += "<img src='/date/resources/star/45.png' width='120' height='25' style='margin:0px 0px 0px 110px;'/>";
-							} else if (data[i].place_star == 5.0) {
-								placeList += "<img src='/date/resources/star/50.png' width='120' height='25' style='margin:0px 0px 0px 110px;'/>";
+						if (data.length >= 2) {
+							for (var i = 0; i < data.length - 1; i = i + 1) {
+								courseList += "<option value='"+data[i].place_code+","+data[i+1].place_code+"'>"
+										+ data[i].place_name
+										+ "ㅡㅡ>"
+										+ data[i + 1].place_name + "</option>"
 							}
-							placeList += "</div>"
-									/* + "<input type='button' value='평가하기' onclick='openPlaceBoard('"+data[i].place_star+"')'>" */
-									+ "<a href='/date/placeBoard/reviewBoard.do?place_code="
-									+ data[i].place_code
-									+ "'>평가하기</a>"
-									+ "</figcaption>"
-									+ "</figure>"
-									+ "</div>"
-									+ "<div id='title_b'>장소이름 : "
-									+ data[i].place_name
-									+ "<br>"
-									+ "가격 : "
-									+ data[i].place_balance
-									+ "<br>"
-									+ "운영시간 : "
-									+ data[i].place_runtime
-									+ "<br>"
-									+ "전화번호 : "
-									+ data[i].place_phone
-									+ "<br>"
-									+ "별점 : "
-									+ data[i].place_star
-									+ "<br>"
-									+ "<div id='"+data[i].place_code+"'>"
-									+ "</div></div></div></div>";
-						}
-						$("#place").empty();
-						$("#place").append(placeList);
-						if ((addNumber + 10) < data.length) {
-							addNumber += 10;
-						} else if ((addNumber + 10) >= data.length) {
-							addNumber = data.length;
-						} else if(addNumber == data.length){
+							$("#courseSelect").empty();
+							$("#courseSelect").append(courseList);
+
+							var placeList = "";
+							for (var i = 0; i < addNumber; i = i + 1) {
+								placeList += "<div>"
+
+										+ "<div id='title'>"
+										+ "<div id='title_a'>"
+										+ "<figure class='figurefx default'>"
+										+ "<img src='"+root+data[i].place_photo+"' width='246' height='176'>"
+										+ "<figcaption>" + "<div>";
+								if (data[i].place_star <= 0
+										&& data[i].place_star < 0.5) {
+									placeList += "<img src='/date/resources/star/00.png' width='120' height='25' style='margin:0px 0px 0px 55px;'/>";
+								} else if (data[i].place_star <= 0.5
+										&& data[i].place_star < 1) {
+									placeList += "<img src='/date/resources/star/05.png' width='120' height='25' style='margin:0px 0px 0px 55px;'/>";
+								} else if (data[i].place_star <= 1
+										&& data[i].place_star < 1.5) {
+									placeList += "<img src='/date/resources/star/10.png' width='120' height='25' style='margin:0px 0px 0px 55px;'/>";
+								} else if (data[i].place_star <= 1.5
+										&& data[i].place_star < 2) {
+									placeList += "<img src='/date/resources/star/15.png' width='120' height='25' style='margin:0px 0px 0px 55px;'/>";
+								} else if (data[i].place_star <= 2
+										&& data[i].place_star < 2.5) {
+									placeList += "<img src='/date/resources/star/20.png' width='120' height='25' style='margin:0px 0px 0px 55px;'/>";
+								} else if (data[i].place_star <= 2.5
+										&& data[i].place_star < 3) {
+									placeList += "<img src='/date/resources/star/25.png' width='120' height='25' style='margin:0px 0px 0px 55px;'/>";
+								} else if (data[i].place_star <= 3
+										&& data[i].place_star < 3.5) {
+									placeList += "<img src='/date/resources/star/30.png' width='120' height='25' style='margin:0px 0px 0px 55px;'/>";
+								} else if (data[i].place_star <= 3.5
+										&& data[i].place_star < 4) {
+									placeList += "<img src='/date/resources/star/35.png' width='120' height='25' style='margin:0px 0px 0px 55px;'/>";
+								} else if (data[i].place_star <= 4
+										&& data[i].place_star < 4.5) {
+									placeList += "<img src='/date/resources/star/40.png' width='120' height='25' style='margin:0px 0px 0px 55px;'/>";
+								} else if (data[i].place_star <= 4.5
+										&& data[i].place_star < 5) {
+									placeList += "<img src='/date/resources/star/45.png' width='120' height='25' style='margin:0px 0px 0px 55px;'/>";
+								} else if (data[i].place_star == 5.0) {
+									placeList += "<img src='/date/resources/star/50.png' width='120' height='25' style='margin:0px 0px 0px 55px;'/>";
+								}
+								placeList += "</div>"
+										/* + "<input type='button' value='평가하기' onclick='openPlaceBoard('"+data[i].place_star+"')'>" */
+										+ "<a href='/date/placeBoard/reviewBoard.do?place_code="
+										+ data[i].place_code
+										+ "'>평가하기</a>"
+										+ "</figcaption>"
+										+ "</figure>"
+										+ "</div>"
+										+ "<div id='title_b'>장소이름 : "
+										+ data[i].place_name
+										+ "<br>"
+										+ "가격 : "
+										+ data[i].place_balance
+										+ "<br>"
+										+ "운영시간 : "
+										+ data[i].place_runtime
+										+ "<br>"
+										+ "전화번호 : "
+										+ data[i].place_phone
+										+ "<br>"
+										+ "별점 : "
+										+ data[i].place_star
+										+ "<br>"
+										+ "<div id='"+data[i].place_code+"'>"
+										+ "</div></div></div></div>";
+							}
+							$("#place").empty();
+							$("#place").append(placeList);
+							if ((addNumber + 10) < data.length) {
+								addNumber += 10;
+							} else if ((addNumber + 10) >= data.length) {
+								addNumber = data.length;
+							} else if (addNumber == data.length) {
+								$("#addButton").css("display", "none");
+							}
+
+						}else{
+							$("#place2").empty();
+							$("#place2").append("검색한 데이터가 없습니다.");
+							$("#course").css("display", "none");
 							$("#addButton").css("display", "none");
 						}
-
 					}
 				});
 	}
 
 	function openPlaceBoard(aa) {
 		alert(aa);
+	}
+	
+	function idCheckForm(id){
+		if(id == null || id==""){
+			alert("로그인 후 이용 가능합니다.");
+			return false;
+		}
 	}
 </script>
 <link type="text/css" rel="stylesheet"
@@ -206,9 +220,8 @@
 </style>
 </head>
 <body>
-
-	<jsp:include page="/TOP.jsp" />
 	<div style="width: 1050px; margin-left: auto; margin-right: auto;">
+		<jsp:include page="/TOP.jsp" />
 		<table class="table table-striped table-bordered table-hover"
 			id="dataTables-example">
 			<thead>
@@ -326,7 +339,7 @@
 			<div class="ques6">
 				<div style="text-align: right;">
 					<input type="button" id="btn" class="btn btn-warning"
-						value="장소검색하기" onclick="test('${root }')">
+						value="장소검색하기" onclick="getCourses('${root }')">
 					<!-- <input type="submit" value="페이지이동"> -->
 				</div>
 
@@ -335,7 +348,7 @@
 
 
 		</form>
-		<form action="${root}/recommandPlace/selectCourse.do" method="POST">
+		<form action="${root}/recommandPlace/selectCourse.do" method="POST" onsubmit="return idCheckForm('${id}')">
 			<div id="course" style="display: none">
 
 				<p>
@@ -349,7 +362,9 @@
 		</form>
 		<div id="place"
 			style="border: 1px solid black; width: 1000px; height: auto;">
-
+		</div>
+		<div id="place2"
+			style="font-size:30px; width: 1000px; height: auto;">
 		</div>
 
 	</div>

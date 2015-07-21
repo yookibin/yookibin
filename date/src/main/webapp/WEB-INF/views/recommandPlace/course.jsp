@@ -326,9 +326,8 @@
 				});
 	}
 	
-	function moveMypage(root){
-		window.location.href=root+"/recommandPlace/moveMypage.do"; 
-		
+	function moveMypage(root,id){
+		window.location.href=root+"/recommandPlace/moveMypage.do?id="+id;
 	}
 </script>
 </head>
@@ -374,7 +373,7 @@
 			<input type="button" class="btn btn-primary btn-lg" value="장소저장하기"
 				onclick="saveCourse('${root}','${placeDtoList[0].place_code}','${placeDtoList[1].place_code}','${id}')">
 			<input type="button" class="btn btn-primary btn-lg" value="마이페이지이동"
-				onclick="moveMypage('${root}')">
+				onclick="moveMypage('${root}','${id}')">
 		</div>
 
 		<script>

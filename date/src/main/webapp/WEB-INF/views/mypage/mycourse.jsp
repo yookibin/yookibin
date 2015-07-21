@@ -321,6 +321,60 @@
 				}
 			});
 	   }
+	   
+	   function mythemaCourse(root, id, like){
+		   $.ajax({
+				url : root + "/mypage/getMyCourse.do",
+				type : "post",
+				data : {
+					id : id,
+					like : like
+				},
+				success : function(data) {
+					console.log(data);
+
+					var str = "<div class='modal-header'>"
+						+"<button type='button' class='close' data-dismiss='modal'"
+						+"aria-hidden='true'>&times;</button>"
+						+"<h4 class='modal-title' id='myModalLabel'>테마장소</h4>"
+						+"</div>";
+					for (var i = 0; i < data.length; i++){
+						str += "<div class='a' id="+data[i].num+">"
+								+ "<div class='a1'>" + "<span> &nbsp;"
+								+ (i + 1)
+								+ "</span>"
+								+ "</div>"
+								+ "<div class='a2'>"
+								+ "<div>"
+								+ "<img alt='' src='"+root+data[i].save_cplace1.place_photo+"' width='250' height='150'>"
+								+ "</div>"
+								+ "<div>"
+								+ data[i].save_cplace1.place_name
+								+ "<br>"
+								+ "</div>"
+								+ "</div>"
+								+ "<div class='a3'>"
+								+ "<div>"
+								+ data[i].save_cplace1.place_thema
+								+ "</div>"
+								+ "<div>"
+								+ "<br>"
+								+ "</div>"
+								+ "</div>"
+								/* + "<div class='ab'>"
+								+ "date : "
+								+ data[i].save_date */
+								/* + "<br> <input type='button' class='btn btn-outline btn-danger' value='확인' onclick='okCourse('"+data[i].save_cplace1+"')'>"  */   
+								+ "<br> <input type='button' class='btn btn-outline btn-danger' value='삭제' onclick='deleteCourse("+data[i].num+")'>"    
+								/* + "</div>"  */
+								+ "</div>"
+					}
+					
+					$("#loadMyThemaCourse").empty();
+					$("#loadMyThemaCourse").append(str);
+				}
+			});
+	   }
 </script>
 </head>
 <body>
@@ -421,6 +475,20 @@
 	</div>
 	<!-- /.modal -->
 	<!-- 모달끝 -->
+	<!-- 모달시작 -->
+	<div class="modal fade" id="mythemaCourseLode" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content" id="loadMyThemaCourse">
+			
+			
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
+	<!-- 모달끝 -->
 
 
 
@@ -479,11 +547,10 @@
 								<div class="ch-info-wrap">
 									<div class="ch-info">
 										<div class="ch-info-front ch-img-3"></div>
-										<div class="ch-info-back">
-											<a href="${root}/mypage/middlecourse.do">
-												<h3>중간코스</h3>
+										<div class="ch-info-back" data-toggle="modal"
+											data-target="#mythemaCourseLode" onclick="mythemaCourse('${root}','${id}','thema')">
+												<h3>나의테마장소</h3>
 												<p>by Tad Carpenter View on Dribbble</p>
-											</a>
 										</div>
 									</div>
 								</div>
