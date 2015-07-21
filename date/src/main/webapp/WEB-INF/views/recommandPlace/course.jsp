@@ -290,7 +290,7 @@
 	width: 91.5%;
 	height: 600px;
 	padding: 0 0 0 8.5%;
-	color:white;
+	color:black;
 }
 
 </style>
@@ -329,7 +329,7 @@
 </script>
 </head>
 <body onload="showCourse('${placeDtoList[0].place_cordi1}','${placeDtoList[0].place_cordi2}','${placeDtoList[0].place_name}','${placeDtoList[1].place_cordi1}','${placeDtoList[1].place_cordi2}','${placeDtoList[1].place_name}')">
-<jsp:include page="/youAndITop.jsp"/>	
+<jsp:include page="/TOP.jsp" />	
 	<div class="allAll">
 		<div class="courseImg">
 			<c:forEach var="place" items="${placeDtoList}">

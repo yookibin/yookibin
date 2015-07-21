@@ -59,9 +59,8 @@
 
 <style type="text/css">
 .allAll {
-	border: 1px solid black;
 	width: 1100px;
-	height: 1200px;
+	height: auto;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -384,6 +383,7 @@
 </script>
 </head>
 <body>
+	<jsp:include page="/TOP.jsp" />
 	<!-- ModalJiHye1-->
    <div class="modal fade" id="myModal23" tabindex="-1" role="dialog"
       aria-labelledby="myModalLabel" aria-hidden="true">
@@ -510,7 +510,7 @@
 
 
 	<div class="allAll">
-		<div id="css_tabs" style="border: 1px solid red;">
+		<div id="css_tabs">
 			<input id="tab1" type="radio" name="tab" checked="checked" /> <input
 				id="tab2" type="radio" name="tab" /> <input id="tab3" type="radio"
 				name="tab" /> <label for="tab1">내 코스 관리</label> <label for="tab2">포인트
