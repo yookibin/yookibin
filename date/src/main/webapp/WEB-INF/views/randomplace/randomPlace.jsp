@@ -71,7 +71,7 @@
 	height: 50px;
 	background-color: #8A4924;
 	color: white;
-}
+
 
 .place{
 	float:left;

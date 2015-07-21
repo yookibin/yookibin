@@ -77,7 +77,7 @@ function chatStart(root){
 }
 
 .menu-Aaa {
-	margin: 0 0 0 55px;
+	margin: 0 0 3px 67px;
 }
 </style>
 </head>
@@ -86,15 +86,16 @@ function chatStart(root){
 		<c:if test="${id==null}">
 			<div class="menu-B">
 				<div
-					style="width: 100px; height: 40px; float: right;">
-					<a href="${root }/member/login.do"><img alt=""
+					style="width: 70px; height: 40px; float: right; margin: 10px 30px 0 0; font-size: 16px; color: #D2916C;">
+					<%-- <a href="${root }/member/login.do"><img alt=""
 						src="${root}/resources/main/login.png" width="95" height="30">
-					</a>
+					</a> --%>
+					<span>회원가입</span>
 				</div>
-				&nbsp;&nbsp;&nbsp;
-				<div style="width: 100px; height: 40px; float: right;">
-					<a href="${root }/member/register.do"><img alt=""
-						src="${root}/resources/main/memberUp.png" width="95" height="30"></a>
+				<div style="width: 50px; height: 40px; float: right; margin: 10px 0 0 0; font-size: 16px; color: #D2916C;">
+					<span>로그인</span>
+					<%-- <a href="${root }/member/register.do"><img alt=""
+						src="${root}/resources/main/memberUp.png" width="95" height="30"></a> --%>
 				</div>
 			</div>
 		</c:if>
@@ -136,11 +137,11 @@ function chatStart(root){
 			</div>
 			<div class="menu-Aa" style="margin: 0 0 0 50px;">
 				<div class="menu-Aaa">
-					<i class="fa fa-4x fa-diamond wow bounceIn text-primary" style="color: #8A4924;"></i>
+					<i class="fa fa-3x fa-diamond wow bounceIn text-primary" style="color: #D2916C;"></i>
 				</div>
 				<div id="topMenu">
 					<ul>
-						<li class="topMenuLi" style="margin: 0 0 0 14px; background:#8A4924;"><a
+						<li class="topMenuLi" style="margin: 0 0 0 14px;"><a
 							class="menuLink"
 							href="http://unikys.tistory.com/category/Programming%20Lecture" style="color: #FFF2E6;">데이트
 								코스추천</a>
@@ -156,42 +157,42 @@ function chatStart(root){
 				</div>
 			</div>
 			<div class="menu-Aa">
-				<div class="menu-Aaa" style="margin-left: 65px;">
-					<i class="fa fa-4x fa-paper-plane wow bounceIn text-primary" style="color: #8A4924;"></i>
+				<div class="menu-Aaa">
+					<i class="fa fa-3x fa-paper-plane wow bounceIn text-primary" style="color: #D2916C;"></i>
 				</div>
 				<div id="topMenu">
 					<ul>
 						<li class="topMenuLi" style="margin: 0 0 0 14px;"><a
-							class="menuLink" href="${root }/memberboard/list.do">회원추천 게시판</a></li>
+							class="menuLink" href="${root }/memberboard/list.do" style="color: #FFF2E6;">회원추천 게시판</a></li>
 					</ul>
 				</div>
 			</div>
 			<div class="menu-Aa">
 				<div class="menu-Aaa">
-					<i class="fa fa-4x fa-newspaper-o wow bounceIn text-primary" style="color: #8A4924;"></i>
+					<i class="fa fa-3x fa-newspaper-o wow bounceIn text-primary" style="color: #D2916C;"></i>
 				</div>
 				<div id="topMenu">
 					<ul>
 						<li class="topMenuLi" style="margin: 0 0 0 14px;"><a
-							class="menuLink" href="${root }/placeBoard/boardList.do">장소
+							class="menuLink" href="${root }/placeBoard/boardList.do" style="color: #FFF2E6;">장소
 								게시판</a></li>
 					</ul>
 				</div>
 			</div>
 			<div class="menu-Aa">
-				<div class="menu-Aaa" style="margin-left: 65px;">
-					<i class="fa fa-4x fa-heart wow bounceIn text-primary" style="color: #8A4924;"></i>
+				<div class="menu-Aaa">
+					<i class="fa fa-3x fa-heart wow bounceIn text-primary" style="color: #D2916C;"></i>
 				</div>
 				<div id="topMenu">
 					<ul>
 						<li class="topMenuLi" style="margin: 0 0 0 14px;"><a
-							class="menuLink" href="${root }/eventBoard/list.do">이벤트 게시판</a></li>
+							class="menuLink" href="${root }/eventBoard/list.do" style="color: #FFF2E6;">이벤트 게시판</a></li>
 					</ul>
 				</div>
 			</div>
-			<div class="menu-Aa" style="width:100px;">
-				<a href="#"> <img alt="채팅하기" src="${root}/resources/main/chat.jpg"
-					width="120" height="95" onclick="chatStart('${root}')">
+			<div class="menu-Aa" style="width:100px; margin-left: 20px;">
+				<a href="#"> <img alt="채팅하기" src="${root}/resources/main/chat.jpg" 
+					width="110" height="105" onclick="chatStart('${root}')">
 				</a>
 			</div>
 		</div>
@@ -257,7 +258,7 @@ function chatStart(root){
 			<!--clear above float:left elements. It is required if above #slider is styled as float:left. -->
 			<div style="clear: both; height: 0;"></div>
 		</div>
-		<div style="margin: 0 0 0 86px; height: 300px;">
+		<div style="margin: 10px 0 0 5px; height: 300px;">
 			<div class="event-A">
 				<button class="prev-A" type="button">
 					<img alt="" src="${root}/css/imgSlide/images/left.png">
