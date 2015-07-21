@@ -1,17 +1,17 @@
 @CHARSET "UTF-8";
 .event-A{
-	width: 600px;
+	width: 670px;
 	overflow: hidden;
 	margin:0 auto;
 	position: relative;
 	/* border:solid 1px black; */
 	border-radius:1em/1em;
 	float:left;
-	height:200px;
+	height:240px;
 }
 
 .event-A ul{
-	width:1800px;
+	width:2010px;
 	list-style: none;	
 	font-size: 0;
 }
@@ -23,29 +23,28 @@
 .event-A button.prev-A{
 	position: absolute;
 	left:0;
-	top: 82px;
+	top: 102px;
 }
 
 .event-A button.next-A{
 	position: absolute;
 	right:0;
-	top: 82px;
+	top: 102px;
 }
 
 .event-B{
-	width: 322px;
+	width:392px;
 	overflow: hidden;
-	margin: 0 auto;
+	margin: 0 auto 0 10px;
 	position: relative;	
 	/* border:solid 1px black; */
 	border-radius:1em/1em;
 	float:left;
-	height:200px;
-	
+	height:240px;
 }
 
 .event-B ul{
-	width:966px;
+	width:1176px;
 	list-style: none;	
 	font-size: 0;
 }
@@ -54,23 +53,23 @@
 	font-size: 25px;
 	display:inline-block;
 	text-align:center;
-	line-height:200px;
+	line-height:220px;
 }
 
 .event-B button.prev-B{
 	position: absolute;
 	left:0;
-	top: 82px;
+	top: 102px;
 }
 
 .event-B button.next-B{
 	position: absolute;
 	right:0;
-	top: 82px;
+	top: 102px;
 }
 
 .event_div{
-	 width: 322px;
-	 height: 200px;
+	 width: 392px;
+	 height: 240px;
 	 color: white;
 }
