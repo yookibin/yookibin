@@ -9,6 +9,9 @@
 <title>Insert title here</title>
 <link type="text/css" rel="stylesheet"
 	href="${root}/css/placeBoard/style.css" />
+<script src="${root }/css/alertify.js-0.3.11/lib/alertify.min.js"></script>
+<link rel="stylesheet"
+	href="${root }/css/alertify.js-0.3.11/themes/alertify.core.css" />
 <!-- DataTables CSS -->
 <link
 	href="${root}/css/bootstrab/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css"
@@ -34,9 +37,13 @@
 	src="${root}/css/recommandPlace/script.js"></script>
 <script type="text/javascript">
 	var addNumber = 10;
-	function getCourses(root) {
+	function getCourses(root, fs) {
 		$("#course").css("display", "block");
 		$("#addButton").css("display", "block");
+		if (fs == 'res') {
+			addNumber = 10;
+		}
+		/* alert(addNumber); */
 		$
 				.ajax({
 					url : root + "/recommandPlace/select2.do",
@@ -50,6 +57,7 @@
 					},
 					success : function(data) {
 						console.log(data);
+						/* alert(data.length); */
 						var courseList = "";
 						if (data.length >= 2) {
 							for (var i = 0; i < data.length - 1; i = i + 1) {
@@ -129,6 +137,7 @@
 										+ "<div id='"+data[i].place_code+"'>"
 										+ "</div></div></div></div>";
 							}
+							$("#place2").empty();
 							$("#place").empty();
 							$("#place").append(placeList);
 							if ((addNumber + 10) < data.length) {
@@ -139,7 +148,8 @@
 								$("#addButton").css("display", "none");
 							}
 
-						}else{
+						} else {
+							$("#place").empty();
 							$("#place2").empty();
 							$("#place2").append("검색한 데이터가 없습니다.");
 							$("#course").css("display", "none");
@@ -152,10 +162,10 @@
 	function openPlaceBoard(aa) {
 		alert(aa);
 	}
-	
-	function idCheckForm(id){
-		if(id == null || id==""){
-			alert("로그인 후 이용 가능합니다.");
+
+	function idCheckForm(id) {
+		if (id == null || id == "") {
+			alertify.alert("로그인 후 이용");
 			return false;
 		}
 	}
@@ -165,7 +175,7 @@
 <style type="text/css">
 .questAll {
 	width: 1000px;
-	height: 100px;
+	height: 60px;
 }
 
 .ques {
@@ -252,23 +262,21 @@
 			</tbody>
 		</table>
 	</div>
-
 	<div class="allView">
 		<div class="date_n_finder"
-			style="background: gray; font-size: 20px; color: white;">
+			style="background: gray; color: white; height:40px;">
 			<div class="date_n_top">
-				<h3 class="date_n_top">
-					<span> <img
-						src="http://image2.yanolja.com/site/imageFile/images/V2/dateCourse/images/20141023/txt_datearea.png"
-						alt="데이트 장소 찾기" />
+				<h5 class="date_n_top">
+					<span style="color:white;">
+						&nbsp;&nbsp;  <b> ♠ 데이트 코스 추천!</b>
 					</span>
-				</h3>
+				</h5>
 			</div>
 
 		</div>
 		<form action="${root}/recommandPlace/select.do" method="POST">
 			<div class="questAll">
-				<div class="ques">
+				<div class="ques" style="margin-left:20px;">
 					<p>
 						지 역 :<br> <select id="place_gu"
 							style="color: black; border-radius: 5px;" name="place_gu">
@@ -334,21 +342,19 @@
 						</select><br>
 					</p>
 				</div>
+				<div class="ques" style="margin-top: 15px;">
+					<div style="text-align: right;">
+						<input type="button" id="btn" class="btn btn-warning"
+							value="장소검색하기" onclick="getCourses('${root }','res')">
+						<!-- <input type="submit" value="페이지이동"> -->
+					</div>
 
-			</div>
-			<div class="ques6">
-				<div style="text-align: right;">
-					<input type="button" id="btn" class="btn btn-warning"
-						value="장소검색하기" onclick="getCourses('${root }')">
-					<!-- <input type="submit" value="페이지이동"> -->
 				</div>
-
 			</div>
-
-
 
 		</form>
-		<form action="${root}/recommandPlace/selectCourse.do" method="POST" onsubmit="return idCheckForm('${id}')">
+		<form action="${root}/recommandPlace/selectCourse.do" method="POST"
+			onsubmit="return idCheckForm('${id}')">
 			<div id="course" style="display: none">
 
 				<p>
@@ -361,10 +367,8 @@
 			</div>
 		</form>
 		<div id="place"
-			style="border: 1px solid black; width: 1000px; height: auto;">
-		</div>
-		<div id="place2"
-			style="font-size:30px; width: 1000px; height: auto;">
+			style="border: 1px solid black; width: 100%; height: auto;"></div>
+		<div id="place2" style="font-size: 30px; width: 1000px; height: auto;">
 		</div>
 
 	</div>
@@ -372,7 +376,7 @@
 		style="display: none; text-align: right; width: 1000px; height: 50px;">
 		<div>
 			<input type="button" id="btn" class="btn btn-warning" value="더보기"
-				onclick="test('${root }')">
+				onclick="getCourses('${root }','add')">
 		</div>
 
 	</div>

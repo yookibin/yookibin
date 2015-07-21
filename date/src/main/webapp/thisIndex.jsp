@@ -192,7 +192,8 @@ function chatStart(root){
 			</div>
 			<div class="menu-Aa" style="width:100px; margin-left: 20px;">
 				<a href="#"> <img alt="채팅하기" src="${root}/resources/main/chat.jpg" 
-					width="110" height="105" onclick="chatStart('${root}')">
+					width="110" height="105" on
+					click="chatStart('${root}')">
 				</a>
 			</div>
 		</div>

@@ -293,9 +293,6 @@
 	color:white;
 }
 
-.bgcolor {
-	background-color: brown;
-}
 </style>
 <link rel="stylesheet" type="text/css"
 	href="${root }/css/recommandPlace/style.css" />
@@ -331,13 +328,12 @@
 	}
 </script>
 </head>
-<body class="bgcolor"
-	onload="showCourse('${placeDtoList[0].place_cordi1}','${placeDtoList[0].place_cordi2}','${placeDtoList[0].place_name}','${placeDtoList[1].place_cordi1}','${placeDtoList[1].place_cordi2}','${placeDtoList[1].place_name}')">
+<body onload="showCourse('${placeDtoList[0].place_cordi1}','${placeDtoList[0].place_cordi2}','${placeDtoList[0].place_name}','${placeDtoList[1].place_cordi1}','${placeDtoList[1].place_cordi2}','${placeDtoList[1].place_name}')">
 <jsp:include page="/youAndITop.jsp"/>	
 	<div class="allAll">
 		<div class="courseImg">
 			<c:forEach var="place" items="${placeDtoList}">
-				<div id="title">
+				<div id="title" style="width:400px;">
 					<img src="${root}${place.place_photo}" width="350" height="263"
 						alt="Klematis">
 					<div>
@@ -369,13 +365,26 @@
 			</div>
 
 		</div>
-		<div class="map_button">
-			<input type="button" class="btn btn-primary btn-lg" value="장소저장하기"
-				onclick="saveCourse('${root}','${placeDtoList[0].place_code}','${placeDtoList[1].place_code}','${id}')">
-			<input type="button" class="btn btn-primary btn-lg" value="마이페이지이동"
-				onclick="moveMypage('${root}','${id}')">
-		</div>
-
+		<c:if test="${like==null}">
+			<div class="map_button">
+				<input type="button" class="btn btn-primary btn-lg" value="장소저장하기"
+					onclick="saveCourse('${root}','${placeDtoList[0].place_code}','${placeDtoList[1].place_code}','${id}')">
+				<input type="button" class="btn btn-primary btn-lg" value="마이페이지이동"
+					onclick="moveMypage('${root}','${id}')">
+			</div>
+		</c:if>
+		<c:if test="${like=='recom'}">
+			<div class="map_button">
+				<input type="button" class="btn btn-primary btn-lg" value="마이페이지이동"
+					onclick="moveMypage('${root}','${id}')">
+			</div>
+		</c:if>
+		<c:if test="${like=='random'}">
+			<div class="map_button">
+				<input type="button" class="btn btn-primary btn-lg" value="마이페이지이동"
+					onclick="moveMypage('${root}','${id}')">
+			</div>
+		</c:if>
 		<script>
 			// 마커를 담을 배열입니다
 			var markers = [];

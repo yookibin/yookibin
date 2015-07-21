@@ -170,14 +170,26 @@ public class RecommandPlaceServiceImpl implements RecommandPlaceService {
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
 		String courseSelect = request.getParameter("courseSelect");
 		logger.info("courseSelect : " + courseSelect);
-		String[] result = courseSelect.split(",");
-		String placeCode1 = result[0].trim();
-		String placeCode2 = result[1].trim();
-		System.out.println(placeCode1);
-		System.out.println(placeCode2);
+		String placeCode1;
+		String placeCode2;
+		String like = request.getParameter("like");
+		if(courseSelect != null){
+			String[] result = courseSelect.split(",");
+			placeCode1 = result[0].trim();
+			placeCode2 = result[1].trim();
+			System.out.println("이건포스트형식");
+			System.out.println(placeCode1);
+			System.out.println(placeCode2);
+		}else{
+			System.out.println("이건겟형식");
+			placeCode1 = request.getParameter("place_code1");
+			placeCode2 = request.getParameter("place_code2");
+			
+		}
 		List<PlaceDto> placeDtoList = dao.getPlaceDtoList(placeCode1,
 				placeCode2);
 		System.out.println(placeDtoList.size());
+		mav.addObject("like", like);
 		mav.addObject("placeDtoList", placeDtoList);
 		mav.setViewName("recommandPlace/course");
 	}
