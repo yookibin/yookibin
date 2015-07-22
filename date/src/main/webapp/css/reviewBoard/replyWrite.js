@@ -2,8 +2,8 @@
  * 
  */
 function writeToServer(requestRoot, place_code, nickName) {
-	if($("#starReply").val()=="선택"){
-		alert("평점을 선택 해주세요");
+	if($("#starReply").val()=="선택하세요" || $("#writeReply").val()=="" || $("#writeReply").val()==null){
+		alert("별점 혹은 평점을 선택 해주세요");
 	}
 	
 	$.ajax({

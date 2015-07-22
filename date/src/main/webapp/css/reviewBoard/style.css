@@ -57,7 +57,7 @@
 
 #moreComment {
 	padding: 1em;
-	width: 760px;
+	width: 682px;
 	font-size: .8em;
 	font-weight: bold;
 	background-color: #eee;
@@ -732,7 +732,7 @@ dl p span.filter3{position: absolute; top: -3px; left: -22px; background: url(ht
 .tab_photo .loader,
 .tab_photo .slideshow a.advance-link,
 .tab_photo .caption-container{height: 350px; /* This should be set to be at least the height of the largest image in the slideshow with padding */}
-.tab_photo .slideshow-container{height: 381px; margin-left: 87px; margin-bottom: 20px;}
+.tab_photo .slideshow-container{height: 381px; margin-left: 87px; margin-bottom: 5px;}
 .tab_photo .loader{position: absolute; top: 0; left: 0; background-image: url('http://image2.yanolja.com/site/imageFile/images/loader.gif'); background-repeat: no-repeat; background-position: center;}
 .date_detail_etc{float: left; width: 197px; margin-top: 60px}
 .date_detail_etc p.date_detail_banner{border: 1px solid #d3d3d3;}
@@ -1515,7 +1515,7 @@ span.bold{font-weight: bold;}
 .ir span{display: block; overflow: hidden; visibility: hidden; position: relative; visibility: hidden; z-index: -1;}
 
 #wrap{position: relative; width: 930px; margin: 0 auto; }
-#container{position: relative; /*margin-top: 42px;  */ background: url(http://image2.yanolja.com/site/imageFile/images/siteInclude/20110218/bg_container_sub.gif) repeat-y left bottom; *zoom: 1;}
+#container{position: relative; /*margin-top: 42px;  */ background: url(http://image2.yanolja.com/site/imageFile/images/siteInclude/20110218/bg_container_sub.gif) repeat-y left bottom;}
 /*#container{position: relative; margin-top: 42px;}*/
 #container:after{content:""; visibility:hidden; display:block; clear:both;}
 #container1{margin-top: 42px;}
@@ -2693,7 +2693,7 @@ input,button { vertical-align:middle; }
 .ya_main #container { margin-top: 0; }
 /* #container { position:relative; margin-top:42px; } */
 #contents {}
-#m_visu.flexslider { margin-top:5px;}
+#m_visu.flexslider { margin-top:2px;}
 
 /* FlexSlider Necessary Styles
 *********************************/
@@ -2929,7 +2929,7 @@ input, textarea{
 	width:10px;
 	height:0px;
 	margin:0 auto;
-	padding:0 25px;
+	padding:0 0px;
 	width:/*@post-width:280=*/930px/*@*/;
 	background-color:#fff;
 	text-align:left;
