@@ -59,9 +59,8 @@
 
 <style type="text/css">
 .allAll {
-	border: 1px solid black;
 	width: 1100px;
-	height: 1200px;
+	height: auto;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -172,21 +171,26 @@
 									+ "<img alt='' src='"+root+data[i].save_cplace2.place_photo+"' width='250' height='150'>"
 									+ "</div>"
 									+ "<div>"
-									+ data[i].save_cplace2.place_name
+									+ data[i].save_cplace2.place_code
 									+ "<br>"
 									+ "</div>"
 									+ "</div>"
 									/* + "<div class='ab'>"
 									+ "date : "
 									+ data[i].save_date */
-									/* + "<br> <input type='button' class='btn btn-outline btn-danger' value='확인' onclick='okCourse('"+data[i].save_cplace1+"')'>"  */   
+									+ '<br> <input type="button" class="btn btn-outline btn-danger" value="확인" onclick="javascript:okCourse(\''+root+'\',\''+data[i].save_cplace1.place_code+'\',\''+data[i].save_cplace2.place_code+'\',\''+like+'\')">'  
 									+ "<br> <input type='button' class='btn btn-outline btn-danger' value='삭제' onclick='deleteCourse("+data[i].num+")'>"    
 									/* + "</div>"  */
 									+ "</div>"
 						}
-						
-						$("#loadMyCourse").empty();
-						$("#loadMyCourse").append(str);
+						if(like == 'recom'){
+							$("#loadMyCourse").empty();
+							$("#loadMyCourse").append(str);
+						}
+						if(like == 'random'){
+							$("#loadMyRandomCourse").empty();
+							$("#loadMyRandomCourse").append(str);
+						}
 					}
 				});
 	}
@@ -206,8 +210,9 @@
 			}
 		});
 	}
-	function okCourse(code1){
-		alert(code1);
+	function okCourse(root, code1, code2, like){
+		alert(like);
+		location.href=root+"/recommandPlace/selectCourse.do?place_code1="+code1+"&place_code2="+code2+"&like="+like;
 	}
 	 function myPoint(root, id) {
 	      //alert("root"+root);
@@ -378,6 +383,7 @@
 </script>
 </head>
 <body>
+	<jsp:include page="/TOP.jsp" />
 	<!-- ModalJiHye1-->
    <div class="modal fade" id="myModal23" tabindex="-1" role="dialog"
       aria-labelledby="myModalLabel" aria-hidden="true">
@@ -504,7 +510,7 @@
 
 
 	<div class="allAll">
-		<div id="css_tabs" style="border: 1px solid red;">
+		<div id="css_tabs">
 			<input id="tab1" type="radio" name="tab" checked="checked" /> <input
 				id="tab2" type="radio" name="tab" /> <input id="tab3" type="radio"
 				name="tab" /> <label for="tab1">내 코스 관리</label> <label for="tab2">포인트
@@ -534,7 +540,7 @@
 									<div class="ch-info">
 										<div class="ch-info-front ch-img-2"></div>
 										<div class="ch-info-back"  data-toggle="modal"
-											data-target="#myRandomCourseLode" onclick="myRandomCourse('${root}','${id}','random')">
+											data-target="#myRandomCourseLode" onclick="myCourse('${root}','${id}','random')">
 												<h3>랜덤코스</h3>
 												<p>by Brian Hurst View on RandomCourse</p>
 										</div>

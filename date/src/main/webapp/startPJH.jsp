@@ -7,6 +7,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+	function aaa(){
+		alert("a");
+	}
+</script>
 </head>
 <body>
 	<hr> 
@@ -17,5 +22,6 @@
 		<a href="${root }/recommandPlace/selectMap2.do">select Map2</a>
 		<a href="${root }/recommandPlace/selectMap3.do">지도에 선그리기</a>
 	<hr>
+	<div onmouseover="aaa()">  ddsdsd  </div>
 </body>
 </html>

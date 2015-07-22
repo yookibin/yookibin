@@ -72,13 +72,11 @@
 	background-color: #8A4924;
 	color: white;
 }
-
 .place{
-	float:left;
 	width: 50%;
+	float:left;
 	height: 450px;
 }
-
 .placeImgTitle{
 	margin: 15px 0px 15px 0px;
 	font-size: 18px;
@@ -89,7 +87,6 @@
 	width: 450px;
 	height: 200px;
 	font-size: 30px;
-	
 	color:#8A4924;
 	border-radius:1em/1em;
 	border: 3px solid #8A4924;
