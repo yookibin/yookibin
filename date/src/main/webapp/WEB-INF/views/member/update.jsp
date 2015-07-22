@@ -42,6 +42,12 @@
     
     <script src="${root }/css/alertify.js-0.3.11/lib/alertify.min.js"></script>
 	<link rel="stylesheet" href="${root }/css/alertify.js-0.3.11/themes/alertify.core.css"/>
+	
+	<script type="text/javascript">
+		function updateReset(){
+			history.back(-1);
+		}
+	</script>
 </head>
 <body>
 
@@ -156,7 +162,7 @@
 	    			<label for="inputName" class="col-sm-2 control-label"></label>
 				    <div class="col-sm-6">
 				    	<button type="submit" class="btn btn-primary">수정</button>
-				    	<button type="reset" class="btn btn-primary">취소</button>
+				    	<button type="reset" class="btn btn-primary" onclick="updateReset()">취소</button>
 	    			</div>
 	    		</div>
 	    	</form>

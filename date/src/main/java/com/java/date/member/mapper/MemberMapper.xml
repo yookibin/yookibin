@@ -46,4 +46,16 @@
 	<select id="findPW" parameterType="java.util.HashMap" resultType="String">
 		<![CDATA[ select pw from member where id=#{id} and phone=#{phone} ]]>
 	</select>
+	
+	<delete id="memberEventDelete">
+		<![CDATA[ delete from event where id=#{id} ]]>
+	</delete>
+	
+	<delete id="memberPointDelete">
+		<![CDATA[ delete from point where id=#{id} ]]>
+	</delete>
+	
+	<delete id="memberSave_courseDelete">
+		<![CDATA[ delete from save_course where id=#{id} ]]>
+	</delete>
 </mapper>
