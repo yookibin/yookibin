@@ -7,6 +7,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script src="${root }/css/alertify.js-0.3.11/lib/alertify.min.js"></script>
+<link rel="stylesheet"
+	href="${root }/css/alertify.js-0.3.11/themes/alertify.core.css" />
 <!-- Bootstrap Core CSS -->
 <link
 	href="${root}/css/bootstrap/bower_components/bootstrap/dist/css/bootstrap.min.css"
@@ -76,59 +79,59 @@ textarea {
 
 	function checkForm(form) {
 		if ($("input[name='place_name']").val() == "") {
-			alert("장소명을 입력하세요.");
+			alertify.alert("장소명을 입력하세요.");
 			$("input[name='place_name']").focus();
 			return false;
 		}
 		var price = $("input[name='place_price']").val();
 		if (!(price == 8 || price == 9 || price == 13 || price == 46
-				|| price == 144 || (price <= 48 && price <= 57) || price == 110 || price == 190)) {
-			alert("숫자만 입력가능합니다. 가격을 입력하세요.");
+				|| price == 144 || (price >= 0 && price <= 1000000) || price == 110 || price == 190)) {
+			alertify.alert("숫자만 입력가능합니다. 가격을 입력하세요.");
 			$("input[name='place_price']").focus();
 			return false;
 		}
 		if ($("input[name='place_cordi1']").val() == "") {
-			alert("위도를 입력하세요.");
+			alertify.alert("위도를 입력하세요.");
 			$("input[name='place_cordi1']").focus();
 			return false;
 		}
 		if ($("input[name='place_cordi2']").val() == "") {
-			alert("경도를 입력하세요.");
+			alertify.alert("경도를 입력하세요.");
 			$("input[name='place_cordi2']").focus();
 			return false;
 		}
 		if ($("input[name='place_phone']").val() == "") {
-			alert("전화번호를 입력하세요.");
+			alertify.alert("전화번호를 입력하세요.");
 			$("input[name='place_phone']").focus();
 			return false;
 		}
 		if ($("input[name='place_balance']").val() == "") {
-			alert("금액대를 입력하세요.");
+			alertify.alert("금액대를 입력하세요.");
 			$("input[name='place_balance']").focus();
 			return false;
 		}
 		if ($("input[name='place_runtime']").val() == "") {
-			alert("운영시간을 입력하세요.");
+			alertify.alert("운영시간을 입력하세요.");
 			$("input[name='place_runtime']").focus();
 			return false;
 		}
 		if ($("input[name='place_location']").val() == "") {
-			alert("주소를 입력하세요.");
+			alertify.alert("주소를 입력하세요.");
 			$("input[name='place_location']").focus();
 			return false;
 		}
 		if ($("input[name='file']").val() == "") {
-			alert("사진파일을 선택하세요.");
+			alertify.alert("사진파일을 선택하세요.");
 			$("input[name='file']").focus();
 			return false;
 		}
 		if ($("input[name='place_gu']").val() == "") {
-			alert("[__구]를 입력하세요.");
+			alertify.alert("[__구]를 입력하세요.");
 			$("input[name='place_gu']").focus();
 			return false;
 		}
 		if ($("textarea[name='place_content']").val() == "") {
-			alert("장소셜명을 입력하세요.");
+			alertify.alert("장소셜명을 입력하세요.");
 			$("input[name='place_content']").focus();
 			return false;
 		}
