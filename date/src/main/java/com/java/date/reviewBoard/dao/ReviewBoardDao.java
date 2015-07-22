@@ -7,7 +7,7 @@ import com.java.date.reviewBoard.dto.ReviewBoardDto;
 public interface ReviewBoardDao {
 	public List<ReviewBoardDto> reviewSelect(String place_code);
 
-	public int replyWrite(int star, String place_code,String nickName, String writeReply); 
+	public int replyWrite(int star, String place_code,String nickName, String writeReply,String id); 
 	
 	public int replyDelete(int review_code); 
 	

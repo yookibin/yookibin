@@ -136,7 +136,7 @@
 					<option value="50">5</option>
 				</select>
 				<textarea id="writeReply" cols="100" rows="3"></textarea> 
-				<input type="button" value="댓글달기" class="button gray medium" onclick="writeToServer('${root}','${placeBoard.place_code}','${nickName}')" />
+				<input type="button" value="댓글달기" class="button gray medium" onclick="writeToServer('${root}','${placeBoard.place_code}','${nickName}','${id}')" />
 			</div>
 		</c:if>
 
