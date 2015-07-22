@@ -209,7 +209,6 @@
 		});
 	}
 	function okCourse(root, code1, code2, like){
-		alert(like);
 		location.href=root+"/recommandPlace/selectCourse.do?place_code1="+code1+"&place_code2="+code2+"&like="+like;
 	}
 	function myPoint(root, id) {
