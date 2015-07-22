@@ -30,4 +30,22 @@
 	<select id="reviewStarCheck" parameterType="String" resultType="int">
 		select count(place_code) from place_review where place_code=#{place_code}
 	</select>
+	
+	<select id="pointselect" parameterType="java.util.HashMap" resultType="int">
+		<![CDATA[
+			select count(*) from point where id=#{id} and point_place=#{place_code}
+		]]>
+	</select>
+	
+	<insert id="pointinsert" parameterType="java.util.HashMap">
+		<![CDATA[
+			insert into point values(point_point_code_seq.nextval,#{id},'+10',#{total},'댓글',sysdate,#{place_code})
+		]]>
+	</insert>
+	
+	<select id="totalPoint" parameterType="java.util.HashMap" resultType="int">
+		<![CDATA[
+			select point_total from point where id=#{id} and point_code=(select max(point_code) from point where id=#{id})
+		]]>
+	</select>
 </mapper>

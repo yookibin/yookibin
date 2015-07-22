@@ -35,8 +35,8 @@
 </script>
 </head>
 <body>
-	<jsp:include page="/youAndITop.jsp"/><br/>
-	<div style="width:1200px; height:1200px; margin-left:auto; margin-right:auto;" >
+	<div style="width:1100px; height:auto; margin-left:auto; margin-right:auto;" >
+	<jsp:include page="/TOP.jsp"/><br/>
 	<div id="wrapbody">
 		<div id="wrap">
 			<div class="section_1"><div class="date_info_top"></div>
@@ -122,7 +122,7 @@
 		</div>
 	</div>
 	
-	<div></div>
+	<div></div><br/>
 	<div class="replyDivp">
 		<c:if test="${nickName!=null}">
 			<div style="float: left">
@@ -136,7 +136,7 @@
 					<option value="50">5</option>
 				</select>
 				<textarea id="writeReply" cols="100" rows="3"></textarea> 
-				<input type="button" value="댓글달기" class="button gray medium" onclick="writeToServer('${root}','${placeBoard.place_code}','${nickName}')" />
+				<input type="button" value="댓글달기" class="button gray medium" onclick="writeToServer('${root}','${placeBoard.place_code}','${nickName}','${id}')" />
 			</div>
 		</c:if>
 
@@ -151,7 +151,7 @@
 					<option value="40">4</option>
 					<option value="50">5</option>
 				</select>
-				<textarea cols="100" rows="3" disabled="disabled">로그인 후 댓글작성이 가능합니다.</textarea> 
+				<textarea cols="100" rows="3" disabled="disabled">로그인 후 댓글작성 및 평가가 가능합니다.</textarea> 
 				<input type="button" value="댓글달기" class="button gray medium" />
 			</div>
 		</c:if>

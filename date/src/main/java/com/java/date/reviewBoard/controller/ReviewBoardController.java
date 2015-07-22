@@ -25,9 +25,9 @@ public class ReviewBoardController {
 	
 	@RequestMapping("/reviewBoard/insertReview.do")
 	@ResponseBody
-	public int replyWrite(int star, String place_code, String nickName, String writeReply){
+	public int replyWrite(int star, String place_code, String nickName, String writeReply,String id){
 		logger.info("-------------------replyWrite");
-		return reviewBoardService.replyWrite(star,place_code,nickName,writeReply);
+		return reviewBoardService.replyWrite(star,place_code,nickName,writeReply,id);
 	}
 	
 	/**
