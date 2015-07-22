@@ -41,10 +41,10 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    
+   
 </head>
 <body>	
-<jsp:include page="/youAndITop.jsp"/>
+<jsp:include page="/TOP.jsp"/>
 	<!-- /.row -->
     <div class="totalDiv">
     <c:if test="${count!=0 }">

@@ -46,7 +46,7 @@
 </head>
 
 <body>
-<jsp:include page="/youAndITop.jsp"/>
+<jsp:include page="/TOP.jsp"/>
 
 <div class="totalDiv">
 	<!-- eventBoard와 pageNumber를 넘겨줌 -->

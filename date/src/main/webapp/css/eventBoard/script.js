@@ -92,6 +92,7 @@ function updateFun(updateForm){
 	var d=updateForm.event_period.value.split("~");
 	if(d.length!=2){
 		alertify.alert("이벤트 시작 날짜~이벤트 종료 날짜 형식으로 입력하세요.");
+		//swal("Good job!", "You clicked the button!", "success");
 		updateForm.event_period.focus();
 		return false;
 	}

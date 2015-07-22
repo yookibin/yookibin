@@ -11,15 +11,27 @@
 <link href="${root }/css/eventBoard/style.css" rel="stylesheet"/>
 <script src="${root }/css/alertify.js-0.3.11/lib/alertify.min.js"></script>
 <link rel="stylesheet" href="${root }/css/alertify.js-0.3.11/themes/alertify.core.css"/>
+<script src="${root }/css/sweetalert-master/dist/sweetalert.min.js"></script>
+<link rel="stylesheet" type="text/css" href="${root }/css/sweetalert-master/dist/sweetalert.css"/>
 <script type="text/javascript">
 	function joinOkFun(root, afterPoint, point){
 		//alert(root);
 		if(afterPoint<0){
-			alertify.alert("포인트가 부족합니다.");
+			/* alertify.alert("포인트가 부족합니다.");
 			
 			var url=root+"/eventBoard/list.do";
 			opener.document.location.href=url;
-			self.close();
+			self.close(); */
+			swal({ 
+				  title: "warning!",
+				  text: "포인트가 부족합니다.",
+				  type: "warning" 
+				  },
+				  function(){
+					  var url=root+"/eventBoard/list.do";
+					  opener.document.location.href=url;
+					  self.close();
+				});
 			
 		}else{
 			//alert("현재창을 닫고 다시 enter.jsp로 돌아가서 submit하고싶다.");

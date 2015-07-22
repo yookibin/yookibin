@@ -42,6 +42,8 @@
   
   	<script src="${root }/css/alertify.js-0.3.11/lib/alertify.min.js"></script>
 	<link rel="stylesheet" href="${root }/css/alertify.js-0.3.11/themes/alertify.core.css"/>
+	<script src="${root }/css/sweetalert-master/dist/sweetalert.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="${root }/css/sweetalert-master/dist/sweetalert.css"/>
   
 <script type="text/javascript">
 	function randomFun(root, event_code, group_number, sequence_number, sequence_level, pageNumber, count, event_period){
@@ -64,15 +66,41 @@
   		//alert("오늘과의 차이: "+betweenDay);   		
 		
    		if(betweenDay<1){
-   			alertify.alert("아직 이벤트 진행기간입니다.");
+   		//alertify.alert("아직 이벤트 진행기간입니다.");
+   			swal({ 
+				  title: "warning!",
+				  text: "아직 이벤트 진행기간입니다.",
+				  type: "warning" 
+				 });
   		}else{
-  			var num=prompt("현재 응모회원수 : "+count+"\n몇 명의 당첨자?","");
+  		/* 	var num=prompt("현재 응모회원수 : "+count+"\n몇 명의 당첨자?","");
 			//alert(num);
 			
 			if(num!=null&&num!=""&&count>=num){
 				var url=root+"/eventBoard/write.do?event_code="+event_code+"&group_number="+group_number+"&sequence_number="+sequence_number+"&sequence_level="+sequence_level+"&pageNumber="+pageNumber+"&num="+num;
 				location.href=url;
-			}
+			} */
+			
+  			swal({   
+  				title: "몇 명의 당첨자?",   
+  				text: "현재 응모회원수 : "+count,   
+  				type: "input",   
+  				showCancelButton: true,   
+  				closeOnConfirm: false,   
+  				animation: "slide-from-top",   
+  				inputPlaceholder: "명수를 입력하세요." }, 
+  				function(inputValue){   
+  					if (inputValue === false) return false;      
+  					if (inputValue === ""){     
+  						swal.showInputError("You need to write something!");     
+  						return false   
+  					} 					
+  					
+  					//swal("Nice!", "You wrote: " + inputValue, "success");
+  					var url=root+"/eventBoard/write.do?event_code="+event_code+"&group_number="+group_number+"&sequence_number="+sequence_number+"&sequence_level="+sequence_level+"&pageNumber="+pageNumber+"&num="+inputValue;
+  					location.href=url;
+  					
+  				});
   		} 
 
 	}
@@ -97,7 +125,12 @@
   		//alert("오늘과의 차이: "+betweenDay);   		
 		
    		if(betweenDay<1){
-  			alert("아직 이벤트 진행기간입니다.");
+  			//alert("아직 이벤트 진행기간입니다.");
+   			swal({ 
+				  title: "warning!",
+				  text: "아직 이벤트 진행기간입니다.",
+				  type: "warning" 
+				 });
   		}else{  			
 			var url=root+"/eventBoard/write.do?event_code="+event_code+"&group_number="+group_number+"&sequence_number="+sequence_number+"&sequence_level="+sequence_level+"&pageNumber="+pageNumber+"&num=0";
 			location.href=url;			
@@ -107,7 +140,7 @@
 </script>
 </head>
 <body>
-<jsp:include page="/youAndITop.jsp"/>
+<jsp:include page="/TOP.jsp"/>
 
     <div class="totalDiv">    
         <div class="col-lg-12">
