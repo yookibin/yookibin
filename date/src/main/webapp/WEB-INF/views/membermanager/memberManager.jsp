@@ -38,6 +38,8 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <script src="${root }/css/sweetalert-master/dist/sweetalert.min.js"></script>
+<link rel="stylesheet" type="text/css" href="${root }/css/sweetalert-master/dist/sweetalert.css"/>
 <style type="text/css">
 #memberManagerMain{
 	width: 1100px;
@@ -62,12 +64,31 @@
 	}
 	function memberUpdateOk(root,id){
 		var member_level=$("#"+id+"name").val();
-		var check=confirm("정말로 수정하시겠습니까?");
+	/*	var check=confirm("정말로 수정하시겠습니까?");
 		if(check==true){
 			location.href=root+"/membermanager/memberManagerUpdate.do?member_level="+member_level+"&id="+id;
 		}else if(check==false){
 			return false;
-		}
+		}*/
+		
+		swal({   
+			title: "Are you sure?",   
+					text: "정말로 수정하시겠습니까?",   
+					type: "warning",   
+					showCancelButton: true,   
+					confirmButtonColor: "#DD6B55",   
+					confirmButtonText: "Yes, update it!",   
+					cancelButtonText: "No, cancel plx!",   
+					closeOnConfirm: false,   
+					closeOnCancel: false 
+				}, 
+				function(isConfirm){   
+					if (isConfirm){     
+						window.location.href=root+"/membermanager/memberManagerUpdate.do?member_level="+member_level+"&id="+id;   
+					} else {     
+						return false;   
+					} 
+				});
 	}
 	function memberUpdateNo(id){
 		$("#"+id).css("display","block");
@@ -79,6 +100,7 @@
 </head>
 <body>
 	<div id="memberManagerMain">
+	<jsp:include page="/TOP.jsp"/>
 	    <div class="row">
 	       <div class="col-lg-12">
 	            <h1 class="page-header">회원관리</h1>
