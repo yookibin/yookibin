@@ -14,8 +14,8 @@
 <link type="text/css" rel="stylesheet" href="${root}/css/bootstrap/bootstrap.min.css"/>
 </head>
 <body onload="placeListForm()">
-	<jsp:include page="/youAndITop.jsp"/><br/>	
 	<div style="width:1200px; height:auto; margin-left:auto; margin-right:auto;">
+	<jsp:include page="/TOP.jsp"/><br/>	
 	
 	<div id="wrapbody" align="center" style="height:300px;">
 		<div class="date_n_finder" >
@@ -182,17 +182,19 @@
 				<c:set var="endPage" value="${pageCount }"/>
 			</c:if>
 			
+			<ul class="pagination">
 			<c:if test="${startPage>pageBlock }">
-				<a href="${root }/placeBoard/boardList.do?pageNumber=${startPage-pageBlock}&place_gu=${place_gu}&place_thema=${place_thema}&place_balance=${place_balance}">[이전]</a>
+				<li><a style="background-color:#F05F40" href="${root }/placeBoard/boardList.do?pageNumber=${startPage-pageBlock}&place_gu=${place_gu}&place_thema=${place_thema}&place_balance=${place_balance}">이전</a></li>
 			</c:if>
 			
 			<c:forEach var="i" begin="${startPage }" end="${endPage }">
-				<a href="${root }/placeBoard/boardList.do?pageNumber=${i}&place_gu=${place_gu}&place_thema=${place_thema}&place_balance=${place_balance}">[${i}]</a>
+				<li><a href="${root }/placeBoard/boardList.do?pageNumber=${i}&place_gu=${place_gu}&place_thema=${place_thema}&place_balance=${place_balance}">${i}</a></li>
 			</c:forEach>
 			
 			<c:if test="${endPage<pageCount }">
-				<a href="${root }/placeBoard/boardList.do?pageNumber=${startPage+pageBlock}&&place_gu=${place_gu}&place_thema=${place_thema}&place_balance=${place_balance}">[다음]</a>
+				<li><a style="background-color:#F05F40" href="${root }/placeBoard/boardList.do?pageNumber=${startPage+pageBlock}&place_gu=${place_gu}&place_thema=${place_thema}&place_balance=${place_balance}">다음</a></li>
 			</c:if>
+			</ul>
 		</c:if>
 	</div>
 		<div style="width:1080px; height:680px; margin-left:auto; margin-right:auto; ">
