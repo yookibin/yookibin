@@ -32,7 +32,7 @@
 <script>
 	// 댓글 더보기 기능. 가져오기 
 	var commentCount=("${memberReplyList.size()}"); // 일단 댓글 개수를 가져온다.
-	 alert(commentCount);
+	// alert(commentCount);
 	
 	$(document).ready(function () {
 		
@@ -88,7 +88,18 @@
 								<span>${memberBoard.board_content }</span>
 						</div>
 					</div>
-				</div>
+					<button style="margin-left:50%; margin-top:2%" type="button" class="btn btn-danger btn-circle-lg" value="추천" id="recom_button" onclick="recommend('${root }', '${memberBoard.board_num}', '${memberBoard.board_recom}', '${pageNumber}', '${nickName}', '${id }')"><i class="fa fa-heart">${memberBoard.board_recom}</i></button>
+					<c:if test="${memberBoard.board_writer==nickName}">
+					<input type="button" class="btn btn-warning" value="글삭제" style=" margin-left:50%; font-size: 11px;" onclick="deleteFun('${root}','${memberBoard.board_num }', '${pageNumber}', '${memberLevel}')"/>
+					<input type="button" class="btn btn-warning" value="글수정" style="font-size: 11px;" onclick="updateFun('${root}','${memberBoard.board_num }', '${pageNumber}')" />
+					
+					</c:if>
+					
+					<c:if test="${memberLevel=='AA' }">
+						<input type="button" class="btn btn-warning" style="margin-left:50%; font-size: 11px;" value="글삭제" onclick="deleteFun('${root}','${memberBoard.board_num }', '${pageNumber}', '${memberLevel}')"/>
+					</c:if>
+					<button  type="button" class="btn btn-warning" onclick="location.href='${root}/memberboard/list.do?pageNumber=${pageNumber}'"><i class="fa fa-list" style="font-size: 11px;">글목록</i></button>
+					</div>
 			
 		
 				<div class="section_2">
@@ -176,52 +187,6 @@
    </div> 
       <button id="moreComment2" onclick="moreComment()" style="display:none">댓글 더 보기 </button>
    </div>
-		
-		<%-- <div id="container">
-		<div id="content" >
-			<div id="entry19Trackback">
-				<div class="trackback">
-					<h3>
-						<span id="TrackbackCopyHolder19" style="vertical-align: -4px; margin-left: 1px"></span>
-					</h3>
-				</div>
-			</div>
-		<div class="commentList">	
-			<c:forEach var="memberReplyList" items="${memberReplyList}">
-					<div class="replyDiv" id="${memberReplyList.reply_num}">
-						<div class="comment">
-								<ol>
-									<li id="comment294493">
-										<!-- <div class="rp_general"> -->
-										<div class="entry19Comment" >
-											<div class="name">${memberReplyList.reply_writer}</div>
-											<div class="date">
-												<span>
-													<fmt:formatDate value="${memberReplyList.reply_time }" type="date" pattern="yyyy/MM/dd hh:mm"/>
-												</span>
-												
-												<c:if test="${nickName==memberReplyList.reply_writer }">
-													<a href="javascript:updateReply('${memberReplyList.reply_num}','${root}')">수정</a>
-													<a href="javascript:deleteReply('${memberReplyList.reply_num}','${root}')">삭제</a>
-												</c:if>
-											</div>
-										
-											<div class="reply">
-												${memberReplyList.reply_content}
-											</div>
-										<!-- </div> -->
-										</div>
-									</li>
-								</ol>
-							</div>
-						</div>
-			</c:forEach>
-			<button id="moreComment" onclick="moreComment()" style="display:none">댓글 더 보기 </button>
-			</div>
-			</div> 
-			
-		</div>
-	</div> --%>
 
 </body>
 </html>
