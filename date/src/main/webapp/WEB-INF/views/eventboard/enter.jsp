@@ -46,7 +46,7 @@
 <jsp:include page="/TOP.jsp"/>
 
 <div class="totalDiv">
-	<form class="form_style" id="enterForm" method="post" enctype="multipart/form-data">	
+	<form class="form_style" id="enterForm" method="post" onsubmit="return enterFun(this)" enctype="multipart/form-data">	
 		<input type="hidden" name="event_code" value="${event_code }"/>
 		<!-- <input type="hidden" name="join_filePath"/> -->
 		<input type="hidden" name="pageNumber" value="${pageNumber }"/>
