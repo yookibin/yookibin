@@ -2,6 +2,7 @@
  * 
  */
 function modifyReply(review_code,requestRoot,review_id,nickName){
+	$(".reply").css("display","none");
 	$("#"+review_code+"_content").css("display","block");
 }
 
@@ -23,4 +24,9 @@ function updateToServer(requestRoot,review_code){
 			
 		}
 	});
+}
+
+function updateCencelServer(review_code){
+	$("#"+review_code+"_content").css("display","none");
+	$(".reply").css("display","block");
 }
