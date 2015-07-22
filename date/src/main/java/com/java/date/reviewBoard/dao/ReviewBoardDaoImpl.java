@@ -110,5 +110,11 @@ public class ReviewBoardDaoImpl implements ReviewBoardDao {
 	public int reviewStarCheck(String place_code) {
 		return sqlSession.selectOne("dao.reviewBoardMapper.reviewStarCheck",place_code);
 	}
+	
+	@Override
+	   public List<ReviewBoardDto> myReviewGet(String id) {
+	      
+	      return sqlSession.selectList("dao.reviewBoardMapper.myReviewGet",id);
+	   }
 
 }

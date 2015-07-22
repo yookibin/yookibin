@@ -46,8 +46,8 @@
    
 </head>
 <body>   
-	<jsp:include page="/TOP.jsp"/>
 <div class="totalDiv">
+	<jsp:include page="/TOP.jsp"/>
 <c:if test="${count!=0 }">
    <!-- /.row -->
     <div >

@@ -23,5 +23,6 @@ public interface MemberBoardService {
 	
 	public void recommendBoard(ModelAndView mav);
 	
+	public void mygaipanList(ModelAndView mav);
 	
 }

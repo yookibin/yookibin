@@ -10,8 +10,12 @@ function writeReply(root, board_num, reply_writer){
 		type:"get",
 		dataType:"text",
 		success:function(data){
+			if(data!=null||data!=""){
+				alert("입력 되었습니다.");
+				location.reload();
+			}
 			//alert("되나?");
-			var split=data.split(",");	//0번지는 글번호 1번지는 답글내용이 됨.
+			/*var split=data.split(",");	//0번지는 글번호 1번지는 답글내용이 됨.
 			
 			var reply_num=split[0].trim();
 			var reply_content=split[1].trim();
@@ -38,7 +42,7 @@ function writeReply(root, board_num, reply_writer){
 			
 			$("#reply").val("");
 			
-			$("#replyAll").prepend(replyDivs);
+			$("#replyAll").prepend(replyDivs);*/
 			
 			
 		},
@@ -95,24 +99,30 @@ function updateReply(reply_num, root){
 			var reply_writer=split[2].trim();
 			var reply_time=split[3].trim();
 			
-			//alert(reply_num+","+reply_content+","+reply_writer+","+reply_time);
+			// alert(reply_num+","+reply_content+","+reply_writer+","+reply_time);
+			
 			var div=$("<div></div>");
 			$(div).attr("id","upBunho"+reply_num);
 			
-			var input=$("<input/>");
-			$(input).attr("type","text");
-			$(input).attr("value",reply_content);
+			var input=$("<textarea></textarea>");
+			$(input).attr("rows","3");
+			$(input).attr("cols","80");
+			$(input).text(reply_content);
 			
 			var inputBtn=$("<input/>");
 			$(inputBtn).attr("type", "button");
 			$(inputBtn).attr("value", "수정");
+			$(inputBtn).attr("class", "button2 gray small");
 			$(inputBtn).click(function(){
+				alert("수정완료");
 				update(root, reply_num, $(input).val());
+				location.reload();
 			});
 			
 			var inputReset=$("<input/>");
 			$(inputReset).attr("type", "button");
 			$(inputReset).attr("value", "수정취소");
+			$(inputReset).attr("class", "button2 gray small");
 			$(inputReset).click(function(){
 				$("#"+reply_num+">span").eq(1).text(reply_content);
 				$("#upBunho"+reply_num).remove();
@@ -125,8 +135,10 @@ function updateReply(reply_num, root){
 			var bunhoDiv=$("#"+reply_num);
 			//alert(bunhoDiv);
 			if(bunhoDiv != null){
-				$(bunhoDiv).append($(div));
+				$(bunhoDiv).children().first().children().first().children().first().children().first().children().first().children().eq(2).text("");
+				$(bunhoDiv).children().first().children().first().children().first().children().first().children().first().append($(div));
 			}
+				
 		}
 	});
 }
