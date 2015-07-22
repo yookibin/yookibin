@@ -5,17 +5,23 @@
   <mapper namespace="dao.placesearchMapper">
 
   <select id="selectThema" parameterType="java.util.HashMap" resultType="com.java.date.recommandPlace.dto.PlaceDto">
-  	<![CDATA[
-  		select * from place where place_thema =#{park} and place_gu=#{area}
-  	]]>  
+     <![CDATA[
+        select * from place where place_thema =#{thema} and place_gu=#{area}
+     ]]>  
   </select>   
 
-	<select id="finalthema" parameterType="java.util.HashMap" resultType="com.java.date.recommandPlace.dto.PlaceDto">
-   	<![CDATA[
-   		select * from place where place_code =#{listcode} and place_gu=#{area}   		
-   	]]>
+   <select id="finalthema" parameterType="java.util.HashMap" resultType="com.java.date.recommandPlace.dto.PlaceDto">
+      <![CDATA[
+         select * from place where place_code =#{listcode} and place_gu=#{area}         
+      ]]>
   
    
    </select>
+   
+   <insert id="placesearchSave" parameterType="java.util.HashMap" >
+      <![CDATA[
+         insert into save_courses values (num_save_coursee_seq.nextval, #{id}, #{place1}, #{place2}, TO_CHAR(sysdate,'yy-mm-dd'), #{thema})
+      ]]>
+   </insert>
   
 </mapper>

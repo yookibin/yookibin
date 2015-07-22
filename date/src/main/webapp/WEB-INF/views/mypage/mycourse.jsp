@@ -212,7 +212,7 @@
 		alert(like);
 		location.href=root+"/recommandPlace/selectCourse.do?place_code1="+code1+"&place_code2="+code2+"&like="+like;
 	}
-	 function myPoint(root, id) {
+	function myPoint(root, id) {
 	      //alert("root"+root);
 	      //alert("id"+id);
 	      
@@ -230,7 +230,8 @@
 	             
 	            for (var i=0;i<data.length;i++){
 	            
-	               str+="<div class='row'>"
+	               str+="<div class='row2'>"
+	                +"<div class='column'>"+data[i].point_day+"</div>"
 	                +"<div class='column'>"+data[i].point_content+"</div>"
 	                +"<div class='column'>"+data[i].point_manager+"</div>"
 	                +"<div class='column'>"+data[i].point_total+"</div>"
@@ -244,32 +245,65 @@
 	      
 	   }
 	   
-	   function usingEvent(root,id) {
-	      alert("root"+root);
-	      alert("id"+id);
+	   function usingEvent(root,nickName) {
+	      //alert("root"+root);
+	      //alert("nickName"+nickName);
 	      
 	      $.ajax({
 	         url: root+"/mypage/usingevent.do",
 	         type:"post",
 	         data: {
-	            id:id
+	            nickName:nickName
 	         },
 	         success : function(data){
 	            console.log(data);
+	            alert("data"+data.length);
+	            
 	            var str="";
 	            for( var i=0; i<data.length;i++ ){
-	               str+="<div class='row'>"
+	               str+="<div class='row2'>"
 	                   +"<div class='column'>"+data[i].event_period+"</div>"
 	                   +"<div class='column'>"+data[i].event_title+"</div>"
 	                   +"<div class='column'>"+data[i].event_progress+"</div>"
 	                   +"<div class='column'>"+data[i].event_giveaway+"</div>"
 	                   +"</div>"
 	            }
+	            $("#usingEvent").empty();
+	            $("#usingEvent").append(str);
+	            
 	         }
 	         
 	      });
 	   }
 	   
+	   function remainPoint(root,id) {
+	      alert("root"+root);
+	      alert("id"+id);
+	      
+	      $.ajax({
+	         url: root+"/mypage/remainPoint.do",
+	         type:"post",
+	         data: {
+	            id:id
+	         },
+	         success : function(data){
+	            console.log(data);
+	            //alert("data"+data);
+	            
+	            var str="";
+	            
+	               str+="<div class='row2'>"
+	                   +"<div class='column'>"+data+"</div>"
+	                  
+	                   +"</div>"
+	            
+	            $("#remainPoint").empty();
+	            $("#remainPoint").append(str);
+	            
+	         }
+	         
+	      });
+	   }
 	   function mythemaCourse(root, id, like){
 		   $.ajax({
 				url : root + "/mypage/getMyCourse.do",
@@ -352,8 +386,8 @@
 	</script>
 </head>
 <body>
-		
-	<!-- ModalJiHye1-->
+	   
+   <!-- ModalJiHye1-->
    <div class="modal fade" id="myModal23" tabindex="-1" role="dialog"
       aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
@@ -363,8 +397,8 @@
                   aria-hidden="true">&times;</button>
                <h4 class="modal-title" id="myModalLabel">Using Point</h4>
             </div>
-            <div class="racetimes">
-               <div class="row" id="firstrow">
+            <div class="modal-body" id="racetimes">
+               <div class="row2" id="firstrow">
                   <div class="column">날짜</div>
                   <div class="column">포인트 사용 내역</div>
                   <div class="column">내역</div>
@@ -395,17 +429,18 @@
             <div class="modal-header">
                <button type="button" class="close" data-dismiss="modal"
                   aria-hidden="true">&times;</button>
-               <h4 class="modal-title" id="mypointBody">Event Check</h4>
+               <h4 class="modal-title" >Event Check</h4>
             </div>
             <div class="racetimes">
-               <div class="row" id="firstrow">
+               <div class="row2" id="firstrow">
                   <div class="column">날짜</div>
                   <div class="column">포인트 사용 내역</div>
                   <div class="column">당첨 여부</div>                  
-               </div>
+               
             
             <div class="modal-body" id="usingEvent" >
                
+            </div>
             </div>
             </div>
             <div class="modal-footer">
@@ -419,6 +454,36 @@
    </div> 
    <!-- /.modal -->
 
+   <!-- ModalJiHye3-->
+      <div class="modal fade" id="myModal123" tabindex="-1" role="dialog"
+         aria-labelledby="myModalLabel" aria-hidden="true">
+         <div class="modal-dialog">
+            <div class="modal-content" id="mypointBody">
+               <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal"
+                     aria-hidden="true">&times;</button>
+                  <h4 class="modal-title">Remainding Check</h4>
+               </div>
+               <div class="racetimes">
+                  <div class="row2" id="firstrow">
+                     <div class="column">잔여포인트</div>                                    
+                  </div>
+               
+               <div class="modal-body" id="remainPoint" >
+                  
+               </div>
+               </div>
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+               </div>
+            </div>
+            <!-- /.modal-content -->
+         </div>
+         <!-- /.modal-dialog -->
+      </div> 
+      <!-- /.modal -->
+		
 	
 
 
@@ -543,7 +608,8 @@
                      <div class="ch-items">
                         <div class="ch-infos">
                            <div class="ch-info-fronts ch-img-4"></div>
-                           <div class="ch-info-backs">
+                           <div class="ch-info-backs" data-toggle="modal"
+                              data-target="#myModal123" onclick="remainPoint('${root}','${id}')">
                               <h3>잔여포인트</h3>
                               <p>by Alexander Shumihin View on remainingpoint</p>
                               </a>
@@ -556,7 +622,7 @@
                         <div class="ch-infos">
                            <div class="ch-info-fronts ch-img-5"></div>
                            <div class="ch-info-backs"  data-toggle="modal"
-                              data-target="#myModal23" onclick="myPoint('${root}','aaaa')">
+                              data-target="#myModal23" onclick="myPoint('${root}','${id}')">
                                  <h3>포인트 사용조회</h3>
                                  <p>by Zoe Ingram View on usingcheck</p>
                               </a>
@@ -568,86 +634,74 @@
                      <div class="ch-items">
                         <div class="ch-infos">
                            <div class="ch-info-fronts ch-img-6"></div>
-                           <div class="ch-info-backs">
-                              <a href="${root}/eventBoard/list.do">
-                                 <h3>포인트 사용(이벤트게시판이동)</h3>
-                                 <p>by Eileen Tjan View on usingpoint</p>
-                              </a>
-                           </div>
-                        </div>
-                     </div>
-                  </li>
-                  
-               <li>
-                  <div class="ch-items">
-                     <div class="ch-infos">
-                        <div class="ch-info-fronts ch-img-4"></div>
-                        <div class="ch-info-backs" data-toggle="modal"
-                              data-target="#myModal45" onclick="usingEvent('${root}','aaaa')">                                                      
-                           <h3>응모한 이벤트</h3>
+                           <div class="ch-info-backs" data-toggle="modal"
+                              data-target="#myModal45" onclick="usingEvent('${root}','${nickName}')">                                                      
+                           <h3>응모한 이벤트</h3>                           
                            <p>by Eileen Tjan View on usingpoint</p>
                            
                         </div>
+                        </div>
                      </div>
-                  </div>
-               </li>
+                  </li>
             
             </ul>
          </section>
       </div>
+		<div class="tab3_content">
+            <section class="main">
 
-			<div class="tab3_content">
-				<section class="main">
+               <ul class="ch-grid">
+                  <li>
+                     <div class="ch-itema ch-img-8">
+                        <div class="ch-info-wrapa">
+                           <div class="ch-infoa">
+                              <div class="ch-info-front ch-img-8"></div>
+                              <div class="ch-info-backa">
+                                 <a href="${root}/member/update.do?id=${id}">                                 
+                                    <h3>회원정보수정</h3>
+                                    <p>by Josh Schott View on Dribbble</p>
+                                 </a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </li>
+                  <li>
+                     <div class="ch-itema ch-img-9">
+                        <div class="ch-info-wrapa">
+                           <div class="ch-infoa">
+                              <div class="ch-info-front ch-img-9"></div>
+                              <div class="ch-info-backa">
+                                 <a href="${root}/memberboard/mygasipan.do?id=aaaa">
+                                    <h3>내가 쓴 게시글</h3>
+                                    <p>by Jeremy Slagle View on Dribbble</p>
+                                 </a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </li>
+                  <li>
+                     <div class="ch-itema ch-img-10">
+                        <div class="ch-info-wrapa">
+                           <div class="ch-infoa">
+                              <div class="ch-info-front ch-img-10"></div>
+                              <div class="ch-info-backa">
+                                 <a href="${root}/reviewBoard/myReviwBoard.do?id=aaaa">
+                                    <h3>내가 쓴 댓글</h3>
+                                    <p>by Dustin Leer View on Dribbble</p>
+                                 </a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </li>
+               </ul>
 
-					<ul class="ch-grid">
-						<li>
-							<div class="ch-itema ch-img-8">
-								<div class="ch-info-wrapa">
-									<div class="ch-infoa">
-										<div class="ch-info-front ch-img-8"></div>
-										<div class="ch-info-backa">
-											<a href="">
-												<h3>회원정보수정</h3>
-												<p>by Josh Schott View on Dribbble</p>
-											</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="ch-itema ch-img-9">
-								<div class="ch-info-wrapa">
-									<div class="ch-infoa">
-										<div class="ch-info-front ch-img-9"></div>
-										<div class="ch-info-backa">
-											<a href="">
-												<h3>내가 쓴 게시글</h3>
-												<p>by Jeremy Slagle View on Dribbble</p>
-											</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="ch-itema ch-img-10">
-								<div class="ch-info-wrapa">
-									<div class="ch-infoa">
-										<div class="ch-info-front ch-img-10"></div>
-										<div class="ch-info-backa">
-											<a href="">
-												<h3>내가 쓴 댓글</h3>
-												<p>by Dustin Leer View on Dribbble</p>
-											</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</li>
-					</ul>
-				</section>
-			</div>
+            </section>
+
+         </div>
+			
 		</div>
 	</div>
 </body>

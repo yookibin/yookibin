@@ -443,5 +443,20 @@ public class MemberBoardServiceImpl implements MemberBoardService {
 			}
 		}
 	}
+	
+	   @Override
+	   public void mygaipanList(ModelAndView mav) {
+	      Map<String,Object> map= mav.getModelMap();
+	      HttpServletRequest request=(HttpServletRequest)map.get("request");
+	      
+	      String id=request.getParameter("id");
+	     
+	      logger.info("mygasipanList id"+id);
+	      List<MemberBoardDto> mygasipanList=memberBoardDao.Selectmygasipan(id);
+	      logger.info("mygasipanList"+mygasipanList.size());
+	      
+	      mav.addObject("mygasipanList",mygasipanList);
+	      mav.setViewName("memberboard/mygasipan");
+	   }
 }
 
