@@ -16,7 +16,6 @@
 <style type="text/css">
 #randomPlace{
 	width:1100px;
-	height:1200px;
 	margin-left:auto;
 	margin-right:auto;
 	text-align: center;
@@ -83,7 +82,7 @@
 }
 
 #startButton{
-	margin: 20% 0% 0% 0%;
+	margin: 10% 0% 0% 0%;
 	width: 450px;
 	height: 200px;
 	font-size: 30px;
@@ -106,6 +105,7 @@
 function randomPlaceStart(thisroot,aquestion,sessionId){
 	place_code=[];
 	id=sessionId
+	location.href='#';
 	$("#randomPlaceResult").slideUp();
 	$("#start").slideUp();
 	root=thisroot;
@@ -152,15 +152,11 @@ function randomPlace(next_Question,questionAnswer,next_QuestionCount){
 			if(data[0].next_Question.trim()=="D"){
 				weather=questionAnswer;
 			//	alert(weather);
-				$("#re1").val("예:D");
-				$("#re2").val("아니오:D");				
 				$("#re1").attr("onclick","javascript:randomPlaceEnd('"+data[0].question_Yes+"')");
 				$("#re2").attr("onclick","javascript:randomPlaceEnd('"+data[0].question_No+"')");
 			}else{
 				place=questionAnswer;
 			//	alert(place);
-				$("#re1").val("예Place");
-				$("#re2").val("아니오Place");
 				$("#re1").attr("onclick","javascript:randomPlace('"+data[0].next_Question+"','"+data[0].question_Yes+"','"+data[1]+"')");
 				$("#re2").attr("onclick","javascript:randomPlace('"+data[0].next_Question+"','"+data[0].question_No+"','"+data[1]+"')");				
 			}
@@ -319,6 +315,7 @@ function saveCourses(place1,place2,id){
 </head>
 <body>
 	<div id="randomPlace">
+		<jsp:include page="/TOP.jsp"/>
 		<div id="randomPlaceResult">
 			<div id="place"></div>
 			<input id="placeMapReset" type="button" value="처음위치" class="btn btn-default">
