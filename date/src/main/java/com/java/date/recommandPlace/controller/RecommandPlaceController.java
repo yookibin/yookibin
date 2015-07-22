@@ -97,6 +97,20 @@ public class RecommandPlaceController {
 		service.selectCourse(mav);
 		return mav;
 	}
+	/**
+	 * @name : RecommandPlaceController
+	 * @date : 2015. 6. 22.
+	 * @author : 종현
+	 * @description : 선택한 코스에 대한 정보를 제공.
+	 */
+	@RequestMapping(value = "/recommandPlace/selectCourse.do", method = RequestMethod.GET)
+	public ModelAndView selectCourse(HttpServletRequest request) {
+		logger.info("selectCourse");
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("request", request);
+		service.selectCourse(mav);
+		return mav;
+	}
 
 	/**
 	 * @name : RecommandPlaceController

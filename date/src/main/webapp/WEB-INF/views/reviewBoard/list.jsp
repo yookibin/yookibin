@@ -11,11 +11,12 @@
 <script type="text/javascript" src="${root}/css/reviewBoard/replyWrite.js"></script>
 <script type="text/javascript" src="${root}/css/reviewBoard/replyDelete.js"></script>
 <script type="text/javascript" src="${root}/css/reviewBoard/replyUpdate.js"></script>
+<script type="text/javascript" src="${root}/css/reviewBoard/focusScript.js"></script>
 <script type="text/javascript" src="${root}/css/jquery.js"></script>
 <title>Insert title here</title>
 <script>
 	var commentCount =("${reviewList.size()}");
-//	alert(commentCount);
+	//alert(commentCount);
 	
 	$(document).ready(function () {
 		if (commentCount > 5) {
@@ -97,11 +98,11 @@
 									</li>
 									
 									<li class="grade"><span>${placeBoard.place_star}</span></li>
-									<li><input type="button" value="평가하기" class="button gray bigrounded"/></li>
+									<li><input type="button" value="평가하기" class="button gray bigrounded" onclick="focusScript()"/></li>
 								</ul>
 							</div>
 							
-							<div class="place_account2">
+							<div class="place_account2" style="font-weight: bold">
 								<p class="account1">${placeBoard.place_content}</p>
 							</div>
 						</div>
@@ -121,7 +122,7 @@
 		</div>
 	</div>
 	
-	<div class="commentList"></div>
+	<div></div>
 	<div class="replyDivp">
 		<c:if test="${nickName!=null}">
 			<div style="float: left">
@@ -134,7 +135,7 @@
 					<option value="40">4</option>
 					<option value="50">5</option>
 				</select>
-				<textarea class="writeReply" cols="100" rows="3"></textarea> 
+				<textarea id="writeReply" cols="100" rows="3"></textarea> 
 				<input type="button" value="댓글달기" class="button gray medium" onclick="writeToServer('${root}','${placeBoard.place_code}','${nickName}')" />
 			</div>
 		</c:if>
@@ -157,7 +158,7 @@
 	</div>
 	
 	<div id="container">
-	<div id="content" >
+	<div id="content"  style="margin-left: 16%;">
 		<div id="entry19Trackback" style="display:block">
 			<div class="trackback">
 				<h3>
@@ -166,39 +167,49 @@
 			</div>
 		</div>
 		
-		<c:forEach var="reviewList" items="${reviewList}">
-			<div class="replyDiv" id="${reviewList.review_code}">
-				<div id="entry19Comment" style="display:block">
-					<div class="comment">
-						<div class="commentList">
-							<ol>
-								<li id="comment294493">
-									<div class="rp_general">
-										<div class="name">${reviewList.review_id}</div>
-										<div class="date">
-											<span>
-												<fmt:formatDate value="${reviewList.review_date}"/>
-											</span>
-											<c:if test="${nickName==reviewList.review_id}">
+		<div class="commentList">
+			<c:forEach var="reviewList" items="${reviewList}">
+				<div class="replyDiv" id="${reviewList.review_code}">
+					<div id="entry19Comment" style="display:block;">
+							<div class="comment">
+								<ol>
+									<li id="comment294493">
+										<div class="rp_general">
+											<div class="name">${reviewList.review_id}</div>
+											<div class="date">
 												<span>
-													<a href="javascript:modifyReply('${reviewList.review_code}','${root}')">수정</a>
-													<a href="javascript:deleteToServer('${reviewList.review_code}','${root}')">삭제</a>
+													<fmt:formatDate value="${reviewList.review_date}"/>
 												</span>
-											</c:if>
+											
+												<c:if test="${nickName==reviewList.review_id}">
+													<span>
+														<a href="javascript:modifyReply('${reviewList.review_code}','${root}')">수정</a>
+														<a href="javascript:deleteToServer('${reviewList.review_code}','${root}')">삭제</a>
+													</span>
+												</c:if>
+											</div>
+											<div id="${reviewList.review_code}_content" style="display: none;">
+												<textarea rows="1" cols="80" style="margin: 0px 0px 0px 40px;">${reviewList.review_content}</textarea>
+												<input type="button" value="수정하기" onclick="updateToServer('${root}','${reviewList.review_code}')" />
+											</div>
+										
+										<div class="reply">
+											${reviewList.review_content}
 										</div>
-									
-									<div class="reply">
-										${reviewList.review_content}
 									</div>
-								</div>
-							</li>
+								</li>
+							</div>
 						</div>
 					</div>
-				</div>
-			</div>
-		</c:forEach>
-		</div> 
+			</c:forEach>
+		</div>
+	</div> 
 		<button id="moreComment" onclick="moreComment()" style="display:none">댓글 더 보기 </button>
 	</div>
 </body>
+
+
+<div>
+	<input>
+</div>
 </html>

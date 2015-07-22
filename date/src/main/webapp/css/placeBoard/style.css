@@ -5228,6 +5228,14 @@ dl p span.filter3 {
 	*zoom: 1;
 }
 
+.section_3 {
+	width: 730px;
+	_width: 732px;
+	padding: 50px 0 0 0;
+	border-top: solid 1px #e5e5e5;
+	*zoom: 1;
+}
+
 .section_2:after {
 	content: "";
 	visibility: hidden;
@@ -5237,7 +5245,7 @@ dl p span.filter3 {
 
 .date_detail_tab {
 	float: left;
-	width: 720px;
+	width: 420px;
 	margin-right: 12px;
 	_margin-right: 0px;
 }

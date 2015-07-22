@@ -8,6 +8,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script src="${root }/css/sweetalert-master/dist/sweetalert.min.js"></script>
+<link rel="stylesheet" type="text/css" href="${root }/css/sweetalert-master/dist/sweetalert.css"/>
 </head>
 <body>
 <%-- <h3>managerDel.jsp 이지롱</h3>
@@ -25,7 +27,7 @@
 		<input type="hidden" name="sequence_level" value="${sequence_level }"/>
 		
 		<script type="text/javascript">
-			var input = confirm('삭제하시겠습니까?');
+			/* var input = confirm('삭제하시겠습니까?');
 			//alert(input);
 			
 			if(input==true){
@@ -33,7 +35,25 @@
 			}else{
 				var url="${root}/eventBoard/managerList.do?event_code=${event_code}&group_number=${group_number}&sequence_number=${sequence_number}&sequence_level=${sequence_level}&pageNumber=${pageNumber}";
 				location.href=url;
-			}
+			} */
+			
+			swal({   
+				title: "삭제하시겠습니까?",   
+				text: "You will not be able to recover this imaginary file!",   
+				type: "warning",   
+				showCancelButton: true,   
+				confirmButtonColor: "#DD6B55",   
+				confirmButtonText: "Yes, delete it!",   
+				closeOnConfirm: false 
+				}, 
+				function(isConfirm){   
+					if (isConfirm){     
+						document.deleteForm.submit();
+					}else{     
+						var url="${root}/eventBoard/managerList.do?event_code=${event_code}&group_number=${group_number}&sequence_number=${sequence_number}&sequence_level=${sequence_level}&pageNumber=${pageNumber}";
+						location.href=url;  
+					} 
+				});
 			
 		</script>
 		

@@ -86,9 +86,11 @@ public class RecommandPlaceDaoImpl implements RecommandPlaceDao {
 		Map<String, String> hMap = new HashMap<String, String>();
 		hMap.put("placeCode1", placeCode1);
 		hMap.put("placeCode2", placeCode2);
-		List<String> placeCode = new ArrayList();
+		List<String> placeCode = new ArrayList<String>();
 		placeCode.add(placeCode1);
 		placeCode.add(placeCode2);
+		System.out.println(placeCode1);
+		System.out.println(placeCode2);
 		return sqlSession.selectList("dao.recommandPlaceMapper.userSelect",placeCode);
 	}
 

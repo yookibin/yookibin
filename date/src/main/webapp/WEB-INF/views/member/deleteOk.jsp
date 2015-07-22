@@ -24,7 +24,7 @@
 		<script type="text/javascript">
 			alert("회원탈퇴가 완료 되었습니다.");
 			location.href="${root}/start.jsp";
-			$(location).attr("href", "${root}/start.jsp");
+			$(location).attr("href", "${root}/thisIndex.jsp");
 		</script>
 	</c:if>
 

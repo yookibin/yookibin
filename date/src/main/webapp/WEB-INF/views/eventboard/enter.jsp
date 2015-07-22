@@ -10,7 +10,11 @@
 	<script type="text/javascript" src="${root}/css/eventBoard/script.js"></script>
 	<link rel="stylesheet" type="text/css" href="${root}/css/eventBoard/style.css"/>
 	<script type="text/javascript" src="${root }/css/jquery.js"></script>
-	<script type="text/javascript" src="${root }/smarteditor/js/HuskyEZCreator.js"></script>  
+	<script type="text/javascript" src="${root }/smarteditor/js/HuskyEZCreator.js"></script> 
+	<script src="${root }/css/alertify.js-0.3.11/lib/alertify.min.js"></script>
+	<link rel="stylesheet" href="${root }/css/alertify.js-0.3.11/themes/alertify.core.css"/> 
+	<script src="${root }/css/sweetalert-master/dist/sweetalert.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="${root }/css/sweetalert-master/dist/sweetalert.css"/>
 	<script type="text/javascript">   	
 		function joinFun(root, event_code, pageNumber,id,event_point,event_progress){
 			//alert(id);
@@ -23,15 +27,23 @@
 				window.open(root+"/eventBoard/join.do?event_code="+event_code+"&pageNumber="+pageNumber+"&id="+id+"&event_point="+event_point,"join","width=500,height=500");
 				
 			}else{
-				alert("로그인하세요.");
-				location.href=root+"/member/login.do";
+				/* alertify.alert("로그인하세요.");
+				location.href=root+"/member/login.do"; */
+				swal({ 
+					  title: "warning!",
+					  text: "로그인하세요.",
+					  type: "warning" 
+					  },
+					  function(){
+					    window.location.href=root+"/member/login.do";
+					});
 			}
 				
 		} 
 	</script>	
 </head>
 <body>
-<jsp:include page="/youAndITop.jsp"/>
+<jsp:include page="/TOP.jsp"/>
 
 <div class="totalDiv">
 	<form class="form_style" id="enterForm" method="post" enctype="multipart/form-data">	

@@ -12,9 +12,13 @@
 	<script type="text/javascript" src="${root }/smarteditor/js/HuskyEZCreator.js"></script>
 	<script type="text/javascript" src="${root }/css/eventBoard/script.js"></script>
 	<link href="${root }/css/eventBoard/style.css" rel="stylesheet"/>
+	<script src="${root }/css/alertify.js-0.3.11/lib/alertify.min.js"></script>
+	<link rel="stylesheet" href="${root }/css/alertify.js-0.3.11/themes/alertify.core.css"/>
+	<script src="${root }/css/sweetalert-master/dist/sweetalert.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="${root }/css/sweetalert-master/dist/sweetalert.css"/>
 </head>
 <body>
-<jsp:include page="/youAndITop.jsp"/>
+<jsp:include page="/TOP.jsp"/>
 
 <div class="totalDiv">
 <!-- updateAction에서 board와 (boardNumber는 board에 들어있음), pageNumber를 가져옴 -->	

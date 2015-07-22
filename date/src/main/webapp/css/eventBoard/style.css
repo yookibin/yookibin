@@ -55,6 +55,13 @@ a:hover {
 	margin:0px 0px 0px 0px;padding:0px 0px 0px 0px;text-align:left; 
 }
 
+.line6{
+	width: 70%;
+	margin-left: 15%;
+	height:300px;
+	overflow: auto;
+}
+
 .title{
 	width:96px;height:12px;float:left;
 	border-style:solid;border-width:0px;border-color:#000000;
@@ -111,7 +118,7 @@ a:hover {
 .line2{
 	width: 70%;
 	margin-left: 15%;
-	height:300px;
+	height:800px;
 	overflow: auto;
 }
 

@@ -8,19 +8,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link href="${root }/css/eventBoard/style.css" rel="stylesheet"/>
+<link rel="stylesheet" type="text/css" href="${root }/css/sweetalert-master/dist/sweetalert.css"/>
 <script type="text/javascript">
 	function managerDelFun(root, join_code, event_code, eventPageNumber, pageNumber,group_number,sequence_number,sequence_level){
 		var url=root+"/eventBoard/managerDel.do?join_code="+join_code+"&event_code="+event_code+"&eventPageNumber="+eventPageNumber+"&pageNumber="+pageNumber+"&group_number="+group_number+"&sequence_number="+sequence_number+"&sequence_level="+sequence_level;
-		//alert(url);
-		
+		//alert(url);		
 		location.href=url;
 	}
 </script>
 
 </head>
 <body>	
-<jsp:include page="/youAndITop.jsp"/>
+<jsp:include page="/TOP.jsp"/>
 	
 <%-- 		<div>
 			<span>글번호</span>
@@ -67,7 +66,7 @@
 		<p class="orangeLine"></p>
 	</div>
 	
-	<div class="line2">
+	<div class="line6">
 		<span>${eventMember.join_content }</span>
 	</div>
 	<div class="line1">

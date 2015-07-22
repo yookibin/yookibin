@@ -117,10 +117,15 @@ function chatStart(root){
 						<a href="${root }/member/delete.do" style=" color: #D2916C;">회원탈퇴</a>
 					</span>
 				</div>
+				<div style="width: 80px; height: 40px; float: right; margin: 10px 0 0 0; font-size: 16px; color: #D2916C;">
+					<span>
+						<a href="${root}/mypage/mycourse.do" style=" color: #D2916C;">마이페이지</a>
+					</span>
+				</div>
 				<c:if test="${memberLevel=='AA'}">
 					<div style="width: 85px; height: 40px; float: right; margin: 10px 0 0 0; font-size: 16px; color: #D2916C;">
 						<span>
-							<a href="${root }/eventBoard/write.do" style=" color: #D2916C;">이벤트추가</a>
+							<a href="${root }/eventBoard/write.do" style="color: #D2916C;">이벤트추가</a>
 						</span>
 					</div>
 					<div style="width: 70px; height: 40px; float: right; margin: 10px 0 0 0; font-size: 16px; color: #D2916C;">

@@ -46,7 +46,7 @@
 </head>
 
 <body>
-<jsp:include page="/youAndITop.jsp"/>
+<jsp:include page="/TOP.jsp"/>
 
 <div class="totalDiv">
 	<!-- eventBoard와 pageNumber를 넘겨줌 -->
@@ -92,7 +92,7 @@
 		<button type="button" class="" onclick="location.href='${root}/eventBoard/list.do?pageNumber=${pageNumber }'">
 			<span>글목록</span>
 		</button>
-	
+		<br/><br/>
 		<c:if test="${memberLevel=='AA' }">
 			<p>
 				<button type="button" class="" onclick="updateFun('${root}','${eventBoard.event_code }','${pageNumber }')">
