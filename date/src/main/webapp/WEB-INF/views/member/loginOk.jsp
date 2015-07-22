@@ -20,7 +20,7 @@
 		<script type="text/javascript">
 			alert("로그인 성공");
 			
-			location.href="${root}/start.jsp";
+			location.href="${root}/thisIndex.jsp";
 			//$(location).attr("href", "${root}/member/main.do");
 		</script>
 	<%-- </c:if> --%>
