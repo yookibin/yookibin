@@ -72,7 +72,7 @@
                                     <input class="form-control" placeholder="ID" name="id" type="text" autofocus>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Password" name="password" type="password" value="">
+                                    <input class="form-control" placeholder="Password" name="password" type="password">
                                 </div>          
                                 
                                 <!-- Change this to a button or input when using this as a form -->
@@ -86,7 +86,8 @@
 			                <div style="width:300px;height:20px; margin-left: 18px;">    
 			                    <!-- Button trigger modal -->
 			                    <a data-toggle="modal" data-target="#myModal">아이디 찾기  |</a>&nbsp;
-			                    <a data-toggle="modal" data-target="#myModal2">비밀번호 찾기</a>
+			                    <a data-toggle="modal" data-target="#myModal2">비밀번호 찾기  |</a>
+			                    <a href="${root }/member/register.do">회원가입</a>
 			                    
 			                    <!-- Modal -->
 			                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

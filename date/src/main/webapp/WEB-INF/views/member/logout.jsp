@@ -7,6 +7,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>로그아웃</title>
+<script src="${root }/css/sweetalert-master/dist/sweetalert.min.js"></script>
+<link rel="stylesheet" type="text/css" href="${root }/css/sweetalert-master/dist/sweetalert.css"/>
 <script type="text/javascript" src="${root }/css/jquery.js"></script>
 </head>
 <body>
@@ -15,9 +17,17 @@
 	<c:remove var="nickName" scope="session"/>
 	
 	<script type="text/javascript">
-		alert("로그아웃 되었습니다.");
+		//alert("로그아웃 되었습니다.");
 		//location.href="${root}/member/login.do";
-		$(location).attr("href", "${root}/member/login.do");
+		//$(location).attr("href", "${root}/member/login.do");
+		swal({ 
+			  title: "GOOD!",
+			  text: "로그아웃 되었습니다.",
+			  type: "success" 
+			  },
+			  function(){
+			    window.location.href ="${root}/member/login.do";
+			});
 	</script>
 
 </body>

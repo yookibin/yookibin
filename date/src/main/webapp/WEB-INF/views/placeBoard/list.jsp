@@ -12,6 +12,7 @@
 <script type="text/javascript" src="${root }/css/jquery.js"></script>
 <link type="text/css" rel="stylesheet" href="${root}/css/placeBoard/style.css"/>
 <link type="text/css" rel="stylesheet" href="${root}/css/bootstrap/bootstrap.min.css"/>
+<link type="text/css" rel="stylesheet" href="${root}/css/board/style.css"/>
 </head>
 <body onload="placeListForm()">
 	<jsp:include page="/youAndITop.jsp"/><br/>	
@@ -170,7 +171,6 @@
 		</c:forEach>
 	</div>
 
-	
 	<div style="width:1080px; text-align:center; margin-left:auto; margin-right:auto;">
 		<c:if test="${count>0}">
 			<c:set var="pageBlock" value="${4}"/>
@@ -184,24 +184,28 @@
 				<c:set var="endPage" value="${pageCount }"/>
 			</c:if>
 			
+			<ul class="pagination">
 			<c:if test="${startPage>pageBlock }">
-				<a href="${root }/placeBoard/boardList.do?pageNumber=${startPage-pageBlock}&place_gu=${place_gu}&place_thema=${place_thema}&place_balance=${place_balance}">[이전]</a>
+				<li><a style="background-color:#F05F40" href="${root }/placeBoard/boardList.do?pageNumber=${startPage-pageBlock}&place_gu=${place_gu}&place_thema=${place_thema}&place_balance=${place_balance}">이전</a></li>
 			</c:if>
 			
 			<c:forEach var="i" begin="${startPage }" end="${endPage }">
-				<a href="${root }/placeBoard/boardList.do?pageNumber=${i}&place_gu=${place_gu}&place_thema=${place_thema}&place_balance=${place_balance}">[${i}]</a>
+				<li><a href="${root }/placeBoard/boardList.do?pageNumber=${i}&place_gu=${place_gu}&place_thema=${place_thema}&place_balance=${place_balance}">${i}</a></li>
 			</c:forEach>
 			
 			<c:if test="${endPage<pageCount }">
-				<a href="${root }/placeBoard/boardList.do?pageNumber=${startPage+pageBlock}&place_gu=${place_gu}&place_thema=${place_thema}&place_balance=${place_balance}">[다음]</a>
+				<li><a style="background-color:#F05F40" href="${root }/placeBoard/boardList.do?pageNumber=${startPage+pageBlock}&place_gu=${place_gu}&place_thema=${place_thema}&place_balance=${place_balance}">다음</a></li>
 			</c:if>
+			</ul>
 		</c:if>
 	</div>
+	
 		<div style="width:1080px; height:680px; margin-left:auto; margin-right:auto; ">
 			<div class="line1">
 				<p class="orangeLine" align="center"></p>
 			</div>
 		</div>
 	</div>
+	</ul>
 </body>
 </html>

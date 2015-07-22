@@ -71,4 +71,5 @@ public interface MemberDao {
 	public String findID(HashMap<String,String> hMap);
 	
 	public String findPW(HashMap<String,String> hMap);
+	
 }

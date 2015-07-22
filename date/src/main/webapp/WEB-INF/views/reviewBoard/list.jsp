@@ -43,7 +43,7 @@
 				<div class="date_detail_info">
 					<div class="detail_thum">
 						<p>
-							<img src="http://cdn.image.yanolja.com/site/imageFile/uploadFile/dateNewMulti/1413443016_3.JPG" width="255" height="170" alt="" />
+							<img src="${root }${placeBoard.place_photo}" width="255" height="170" alt="" />
 						</p>
 	
 						<ul>
@@ -188,14 +188,15 @@
 													</span>
 												</c:if>
 											</div>
-											<div id="${reviewList.review_code}_content" style="display: none;">
-												<textarea rows="1" cols="80" style="margin: 0px 0px 0px 40px;">${reviewList.review_content}</textarea>
-												<input type="button" value="수정하기" onclick="updateToServer('${root}','${reviewList.review_code}')" />
-											</div>
 										
 										<div class="reply">
 											${reviewList.review_content}
 										</div>
+									</div>
+									<div id="${reviewList.review_code}_content" style="display: none;">
+										<textarea rows="3" cols="80" id="writeReply">${reviewList.review_content}</textarea>
+										<input type="button" value="수정하기" class="button2 gray small" onclick="updateToServer('${root}','${reviewList.review_code}')" />
+										<input type="button" value="수정취소" class="button2 gray small" onclick="updateCencelServer('${reviewList.review_code}')"/>
 									</div>
 								</li>
 							</div>
@@ -206,10 +207,6 @@
 	</div> 
 		<button id="moreComment" onclick="moreComment()" style="display:none">댓글 더 보기 </button>
 	</div>
+	</div>
 </body>
-
-
-<div>
-	<input>
-</div>
 </html>
