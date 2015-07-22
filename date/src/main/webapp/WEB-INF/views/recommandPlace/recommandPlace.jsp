@@ -31,6 +31,8 @@
 	rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css"
 	href="${root}/css/recommandPlace/style.css" />
+<link rel="stylesheet" type="text/css"
+	href="${root}/css/recommandPlace/modalpop.css" />
 <script type="text/javascript"
 	src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script type="text/javascript"
@@ -74,7 +76,8 @@
 								placeList += "<div>"
 
 										+ "<div id='title'>"
-										+ "<div id='title_a'>"
+										/* + "<div id='title_a'>" */
+ 										+ "<div class='imagepluscontainer' style='width: 263px; height: 199px; z-index: 2'>" 
 										+ "<figure class='figurefx default'>"
 										+ "<img src='"+root+data[i].place_photo+"' width='246' height='176'>"
 										+ "<figcaption>" + "<div>";
@@ -118,12 +121,9 @@
 										+ "'>평가하기</a>"
 										+ "</figcaption>"
 										+ "</figure>"
-										+ "</div>"
-										+ "<div id='title_b'>장소이름 : "
-										+ data[i].place_name
-										+ "<br>"
-										+ "가격 : "
-										+ data[i].place_balance
+										/* + "</div>" */
+										/* + "<div id='title_b'>장소이름 : " */
+										+ "<div class='desc' style='text-align:left;'>"
 										+ "<br>"
 										+ "운영시간 : "
 										+ data[i].place_runtime
@@ -134,6 +134,13 @@
 										+ "별점 : "
 										+ data[i].place_star
 										+ "<br>"
+										+ "</div>"
+										+ "<div id='title_b'>&nbsp;&nbsp;&nbsp;장소이름 : "
+											+ data[i].place_name
+											+ "<br>"
+											+ "&nbsp;&nbsp;&nbsp;가격 : "
+											+ data[i].place_balance
+										+ "</div>"
 										+ "<div id='"+data[i].place_code+"'>"
 										+ "</div></div></div></div>";
 							}
