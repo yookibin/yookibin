@@ -14,14 +14,24 @@
 <link type="text/css" rel="stylesheet" href="${root}/css/placeBoard/style.css"/>
 <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <style type="text/css">
+#randomPlaceTotal{
+	width:1100px;
+	height:660px;
+	border:2px solid brown; 
+	border-radius:1em/1em;
+}
+
+/* background-image: url("images/darkpattern.png");*/
+
 #randomPlace{
 	width:1100px;
 	margin-left:auto;
 	margin-right:auto;
 	text-align: center;
 }
+
 #re1 {
-	width: 350px;
+	width: 330px;
 	height: 50px;
 	border-radius:1em/1em;
 	background-color: #8A4924;
@@ -29,7 +39,7 @@
 }
 
 #re2 {
-	width: 350px;
+	width: 330px;
 	height: 50px;
 	border-radius:1em/1em;
 	background-color: #8A4924;
@@ -48,7 +58,7 @@
 #question{
 	display:none;
 	color:#8A4924;
-	margin:0 0 0 200px;
+	margin:7% 0 0 200px;
 	width: 700px;
 	height: 300px;
 	border-radius:1em/1em;
@@ -82,10 +92,10 @@
 }
 
 #startButton{
-	margin: 10% 0% 0% 0%;
-	width: 450px;
-	height: 200px;
-	font-size: 30px;
+	margin: 48% 0% 0% 0%;
+	width: 280px;
+	height: 100px;
+	font-size: 25px;
 	color:#8A4924;
 	border-radius:1em/1em;
 	border: 3px solid #8A4924;
@@ -121,8 +131,8 @@ function randomPlaceStart(thisroot,aquestion,sessionId){
 		success:function(data){
 	//		$("#start").css("display","none");
 		 	$("#question").text(data[0].question);
-			$("#re1").val(" 예   :)");
-			$("#re2").val("아니오 :(");
+			$("#re1").val(" 예 ");
+			$("#re2").val(" 아니오 ");
 			$("#button").slideDown(500);
 			$("#question").slideDown(500);
 			$("#re1").attr("onclick","javascript:randomPlace('"+data[0].next_Question+"','"+data[0].question_Yes+"','"+data[1]+"')");
@@ -316,20 +326,21 @@ function saveCourses(place1,place2,id){
 <body>
 	<div id="randomPlace">
 		<jsp:include page="/TOP.jsp"/>
-		<div id="randomPlaceResult">
-			<div id="place"></div>
-			<input id="placeMapReset" type="button" value="처음위치" class="btn btn-default">
-			<div id="map"></div>
-		</div>
-		<div id="randomPlaceMain">
-			<div id="start">
-				<input type="button" value="시작" id="startButton" class="btn btn-default"
-					onclick="randomPlaceStart('${root}',${aquestion},'${id}')"> 
+		<div id="randomPlaceTotal" <%-- style="background:url(${root}/resources/random/random.jpg)" --%>>
+			<div id="randomPlaceResult">
+				<div id="place"></div>
+				<input id="placeMapReset" type="button" value="처음위치로 돌아가기" class="btn btn-default">
+				<div id="map"></div>
 			</div>
-			<div id="question"></div> 
-			<div id="button">
-				<input id="re1" type="button" class="btn btn-default"/> 
-				<input id="re2" type="button" class="btn btn-default"/>
+			<div id="randomPlaceMain">
+				<div id="start">
+					<input type="button" value="랜덤 장소 찾으러가기" id="startButton" class="btn btn-default" onclick="randomPlaceStart('${root}',${aquestion},'${id}')"> 
+				</div>
+				<div id="question"></div> 
+				<div id="button">
+					<input id="re1" type="button" class="btn btn-default"/> 
+					<input id="re2" type="button" class="btn btn-default"/>
+				</div>
 			</div>
 		</div>
 	</div>
