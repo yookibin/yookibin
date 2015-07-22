@@ -37,8 +37,8 @@
 	$(document).ready(function () {
 		
 		if (commentCount > 5) {	// 댓글개수가 5개보다 크면
-			$("#moreComment").show();	
-			 for (i=6;i<=commentCount; i++){$("#commentList>.replyDiv:nth-child("+i+")").hide()};	// 5이상 댓글들을 숨긴다.
+			$("#moreComment2").show();	
+			 for (i=6;i<=commentCount; i++){$(".commentList>.replyDiv:nth-child("+i+")").hide()};	// 5이상 댓글들을 숨긴다.
 		};
 	});
 	
@@ -46,8 +46,8 @@
 	
 	function moreComment(){
 		moreCount++;
-		for (i=1;i<=5; i++){$("#commentList>.replyDiv:nth-child("+(moreCount*5+i)+")").show()};	// 숨긴 댓글들을 5개씩 보여주기 .
-		if (((moreCount+1)*5) > commentCount){$("#moreComment").hide()};	// (moreCount+1)*5 한 것보다 commentCount값이 작다면 더이상 보여줄게 없다는 것이므로 버튼 숨김.
+		for (i=1;i<=5; i++){$(".commentList>.replyDiv:nth-child("+(moreCount*5+i)+")").show()};	// 숨긴 댓글들을 5개씩 보여주기 .
+		if (((moreCount+1)*5) > commentCount){$("#moreComment2").hide()};	// (moreCount+1)*5 한 것보다 commentCount값이 작다면 더이상 보여줄게 없다는 것이므로 버튼 숨김.
 	}
 </script>
 
@@ -108,7 +108,7 @@
 		<div class="replyDivp">
 			<c:if test="${nickName!=null}">
 				<div style="float: left">
-					<textarea class="writeReply" cols="100" rows="3"></textarea> 
+					<textarea id="reply" class="writeReply" cols="100" rows="3"></textarea> 
 					<input type="button" value="댓글달기" class="button gray medium" onclick="writeReply('${root}','${memberBoard.board_num}', '${nickName}')" />
 				</div>
 			</c:if>
@@ -122,7 +122,7 @@
 		</div>
 		
 		<div id="container">
-   <div id="content"  style="margin-left: 16%;">
+   <div id="content">
       <div id="entry19Trackback" style="display:block">
          <div class="trackback">
             <h3>
@@ -174,7 +174,7 @@
       </c:forEach>
       </div>
    </div> 
-      <button id="moreComment" onclick="moreComment()" style="display:none">댓글 더 보기 </button>
+      <button id="moreComment2" onclick="moreComment()" style="display:none">댓글 더 보기 </button>
    </div>
 		
 		<%-- <div id="container">

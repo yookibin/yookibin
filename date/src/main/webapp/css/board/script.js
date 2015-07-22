@@ -10,8 +10,12 @@ function writeReply(root, board_num, reply_writer){
 		type:"get",
 		dataType:"text",
 		success:function(data){
+			if(data!=null||data!=""){
+				alert("입력 되었습니다.");
+				location.reload();
+			}
 			//alert("되나?");
-			var split=data.split(",");	//0번지는 글번호 1번지는 답글내용이 됨.
+			/*var split=data.split(",");	//0번지는 글번호 1번지는 답글내용이 됨.
 			
 			var reply_num=split[0].trim();
 			var reply_content=split[1].trim();
@@ -38,7 +42,7 @@ function writeReply(root, board_num, reply_writer){
 			
 			$("#reply").val("");
 			
-			$("#replyAll").prepend(replyDivs);
+			$("#replyAll").prepend(replyDivs);*/
 			
 			
 		},
