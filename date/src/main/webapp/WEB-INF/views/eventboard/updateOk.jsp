@@ -25,22 +25,6 @@
 </script> -->
 </head>
 <body>
-
-	<%-- <c:if test="${check>0 }">
-		<script type="text/javascript">
-			alertify.alert("수정되었습니다.");		
-			//sleep(5000);
-			location.href="${root}/eventBoard/list.do?pageNumber=${pageNumber}";
-		</script>
-	</c:if>
-
-	
-	<c:if test="${check==0 }">
-		<script type="text/javascript">
-			alertify.alert("수정되지 않았습니다.");
-			location.href="${root}/eventBoard/update.do?event_code=${event_code}&pageNumber=${pageNumber}";
-		</script>
-	</c:if> --%>
 	
 	<c:if test="${check>0 }">
 		<script type="text/javascript">

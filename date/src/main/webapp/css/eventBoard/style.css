@@ -100,7 +100,7 @@ a:hover {
 }
 
 .totalDiv{
-	width:1200px;height:1200px;
+	width:1200px;height:900px;
 	margin:0% auto 0% auto;
 }
 
@@ -109,8 +109,8 @@ a:hover {
     padding: 10px;
 }
 
-.line1{
-	width: 70%;
+.line7{
+	width: 900px;
 	margin-left: 15%;
 /* 	border-top:2px solid #F05F40; */
 /* 	border-bottom:2px solid #F05F40; */

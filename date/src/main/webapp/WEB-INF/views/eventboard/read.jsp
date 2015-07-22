@@ -12,8 +12,7 @@
 <title>게시판 읽기</title>
 
 <link href="${root }/css/eventBoard/style.css" rel="stylesheet"/>
-<script type="text/javascript">
-	
+<script type="text/javascript">	
 	function delFun(root, event_code, pageNumber){
 		var url=root+"/eventBoard/delete.do?event_code="+event_code+"&pageNumber="+pageNumber;
 		//alert(url);
@@ -46,16 +45,17 @@
 </head>
 
 <body>
-<jsp:include page="/TOP.jsp"/>
-
 <div class="totalDiv">
+
+	<jsp:include page="/TOP.jsp"/>
+	
 	<!-- eventBoard와 pageNumber를 넘겨줌 -->
 	<c:set var="root" value="${pageContext.request.contextPath }"/>
 	 <input style="margin-left:80%" type="button" align="middle" value="글목록" onclick="location.href='${root}/eventBoard/list.do?pageNumber=${pageNumber }'"/>
-	 <div class="line1">
+	 <div class="line7">
 		<p class="orangeLine"></p>
 	</div>
-	 <div class="line1">
+	 <div class="line7">
 		<div class="centers">			
 			<span id="readTitle">${eventBoard.event_title }</span>
 		</div>
@@ -71,17 +71,17 @@
 		</div>
 	</div>	
 	
-	<div class="line1">
+	<div class="line7">
 		<p class="orangeLine"></p>
 	</div>
 	
 	<div class="line2">
 		<span>${eventBoard.event_content }</span>
 	</div>
-	<div class="line1">
+	<div class="line7">
 		<p class="orangeLine"></p>
 	</div>
-	<div class="line2" style="text-align:center;">	
+	<div class="line7" style="text-align:center;">	
 		<c:if test="${eventBoard.event_progress=='진행' }">
 			<button type="button" class="" onclick="enterFun('${root}','${eventBoard.event_code }','${pageNumber }','${eventBoard.event_point }')">참가하기</button>
 		</c:if>
@@ -107,6 +107,9 @@
 			</p>
 		</c:if>		
 	</div>
+	
+	<jsp:include page="/Bottom.jsp"/>
+
 </div>	 
 
 </body>

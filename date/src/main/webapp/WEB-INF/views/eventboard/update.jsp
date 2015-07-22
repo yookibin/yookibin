@@ -16,11 +16,17 @@
 	<link rel="stylesheet" href="${root }/css/alertify.js-0.3.11/themes/alertify.core.css"/>
 	<script src="${root }/css/sweetalert-master/dist/sweetalert.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="${root }/css/sweetalert-master/dist/sweetalert.css"/>
+	<script type="text/javascript">
+		function eventReset(){
+			history.back(-1);
+		}
+	</script>
 </head>
 <body>
-<jsp:include page="/TOP.jsp"/>
-
 <div class="totalDiv">
+
+	<jsp:include page="/TOP.jsp"/>
+	
 <!-- updateAction에서 board와 (boardNumber는 board에 들어있음), pageNumber를 가져옴 -->	
 	<form class="form_style" action="${root}/eventBoard/update.do" method="post" onsubmit="return updateFun(this)" enctype="multipart/form-data">
 		<input type="hidden" name="event_code" value="${eventBoard.event_code }"/>
@@ -73,10 +79,13 @@
 		
 		<div class="line" style="width:598px; border-width:0px; text-align:center;">
 			<input type="submit" value="글수정"/>
-			<input type="reset" value="취소"/>
+			<input type="reset" onclick="eventReset()" value="취소"/>
 			<input type="button" value="목록보기" onclick="location.href='${root}/eventBoard/list.do?pageNumber=${pageNumber}'">
 		</div>
 	</form>
+	
+	<jsp:include page="/Bottom.jsp"/>
+	
 </div>
 </body>
 <script type="text/javascript">

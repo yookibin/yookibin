@@ -140,9 +140,10 @@
 </script>
 </head>
 <body>
-<jsp:include page="/TOP.jsp"/>
-
-    <div class="totalDiv">    
+    <div class="totalDiv">   
+    
+    	<jsp:include page="/TOP.jsp"/>
+    	 
         <div class="col-lg-12">
             <div class="panel panel-default">             
                 <!-- /.panel-heading -->
@@ -223,7 +224,10 @@
 					</div>                    
                 </div>
             </div>
-        </div>        
+        </div>  
+        
+        <jsp:include page="/Bottom.jsp"/>
+              
     </div>
 	
 </body>

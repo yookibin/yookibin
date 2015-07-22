@@ -44,9 +44,12 @@
    
 </head>
 <body>	
-<jsp:include page="/TOP.jsp"/>
+
 	<!-- /.row -->
     <div class="totalDiv">
+    
+    <jsp:include page="/TOP.jsp"/>
+    
     <c:if test="${count!=0 }">
         <div class="col-lg-12">
             <div class="panel panel-default">
@@ -142,6 +145,8 @@
         </div>
         <!-- /.col-lg-12 -->
         </c:if>
+        
+        <jsp:include page="/Bottom.jsp"/>
     </div>
 
 
