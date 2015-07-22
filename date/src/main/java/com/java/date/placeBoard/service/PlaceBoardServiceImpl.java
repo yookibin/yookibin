@@ -97,14 +97,14 @@ public class PlaceBoardServiceImpl implements PlaceBoardService {
 			int endRow=currentPage*boardSize;
 			logger.info("boardList startRow: "+startRow+", endRow: "+endRow);
 			
-			int count=placeBoardDao.getGuCount(place_gu);
+			int count=placeBoardDao.getPlaceCount(place_gu, place_thema, place_balance);
 			logger.info("boardList count: "+count);
 			
 			List<PlaceDto> boardList=null;
 			if(count>0){
 				boardList=placeBoardDao.getPlaceList(startRow, endRow, place_gu,place_thema,place_balance);
+				logger.info("boardList size: "+boardList.size());
 			}
-			logger.info("boardList size: "+boardList.size());
 			 
 			//place_laction이 강남에 해당하는 레코드를 뽑아 List로 담아 준다.
 			
