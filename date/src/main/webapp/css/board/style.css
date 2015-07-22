@@ -40,6 +40,15 @@
 	font-weight: bold;
 }
 
+#moreComment2 {
+	padding: 1em;
+	width: 682px;
+	font-size: .8em;
+	font-weight: bold;
+	background-color: #eee;
+	margin-left: 5%;
+}
+
 .alert {
 	background: #fff6bf url(bioneural/exclamation.png) center no-repeat;
 	background-position: 15px 50%; /* x-pos y-pos */

@@ -102,6 +102,12 @@
 	<insert id="pointGive" parameterType="java.util.HashMap">
 		<![CDATA[ insert into point(point_code,id,point_manage,point_total,point_content,point_date) values(POINT_POINT_CODE_SEQ.nextval,#{id},'+10',#{totalPoint},'추천',sysdate) ]]>
 	</insert>
+	
+	<!-- 내가 쓴 게시판 가지고오기 -->
+   <select id="selectMygasipan" parameterType="String" resultType="com.java.date.member.dto.MemberBoardDto">
+      
+      select * from board where board_writer=#{nickName}
+   </select>
 
 </mapper>
 

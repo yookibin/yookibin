@@ -238,5 +238,11 @@ public class MemberBoardDaoImpl implements MemberBoardDao {
 		sqlSession.insert("dao.memberBoardMapper.pointGive", hMap);
 		
 	}
+	
+	@Override
+	   public List<MemberBoardDto> Selectmygasipan(String id) {
+	      
+	      return sqlSession.selectList("dao.memberBoardMapper.selectMygasipan",id);
+	   }
 
 }
