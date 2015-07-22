@@ -34,6 +34,8 @@
 	type="text/css">
 <link rel="stylesheet" href="${root}/css/slide/unit.css" />
 <link rel="stylesheet" href="${root}/css/slide/common.css" />
+<link rel="stylesheet" href="${root}/css/placeBoard/style.css" />
+<link rel="stylesheet" href="${root}/css/slide/common.css" />
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script
 	src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.17.0/TweenMax.min.js"></script>
@@ -83,19 +85,13 @@ function chatStart(root){
 </head>
 <body>
 		<c:if test="${id==null}">
-			<div class="menu-B">
-				<div
-					style="width: 70px; height: 40px; float: right; margin: 10px 30px 0 0; font-size: 16px; color: #D2916C;">
+ 			<div class="menu-B">
+				<div style="width: 120px; height: 30px; float: right; margin: 10px 30px 0 0; font-size: 13px; color: #D2916C;">
 					<span>
-						<a href="${root }/member/register.do" style=" color: #D2916C;">회원가입</a>
+						<a href="${root }/member/login.do" style=" color: #D2916C;"><b>로그인</b>｜</a><a href="${root }/member/login.do" style=" color: #D2916C;"><b>회원가입</b></a>
 					</span>
 				</div>
-				<div style="width: 50px; height: 40px; float: right; margin: 10px 0 0 0; font-size: 16px; color: #D2916C;">
-					<span>
-						<a href="${root }/member/login.do" style=" color: #D2916C;">로그인</a>
-					</span>
-				</div>
-			</div>
+			</div>  
 		</c:if>
 
 		<c:if test="${id!=null}">
