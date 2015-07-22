@@ -14,13 +14,6 @@
 <link type="text/css" rel="stylesheet" href="${root}/css/placeBoard/style.css"/>
 <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <style type="text/css">
-#randomPlaceTotal{
-	width:1100px;
-	height:660px;
-	border:2px solid brown; 
-	border-radius:1em/1em;
-}
-
 /* background-image: url("images/darkpattern.png");*/
 
 #randomPlace{
@@ -31,7 +24,7 @@
 }
 
 #re1 {
-	width: 330px;
+	width: 350px;
 	height: 50px;
 	border-radius:1em/1em;
 	background-color: #8A4924;
@@ -39,7 +32,7 @@
 }
 
 #re2 {
-	width: 330px;
+	width: 350px;
 	height: 50px;
 	border-radius:1em/1em;
 	background-color: #8A4924;
@@ -84,7 +77,7 @@
 .place{
 	width: 50%;
 	float:left;
-	height: 450px;
+	height: 300px;
 }
 .placeImgTitle{
 	margin: 15px 0px 15px 0px;
@@ -92,7 +85,7 @@
 }
 
 #startButton{
-	margin: 48% 0% 0% 0%;
+	margin: 40% 0% 0% 0%;
 	width: 280px;
 	height: 100px;
 	font-size: 25px;
@@ -229,30 +222,29 @@ function randomPlaceEnd(questionAnswer){
 			var placeList = "";
 						for (var i = 0; i < data.length;i++) {
 							placeList += "<div class='place'>"
-								+ "<div class=placeImgTitle>"+data[i].place_name+"</div>"
 								+ "<figure class='figurefx default'>"
 								+ "<img src='"+root+data[i].place_photo+"' width='348' height='250' class='placeImg'>"
 								+ "<figcaption>"
 				   				+ "<div>";
-			   				if(data[i].place_star <= 0 && data[i].place_star < 0.5){
+			   				if(data[i].place_star >= 0 && data[i].place_star < 0.5){
 			   					placeList +="<img src='/date/resources/star/00.png' width='120' height='25' style='margin:0px 0px 0px 107px;'/>";}
-			   				if(data[i].place_star <= 0.5 && data[i].place_star < 1){
+			   				if(data[i].place_star >= 0.5 && data[i].place_star < 1){
 			   					placeList +="<img src='/date/resources/star/05.png' width='120' height='25' style='margin:0px 0px 0px 107px;'/>";}
-			   				if(data[i].place_star <= 1 && data[i].place_star < 1.5){
+			   				if(data[i].place_star >= 1 && data[i].place_star < 1.5){
 			   					placeList +="<img src='/date/resources/star/10.png' width='120' height='25' style='margin:0px 0px 0px 107px;'/>";}
-			   				if(data[i].place_star <= 1.5 && data[i].place_star < 2){
+			   				if(data[i].place_star >= 1.5 && data[i].place_star < 2){
 			   					placeList +="<img src='/date/resources/star/15.png' width='120' height='25' style='margin:0px 0px 0px 107px;'/>";}
-			   				if(data[i].place_star <= 2 && data[i].place_star < 2.5){
+			   				if(data[i].place_star >= 2 && data[i].place_star < 2.5){
 			   					placeList +="<img src='/date/resources/star/20.png' width='120' height='25' style='margin:0px 0px 0px 107px;'/>";}
-			   				if(data[i].place_star <= 2.5 && data[i].place_star < 3){
+			   				if(data[i].place_star >= 2.5 && data[i].place_star < 3){
 			   					placeList +="<img src='/date/resources/star/25.png' width='120' height='25' style='margin:0px 0px 0px 107px;'/>";}
-			   				if(data[i].place_star <= 3 && data[i].place_star < 3.5){
+			   				if(data[i].place_star >= 3 && data[i].place_star < 3.5){
 			   					placeList +="<img src='/date/resources/star/30.png' width='120' height='25' style='margin:0px 0px 0px 107px;'/>";}
-			   				if(data[i].place_star <= 3.5 && data[i].place_star < 4){
+			   				if(data[i].place_star >= 3.5 && data[i].place_star < 4){
 			   					placeList +="<img src='/date/resources/star/35.png' width='120' height='25' style='margin:0px 0px 0px 107px;'/>";}
-			   				if(data[i].place_star <= 4 && data[i].place_star < 4.5){
+			   				if(data[i].place_star >= 4 && data[i].place_star < 4.5){
 			   					placeList +="<img src='/date/resources/star/40.png' width='120' height='25' style='margin:0px 0px 0px 107px;'/>";}
-			   				if(data[i].place_star <= 4.5 && data[i].place_star < 5){
+			   				if(data[i].place_star >= 4.5 && data[i].place_star < 5){
 			   					placeList +="<img src='/date/resources/star/45.png' width='120' height='25' style='margin:0px 0px 0px 107px;'/>";} 
 			   				if(data[i].place_star == 5){
 			   					placeList +="<img src='/date/resources/star/50.png' width='120' height='25' style='margin:0px 0px 0px 107px;'/>";} 
@@ -260,8 +252,7 @@ function randomPlaceEnd(questionAnswer){
 				   				+"<input type='button' value='상세보기' onclick='placeContentOpen("+i+")'/>"
 				   				+"</figcaption>"
 				   				+"</figure>"
-								+"<div class=placeContent>장소설명 : "
-								+data[i].place_content + "<br/></div>"
+				   				+ "<div class=placeImgTitle>"+data[i].place_name+"</div>"
 								+"</div>";
 							place_code+=data[i].place_code+",";
 						}
@@ -273,9 +264,9 @@ function randomPlaceEnd(questionAnswer){
 			
 			$("#re1").attr("onclick","javascript:searchPlaces()");
 			
-			$("#re1").val("선택");
+			$("#re1").val("장소저장");
 			$("#re1").attr("onclick","javascript:saveCourses('"+data[0].place_code+"','"+data[1].place_code+"','"+id+"')");
-			$("#re2").val("다시");
+			$("#re2").val("다시선택");
 			$("#re2").attr("onclick","javascript:randomPlaceStart(\'"+root+"\','"+reAqustion+"','"+id+"')");
 		},
 		error:function(){
@@ -324,9 +315,8 @@ function saveCourses(place1,place2,id){
 <title>Insert title here</title>
 </head>
 <body>
-	<div id="randomPlace">
 		<jsp:include page="/TOP.jsp"/>
-		<div id="randomPlaceTotal" <%-- style="background:url(${root}/resources/random/random.jpg)" --%>>
+	<div id="randomPlace">
 			<div id="randomPlaceResult">
 				<div id="place"></div>
 				<input id="placeMapReset" type="button" value="처음위치로 돌아가기" class="btn btn-default">
@@ -342,7 +332,6 @@ function saveCourses(place1,place2,id){
 					<input id="re2" type="button" class="btn btn-default"/>
 				</div>
 			</div>
-		</div>
 	</div>
 </body>
 </html>

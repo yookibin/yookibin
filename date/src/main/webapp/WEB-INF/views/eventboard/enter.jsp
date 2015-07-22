@@ -43,9 +43,9 @@
 	</script>	
 </head>
 <body>
-<jsp:include page="/TOP.jsp"/>
 
 <div class="totalDiv">
+	<jsp:include page="/TOP.jsp"/>
 	<form class="form_style" id="enterForm" method="post" onsubmit="return enterFun(this)" enctype="multipart/form-data">	
 		<input type="hidden" name="event_code" value="${event_code }"/>
 		<!-- <input type="hidden" name="join_filePath"/> -->
@@ -85,7 +85,9 @@
 			<input type="button" value="목록보기" onclick="location.href='${root }/eventBoard/list.do?pageNumber=${pageNumber }'"/> 
 		</div>
 	</form>
+
 </div>	
+	<jsp:include page="/Bottom.jsp"/>
 </body>
 <script type="text/javascript">
 var oEditors = [];

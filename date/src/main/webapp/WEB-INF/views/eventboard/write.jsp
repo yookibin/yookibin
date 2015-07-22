@@ -15,14 +15,17 @@
 
 <script src="${root }/css/sweetalert-master/dist/sweetalert.min.js"></script>
 <link rel="stylesheet" type="text/css" href="${root }/css/sweetalert-master/dist/sweetalert.css">
-
+<script type="text/javascript">
+	function eventReset(){
+		history.back(-1);
+	}
+</script>
 </head>
 <body>
-
-
-<jsp:include page="/TOP.jsp"/>
-
 <div class="totalDiv">
+
+	<jsp:include page="/TOP.jsp"/>
+	
 	<form class="form_style"  action="${root }/eventBoard/write.do"  method="post" onsubmit="return checkForm(this)" enctype="multipart/form-data">	
 		<input type="hidden" name="event_code" value="${event_code}"/>
 		<input type="hidden" name="group_number" value="${group_number}"/>
@@ -113,11 +116,14 @@ ${winner.join_code}      ${winner.id }        ${winner.join_writer }<br/>
 							
 		<div class="line" style="width:641px; border-width:0px; text-align:center;">
 			<input type="submit" value="글쓰기"/>
-			<input type="reset" value="다시작성"/>
+			<input type="reset" onclick="eventReset()" value="취소"/>
 			<input type="button" value="목록보기" onclick="location.href='${root}/eventBoard/list.do'"/>
 		</div>
 		
 	</form>
+	
+	<jsp:include page="/Bottom.jsp"/>
+	
 </div>
 </body>
 <script type="text/javascript">

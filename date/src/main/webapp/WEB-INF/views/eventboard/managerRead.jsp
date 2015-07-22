@@ -20,33 +20,10 @@
 
 </head>
 <body>	
-<jsp:include page="/TOP.jsp"/>
-	
-<%-- 		<div>
-			<span>글번호</span>
-			<span>${eventMember.join_code }</span>		
-		</div>
-		
-		<div>
-			<span>작성자</span>
-			<span>${eventMember.join_writer }</span>		oo
-		</div>
-	
-		<div>
-			<span>제목</span>
-			<span>${eventMember.join_title }</span>		oo
-		</div>
-		
-		<div>
-			<span>글내용</span>
-			<span>${eventMember.join_content }</span>	oo	
-		</div>
-		
-		<div>
-			<input type="button" value="글삭제" onclick="managerDelFun('${root}','${eventMember.join_code }','${eventMember.event_code }','${eventPageNumber }','${pageNumber }','${group_number }','${sequence_number }','${sequence_level }')"/>			
-			<input type="button" value="글목록" onclick="location.href='${root}/eventBoard/managerList.do?eventPageNumber=${eventPageNumber }&pageNumber=${pageNumber }&event_code=${event_code }&group_number=${group_number}&sequence_number=${sequence_number}&sequence_level=${sequence_level}'"/>	
-		</div> --%>
 <div class="totalDiv">
+
+	<jsp:include page="/TOP.jsp"/>
+	
 	<!-- eventBoard와 pageNumber를 넘겨줌 -->
 	
 	 <input style="margin-left:80%" type="button" align="middle" value="글목록" onclick="location.href='${root}/eventBoard/managerList.do?eventPageNumber=${eventPageNumber }&pageNumber=${pageNumber }&event_code=${event_code }&group_number=${group_number}&sequence_number=${sequence_number}&sequence_level=${sequence_level}'"/>
@@ -81,6 +58,9 @@
 			<span>글목록</span>
 		</button>			
 	</div>
+	
+	<jsp:include page="/Bottom.jsp"/>
+	
 </div>	
 </body>
 </html>
