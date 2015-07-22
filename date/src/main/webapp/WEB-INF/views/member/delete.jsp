@@ -13,8 +13,6 @@
 <link rel="stylesheet" type="text/css" href="${root }/css/member/style.css" />
 </head>
 <body>
-
-	
 	
 	<form action="${root }/member/delete.do" method="post">
 		<table border="1" align="center" cellpadding="2" cellspacing="0">
