@@ -89,7 +89,7 @@
 	font-size: .9em;
 	padding: 5px;
 	text-align: center;
-	width: 20%;
+	width: 30%;
 	line-height: 1.8em;
 	font-weight: 700;
 	border-radius: 3px 3px 0 0;
@@ -171,7 +171,7 @@
 									+ "<img alt='' src='"+root+data[i].save_cplace2.place_photo+"' width='250' height='150'>"
 									+ "</div>"
 									+ "<div>"
-									+ data[i].save_cplace2.place_code
+									+ data[i].save_cplace2.place_name
 									+ "<br>"
 									+ "</div>"
 									+ "</div>"
@@ -272,61 +272,6 @@
 	      });
 	   }
 	   
-	   function myRandomCourse(root, id, like){
-		   $.ajax({
-				url : root + "/mypage/getMyCourse.do",
-				type : "post",
-				data : {
-					id : id,
-					like : like
-				},
-				success : function(data) {
-					console.log(data);
-
-					var str = "<div class='modal-header'>"
-						+"<button type='button' class='close' data-dismiss='modal'"
-						+"aria-hidden='true'>&times;</button>"
-						+"<h4 class='modal-title' id='myModalLabel'>나의랜덤코스</h4>"
-						+"</div>";
-					for (var i = 0; i < data.length; i++){
-						str += "<div class='a' id="+data[i].num+">"
-								+ "<div class='a1'>" + "<span> &nbsp;"
-								+ (i + 1)
-								+ "</span>"
-								+ "</div>"
-								+ "<div class='a2'>"
-								+ "<div>"
-								+ "<img alt='' src='"+root+data[i].save_cplace1.place_photo+"' width='250' height='150'>"
-								+ "</div>"
-								+ "<div>"
-								+ data[i].save_cplace1.place_name
-								+ "<br>"
-								+ "</div>"
-								+ "</div>"
-								+ "<div class='a3'>"
-								+ "<div>"
-								+ "<img alt='' src='"+root+data[i].save_cplace2.place_photo+"' width='250' height='150'>"
-								+ "</div>"
-								+ "<div>"
-								+ data[i].save_cplace2.place_name
-								+ "<br>"
-								+ "</div>"
-								+ "</div>"
-								/* + "<div class='ab'>"
-								+ "date : "
-								+ data[i].save_date */
-								/* + "<br> <input type='button' class='btn btn-outline btn-danger' value='확인' onclick='okCourse('"+data[i].save_cplace1+"')'>"  */   
-								+ "<br> <input type='button' class='btn btn-outline btn-danger' value='삭제' onclick='deleteCourse("+data[i].num+")'>"    
-								/* + "</div>"  */
-								+ "</div>"
-					}
-					
-					$("#loadMyRandomCourse").empty();
-					$("#loadMyRandomCourse").append(str);
-				}
-			});
-	   }
-	   
 	   function mythemaCourse(root, id, like){
 		   $.ajax({
 				url : root + "/mypage/getMyCourse.do",
@@ -359,8 +304,8 @@
 								+ "</div>"
 								+ "</div>"
 								+ "<div class='a3'>"
-								+ "<div>"
-								+ data[i].save_cplace1.place_thema
+								+ "<div style='margin-top:20px;'>"
+								+ "테마:"+data[i].save_cplace1.place_thema
 								+ "</div>"
 								+ "<div>"
 								+ "<br>"
@@ -381,9 +326,34 @@
 			});
 	   }
 </script>
+<!-- jQuery -->
+	<script
+		src="${root}/css/bootstrap/bower_components/jquery/dist/jquery.min.js"></script>
+
+	<!-- Bootstrap Core JavaScript -->
+	<script
+		src="${root}/css/bootstrap/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+	<!-- Metis Menu Plugin JavaScript -->
+	<script
+		src="${root}/css/bootstrap/bower_components/metisMenu/dist/metisMenu.min.js"></script>
+
+	<!-- Custom Theme JavaScript -->
+	<script src="${root}/css/bootstrap/dist/js/sb-admin-2.js"></script>
+
+	<!-- Page-Level Demo Scripts - Notifications - Use for reference -->
+	<script>
+		// tooltip demo
+		$('.tooltip-demo').tooltip({
+			selector : "[data-toggle=tooltip]",
+			container : "body"
+		})
+
+		// popover demo
+		$("[data-toggle=popover]").popover()
+	</script>
 </head>
 <body>
-	<jsp:include page="/TOP.jsp" />
 	<!-- ModalJiHye1-->
    <div class="modal fade" id="myModal23" tabindex="-1" role="dialog"
       aria-labelledby="myModalLabel" aria-hidden="true">
@@ -502,19 +472,15 @@
 
 
 
-
-	<c:if test="${id==null}">
-		<a href="${root }/member/register.do">회원가입</a>
-		<a href="${root }/member/login.do">로그인</a>
-	</c:if>
-
-
+	
 	<div class="allAll">
 		<div id="css_tabs">
-			<input id="tab1" type="radio" name="tab" checked="checked" /> <input
-				id="tab2" type="radio" name="tab" /> <input id="tab3" type="radio"
-				name="tab" /> <label for="tab1">내 코스 관리</label> <label for="tab2">포인트
-				관리</label> <label for="tab3">내 흔적</label>
+			<input id="tab1" type="radio" name="tab" checked="checked" /> 
+			<input id="tab2" type="radio" name="tab" /> 
+			<input id="tab3" type="radio" name="tab" /> 
+			<label for="tab1">내 코스 관리</label> 
+			<label for="tab2">포인트 관리</label> 
+			<label for="tab3">내 흔적</label>
 			<div class="tab1_content">
 
 				<section class="main">
@@ -680,40 +646,7 @@
 					</ul>
 				</section>
 			</div>
-
-
-
-
 		</div>
 	</div>
-	<!-- jQuery -->
-	<script
-		src="${root}/css/bootstrap/bower_components/jquery/dist/jquery.min.js"></script>
-
-	<!-- Bootstrap Core JavaScript -->
-	<script
-		src="${root}/css/bootstrap/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-
-	<!-- Metis Menu Plugin JavaScript -->
-	<script
-		src="${root}/css/bootstrap/bower_components/metisMenu/dist/metisMenu.min.js"></script>
-
-	<!-- Custom Theme JavaScript -->
-	<script src="${root}/css/bootstrap/dist/js/sb-admin-2.js"></script>
-
-	<!-- Page-Level Demo Scripts - Notifications - Use for reference -->
-	<script>
-		// tooltip demo
-		$('.tooltip-demo').tooltip({
-			selector : "[data-toggle=tooltip]",
-			container : "body"
-		})
-
-		// popover demo
-		$("[data-toggle=popover]").popover()
-	</script>
-
-
-
 </body>
 </html>

@@ -125,7 +125,7 @@ function chatStart(root){
 				<c:if test="${memberLevel=='AA'}">
 					<div style="width: 85px; height: 40px; float: right; margin: 10px 0 0 0; font-size: 16px; color: #D2916C;">
 						<span>
-							<a href="${root }/eventBoard/write.do" style=" color: #D2916C;">이벤트추가</a>
+							<a href="${root }/eventBoard/write.do" style="color: #D2916C;">이벤트추가</a>
 						</span>
 					</div>
 					<div style="width: 70px; height: 40px; float: right; margin: 10px 0 0 0; font-size: 16px; color: #D2916C;">

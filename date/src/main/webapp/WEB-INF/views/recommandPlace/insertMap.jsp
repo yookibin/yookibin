@@ -7,6 +7,22 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<!-- Bootstrap Core CSS -->
+<link
+	href="${root}/css/bootstrap/bower_components/bootstrap/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+
+<!-- MetisMenu CSS -->
+<link
+	href="${root}/css/bootstrap/bower_components/metisMenu/dist/metisMenu.min.css"
+	rel="stylesheet">
+
+<!-- Social Buttons CSS -->
+<link
+	href="${root}/css/bootstrap/bower_components/bootstrap-social/bootstrap-social.css"
+	rel="stylesheet">
+
+
 <script type="text/javascript"
 	src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
@@ -14,22 +30,42 @@
 .lineA {
 	width: 1100px;
 	height: 52px;
-	border: 1px red solid;
-	text-align:center;
+	text-align: center;
+	background-color: #FFF2E6;
 }
 
 .titleName {
 	width: 121px;
 	height: 50px;
 	float: left;
-	border: 1px black solid;
+	background-color: #8A4924;
+	color: white;
+	font-size: 20px;
+	vertical-align: center;
 }
 
 .valueData {
-	width: 220px;
+	width: 230px;
 	height: 50px;
 	float: left;
-	border: 1px black solid;
+	background-color: #FFF2E6;
+	font-size: 17px;
+}
+
+input {
+	background-color: #FFFFEF;
+	border-radius: 5px;
+}
+
+select {
+	width: 210px;
+	background-color: #FFFFEF;
+	border-radius: 5px;
+}
+
+textarea {
+	background-color: #FFFFEF;
+	border-radius: 5px;
 }
 </style>
 <script type="text/javascript">
@@ -101,18 +137,22 @@
 </head>
 <body>
 	<div style="width: 1100px; margin-left: auto; margin-right: auto;">
-		<input type="button" value="좌표따러가기" onclick="helpMapCor('${root}')">
+		<jsp:include page="/TOP.jsp" />	
+		<div class="map_button">
+			<input type="button" class="btn btn-primary btn-lg btn-block"
+				onclick="helpMapCor('${root}')" value="좌표따러가기">
+		</div>
 		<form action="${root}/recommandPlace/insertMap.do" method="post"
 			onsubmit="return checkForm(this)" enctype="multipart/form-data">
 			<div class="lineA">
 				<div class="titleName">장소명</div>
 				<div class="valueData">
-					<input type="text" name="place_name">
+					<input style="margin-top: 15px;" type="text" name="place_name">
 				</div>
 				<div class="titleName">별점</div>
 				<div class="valueData">
-					<select id="place_star" style="color: black; border-radius: 5px;"
-						name="place_star">
+					<select style="margin-top: 15px;" id="place_star"
+						style="color: black; border-radius: 5px;" name="place_star">
 						<option>1</option>
 						<option>2</option>
 						<option>3</option>
@@ -122,18 +162,19 @@
 				</div>
 				<div class="titleName">실제금액</div>
 				<div class="valueData">
-					<input type="text" name="place_price" placeholder="숫자로입력">
+					<input style="margin-top: 15px;" type="text" name="place_price"
+						placeholder="숫자로입력">
 				</div>
 			</div>
 			<div class="lineA">
 				<div class="titleName">위도</div>
 				<div class="valueData">
-					<input type="text" name="place_cordi1">
+					<input style="margin-top: 15px;" type="text" name="place_cordi1">
 				</div>
 				<div class="titleName">추천시간</div>
 				<div class="valueData">
-					<select id="place_time" style="color: black; border-radius: 5px;"
-						name="place_time">
+					<select style="margin-top: 15px;" id="place_time"
+						style="color: black; border-radius: 5px;" name="place_time">
 						<option value="1">0~4시</option>
 						<option value="2">4~8시</option>
 						<option value="3">8~12시</option>
@@ -144,36 +185,37 @@
 				</div>
 				<div class="titleName">전화번호</div>
 				<div class="valueData">
-					<input type="text" name="place_phone">
+					<input style="margin-top: 15px;" type="text" name="place_phone">
 				</div>
 			</div>
 			<div class="lineA">
 				<div class="titleName">경도</div>
 				<div class="valueData">
-					<input type="text" name="place_cordi2">
+					<input style="margin-top: 15px;" type="text" name="place_cordi2">
 				</div>
 				<div class="titleName">장소금액</div>
 				<div class="valueData">
-					<input type="text" name="place_balance">
+					<input style="margin-top: 15px;" type="text" name="place_balance">
 				</div>
 				<div class="titleName">운영시간</div>
 				<div class="valueData">
-					<input type="text" name="place_runtime">
+					<input style="margin-top: 15px;" type="text" name="place_runtime">
 				</div>
 			</div>
 			<div class="lineA">
 				<div class="titleName">날씨</div>
 				<div class="valueData">
-					<input type="text" name="place_weather" value="맑음,흐림,비,눈">
+					<input style="margin-top: 15px;" type="text" name="place_weather"
+						value="맑음,흐림,비,눈">
 				</div>
 				<div class="titleName">주소</div>
 				<div class="valueData">
-					<input type="text" name="place_location">
+					<input style="margin-top: 15px;" type="text" name="place_location">
 				</div>
 				<div class="titleName">테마</div>
 				<div class="valueData">
-					<select id="place_thema" style="color: black; border-radius: 5px;"
-						name="place_thema">
+					<select style="margin-top: 15px;" id="place_thema"
+						style="color: black; border-radius: 5px;" name="place_thema">
 						<option>shopping</option>
 						<option>theaters</option>
 						<option>play</option>
@@ -186,24 +228,28 @@
 			<div class="lineA">
 				<div class="titleName">계절</div>
 				<div class="valueData">
-					<input type="text" name="place_season" value="봄,여름,가을,겨울">
+					<input style="margin-top: 15px;" type="text" name="place_season"
+						value="봄,여름,가을,겨울">
 				</div>
 				<div class="titleName">사진경로</div>
 				<div class="valueData">
-					<input type="file" name="file" />
+					<input style="margin-top: 15px;" type="file" name="file" />
 				</div>
 				<div class="titleName">무슨구?</div>
 				<div class="valueData">
-					<input type="text" name="place_gu">
+					<input style="margin-top: 15px;" type="text" name="place_gu">
 				</div>
 			</div>
-			<div class="lineA">
-				<div class="titleName">장소설명</div>
-				<div>
-					<textarea rows="2" cols="130" name="place_content"></textarea>
+			<div class="lineA" style="height:130px">
+				<div class="titleName" style="height:130px">장소설명</div>
+				<div style="height:130px; float:left;">
+					<textarea style="margin:12px 0 0 0;" rows="5" cols="115" name="place_content"></textarea>
 				</div>
 			</div>
-			<input type="submit" value="저장" />
+			<div class="map_button">
+				<input type="submit" class="btn btn-primary btn-lg btn-block"
+					value="장소저장하기">
+			</div>
 		</form>
 	</div>
 </body>
