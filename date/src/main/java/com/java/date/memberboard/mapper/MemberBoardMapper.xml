@@ -100,7 +100,7 @@
 	
 	<!-- 포인트 지급 -->
 	<insert id="pointGive" parameterType="java.util.HashMap">
-		<![CDATA[ insert into point values(POINT_POINT_CODE_SEQ.nextval,#{id},'+10',#{totalPoint},'추천',sysdate) ]]>
+		<![CDATA[ insert into point(point_code,id,point_manage,point_total,point_content,point_date) values(POINT_POINT_CODE_SEQ.nextval,#{id},'+10',#{totalPoint},'추천',sysdate) ]]>
 	</insert>
 
 </mapper>

@@ -180,8 +180,9 @@ public class MemberServiceImpl implements MemberService {
 		HttpServletRequest request=(HttpServletRequest)map.get("request");
 		String id=request.getParameter("id");
 		String password=request.getParameter("password");
+		
 		int check=memberDao.delete(id, password);
-		logger.info("check:"+check);
+		logger.info("check:"+check);			
 		
 		mav.addObject("check", check);
 		mav.setViewName("member/deleteOk");

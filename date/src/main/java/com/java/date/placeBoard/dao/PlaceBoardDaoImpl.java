@@ -97,4 +97,15 @@ public class PlaceBoardDaoImpl implements PlaceBoardDao {
 		hMap.put("place_code", place_code);
 		return sqlSession.update("dao.placeBoardMapper.starUpdate",hMap);
 	}
+
+
+	@Override
+	public int getPlaceCount(String place_gu, String place_thema,
+			String place_balance) {
+		HashMap<String, String> hMap=new HashMap<String, String>();
+		hMap.put("place_gu", place_gu);
+		hMap.put("place_thema", place_thema);
+		hMap.put("place_balance", place_balance);
+		return sqlSession.selectOne("dao.placeBoardMapper.placeCount", hMap);
+	}
 }

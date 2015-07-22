@@ -36,12 +36,22 @@ public class ReviewBoardDaoImpl implements ReviewBoardDao {
 	 */
 
 	@Override
-	public int replyWrite(int star, String place_code,String nickName, String writeReply) {
+	public int replyWrite(int star, String place_code,String nickName, String writeReply,String id) {
+		
+		
 		Map<String,Object> hMap = new HashMap<String,Object>();
 		hMap.put("place_code",place_code);
 		hMap.put("nickName",nickName);
 		hMap.put("writeReply",writeReply);
 		hMap.put("star",star);
+		hMap.put("id", id);
+		int check=sqlSession.selectOne("dao.reviewBoardMapper.pointselect",hMap);
+		if(check==0){
+			int total=sqlSession.selectOne("dao.reviewBoardMapper.totalPoint", hMap);
+			total=total+10;
+			hMap.put("total", total);
+			sqlSession.insert("dao.reviewBoardMapper.pointinsert", hMap);
+		}
 		
 		return sqlSession.insert("dao.reviewBoardMapper.replyInsert",hMap);
 	}

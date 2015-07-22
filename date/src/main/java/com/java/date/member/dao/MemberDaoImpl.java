@@ -66,6 +66,10 @@ public class MemberDaoImpl implements MemberDao {
 		HashMap<String, String> hMap=new HashMap<String, String>();
 		hMap.put("id", id);
 		hMap.put("password", password);
+		
+		sqlSession.delete("dao.memberMapper.memberPointDelete",id);
+		sqlSession.delete("dao.memberMapper.memberSave_courseDelete",id);
+		sqlSession.delete("dao.memberMapper.memberEventDelete",id);
 		return sqlSession.delete("dao.memberMapper.delete", hMap);
 	}
 	
@@ -117,4 +121,5 @@ public class MemberDaoImpl implements MemberDao {
 		
 		return sqlSession.selectOne("dao.memberMapper.findPW",hMap);
 	}
+
 }

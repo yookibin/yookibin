@@ -7,6 +7,10 @@
 		select count(*) from place where (place_gu=#{place_gu} or '전체'= #{place_gu})
 	</select>
 	
+	<select id="placeCount" parameterType="java.util.HashMap" resultType="int">
+		select count(*) from place where (place_gu=#{place_gu} or '전체'= #{place_gu}) and (place_thema=#{place_thema} or '전체'= #{place_thema}) and (place_balance=#{place_balance} or '전체'= #{place_balance}) 	
+	</select>
+	
 	<select id="firstList" parameterType="java.util.HashMap" resultType="com.java.date.recommandPlace.dto.PlaceDto">
 		<![CDATA[
 			select * from

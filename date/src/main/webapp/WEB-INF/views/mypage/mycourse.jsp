@@ -135,7 +135,6 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 	function myCourse(root, id, like) {
-		
 				$.ajax({
 					url : root + "/mypage/getMyCourse.do",
 					type : "post",
@@ -195,7 +194,6 @@
 				});
 	}
 	function deleteCourse(num) {
-		alert(num);
 		$.ajax({
 			url : "/date/mypage/delete.do",
 			type : "post",
@@ -354,6 +352,7 @@
 	</script>
 </head>
 <body>
+		
 	<!-- ModalJiHye1-->
    <div class="modal fade" id="myModal23" tabindex="-1" role="dialog"
       aria-labelledby="myModalLabel" aria-hidden="true">
@@ -474,7 +473,10 @@
 
 	
 	<div class="allAll">
-		<div id="css_tabs">
+	<div style="width:100%; border:1px solid #f9f9f9; height:100px;">
+			<jsp:include page="/TOP2.jsp" />
+	</div>
+			<div id="css_tabs" style="border:1px solid #f9f9f9;">
 			<input id="tab1" type="radio" name="tab" checked="checked" /> 
 			<input id="tab2" type="radio" name="tab" /> 
 			<input id="tab3" type="radio" name="tab" /> 
@@ -493,7 +495,7 @@
 										<div class="ch-info-front ch-img-1"></div>
 										<div class="ch-info-back" data-toggle="modal"
 											data-target="#myCourseLode" onclick="myCourse('${root}','${id}','recom')">
-											<h3>${id}추천코스</h3>
+											<h3>추천코스</h3>
 											<p>by Gumball Creative View on choiceCourse</p>
 										</div>
 									</div>
