@@ -48,4 +48,10 @@
 			select point_total from point where id=#{id} and point_code=(select max(point_code) from point where id=#{id})
 		]]>
 	</select>
+	  
+	<select id="myReviewGet" parameterType="String" resultType="com.java.date.reviewBoard.dto.ReviewBoardDto">
+      select * from place_review where review_id=#{id}
+   </select>
+	
+
 </mapper>

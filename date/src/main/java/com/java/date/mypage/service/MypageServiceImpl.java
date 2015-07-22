@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.java.date.member.dto.EventBoardDto;
 import com.java.date.mypage.dao.MypageDao;
 import com.java.date.mypage.dto.MypageDto;
 import com.java.date.recommandPlace.dao.RecommandPlaceDao;
@@ -59,10 +60,16 @@ public class MypageServiceImpl implements MypageService {
 	      return mypagedao.point(id);
 	   }
 	   
-	   public List<MypageDto> usingCheck(String id){
-	      logger.info("이벤트사용체크id"+id);
-	      return mypagedao.usingevent(id);
-	   }
+	   public List<EventBoardDto> usingCheck(String nickName){
+		      logger.info("이벤트사용체크id"+nickName);
+		      return mypagedao.usingevent(nickName);
+		   }
+
+		   @Override
+		   public int remainCheck(String id) {
+		      logger.info("잔여포인트"+id);
+		      return mypagedao.remainCheck(id);
+		   }
 	/*
 	@Override
 	   public void pointCheck(ModelAndView mav) {

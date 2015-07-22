@@ -56,6 +56,8 @@ public interface MemberBoardDao {
 	
 	// 포인트지급 
 	public void pointGive(String id, int totalPoint);
+
+	public List<MemberBoardDto> Selectmygasipan(String id);
 	
 	
 	

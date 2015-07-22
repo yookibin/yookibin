@@ -191,4 +191,17 @@ public class MemberBoardController {
 		service.recommendBoard(mav);
 		return null;
 	}
+	
+	@RequestMapping(value="/memberboard/mygasipan.do", method=RequestMethod.GET)
+	   public ModelAndView mygasipanList(HttpServletRequest request, HttpServletResponse response){
+	      logger.info("게시판 Controller");
+	      
+	      ModelAndView mav= new ModelAndView();
+	      mav.addObject("request",request);
+	      
+	      service.mygaipanList(mav);
+	      return mav;
+	   }
+	
+	
 }
