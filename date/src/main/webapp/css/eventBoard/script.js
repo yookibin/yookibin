@@ -174,3 +174,11 @@ function updateFun(updateForm){
 function deleteCheck(deleteForm){
 
 }
+
+function enterFun(enterForm){
+	if(enterForm.join_title.value==null||enterForm.join_title.value==""){
+		alertify.alert("제목을 입력하세요.");
+		enterForm.join_title.focus();
+		return false;
+	}
+}
