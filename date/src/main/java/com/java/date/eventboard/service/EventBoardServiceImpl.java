@@ -820,7 +820,7 @@ public class EventBoardServiceImpl implements EventBoardService {
 		//운영자만 볼 수 있는 이벤트 응모글들 페이지 넘버
 		logger.info("===================================EventBoardServiceImpl eventManagerList: "+eventPageNumber);
 		
-		int boardSize=5;
+		int boardSize=10;
 		
 		int currentPage=Integer.parseInt(eventPageNumber);	
 		

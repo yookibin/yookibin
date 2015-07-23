@@ -124,9 +124,16 @@ a:hover {
 
 .line8{
 	width: 70%;
-	margin-left: 33%;
+	/* margin-left: auto; */  
 	height:800px;
-	overflow: auto;
+	overflow: auto; 
+}
+
+.centers2 {
+    border:0px solid #8AC007;
+    padding-top: 10px;
+    padding-left:30%;
+    width:900px;
 }
 
 #readTitle{

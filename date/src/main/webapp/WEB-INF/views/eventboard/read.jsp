@@ -52,6 +52,7 @@
 	<!-- eventBoard와 pageNumber를 넘겨줌 -->
 	<c:set var="root" value="${pageContext.request.contextPath }"/>
 	 <button style="margin-left:80%" type="button" class="btn btn-warning" align="middle" onclick="location.href='${root}/eventBoard/list.do?pageNumber=${pageNumber }'">글목록</button>
+	 <br/><br/>
 	 <div class="line7">
 		<p class="orangeLine"></p>
 	</div>
@@ -75,12 +76,16 @@
 		<p class="orangeLine"></p>
 	</div>
 	
-	<div class="line8">
-		<span>${eventBoard.event_content }</span>
+	<div class="line7">
+		<div class="centers2">
+			<span>${eventBoard.event_content }</span>
+		</div>	
 	</div>
+	
 	<div class="line7">
 		<p class="orangeLine"></p>
 	</div>
+	<br/>
 	<div class="line7" style="text-align:center;">	
 		<c:if test="${eventBoard.event_progress=='진행' }">
 			<button type="button" class="btn btn-warning" onclick="enterFun('${root}','${eventBoard.event_code }','${pageNumber }','${eventBoard.event_point }')">참가하기</button>
@@ -104,6 +109,7 @@
 				<button type="button" class="btn btn-warning" onclick="manageFun('${root}','${eventBoard.event_code }','${eventBoard.group_number }','${eventBoard.sequence_number }','${eventBoard.sequence_level }','${pageNumber }')">
 					<span>응모회원관리</span>
 				</button>
+				<br/><br/>
 			</p>
 		</c:if>		
 	</div>
