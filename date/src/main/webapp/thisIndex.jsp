@@ -43,7 +43,7 @@
 <script type="text/javascript">
 function chatStart(root){
 	var url=root+"/chatStart.do";
-	window.open(url,"chating","width=540,height=520,resizable=no");		
+	window.open(url,"chating","width=420,height=400,resizable=no");		
 }
 </script>
 <style type="text/css">
