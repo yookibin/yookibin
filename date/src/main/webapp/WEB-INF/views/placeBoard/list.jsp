@@ -32,31 +32,31 @@
 						<dd>
 							<ul class="opt_rap">
 								<li>
-									<input type="radio" name="place_gu" value="전체">전체
+									<input type="radio" name="place_gu" value="전체">&nbsp; 전체
 								</li>
 								<li>
-									<input type="radio" name="place_gu" value="강남구">강남구
+									<input type="radio" name="place_gu" value="강남구">&nbsp;강남구
 								</li>
 								<li>
-									<input type="radio" name="place_gu" value="송파구">송파구
+									<input type="radio" name="place_gu" value="송파구">&nbsp;송파구
 								</li>
 								<li>
-									<input type="radio" name="place_gu" value="종로구">종로구
+									<input type="radio" name="place_gu" value="종로구">&nbsp;종로구
 								</li>
 								<li>
-									<input type="radio" name="place_gu" value="강동구">강동구 
+									<input type="radio" name="place_gu" value="강동구">&nbsp;강동구 
 								</li>
 								<li>
-									<input type="radio" name="place_gu" value="관악구">관악구 
+									<input type="radio" name="place_gu" value="관악구">&nbsp;관악구 
 								</li>
 								<li>
-									<input type="radio" name="place_gu" value="용산구">용산구  
+									<input type="radio" name="place_gu" value="용산구">&nbsp;용산구  
 								</li>
 								<li>
-									<input type="radio" name="place_gu" value="중구">중구
+									<input type="radio" name="place_gu" value="중구">&nbsp;중구
 								</li>
 								<li>
-									<input type="radio" name="place_gu" value="동대문구">동대문구
+									<input type="radio" name="place_gu" value="동대문구">&nbsp;동대문구
 								</li>
 							
 							</ul>
@@ -68,31 +68,31 @@
 						<dd>
 							<ul class="opt_rap">
 								<li>
-									<input type="radio" name="place_thema" value="전체">전체
+									<input type="radio" name="place_thema" value="전체">&nbsp;전체
 								</li>
 								<li>
-									<input type="radio" name="place_thema" value="카페">카페	
+									<input type="radio" name="place_thema" value="카페">&nbsp;카페	
 								</li>
 								<li>
-									<input type="radio" name="place_thema" value="영화">영화
+									<input type="radio" name="place_thema" value="영화">&nbsp;영화
 								</li>
 								<li>
-									<input type="radio" name="place_thema" value="park">공원 
+									<input type="radio" name="place_thema" value="park">&nbsp;공원 
 								</li>
 								<li>
-									<input type="radio" name="place_thema" value="쇼핑">쇼핑
+									<input type="radio" name="place_thema" value="쇼핑">&nbsp;쇼핑
 								</li>
 								<li>
-									<input type="radio" name="place_thema" value="테마파크">테마파크 
+									<input type="radio" name="place_thema" value="테마파크">&nbsp;테마파크 
 								</li>
 								<li>
-									<input type="radio" name="place_thema" value="축제">축제	 
+									<input type="radio" name="place_thema" value="축제">&nbsp;축제	 
 								</li>
 								<li>
-									<input type="radio" name="place_thema" value="문화">문화
+									<input type="radio" name="place_thema" value="문화">&nbsp;문화
 								</li>
 								<li>
-									<input type="radio" name="place_thema" value="자연명소">자연명소
+									<input type="radio" name="place_thema" value="자연명소">&nbsp;자연명소
 								</li>
 							</ul>
 						</dd>
@@ -103,25 +103,25 @@
 						<dd>
 							<ul class="opt_rap">
 								<li>
-									<input type="radio" name="place_balance" value="전체">전체
+									<input type="radio" name="place_balance" value="전체">&nbsp;전체
 								</li>
 								<li>
-									<input type="radio" name="place_balance" value="1만원">1만원대
+									<input type="radio" name="place_balance" value="1만원">&nbsp;1만원대
 								</li>
 								<li>
-									<input type="radio" name="place_balance" value="2만원">2만원대
+									<input type="radio" name="place_balance" value="2만원">&nbsp;2만원대
 								</li>
 								<li>
-									<input type="radio" name="place_balance" value="3만원">3만원대
+									<input type="radio" name="place_balance" value="3만원">&nbsp;3만원대
 								</li>
 								<li>
-									<input type="radio" name="place_balance" value="3만원">4만원대
+									<input type="radio" name="place_balance" value="3만원">&nbsp;4만원대
 								</li>
 								<li>
-									<input type="radio" name="place_balance" value="5만원">5만원대 
+									<input type="radio" name="place_balance" value="5만원">&nbsp;5만원대 
 								</li>
 								<li>
-									<input type="radio" name="place_balance" value="6만원">6만원대
+									<input type="radio" name="place_balance" value="6만원">&nbsp;6만원대
 								</li>
 							</ul>
 						</dd>
