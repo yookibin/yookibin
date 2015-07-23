@@ -304,9 +304,9 @@ function chatStart(root){
 					<img alt="" src="${root}/css/imgSlide/images/left.png">
 				</button>
 				<ul>
-					<li><img src="${root}/css/imgSlide/images/slide_E03.png" alt="" onclick="javascript:events_A('${root}','97','1')"></li>
-					<li><img src="${root}/css/imgSlide/images/slide_E02.png" alt="" onclick="javascript:events_A('${root}','98','1')"></li>
-					<li><img src="${root}/css/imgSlide/images/slide_E01.png" alt="" onclick="javascript:events_A('${root}','99','1')"></li>
+					<li><img src="${root}/css/imgSlide/images/slide_E03.png" alt="" onclick="javascript:events_A('${root}','110','1')"></li>
+					<li><img src="${root}/css/imgSlide/images/slide_E02.png" alt="" onclick="javascript:events_A('${root}','108','1')"></li>
+					<li><img src="${root}/css/imgSlide/images/slide_E01.png" alt="" onclick="javascript:events_A('${root}','109','1')"></li>
 				</ul>
 				<button class="next-B" type="button">
 					<img alt="" src="${root}/css/imgSlide/images/rigth.png">

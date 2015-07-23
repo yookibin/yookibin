@@ -50,7 +50,7 @@
 	<div class="line7">
 		<p class="orangeLine"></p>
 	</div>
-	<div class="line2" style="text-align:center;">	
+	<div class="line2" style="text-align:center; height:100px;">	
 		<button type="button" class="btn btn-warning" onclick="managerDelFun('${root}','${eventMember.join_code }','${eventMember.event_code }','${eventPageNumber }','${pageNumber }','${group_number }','${sequence_number }','${sequence_level }')">
 			<span>글삭제</span>
 		</button>
