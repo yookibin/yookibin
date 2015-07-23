@@ -7,6 +7,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script src="${root }/css/sweetalert-master/dist/sweetalert.min.js"></script>
+<link rel="stylesheet" type="text/css" href="${root }/css/sweetalert-master/dist/sweetalert.css"/>
 <!-- Bootstrap Core CSS -->
 <link href="${root}/css/bootstrap/bower_components/bootstrap/dist/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -304,8 +306,6 @@
 	src="//apis.daum.net/maps/maps3.js?apikey=cd16bfc3926d034f1176275f760bd0ff&libraries=services"></script>
 <script type="text/javascript">
 	function saveCourse(root, place_code1, place_code2, id) {
-		alert(root)
-		alert(place_code1 + "," + place_code2);
 		$.ajax({
 					url : root + "/recommandPlace/saveCourse.do",
 					type : "post",
@@ -317,7 +317,11 @@
 					success : function(data) {
 						console.log(data);
 						if(data == 1){
-							alert("저장되었습니다.");
+							swal({ 
+								  title: "GOOD!",
+								  text: "저장되었습니다.",
+								  type: "success" 
+								  });
 						}
 					}
 				});
@@ -385,6 +389,7 @@
 					onclick="moveMypage('${root}','${id}')">
 			</div>
 		</c:if>
+		<jsp:include page="/Bottom.jsp"/>
 		<script>
 			// 마커를 담을 배열입니다
 			var markers = [];

@@ -15,14 +15,18 @@
 
 <script src="${root }/css/sweetalert-master/dist/sweetalert.min.js"></script>
 <link rel="stylesheet" type="text/css" href="${root }/css/sweetalert-master/dist/sweetalert.css">
-
+<script type="text/javascript">
+	function eventReset(){
+		history.back(-1);
+	}
+</script>
 </head>
 <body>
-
-
-<jsp:include page="/TOP.jsp"/>
-
 <div class="totalDiv">
+
+	<jsp:include page="/TOP.jsp"/>
+	<br/><br/>
+	
 	<form class="form_style"  action="${root }/eventBoard/write.do"  method="post" onsubmit="return checkForm(this)" enctype="multipart/form-data">	
 		<input type="hidden" name="event_code" value="${event_code}"/>
 		<input type="hidden" name="group_number" value="${group_number}"/>
@@ -30,18 +34,12 @@
 		<input type="hidden" name="sequence_level" value="${sequence_level}"/>
 		<input type="hidden" name="pageNumber" value="${pageNumber}"/>
 		<input type="hidden" name="writer" value="${nickName }"/>
-<%-- 		
-		<h4>event_code : ${event_code}</h4>
-		<h4>group_number : ${group_number}</h4>
-		<h4>sequence_number : ${sequence_number}</h4>
-		<h4>sequence_level : ${sequence_level}</h4>
-		<h4>pageNumber : ${pageNumber}</h4> --%>
-		<!-- style="width:645px; height:40px; border-width:2px; text-align:right; padding:15px 0px 0px 0px; border-bottom-width:0px;" -->	
+<!-- 	
 		<div class="line3" style="height:80px;">
 			<span>
 				<h1>이벤트 글쓰기 </h1>
 			</span>
-		</div>
+		</div> -->
 		
 		<div class="line5">
 			<p class="orangeLine"></p>
@@ -68,7 +66,7 @@
 						
 		</div>
 		
-		<div class="line" style="height:510px;">
+		<div class="line" style="height:500px;">
 		
 			<c:if test="${event_code==0 }">
 				<span>
@@ -112,12 +110,13 @@ ${winner.join_code}      ${winner.id }        ${winner.join_writer }<br/>
 		</div>
 							
 		<div class="line" style="width:641px; border-width:0px; text-align:center;">
-			<input type="submit" value="글쓰기"/>
-			<input type="reset" value="다시작성"/>
-			<input type="button" value="목록보기" onclick="location.href='${root}/eventBoard/list.do'"/>
+			<input type="submit" class="btn btn-warning" value="글쓰기"/>
+			<input type="reset" class="btn btn-warning" onclick="eventReset()" value="취소"/>
+			<input type="button" class="btn btn-warning" value="목록보기" onclick="location.href='${root}/eventBoard/list.do'"/>
 		</div>
 		
 	</form>
+	<jsp:include page="/Bottom.jsp"/>	
 </div>
 </body>
 <script type="text/javascript">

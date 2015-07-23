@@ -83,7 +83,7 @@
 									<input type="radio" name="place_thema" value="쇼핑"> 쇼핑
 								</li>
 								<li>
-									<input type="radio" name="place_thema" value="테마파크"> 테마파크 
+									<input type="radio" name="place_thema" value="테마파크"> 테마파크  
 								</li>
 								<li>
 									<input type="radio" name="place_thema" value="축제"> 축제	 
@@ -109,6 +109,7 @@
 									<input type="radio" name="place_balance" value="1만원"> 1만원대
 								</li>
 								<li>
+
 									<input type="radio" name="place_balance" value="2만원"> 2만원대
 								</li>
 								<li>
@@ -131,12 +132,18 @@
 			<input type="submit" class="btn btn-danger" value="검색하기"> 
 	    </div>
 	</div>
-	
-	<div style="width:1080px; height:680px; margin-left:auto; margin-right:auto;">
-		<div class="line1">
+
+
+	<div style="width:1080px; height:680px; margin-left:auto; margin-right:auto; ">
+		<div class="line1" style="padding-bottom:15px;">
 			<p class="orangeLine" align="center"></p>
 		</div><br/>
-		
+		<%-- a href="${root }/placeBoard/newBoardList.do?place_gu=${place_gu}&place_thema=${place_thema}&place_balance=${place_balance}">인인기순으로 보기!/a>>
+			<div class="line1">
+			<p class="orangeLine"></p>
+		</div>
+		 --%>
+
 		<c:forEach var="placeBoard" items="${boardList}">
 			<div style="float:left; width:270px; height:auto;" >
 				<figure class="figurefx default">
@@ -162,7 +169,7 @@
 				<div align="center">${placeBoard.place_name}</div>
 			</div>
 		</c:forEach>
-	</div>>
+	</div>
 	
 	<div style="width:1080px; text-align:center; margin-left:auto; margin-right:auto;">
 		<c:if test="${count>0}">

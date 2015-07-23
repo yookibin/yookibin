@@ -40,20 +40,51 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    
+
+<script src="${root }/css/sweetalert-master/dist/sweetalert.min.js"></script>
+<link rel="stylesheet" type="text/css" href="${root }/css/sweetalert-master/dist/sweetalert.css"/>
 <script type="text/javascript" src="<c:url value="/static/jquery.js"/>"></script>
 <link href="${root }/css/chat/style.css" rel="stylesheet"/>
 <script type="text/javascript">
 	function makeRoom(root){	
-		
+		/* 
 		var roomName=prompt("방 제목을 입력하세요.","");
 		if(roomName==null||roomName==""){
-			alert("방 제목을 입력하세요.");
+			//alert("방 제목을 입력하세요.");
+			swal({ 
+				  title: "warning!",
+				  text: "방 제목을 입력하세요.",
+				  type: "warning" 
+				 });
 		}else{
 			var url=root+"/chatDB.do?chatId=${chatId}&roomName="+roomName;
 			location.href=url;
-		}	
-		
+		} */	
+		swal({   
+			title: "방 제목을 입력하세요.",   
+			/* text: "Write something interesting:",   */ 
+			type: "input",   
+			showCancelButton: true,   
+			closeOnConfirm: false,   
+			animation: "slide-from-top",   
+			inputPlaceholder: "방 제목을 입력하세요." 
+			}, 
+			function(inputValue){   
+				if (inputValue === false) return false;      
+				if (inputValue === "") {     
+					swal.showInputError("센스있는 방 제목을 지어보세요 :X");     
+					return false   
+				}      				
+				swal({ 
+					  title: "WARNING!",
+					  text: "건전한 채팅을 위해 무절제한 대화사용을 금지합니다.",
+					  type: "warning" 
+					  },
+					  function(){
+						var url=root+"/chatDB.do?chatId=${chatId}&roomName="+inputValue;
+						location.href=url;
+					});
+			});		
 	}
 	
 	function entranceRoom(root,roomNum,roomName){

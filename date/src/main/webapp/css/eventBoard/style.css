@@ -3,7 +3,7 @@
 /* -- DEFUAL STYLE START ---------------------------------------- */
 body{
    font-size:14px;
-   font-family:Gulim, dotum, sans-serif;	
+   font-family:Malgun Gothic, Gulim, dotum, sans-serif;	
 }
 
 a:link {
@@ -100,7 +100,7 @@ a:hover {
 }
 
 .totalDiv{
-	width:1200px;height:1200px;
+	width:1200px;height:900px;
 	margin:0% auto 0% auto;
 }
 
@@ -109,8 +109,8 @@ a:hover {
     padding: 10px;
 }
 
-.line1{
-	width: 70%;
+.line7{
+	width: 900px;
 	margin-left: 15%;
 /* 	border-top:2px solid #F05F40; */
 /* 	border-bottom:2px solid #F05F40; */
@@ -120,6 +120,20 @@ a:hover {
 	margin-left: 15%;
 	height:800px;
 	overflow: auto;
+}
+
+.line8{
+	width: 70%;
+	/* margin-left: auto; */  
+	height:800px;
+	overflow: auto; 
+}
+
+.centers2 {
+    border:0px solid #8AC007;
+    padding-top: 10px;
+    padding-left:30%;
+    width:900px;
 }
 
 #readTitle{

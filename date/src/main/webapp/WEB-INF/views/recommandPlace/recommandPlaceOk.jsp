@@ -110,7 +110,6 @@ var count = 2;
 
 		var map = new daum.maps.Map(container, options);
 	</script>
-	</div>
 	
 	
 	
@@ -142,8 +141,6 @@ var count = 2;
 		</c:forEach>
 	</div>
 
-	<div id="placeAll">
-		${placeListSize}
 		<c:forEach var="listCourse" items="${list}">
 			<c:forEach var="place" items="${listCourse}">
 			<div>

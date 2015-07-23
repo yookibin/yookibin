@@ -43,9 +43,9 @@
 	</script>	
 </head>
 <body>
-<jsp:include page="/TOP.jsp"/>
 
 <div class="totalDiv">
+	<jsp:include page="/TOP.jsp"/>
 	<form class="form_style" id="enterForm" method="post" onsubmit="return enterFun(this)" enctype="multipart/form-data">	
 		<input type="hidden" name="event_code" value="${event_code }"/>
 		<!-- <input type="hidden" name="join_filePath"/> -->
@@ -80,12 +80,14 @@
 		</div>
 		
 		<div class="line" style="width:598px; border-width:0px; text-align:center;">		
-			<input type="button" value="응모하기" onclick="joinFun('${root}','${event_code }','${pageNumber }','${id }','${event_point }')"/>			
-			<input type="reset" value="다시작성"/>
-			<input type="button" value="목록보기" onclick="location.href='${root }/eventBoard/list.do?pageNumber=${pageNumber }'"/> 
+			<button type="button" class="btn btn-warning" onclick="joinFun('${root}','${event_code }','${pageNumber }','${id }','${event_point }')">응모하기</button>			
+			<button type="button" class="btn btn-warning">다시작성</button>
+			<button type="button" class="btn btn-warning" onclick="location.href='${root }/eventBoard/list.do?pageNumber=${pageNumber }'">목록보기</button> 
 		</div>
 	</form>
+	<jsp:include page="/Bottom.jsp"/>
 </div>	
+
 </body>
 <script type="text/javascript">
 var oEditors = [];

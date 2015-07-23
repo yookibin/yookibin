@@ -186,27 +186,32 @@ function recommend(root, board_num, board_recom, pageNumber, recommend_nickName,
 	 // 아니라면 추천테이블에 해당 게시물에 추천을 했다는 표시를 함.
 	 // 후에 추천을 1 증가시킴
 	 // 그 다음 보드테이블에 recomand도 1증가?
-	$.ajax({
-		url:url,
-		type:"get",
-		datatype:"text",
-		
-		success:function(data){
-			var result=data;
-			if(data!=""){
-				$("#board_recom:eq(0)").text(data);
-				$("#recom_button>i").text("");
-				$("#recom_button>i").text(data);
+	
+	if(recommend_nickName==null||recommend_nickName=="")alertify.alert("로그인 후 추천가능합니다.");
+	
+	if(recommend_nickName!=null&&recommend_nickName!=""){
+		$.ajax({
+			url:url,
+			type:"get",
+			datatype:"text",
+			
+			success:function(data){
+				var result=data;
+				if(data!=""){
+					$("#board_recom:eq(0)").text(data);
+					$("#recom_button>i").text("");
+					$("#recom_button>i").text(data);
+				}
+				
+				if(data=="") alertify.alert("추천을 이미 하셨습니다.");
+				
+				/*$("#recom_button").attr("disabled", "disabled");*/
+				
+				//alert(result);
 			}
 			
-			if(data=="") alert("추천을 이미 하셨습니다.");
-			
-			/*$("#recom_button").attr("disabled", "disabled");*/
-			
-			//alert(result);
-		}
-		
-	});
+		});
+	}
 	 /*var recom=x+1;
 	 alert(recom);*/
 	 // location.href=root+"/memberboard/read.do?board_num="+board_num+"&board_recom="+recom+"&pageNumber="+pageNumber;

@@ -40,13 +40,18 @@
 <script type="text/javascript" src="${root}/css/slide/controller.js"></script>
 <script type="text/javascript"
 	src="${root}/css/slide/eventController.js"></script>
+<script type="text/javascript">
+	function chatStart(root) {
+		var url = root + "/chatStart.do";
+		window.open(url, "chating", "width=540,height=520,resizable=no");
+	}
+</script>
 <style type="text/css">
 .AllAll {
 	width: 1100px;
-	height: 1111px;
+	height: auto;
 	margin-left: auto;
-	margin-right: auto;
-	/* border:1px black solid; */
+	margin-right: auto; 
 }
 
 .menu-A {
@@ -68,32 +73,63 @@
 
 .menu-Aa {
 	float: left;
-	width: 150px;
+	width: 175px;
 }
 
 .menu-Aaa {
-	margin: 0 0 0 55px;
+	margin: 0 0 3px 67px;
+}
+
+.bt {
+	width: 1100px;
+	height: 150px;
+	/* background-color:#f05f40; */
+	border-top: 2px solid #f05f40;
+}
+
+.bt_div {
+	width: 1100px;
+	height: 150px;
+	/* 	border: 1px solid blue;
+ */
+	float: left;
+	font-size: 10px;
+}
+
+.bt_div_cen {
+	margin: 20px 0 30px 0;
+	text-align: center;
+}
+
+.bt_div_bt {
+	width: 1100px;
+	height: 50px;
+	margin: 10px 0 0 0;
+	text-align: center;
+	font-size: 10px;
+}
+
+.bt_div_cen_img {
+	
 }
 </style>
 </head>
 <body>
-		<div>
-			<section class="bg-primary" id="about">
-				<div class="container" id="footer">
-					<div class="row">
-						<div class="col-lg-8 col-lg-offset-2 text-center">
-							<h2 class="section-heading">We've got what you need!</h2>
-							<hr class="light">
-							<p class="text-faded">Start Bootstrap has everything you need
-								to get your new website up and running in no time! All of the
-								templates and themes on Start Bootstrap are open source, free to
-								download, and easy to use. No strings attached!</p>
-							<a href="#" class="btn btn-default btn-xl">Get Started!</a>
-						</div>
+	<div class="AllAll">
+			<div class="bt_div" style="border-top:3px red solid;">
+				<div class="bt_div_cen">
+					<div class="bt_div_cen_img">
+						<img src="${root}/resources/main/logo1.png" alt=""
+							style="width: 30px; height: 30px; margin-bottom: 5px; display: block; margin-left: auto; margin-right: auto;">
 					</div>
+					<b>©Cheolgucompany</b>
 				</div>
-			</section>
-		</div>
+				<div class="bt_div_bt" style="text-align:center;">
+					정지혜 : 010-4582-0844  /  박종현 : 010-2726-0813  /  정희준 : 010-4977-4586 / <!-- <br/> -->
+					이진호 : 010-9893-3333  /  유기빈 : 010-9940-3880  /  정수현 : 010-9878-2587
+					</div>
+			</div>
+	</div>
 
 </body>
 

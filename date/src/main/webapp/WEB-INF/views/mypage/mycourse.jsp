@@ -209,7 +209,6 @@
 		});
 	}
 	function okCourse(root, code1, code2, like){
-		alert(like);
 		location.href=root+"/recommandPlace/selectCourse.do?place_code1="+code1+"&place_code2="+code2+"&like="+like;
 	}
 	function myPoint(root, id) {
@@ -257,7 +256,6 @@
 	         },
 	         success : function(data){
 	            console.log(data);
-	            alert("data"+data.length);
 	            
 	            var str="";
 	            for( var i=0; i<data.length;i++ ){
@@ -277,8 +275,6 @@
 	   }
 	   
 	   function remainPoint(root,id) {
-	      alert("root"+root);
-	      alert("id"+id);
 	      
 	      $.ajax({
 	         url: root+"/mypage/remainPoint.do",
@@ -466,7 +462,7 @@
                </div>
                <div class="racetimes">
                   <div class="row2" id="firstrow">
-                     <div class="column">잔여포인트</div>                                    
+                     <div class="column">현재포인트</div>                                    
                   </div>
                
                <div class="modal-body" id="remainPoint" >

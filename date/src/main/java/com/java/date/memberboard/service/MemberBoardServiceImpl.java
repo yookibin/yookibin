@@ -143,7 +143,7 @@ public class MemberBoardServiceImpl implements MemberBoardService {
 		
 		String pageNumber=request.getParameter("pageNumber");
 		
-		if(pageNumber==null) pageNumber="1";
+		if(pageNumber==null || pageNumber=="") pageNumber="1";
 		
 		int boardSize=10;
 		int currentPage=Integer.parseInt(pageNumber);

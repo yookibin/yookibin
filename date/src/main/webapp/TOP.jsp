@@ -111,7 +111,8 @@ function chatStart(root){
 					<div style="width: 450px; height: 30px; float: right; margin: 10px 30px 0 0; font-size: 13px; color: #D2916C;">
 						<span>
 							<a href="${root }/eventBoard/write.do" style=" color: #D2916C;"><b>*이벤트추가</b></a>｜
-							<a href="${root }/recommandPlace/insertM.do" style=" color: #D2916C;"><b>장소추가*</b></a>
+							<a href="${root }/recommandPlace/insertM.do" style=" color: #D2916C;"><b>장소추가</b></a>｜
+							<a href="${root }/membermanager/memberManager.do" style=" color: #D2916C;"><b>회원관리*</b></a>
 						</span>
 					</div>
 				</c:if>
@@ -132,13 +133,13 @@ function chatStart(root){
 		</c:if>
 		<div class="menu-A">
 			<div class="menu-Aa" style="margin: 0 0 0 20px;">
-				<a href="${root}/thisIndex.jsp"> <img alt="" src="${root}/resources/main/logo.gif"
-					width="200" height="95">
+				<a href="${root}/thisIndex.jsp"> <img alt="" src="${root}/resources/main/logo1.png"
+					width="190" height="85">
 				</a>
 			</div>
 			<div class="menu-Aa" style="margin: 0 0 0 50px;">
 				<div class="menu-Aaa">
-					<i class="fa fa-3x fa-diamond wow bounceIn text-primary" style="color: #D2916C;"></i>
+					<i class="fa fa-3x fa-diamond wow bounceIn text-primary"></i>
 				</div>
 				<div id="topMenu">
 					<ul>
@@ -159,7 +160,7 @@ function chatStart(root){
 			</div>
 			<div class="menu-Aa">
 				<div class="menu-Aaa">
-					<i class="fa fa-3x fa-paper-plane wow bounceIn text-primary" style="color: #D2916C;"></i>
+					<i class="fa fa-3x fa-paper-plane wow bounceIn text-primary"></i>
 				</div>
 				<div id="topMenu">
 					<ul>
@@ -170,7 +171,7 @@ function chatStart(root){
 			</div>
 			<div class="menu-Aa">
 				<div class="menu-Aaa">
-					<i class="fa fa-3x fa-newspaper-o wow bounceIn text-primary" style="color: #D2916C;"></i>
+					<i class="fa fa-3x fa-newspaper-o wow bounceIn text-primary"></i>
 				</div>
 				<div id="topMenu">
 					<ul>
@@ -182,7 +183,7 @@ function chatStart(root){
 			</div>
 			<div class="menu-Aa">
 				<div class="menu-Aaa">
-					<i class="fa fa-3x fa-heart wow bounceIn text-primary" style="color: #D2916C;"></i>
+					<i class="fa fa-3x fa-heart wow bounceIn text-primary"></i>
 				</div>
 				<div id="topMenu">
 					<ul>

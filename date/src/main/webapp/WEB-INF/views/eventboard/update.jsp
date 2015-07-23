@@ -16,11 +16,17 @@
 	<link rel="stylesheet" href="${root }/css/alertify.js-0.3.11/themes/alertify.core.css"/>
 	<script src="${root }/css/sweetalert-master/dist/sweetalert.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="${root }/css/sweetalert-master/dist/sweetalert.css"/>
+	<script type="text/javascript">
+		function eventReset(){
+			history.back(-1);
+		}
+	</script>
 </head>
 <body>
-<jsp:include page="/TOP.jsp"/>
-
 <div class="totalDiv">
+
+	<jsp:include page="/TOP.jsp"/>
+	
 <!-- updateAction에서 board와 (boardNumber는 board에 들어있음), pageNumber를 가져옴 -->	
 	<form class="form_style" action="${root}/eventBoard/update.do" method="post" onsubmit="return updateFun(this)" enctype="multipart/form-data">
 		<input type="hidden" name="event_code" value="${eventBoard.event_code }"/>
@@ -30,12 +36,12 @@
 		<input type="hidden" name="event_filePath" value="${eventBoard.event_filePath }"/>
 		<input type="hidden" name="event_fileSize" value="${eventBoard.event_fileSize }"/>
 		<input type="hidden" name="writer" value="${eventBoard.writer }"/>
-		
+	<!-- 	
 		<div class="line3" style="height:80px;">
 			<span>
 				<h1>이벤트 글수정 </h1>
 			</span>
-		</div>
+		</div> -->
 		
 		<div class="line">
 			<p class="orangeLine"></p>
@@ -51,7 +57,7 @@
 				<span class="content"><input type="text" size="50" name="event_title" value="${eventBoard.event_title }"/></span>
 		</div>
 		
-		<div class="line" style="height:510px;">
+		<div class="line" style="height:450px;">
 			<span>
 				<textarea name="event_content" id="ir1" rows="22" style="width:645px;">${eventBoard.event_content }</textarea>
 			</span>
@@ -72,11 +78,12 @@
 		</div>
 		
 		<div class="line" style="width:598px; border-width:0px; text-align:center;">
-			<input type="submit" value="글수정"/>
-			<input type="reset" value="취소"/>
-			<input type="button" value="목록보기" onclick="location.href='${root}/eventBoard/list.do?pageNumber=${pageNumber}'">
+			<input type="submit" class="btn btn-warning" value="글수정"/>
+			<input type="reset" class="btn btn-warning" onclick="eventReset()" value="취소"/>
+			<input type="button" class="btn btn-warning" value="목록보기" onclick="location.href='${root}/eventBoard/list.do?pageNumber=${pageNumber}'">
 		</div>
 	</form>
+	<jsp:include page="/Bottom.jsp"/>	
 </div>
 </body>
 <script type="text/javascript">

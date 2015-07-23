@@ -44,9 +44,12 @@
    
 </head>
 <body>	
-<jsp:include page="/TOP.jsp"/>
+
 	<!-- /.row -->
     <div class="totalDiv">
+    
+    <jsp:include page="/TOP.jsp"/>
+    
     <c:if test="${count!=0 }">
         <div class="col-lg-12">
             <div class="panel panel-default">
@@ -56,7 +59,7 @@
                     <div class="dataTable_wrapper">
                     	
                     	<c:if test="${memberLevel=='AA' }">
-							<a href="${root }/eventBoard/write.do">글쓰기(운영자만)</a><br/><br/>
+							<a class="btn btn-warning" href="${root }/eventBoard/write.do">글쓰기</a><br/><br/>
 						</c:if>						
 						
 						<c:if test="${count==0 }">
@@ -68,26 +71,26 @@
 	                            <thead>
 	                                <tr>
 	                                   <!--  <th class="myTh"></th> -->
-	                                    <th class="myTh" colspan="2">제목</th>
-	                                    <th class="myTh">기간</th>
-	                                    <th class="myTh">작성자</th>
-	                                    <th class="myTh">조회수</th>
-	                                    <th class="myTh">진행상황</th>
-	                                    <th class="myTh">차감포인트</th>
-	                                    <th class="myTh">경품</th>
+	                                    <th class="myTh" style="text-align: center;" colspan="2">제목</th>
+	                                    <th class="myTh" style="text-align: center;">기간</th>
+	                                    <th class="myTh" style="text-align: center;">작성자</th>
+	                                    <th class="myTh" style="text-align: center;">조회수</th>
+	                                    <th class="myTh" style="text-align: center;">진행상황</th>
+	                                    <th class="myTh" style="text-align: center;">차감포인트</th>
+	                                    <th class="myTh" style="text-align: center;">경품</th>
 	                                </tr>
 	                            </thead>
 	                            <tbody>
 	                                <c:forEach var="eventBoard" items="${list }">
 	                                	<tr class="odd gradeX">
-	                                     <td>${eventBoard.event_code }</td>
-	                                     <td><a style="color:black;" href="${root }/eventBoard/read.do?event_code=${eventBoard.event_code}&pageNumber=${currentPage}">${eventBoard.event_title }</a>	</td>
-	                                     <td>${eventBoard.event_period }</td>
-	                                     <td class="center">${eventBoard.writer }</td>
-	                                     <td class="center">${eventBoard.read_count }</td>
-	                                     <td>${eventBoard.event_progress }</td>
-	                                     <td>${eventBoard.event_point }</td>
-	                                     <td>${eventBoard.event_giveaway }</td>
+	                                     <td style="text-align: center;">${eventBoard.event_code }</td>
+	                                     <td width="300"><a style="color:black;" href="${root }/eventBoard/read.do?event_code=${eventBoard.event_code}&pageNumber=${currentPage}">${eventBoard.event_title }</a>	</td>
+	                                     <td width="200" style="text-align: center;">${eventBoard.event_period }</td>
+	                                     <td class="center" style="text-align: center;">${eventBoard.writer }</td>
+	                                     <td class="center" style="text-align: center;">${eventBoard.read_count }</td>
+	                                     <td style="text-align: center;">${eventBoard.event_progress }</td>
+	                                     <td style="text-align: center;">${eventBoard.event_point }</td>
+	                                     <td style="text-align: center;">${eventBoard.event_giveaway }</td>
 	                                 </tr>
 	                                
 	                                </c:forEach>
@@ -142,6 +145,7 @@
         </div>
         <!-- /.col-lg-12 -->
         </c:if>
+        <jsp:include page="/Bottom.jsp"/>
     </div>
 
 

@@ -15,18 +15,16 @@
    location.href=root+"/placesearch/choiceOk.do?area="+gugun;
  }    
  
-
-
-
-
 </script>
 
 </head>
 <body>
+<div style="width:1200px; margin:auto auto auto auto;">
+<jsp:include page="/TOP.jsp"/>
 <form action="${root}/placesearch/choiceOk.do" method="GET" onsubmit="return writeForm(this)">
 
    
-   <img src="${root}/resources/img/seoul.jpg" width="580" height="494" border="0" alt="" usemap="#Map">
+   <img src="${root}/resources/img/seoul.jpg" width="580" height="494" border="0" alt="" usemap="#Map" style="margin-left:30%">
    
    <map name="Map">
    <!--강남쪽 -->
@@ -68,6 +66,8 @@
    
    
    
-</form>   
+</form> 
+<jsp:include page="/Bottom.jsp"/>
+</div>  
 </body>
 </html>

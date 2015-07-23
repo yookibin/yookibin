@@ -140,42 +140,43 @@
 </script>
 </head>
 <body>
-<jsp:include page="/TOP.jsp"/>
-
-    <div class="totalDiv">    
+    <div class="totalDiv">   
+    
+    	<jsp:include page="/TOP.jsp"/>
+    	 
         <div class="col-lg-12">
             <div class="panel panel-default">             
                 <!-- /.panel-heading -->
                 <div class="panel-body">
                     <div class="dataTable_wrapper">
-
-						<a href="${root}/eventBoard/list.do?pageNumber=${pageNumber}">이벤트list로 가기</a><br/>
-						<input type="button" value="당첨자 발표 글 쓰기(랜덤당첨)" onclick="randomFun('${root }','${event_code}','${group_number }','${sequence_number }','${sequence_level }','${pageNumber }','${count }','${event_period }')" />
-						<input type="button" value="당첨자 발표 글 쓰기(수동서기)" onclick="noRandomFun('${root }','${event_code}','${group_number }','${sequence_number }','${sequence_level }','${pageNumber }','${count }','${event_period }')" />
-						<br/><br/>
+						<br/>
+						<a class="btn btn-warning" style="margin-left: 180px;" href="${root}/eventBoard/list.do?pageNumber=${pageNumber}">이벤트list로 가기</a><br/><br/>
+						<button type="button" style="margin-left: 180px;" class="btn btn-warning" onclick="randomFun('${root }','${event_code}','${group_number }','${sequence_number }','${sequence_level }','${pageNumber }','${count }','${event_period }')">당첨자 발표 글 쓰기(랜덤당첨)</button>
+						<button type="button" class="btn btn-warning" onclick="noRandomFun('${root }','${event_code}','${group_number }','${sequence_number }','${sequence_level }','${pageNumber }','${count }','${event_period }')">당첨자 발표 글 쓰기(수동서기)</button>
+						<br/><br/><br/>
 					
 						<c:if test="${count==0 }">		
 							<center>해당 이벤트에 참가한 글이 없습니다.</center>		
 						</c:if>
 					
 						<c:if test="${count!=0 }">								
-							<div style="height:400px;">
+							<div style="height:400px; width:800px; margin-left: 180px;"> 
 								<table class="table table-striped table-bordered table-hover" id="dataTables-example">
 		                            <thead>
 		                                <tr>
 		                                   <!--  <th class="myTh"></th> -->
-		                                    <th class="myTh" colspan="2">제목</th>
-		                                    <th class="myTh">아이디</th>
-		                                    <th class="myTh">작성자</th>
+		                                    <th class="myTh" style="text-align: center;" colspan="2">제목</th>
+		                                    <th class="myTh" style="text-align: center;">아이디</th>
+		                                    <th class="myTh" style="text-align: center;">작성자</th>
 		                                </tr>
 		                            </thead>
 		                            <tbody>
 		                                <c:forEach var="eventMember" items="${list }">
 		                                	<tr class="odd gradeX">
-		                                     <td>${eventMember.join_code }</td>
+		                                     <td style="text-align: center;">${eventMember.join_code }</td>
 		                                     <td><a style="color:black;" href="${root }/eventBoard/managerRead.do?join_code=${eventMember.join_code }&eventPageNumber=${eventPageNumber}&event_code=${eventMember.event_code}&pageNumber=${pageNumber}&group_number=${group_number}&sequence_number=${sequence_number}&sequence_level=${sequence_level}">${eventMember.join_title }</a>	</td>
-		                                     <td class="center">${eventMember.id }</td>
-		                                     <td class="center">${eventMember.join_writer }</td>
+		                                     <td class="center" style="text-align: center;">${eventMember.id }</td>
+		                                     <td class="center" style="text-align: center;">${eventMember.join_writer }</td>
 		                                 </tr>	                                
 		                                </c:forEach>	                               
 		                            </tbody>
@@ -223,7 +224,8 @@
 					</div>                    
                 </div>
             </div>
-        </div>        
+        </div>  
+        <jsp:include page="/Bottom.jsp"/>              
     </div>
 	
 </body>

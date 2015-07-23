@@ -43,13 +43,13 @@
 <script type="text/javascript">
 function chatStart(root){
 	var url=root+"/chatStart.do";
-	window.open(url,"chating","width=540,height=520,resizable=no");		
+	window.open(url,"chating","width=420,height=400,resizable=no");		
 }
 </script>
 <style type="text/css">
 .AllAll {
 	width: 1100px;
-	height: 1111px;
+	height: auto;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -78,6 +78,34 @@ function chatStart(root){
 
 .menu-Aaa {
 	margin: 0 0 3px 67px;
+}
+.bt{
+	width: 1100px;
+	height: 150px;
+	/* background-color:#f05f40; */
+	border-top: 2px solid #f05f40;
+}
+.bt_div{
+	width: 1100px;
+	height: 150px;
+/* 	border: 1px solid blue;
+ */	float: left;
+	font-size: 10px;
+}
+
+.bt_div_cen{
+	margin: 20px 0 30px 0;
+	text-align: center;
+}
+.bt_div_bt{
+	width: 1100px;
+	height:50px;
+	margin: 10px 0 0 0;
+	text-align: center;
+	font-size: 10px;
+}
+.bt_div_cen_img{
+	;
 }
 </style>
 </head>
@@ -110,7 +138,8 @@ function chatStart(root){
 					<div style="width: 450px; height: 30px; float: right; margin: 10px 30px 0 0; font-size: 13px; color: #D2916C;">
 						<span>
 							<a href="${root }/eventBoard/write.do" style=" color: #D2916C;"><b>*이벤트추가</b></a>｜
-							<a href="${root }/recommandPlace/insertM.do" style=" color: #D2916C;"><b>장소추가*</b></a>
+							<a href="${root }/recommandPlace/insertM.do" style=" color: #D2916C;"><b>장소추가</b></a>｜
+							<a href="${root }/membermanager/memberManager.do" style=" color: #D2916C;"><b>회원관리*</b></a>
 						</span>
 					</div>
 				</c:if>
@@ -130,20 +159,19 @@ function chatStart(root){
 			</div> --%> 
 		</c:if>
 		<div class="menu-A">
-			<div class="menu-Aa" style="margin: 0 0 0 20px;">
-				<a href="./thisIndex.jsp"> <img alt="" src="${root}/resources/main/logo.png"
-					width="200" height="95">
+			<div class="menu-Aa" style="margin: 0 0 0 35px;">
+				<a href="./thisIndex.jsp"> <img alt="" src="${root}/resources/main/logo1.png"
+					width="190" height="95">
 				</a>
 			</div>
-			<div class="menu-Aa" style="margin: 0 0 0 50px;">
+			<div class="menu-Aa" style="margin: 0 0 0 35px;">
 				<div class="menu-Aaa">
-					<i class="fa fa-3x fa-diamond wow bounceIn text-primary" style="color: #D2916C;"></i>
+					<i class="fa fa-3x fa-diamond wow bounceIn text-primary"></i>
 				</div>
 				<div id="topMenu">
 					<ul>
 						<li class="topMenuLi" style="margin: 0 0 0 14px;"><a
-							class="menuLink"
-							href="http://unikys.tistory.com/category/Programming%20Lecture" style="color: #FFF2E6;">데이트
+							class="menuLink" style="color: #FFF2E6;">데이트
 								코스추천</a>
 							<ul class="submenu" style="z-index: 1;">
 								<li><a href="${root }/recommandPlace/findPlace.do"
@@ -158,7 +186,7 @@ function chatStart(root){
 			</div>
 			<div class="menu-Aa">
 				<div class="menu-Aaa">
-					<i class="fa fa-3x fa-paper-plane wow bounceIn text-primary" style="color: #D2916C;"></i>
+					<i class="fa fa-3x fa-paper-plane wow bounceIn text-primary"></i>
 				</div>
 				<div id="topMenu">
 					<ul>
@@ -169,7 +197,7 @@ function chatStart(root){
 			</div>
 			<div class="menu-Aa">
 				<div class="menu-Aaa">
-					<i class="fa fa-3x fa-newspaper-o wow bounceIn text-primary" style="color: #D2916C;"></i>
+					<i class="fa fa-3x fa-newspaper-o wow bounceIn text-primary"></i>
 				</div>
 				<div id="topMenu">
 					<ul>
@@ -181,7 +209,7 @@ function chatStart(root){
 			</div>
 			<div class="menu-Aa">
 				<div class="menu-Aaa">
-					<i class="fa fa-3x fa-heart wow bounceIn text-primary" style="color: #D2916C;"></i>
+					<i class="fa fa-3x fa-heart wow bounceIn text-primary"></i>
 				</div>
 				<div id="topMenu">
 					<ul>
@@ -198,17 +226,13 @@ function chatStart(root){
 		</div>
 		<div id="sliderFrame">
 			<div id="slider">
-				<a href="${root}/placeBoard/reviewBoard.do?place_code=kang007"
-					target="_blank"> <img
+				<a href="${root}/placeBoard/reviewBoard.do?place_code=kang007"> <img
 					src="${root}/css/imgSlide/images/amain1.png" alt="전망보고 영화보고~" />
-				</a> <a href="${root}/placeBoard/reviewBoard.do?place_code=jong008"
-					target="_blank"> <img
+				</a> <a href="${root}/placeBoard/reviewBoard.do?place_code=jong008"> <img
 					src="${root}/css/imgSlide/images/amain2.JPG" alt="와 저높은 빌딩은 뭐야~!?" />
-				</a> <a href="${root}/placeBoard/reviewBoard.do?place_code=song014"
-					target="_blank"> <img
+				</a> <a href="${root}/placeBoard/reviewBoard.do?place_code=song014"> <img
 					src="${root}/css/imgSlide/images/amain3.png" alt="롯데월드는 지헤공주와 함께~" />
-				</a> <a href="${root}/placeBoard/reviewBoard.do?place_code=song010"
-					target="_blank"> <img
+				</a> <a href="${root}/placeBoard/reviewBoard.do?place_code=song010"> <img
 					src="${root}/css/imgSlide/images/amain4.png" alt="으헤헤헤헤우하하하하" />
 				</a>
 			</div>
@@ -264,11 +288,11 @@ function chatStart(root){
 					<img alt="" src="${root}/css/imgSlide/images/left.png">
 				</button>
 				<ul>
-					<li><img src="${root}/css/imgSlide/images/slide_1.png" alt=""
+					<li><img src="${root}/css/imgSlide/images/slide_01.png" alt=""
 						onclick="javascript:place_A('${root}','kang001')"></li>
-					<li><img src="${root}/css/imgSlide/images/slide_2.png" alt=""
+					<li><img src="${root}/css/imgSlide/images/slide_02.png" alt=""
 						onclick="javascript:place_A('${root}','jong001')"></li>
-					<li><img src="${root}/css/imgSlide/images/slide_3.png" alt=""
+					<li><img src="${root}/css/imgSlide/images/slide_03.png" alt=""
 						onclick="javascript:place_A('${root}','jong014')"></li>
 				</ul>
 				<button class="next-A" type="button">
@@ -280,37 +304,29 @@ function chatStart(root){
 					<img alt="" src="${root}/css/imgSlide/images/left.png">
 				</button>
 				<ul>
-					<li><div class="event_div" style="background-color: #FFA7A7;"
-							onclick="javascript:events_A('${root}','97','1')">철구를 잡아라 !</div></li>
-					<li><div class="event_div" style="background-color: #98F791;"
-							onclick="javascript:events_A('${root}','98','1')">잠실에 싱크홀이
-							?!</div></li>
-					<li><div class="event_div" style="background-color: #36FFFF;"
-							onclick="javascript:events_A('${root}','99','1')">청정도시 상암</div></li>
+					<li><img src="${root}/css/imgSlide/images/slide_E03.png" alt="" onclick="javascript:events_A('${root}','97','1')"></li>
+					<li><img src="${root}/css/imgSlide/images/slide_E02.png" alt="" onclick="javascript:events_A('${root}','98','1')"></li>
+					<li><img src="${root}/css/imgSlide/images/slide_E01.png" alt="" onclick="javascript:events_A('${root}','99','1')"></li>
 				</ul>
 				<button class="next-B" type="button">
 					<img alt="" src="${root}/css/imgSlide/images/rigth.png">
 				</button>
 			</div>
 		</div>
-		<div>
-			<section class="bg-primary" id="about">
-				<div class="container" id="footer">
-					<div class="row">
-						<div class="col-lg-8 col-lg-offset-2 text-center">
-							<h2 class="section-heading">We've got what you need!</h2>
-							<hr class="light">
-							<p class="text-faded">Start Bootstrap has everything you need
-								to get your new website up and running in no time! All of the
-								templates and themes on Start Bootstrap are open source, free to
-								download, and easy to use. No strings attached!</p>
-							<a href="#" class="btn btn-default btn-xl">Get Started!</a>
+				<div class="bt_div" style="border-top:3px red solid;">
+					<div class="bt_div_cen">	
+						<div class="bt_div_cen_img">
+							<img src="${root}/resources/main/logo1.png" alt="" style="width: 30px; height: 30px; margin-bottom: 5px; display: block; margin-left: auto; margin-right: auto;">
 						</div>
+						
+						<b>©Cheolgucompany</b>
+					</div>
+					<div class="bt_div_bt" style="text-align:center;">
+					정지혜 : 010-4582-0844  /  박종현 : 010-2726-0813  /  정희준 : 010-4977-4586 / <!-- <br/> -->
+					이진호 : 010-9893-3333  /  유기빈 : 010-9940-3880  /  정수현 : 010-9878-2587
 					</div>
 				</div>
-			</section>
-		</div>
-	</div>
+			</div>
 
 </body>
 

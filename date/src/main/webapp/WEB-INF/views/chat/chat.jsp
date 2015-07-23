@@ -96,7 +96,7 @@
 	<div style="height:30px; padding-left:20px;">
 		<span style="font-size:18px;">${chatId }님</span>
 		<span style="display:inline-block;width:100px;align:center; text-align:center;position:absolute;left:420px;">
-			<input type="text" id="userCount" size="8px"/>
+			<input type="text" id="userCount" size="10px" disabled="disabled"/>
 		</span>
 	</div>
 	<div class="line1">
@@ -104,7 +104,7 @@
 	</div>
 	<div class="form-group">
       <div class="col-lg-10">      
-        <textarea class="form-control" id="data" rows="15" cols="20" disabled="disabled"></textarea>
+        <textarea class="form-control" id="data" rows="15" cols="20" disabled="disabled" style="resize:none; width:510px;"></textarea>
       </div>
     </div>			
 	

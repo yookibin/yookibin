@@ -12,8 +12,7 @@
 <title>게시판 읽기</title>
 
 <link href="${root }/css/eventBoard/style.css" rel="stylesheet"/>
-<script type="text/javascript">
-	
+<script type="text/javascript">	
 	function delFun(root, event_code, pageNumber){
 		var url=root+"/eventBoard/delete.do?event_code="+event_code+"&pageNumber="+pageNumber;
 		//alert(url);
@@ -46,16 +45,18 @@
 </head>
 
 <body>
-<jsp:include page="/TOP.jsp"/>
-
 <div class="totalDiv">
+
+	<jsp:include page="/TOP.jsp"/>
+	
 	<!-- eventBoard와 pageNumber를 넘겨줌 -->
 	<c:set var="root" value="${pageContext.request.contextPath }"/>
-	 <input style="margin-left:80%" type="button" align="middle" value="글목록" onclick="location.href='${root}/eventBoard/list.do?pageNumber=${pageNumber }'"/>
-	 <div class="line1">
+	 <button style="margin-left:80%" type="button" class="btn btn-warning" align="middle" onclick="location.href='${root}/eventBoard/list.do?pageNumber=${pageNumber }'">글목록</button>
+	 <br/><br/>
+	 <div class="line7">
 		<p class="orangeLine"></p>
 	</div>
-	 <div class="line1">
+	 <div class="line7">
 		<div class="centers">			
 			<span id="readTitle">${eventBoard.event_title }</span>
 		</div>
@@ -71,42 +72,48 @@
 		</div>
 	</div>	
 	
-	<div class="line1">
+	<div class="line7">
 		<p class="orangeLine"></p>
 	</div>
 	
-	<div class="line2">
-		<span>${eventBoard.event_content }</span>
+	<div class="line7">
+		<div class="centers2">
+			<span>${eventBoard.event_content }</span>
+		</div>	
 	</div>
-	<div class="line1">
+	
+	<div class="line7">
 		<p class="orangeLine"></p>
 	</div>
-	<div class="line2" style="text-align:center;">	
+	<br/>
+	<div class="line7" style="text-align:center;">	
 		<c:if test="${eventBoard.event_progress=='진행' }">
-			<button type="button" class="" onclick="enterFun('${root}','${eventBoard.event_code }','${pageNumber }','${eventBoard.event_point }')">참가하기</button>
+			<button type="button" class="btn btn-warning" onclick="enterFun('${root}','${eventBoard.event_code }','${pageNumber }','${eventBoard.event_point }')">참가하기</button>
 		</c:if>
 		<c:if test="${eventBoard.event_progress=='종료' }">
-			<input type="text" value="기간이 지난 이벤트 입니다."/>
+			<input size="25" style="text-align: center;" disabled="disabled" type="text" value="기간이 지난 이벤트 입니다."/>
 		</c:if>
 		
-		<button type="button" class="" onclick="location.href='${root}/eventBoard/list.do?pageNumber=${pageNumber }'">
+		<button type="button" class="btn btn-warning" onclick="location.href='${root}/eventBoard/list.do?pageNumber=${pageNumber }'">
 			<span>글목록</span>
 		</button>
 		<br/><br/>
 		<c:if test="${memberLevel=='AA' }">
 			<p>
-				<button type="button" class="" onclick="updateFun('${root}','${eventBoard.event_code }','${pageNumber }')">
+				<button type="button" class="btn btn-warning" onclick="updateFun('${root}','${eventBoard.event_code }','${pageNumber }')">
 					<span>글수정</span>
 				</button>
-				<button type="button" class="" onclick="delFun('${root}','${eventBoard.event_code }','${pageNumber }')">
+				<button type="button" class="btn btn-warning" onclick="delFun('${root}','${eventBoard.event_code }','${pageNumber }')">
 					<span>글삭제</span>
 				</button>
-				<button type="button" class="" onclick="manageFun('${root}','${eventBoard.event_code }','${eventBoard.group_number }','${eventBoard.sequence_number }','${eventBoard.sequence_level }','${pageNumber }')">
+				<button type="button" class="btn btn-warning" onclick="manageFun('${root}','${eventBoard.event_code }','${eventBoard.group_number }','${eventBoard.sequence_number }','${eventBoard.sequence_level }','${pageNumber }')">
 					<span>응모회원관리</span>
 				</button>
+				<br/><br/>
 			</p>
 		</c:if>		
 	</div>
+	<jsp:include page="/Bottom.jsp"/>
 </div>	 
 
 </body>

@@ -57,14 +57,18 @@
 	<title>게시판 읽기</title>
 	<link rel="stylesheet" type="text/css" href="${root }/css/board/style.css">
 	<link type="text/css" rel="stylesheet" href="${root}/css/reviewBoard/style.css" />
+	
+	<script src="${root }/css/alertify.js-0.3.11/lib/alertify.min.js"></script>
+	<link rel="stylesheet" href="${root }/css/alertify.js-0.3.11/themes/alertify.core.css"/>
 </head>
 <body>
 
 
 
 
-<jsp:include page="/youAndITop.jsp"/><br/>
-	<div style="width:1200px; height:1200px; margin-left:auto; margin-right:auto;" >
+
+	<div style="width:1200px; height:auto; margin-left:auto; margin-right:auto;" >
+	<jsp:include page="/TOP.jsp"/>
 		<div id="wrapbody">
 			<div id="wrap">
 				<div class="section_1">
@@ -88,17 +92,20 @@
 								<span>${memberBoard.board_content }</span>
 						</div>
 					</div>
-					<button style="margin-left:50%; margin-top:2%" type="button" class="btn btn-danger btn-circle-lg" value="추천" id="recom_button" onclick="recommend('${root }', '${memberBoard.board_num}', '${memberBoard.board_recom}', '${pageNumber}', '${nickName}', '${id }')"><i class="fa fa-heart">${memberBoard.board_recom}</i></button>
-					<c:if test="${memberBoard.board_writer==nickName}">
-					<input type="button" class="btn btn-warning" value="글삭제" style=" margin-left:50%; font-size: 11px;" onclick="deleteFun('${root}','${memberBoard.board_num }', '${pageNumber}', '${memberLevel}')"/>
-					<input type="button" class="btn btn-warning" value="글수정" style="font-size: 11px;" onclick="updateFun('${root}','${memberBoard.board_num }', '${pageNumber}')" />
-					
-					</c:if>
-					
-					<c:if test="${memberLevel=='AA' }">
-						<input type="button" class="btn btn-warning" style="margin-left:50%; font-size: 11px;" value="글삭제" onclick="deleteFun('${root}','${memberBoard.board_num }', '${pageNumber}', '${memberLevel}')"/>
-					</c:if>
-					<button  type="button" class="btn btn-warning" onclick="location.href='${root}/memberboard/list.do?pageNumber=${pageNumber}'"><i class="fa fa-list" style="font-size: 11px;">글목록</i></button>
+					<div style="width:930px; text-align: center;">
+						<button style="margin-top:2%" type="button" class="btn btn-danger btn-circle-lg" value="추천" id="recom_button" onclick="recommend('${root }', '${memberBoard.board_num}', '${memberBoard.board_recom}', '${pageNumber}', '${nickName}', '${id }')"><i class="fa fa-heart">${memberBoard.board_recom}</i></button>
+					</div>
+					<div style="width:930px; text-align: right;">
+						<c:if test="${memberBoard.board_writer==nickName}">
+							<input type="button" class="btn btn-warning" value="글삭제" style=" margin-left:50%; font-size: 11px;" onclick="deleteFun('${root}','${memberBoard.board_num }', '${pageNumber}', '${memberLevel}')"/>
+							<input type="button" class="btn btn-warning" value="글수정" style="font-size: 11px;" onclick="updateFun('${root}','${memberBoard.board_num }', '${pageNumber}')" />	
+						</c:if>
+						
+						<c:if test="${memberLevel=='AA' }">
+							<input type="button" class="btn btn-warning" style="margin-left:50%; font-size: 11px;" value="글삭제" onclick="deleteFun('${root}','${memberBoard.board_num }', '${pageNumber}', '${memberLevel}')"/>
+						</c:if>
+						<button  type="button" class="btn btn-warning" onclick="location.href='${root}/memberboard/list.do?pageNumber=${pageNumber}'"><i class="fa fa-list" style="font-size: 11px;">글목록</i></button>
+						</div>
 					</div>
 			
 		
@@ -116,7 +123,7 @@
 	
 	
 		
-		<div class="replyDivp">
+		<div class="replyDivp2">
 			<c:if test="${nickName!=null}">
 				<div style="float: left">
 					<textarea id="reply" class="writeReply" cols="100" rows="3"></textarea> 
@@ -133,7 +140,7 @@
 		</div>
 		
 		<div id="container">
-   <div id="content">
+   <div id="content3">
       <div id="entry19Trackback" style="display:block">
          <div class="trackback">
             <h3>
@@ -187,6 +194,9 @@
    </div> 
       <button id="moreComment2" onclick="moreComment()" style="display:none">댓글 더 보기 </button>
    </div>
-
+ <jsp:include page="/Bottom.jsp"/>
+</div>
+<br/>
+  
 </body>
 </html>
