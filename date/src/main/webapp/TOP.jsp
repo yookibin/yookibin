@@ -139,7 +139,7 @@ function chatStart(root){
 			</div>
 			<div class="menu-Aa" style="margin: 0 0 0 50px;">
 				<div class="menu-Aaa">
-					<i class="fa fa-3x fa-diamond wow bounceIn text-primary" style="color: #D2916C;"></i>
+					<i class="fa fa-3x fa-diamond wow bounceIn text-primary"></i>
 				</div>
 				<div id="topMenu">
 					<ul>
@@ -160,7 +160,7 @@ function chatStart(root){
 			</div>
 			<div class="menu-Aa">
 				<div class="menu-Aaa">
-					<i class="fa fa-3x fa-paper-plane wow bounceIn text-primary" style="color: #D2916C;"></i>
+					<i class="fa fa-3x fa-paper-plane wow bounceIn text-primary"></i>
 				</div>
 				<div id="topMenu">
 					<ul>
@@ -171,7 +171,7 @@ function chatStart(root){
 			</div>
 			<div class="menu-Aa">
 				<div class="menu-Aaa">
-					<i class="fa fa-3x fa-newspaper-o wow bounceIn text-primary" style="color: #D2916C;"></i>
+					<i class="fa fa-3x fa-newspaper-o wow bounceIn text-primary"></i>
 				</div>
 				<div id="topMenu">
 					<ul>
@@ -183,7 +183,7 @@ function chatStart(root){
 			</div>
 			<div class="menu-Aa">
 				<div class="menu-Aaa">
-					<i class="fa fa-3x fa-heart wow bounceIn text-primary" style="color: #D2916C;"></i>
+					<i class="fa fa-3x fa-heart wow bounceIn text-primary"></i>
 				</div>
 				<div id="topMenu">
 					<ul>

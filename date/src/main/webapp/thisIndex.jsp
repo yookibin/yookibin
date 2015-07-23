@@ -86,9 +86,7 @@ function chatStart(root){
 	border-top: 2px solid #f05f40;
 }
 .bt_div{
-	
-	margin-left:100px;
-	width: 900px;
+	width: 1100px;
 	height: 150px;
 /* 	border: 1px solid blue;
  */	float: left;
@@ -97,15 +95,17 @@ function chatStart(root){
 
 .bt_div_cen{
 	margin: 20px 0 30px 0;
-	padding-left: 400px;
+	text-align: center;
 }
 .bt_div_bt{
+	width: 1100px;
+	height:50px;
 	margin: 10px 0 0 0;
 	text-align: center;
 	font-size: 10px;
 }
 .bt_div_cen_img{
-	padding-left: 35px ;
+	;
 }
 </style>
 </head>
@@ -166,7 +166,7 @@ function chatStart(root){
 			</div>
 			<div class="menu-Aa" style="margin: 0 0 0 35px;">
 				<div class="menu-Aaa">
-					<i class="fa fa-3x fa-diamond wow bounceIn text-primary" style="color: #D2916C;"></i>
+					<i class="fa fa-3x fa-diamond wow bounceIn text-primary"></i>
 				</div>
 				<div id="topMenu">
 					<ul>
@@ -187,7 +187,7 @@ function chatStart(root){
 			</div>
 			<div class="menu-Aa">
 				<div class="menu-Aaa">
-					<i class="fa fa-3x fa-paper-plane wow bounceIn text-primary" style="color: #D2916C;"></i>
+					<i class="fa fa-3x fa-paper-plane wow bounceIn text-primary"></i>
 				</div>
 				<div id="topMenu">
 					<ul>
@@ -198,7 +198,7 @@ function chatStart(root){
 			</div>
 			<div class="menu-Aa">
 				<div class="menu-Aaa">
-					<i class="fa fa-3x fa-newspaper-o wow bounceIn text-primary" style="color: #D2916C;"></i>
+					<i class="fa fa-3x fa-newspaper-o wow bounceIn text-primary"></i>
 				</div>
 				<div id="topMenu">
 					<ul>
@@ -210,7 +210,7 @@ function chatStart(root){
 			</div>
 			<div class="menu-Aa">
 				<div class="menu-Aaa">
-					<i class="fa fa-3x fa-heart wow bounceIn text-primary" style="color: #D2916C;"></i>
+					<i class="fa fa-3x fa-heart wow bounceIn text-primary"></i>
 				</div>
 				<div id="topMenu">
 					<ul>
@@ -318,12 +318,11 @@ function chatStart(root){
 				</button>
 			</div>
 		</div>
-		<div>
 			<div class="bt">
 				<div class="bt_div">
 					<div class="bt_div_cen">	
 						<div class="bt_div_cen_img">
-							<img src="${root}/resources/main/logo1.png" alt="" style="width: 30px; height: 30px; margin-bottom: 5px;">
+							<img src="${root}/resources/main/logo1.png" alt="" style="width: 30px; height: 30px; margin-bottom: 5px; display: block; margin-left: auto; margin-right: auto;">
 						</div>
 						
 						<b>©Cheolgucompany</b> 
@@ -334,7 +333,6 @@ function chatStart(root){
 					</div>
 				</div>
 			</div>
-		</div>
 	</div>
 
 </body>
