@@ -60,8 +60,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
-<title></title>
-
+<title>마이페이지</title>
+<script src="${root }/css/sweetalert-master/dist/sweetalert.min.js"></script>
+<link rel="stylesheet" type="text/css" href="${root }/css/sweetalert-master/dist/sweetalert.css"/>
 <link
    href="http://fonts.googleapis.com/css?family=Montserrat:300,400,700"
    rel="stylesheet" type="text/css">
@@ -216,19 +217,38 @@
             });
    }
    function deleteCourse(num) {
-      $.ajax({
-         url : "/date/mypage/delete.do",
-         type : "post",
-         data : {
-            num : num
-         },
-         success : function(data) {
-            console.log(data);
-            if (data == 1) {
-               $("#" + num).remove();
-            }
-         }
-      });
+	   
+	   swal({
+			title : "Delete",
+			text : "정말로 삭제할까요?",
+			type : "warning",
+			showCancelButton : true,
+			confirmButtonColor : "#DD6B55",
+			confirmButtonText : "예",
+			cancelButtonText : "아니요",
+			closeOnConfirm : false,
+			closeOnCancel : false
+		}, function(isConfirm) {
+			if (isConfirm) {
+				swal("GOOD!", "삭제가 완료 되었습니다.", "success");
+				$.ajax({
+			         url : "/date/mypage/delete.do",
+			         type : "post",
+			         data : {
+			            num : num
+			         },
+			         success : function(data) {
+			            console.log(data);
+			            if (data == 1) {
+			               $("#" + num).remove();
+			            }
+			         }
+			      });
+			} else {
+				swal("BAD", "삭제가 취소 되었습니다.", "error");
+			}
+		}); 
+      
    }
    function okCourse(root, code1, code2, like) {
       location.href = root + "/recommandPlace/selectCourse.do?place_code1="
