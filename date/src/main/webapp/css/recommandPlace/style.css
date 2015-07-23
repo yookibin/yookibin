@@ -46,14 +46,13 @@ a:hover {
 	width: 1000px;
 	
 	float: left;
-	border: solid 1px black;
 	padding: 50px 50px 20px 20px;
 	/* 상우하좌 */
 }
 
 #title {
 	width: 300px;
-	height: 300px;
+	height: 250px;
 	float: left;
 	border-width: 2px;
 	/* border-right-width: 0px;
@@ -67,12 +66,11 @@ a:hover {
 	width: 250px;
 	height: 180px;
 	text-align: center;
-	border:1px black solid;
 }
 
 #title_b {
 	width: 250px;
-	height: 100px;
+	height: auto;
 	text-align: left;
 }
 

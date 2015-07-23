@@ -40,11 +40,8 @@
 <script type="text/javascript">
 	var addNumber = 10;
 	function getCourses(root, fs) {
-		alert("ss");
 		$("#course").css("display", "block");
 		$("#addButton").css("display", "block");
-		$("#place2").empty();
-		$("#place").empty();
 		if (fs == 'res') {
 			addNumber = 10;
 		}
@@ -64,9 +61,8 @@
 						console.log(data);
 						/* alert(data.length); */
 						var courseList = "";
-						alert(data.length);
-						if (data.length >= 3) {
-							for (var i = 0; i < data.length-1; i = i + 1) {
+						if (data.length >= 2) {
+							for (var i = 0; i < data.length - 1; i = i + 1) {
 								courseList += "<option value='"+data[i].place_code+","+data[i+1].place_code+"'>"
 										+ data[i].place_name
 										+ "ㅡㅡ>"
@@ -76,9 +72,11 @@
 							$("#courseSelect").append(courseList);
 
 							var placeList = "";
-							for (var i = 0; i < addNumber; i++) {
+							if(data.length < addNumber){
+								addNumber=data.length;
+							}
+							for (var i = 0; i < addNumber; i = i + 1) {
 								placeList += "<div>"
-
 										+ "<div id='title'>"
 										/* + "<div id='title_a'>" */
 										+ "<div class='imagepluscontainer' style='width: 263px; height: 199px; z-index: 2'>"
@@ -147,7 +145,7 @@
 										+ "</div>"
 										+ "<div id='"+data[i].place_code+"'>"
 										+ "</div></div></div></div>";
-							}
+								}
 							$("#place2").empty();
 							$("#place").empty();
 							$("#place").append(placeList);
@@ -200,7 +198,7 @@
 
 .allView {
 	width: 1100px;
-	height: auto;
+	height: 500px;
 	margin-left: auto;
 	margin-right: auto;
 	font-size: 20px;
@@ -277,7 +275,7 @@
 		<div class="date_n_finder"
 			style="background: gray; color: white; height: 40px;">
 			<div class="date_n_top">
-				<h5 class="date_n_top">
+				<h5 class="date_n_top" style="padding-top: 12px;">
 					<span style="color: white;"> &nbsp;&nbsp; <b> ♠ 데이트 코스
 							추천!</b>
 					</span>
@@ -378,20 +376,18 @@
 			</div>
 		</form>
 		<div id="place"
-			style="width: 100%; height: auto;"></div>
-		<div id="place2" style="font-size: 30px; width: 1000px; height: auto; float:left;">
+			style="border: 1px solid black; width: 100%; height: auto;"></div>
+		<div id="place2" style="font-size: 30px; width: 1000px; height: auto;">
 		</div>
-		<div id="addButton"
-			style="display: none; width: 900px; height: auto;">
-			<div>
-				<input type="button" id="btn" class="btn btn-primary btn-lg btn-block" value="더보기"
-					onclick="getCourses('${root }','add')">
-			</div>
+		<div class="ques7" id="addButton"
+			style="display: none; text-align: right; width: 1000px; height: auto;">
+				<input type="button" id="btn" class="btn btn-warning"
+					style="width: 1000px; height: 50px;"
+					value="더보기" onclick="getCourses('${root }','add')"><br><br>
+				<jsp:include page="/Bottom.jsp" />
 		</div>
 	</div>
-
-
-	<jsp:include page="/Bottom.jsp" />
+	
 
 	<!-- jQuery -->
 	<script
@@ -424,7 +420,6 @@
 	</script>
 </body>
 </html>
-
 
 
 
