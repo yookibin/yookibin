@@ -15,33 +15,12 @@
 <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <style type="text/css">
 /* background-image: url("images/darkpattern.png");*/
+
 #randomPlace{
 	width:1100px;
 	margin-left:auto;
 	margin-right:auto;
 	text-align: center;
-}
-
-#randomPlaceTotal{
-	border: 2px solid brown;
-	border-radius:1em/1em;
-	height: 700px;
-}
-
-.exeDiv{
-	width : 300px;
-	height : 50px;
-	float : left;
-	border : 1px solid blue;
-	margin: 0 0 0 0%;
-}
-
-.exDiv{
-	width : 300px;
-	height : 300px;
-	float : left;
-	border : 1px solid red;
-	margin: 15% 0 0 3%;
 }
 
 #re1 {
@@ -61,7 +40,6 @@
 }
 
 #randomPlaceResult {
-	float:left;
 	display: none;
 }
 
@@ -82,47 +60,32 @@
 	font-size: 20px;
 }
 
-#placeDiv{
-	float:left;
-}
-
 #map{
-	border:1px solid blue;
 	border-radius:1em/1em;
-	margin: 0 0 0 20px;
-	width: 400px;
+	margin: 0 0 0 200px;
+	width: 700px;
 	height: 400px;
-	float:left;
 }
 #placeMapReset{
 	border-radius:1em/1em;
 	margin: 15px 0 15px 0;
-	width: 250px;
-	height: 30px;
+	width: 700px;
+	height: 50px;
 	background-color: #8A4924;
 	color: white;
 }
-
 .place{
-
-	margin-top:5%;
-	border:1px solid blue;
-	width: 60%;
-	height: 250px;
-
 	width: 50%;
 	float:left;
 	height: 300px;
 }
-
-
 .placeImgTitle{
 	margin: 15px 0px 15px 0px;
 	font-size: 18px;
 }
 
 #startButton{
-	margin: 3% 0% 0% 0%;
+	margin: 40% 0% 0% 0%;
 	width: 280px;
 	height: 100px;
 	font-size: 25px;
@@ -255,12 +218,12 @@ function randomPlaceEnd(questionAnswer){
 			// LatLngBounds 객체에 추가된 좌표들을 기준으로 지도의 범위를 재설정합니다
 			// 이때 지도의 중심좌표와 레벨이 변경될 수 있습니다
 			map.setBounds(bounds);
-			//희준이별점부분ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ> 
+			//희준이별점부분ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 			var placeList = "";
 						for (var i = 0; i < data.length;i++) {
 							placeList += "<div class='place'>"
 								+ "<figure class='figurefx default'>"
-								+ "<img src='"+root+data[i].place_photo+"' width='250' height='180' class='placeImg'>"
+								+ "<img src='"+root+data[i].place_photo+"' width='348' height='250' class='placeImg'>"
 								+ "<figcaption>"
 				   				+ "<div>";
 			   				if(data[i].place_star >= 0 && data[i].place_star < 0.5){
@@ -303,9 +266,6 @@ function randomPlaceEnd(questionAnswer){
 			
 			$("#re1").val("장소저장");
 			$("#re1").attr("onclick","javascript:saveCourses('"+data[0].place_code+"','"+data[1].place_code+"','"+id+"')");
-
-			$("#re2").val("랜덤장소 다시찾기");
-
 			$("#re2").val("다시선택");
 			$("#re2").attr("onclick","javascript:randomPlaceStart(\'"+root+"\','"+reAqustion+"','"+id+"')");
 		},
@@ -357,18 +317,13 @@ function saveCourses(place1,place2,id){
 <body>
 		<jsp:include page="/TOP.jsp"/>
 	<div id="randomPlace">
-		<div id="randomPlaceTotal">
 			<div id="randomPlaceResult">
-				<div id="placeDiv"><div id="place"></div></div>
-				<div id="map"></div>
+				<div id="place"></div>
 				<input id="placeMapReset" type="button" value="처음위치로 돌아가기" class="btn btn-default">
+				<div id="map"></div>
 			</div>
 			<div id="randomPlaceMain">
-				<div id="start" style="border:1px solid blue">
-					<div class="exeDiv"></div>
-					<div class="exDiv" style="border:1px solid blue"></div>
-					<div class="exDiv" style="border:1px solid blue"></div>
-					<div class="exDiv" style="border:1px solid blue"></div>
+				<div id="start">
 					<input type="button" value="랜덤 장소 찾으러가기" id="startButton" class="btn btn-default" onclick="randomPlaceStart('${root}',${aquestion},'${id}')"> 
 				</div>
 				<div id="question"></div> 
@@ -377,7 +332,6 @@ function saveCourses(place1,place2,id){
 					<input id="re2" type="button" class="btn btn-default"/>
 				</div>
 			</div>
-		</div>
 	</div>
 </body>
 </html>

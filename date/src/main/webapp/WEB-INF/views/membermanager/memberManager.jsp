@@ -156,6 +156,7 @@
 	            <!-- /.panel -->
 	        </div>
 	        <!-- /.col-lg-12 -->
+	        <jsp:include page="/Bottom.jsp"/>
 </div>
     <!-- jQuery -->
     <script src="${root }/css/bootstrap/bower_components/jquery/dist/jquery.min.js"></script>
