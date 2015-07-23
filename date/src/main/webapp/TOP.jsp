@@ -132,8 +132,8 @@ function chatStart(root){
 		</c:if>
 		<div class="menu-A">
 			<div class="menu-Aa" style="margin: 0 0 0 20px;">
-				<a href="${root}/thisIndex.jsp"> <img alt="" src="${root}/resources/main/logo.gif"
-					width="200" height="95">
+				<a href="${root}/thisIndex.jsp"> <img alt="" src="${root}/resources/main/logo1.png"
+					width="190" height="85">
 				</a>
 			</div>
 			<div class="menu-Aa" style="margin: 0 0 0 50px;">

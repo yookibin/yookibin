@@ -130,12 +130,12 @@ function chatStart(root){
 			</div> --%> 
 		</c:if>
 		<div class="menu-A">
-			<div class="menu-Aa" style="margin: 0 0 0 20px;">
-				<a href="./thisIndex.jsp"> <img alt="" src="${root}/resources/main/logo.png"
-					width="200" height="95">
+			<div class="menu-Aa" style="margin: 0 0 0 35px;">
+				<a href="./thisIndex.jsp"> <img alt="" src="${root}/resources/main/logo1.png"
+					width="190" height="95">
 				</a>
 			</div>
-			<div class="menu-Aa" style="margin: 0 0 0 50px;">
+			<div class="menu-Aa" style="margin: 0 0 0 35px;">
 				<div class="menu-Aaa">
 					<i class="fa fa-3x fa-diamond wow bounceIn text-primary" style="color: #D2916C;"></i>
 				</div>
@@ -264,11 +264,11 @@ function chatStart(root){
 					<img alt="" src="${root}/css/imgSlide/images/left.png">
 				</button>
 				<ul>
-					<li><img src="${root}/css/imgSlide/images/slide_1.png" alt=""
+					<li><img src="${root}/css/imgSlide/images/slide_01.png" alt=""
 						onclick="javascript:place_A('${root}','kang001')"></li>
-					<li><img src="${root}/css/imgSlide/images/slide_2.png" alt=""
+					<li><img src="${root}/css/imgSlide/images/slide_02.png" alt=""
 						onclick="javascript:place_A('${root}','jong001')"></li>
-					<li><img src="${root}/css/imgSlide/images/slide_3.png" alt=""
+					<li><img src="${root}/css/imgSlide/images/slide_03.png" alt=""
 						onclick="javascript:place_A('${root}','jong014')"></li>
 				</ul>
 				<button class="next-A" type="button">
@@ -280,13 +280,9 @@ function chatStart(root){
 					<img alt="" src="${root}/css/imgSlide/images/left.png">
 				</button>
 				<ul>
-					<li><div class="event_div" style="background-color: #FFA7A7;"
-							onclick="javascript:events_A('${root}','97','1')">철구를 잡아라 !</div></li>
-					<li><div class="event_div" style="background-color: #98F791;"
-							onclick="javascript:events_A('${root}','98','1')">잠실에 싱크홀이
-							?!</div></li>
-					<li><div class="event_div" style="background-color: #36FFFF;"
-							onclick="javascript:events_A('${root}','99','1')">청정도시 상암</div></li>
+					<li><img src="${root}/css/imgSlide/images/slide_E03.png" alt="" onclick="javascript:events_A('${root}','97','1')"></li>
+					<li><img src="${root}/css/imgSlide/images/slide_E02.png" alt="" onclick="javascript:events_A('${root}','98','1')"></li>
+					<li><img src="${root}/css/imgSlide/images/slide_E01.png" alt="" onclick="javascript:events_A('${root}','99','1')"></li>
 				</ul>
 				<button class="next-B" type="button">
 					<img alt="" src="${root}/css/imgSlide/images/rigth.png">
