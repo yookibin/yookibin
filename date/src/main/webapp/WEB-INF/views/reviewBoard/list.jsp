@@ -52,10 +52,6 @@
 		;
 	}
 	function savePlace(root, id, place) {
-		alert("root" + root);
-		alert("id" + id);
-		alert("place" + place);
-		
 		if (id != '') {
 			swal({
 				title : "Save",
@@ -90,10 +86,8 @@
 				  title: "BAD!",
 				  text: "로그인이 필요합니다.",
 				  type: "error" 
-				  },
-				  function(){
-				    window.location.href ="${root}/thisIndex.jsp";
-				});
+				  }
+				);
 		}
 	}
 </script>
@@ -244,6 +238,7 @@
 					</select>
 					<textarea cols="90" rows="3" disabled="disabled">로그인 후 댓글작성 및 평가가 가능합니다.</textarea>
 					<input type="button" value="댓글달기" class="button gray medium" />
+					
 				</div>
 			</c:if>
 		</div>
@@ -301,8 +296,16 @@
 			</div>
 			<button id="moreComment" onclick="moreComment()"
 				style="display: none">댓글 더 보기</button>
-			<br /> <br />
+			<br/><br/>
+			<br/><br/>
+			<br/><br/>
+			<br/><br/>
+			<br/><br/>
+			<br/><br/>
+			<br/><br/>
 			<jsp:include page="/Bottom.jsp" />
+			
+			
 		</div>
 
 

@@ -627,12 +627,8 @@
 
 			function showCourse(courseLocate1_1, courseLocate1_2, placeName1,
 					courseLocate2_1, courseLocate2_2, placeName2) {
-				/* alert(courseLocate1_1);
-				alert(courseLocate1_2);
-				alert(placeName1);
-				alert(courseLocate2_1);
-				alert(courseLocate2_2);
-				alert(placeName2); */
+				$("#map").focus();
+				location.href="#map";
 				code1_1 = parseFloat(courseLocate1_1);
 				code1_2 = parseFloat(courseLocate1_2);
 				code2_1 = parseFloat(courseLocate2_1);
