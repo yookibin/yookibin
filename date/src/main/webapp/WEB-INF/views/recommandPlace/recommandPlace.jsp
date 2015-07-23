@@ -40,8 +40,11 @@
 <script type="text/javascript">
 	var addNumber = 10;
 	function getCourses(root, fs) {
+		alert("ss");
 		$("#course").css("display", "block");
 		$("#addButton").css("display", "block");
+		$("#place2").empty();
+		$("#place").empty();
 		if (fs == 'res') {
 			addNumber = 10;
 		}
@@ -61,8 +64,9 @@
 						console.log(data);
 						/* alert(data.length); */
 						var courseList = "";
-						if (data.length >= 2) {
-							for (var i = 0; i < data.length - 1; i = i + 1) {
+						alert(data.length);
+						if (data.length >= 3) {
+							for (var i = 0; i < data.length-1; i = i + 1) {
 								courseList += "<option value='"+data[i].place_code+","+data[i+1].place_code+"'>"
 										+ data[i].place_name
 										+ "ㅡㅡ>"
@@ -72,12 +76,12 @@
 							$("#courseSelect").append(courseList);
 
 							var placeList = "";
-							for (var i = 0; i < addNumber; i = i + 1) {
+							for (var i = 0; i < addNumber; i++) {
 								placeList += "<div>"
 
 										+ "<div id='title'>"
 										/* + "<div id='title_a'>" */
- 										+ "<div class='imagepluscontainer' style='width: 263px; height: 199px; z-index: 2'>" 
+										+ "<div class='imagepluscontainer' style='width: 263px; height: 199px; z-index: 2'>"
 										+ "<figure class='figurefx default'>"
 										+ "<img src='"+root+data[i].place_photo+"' width='246' height='176'>"
 										+ "<figcaption>" + "<div>";
@@ -136,10 +140,10 @@
 										+ "<br>"
 										+ "</div>"
 										+ "<div id='title_b'>&nbsp;&nbsp;&nbsp;장소이름 : "
-											+ data[i].place_name
-											+ "<br>"
-											+ "&nbsp;&nbsp;&nbsp;가격 : "
-											+ data[i].place_balance
+										+ data[i].place_name
+										+ "<br>"
+										+ "&nbsp;&nbsp;&nbsp;가격 : "
+										+ data[i].place_balance
 										+ "</div>"
 										+ "<div id='"+data[i].place_code+"'>"
 										+ "</div></div></div></div>";
@@ -196,7 +200,7 @@
 
 .allView {
 	width: 1100px;
-	height: 500px;
+	height: auto;
 	margin-left: auto;
 	margin-right: auto;
 	font-size: 20px;
@@ -236,7 +240,7 @@
 }
 </style>
 </head>
-<body style="font-family:Malgun Gothic;">
+<body style="font-family: Malgun Gothic;">
 	<div style="width: 1050px; margin-left: auto; margin-right: auto;">
 		<jsp:include page="/TOP.jsp" />
 		<table class="table table-striped table-bordered table-hover"
@@ -271,11 +275,11 @@
 	</div>
 	<div class="allView">
 		<div class="date_n_finder"
-			style="background: gray; color: white; height:40px;">
+			style="background: gray; color: white; height: 40px;">
 			<div class="date_n_top">
-				<h5 class="date_n_top" style="padding-top:12px;">
-					<span style="color:white;">
-						&nbsp;&nbsp;  <b> ♠ 데이트 코스 추천!</b>
+				<h5 class="date_n_top">
+					<span style="color: white;"> &nbsp;&nbsp; <b> ♠ 데이트 코스
+							추천!</b>
 					</span>
 				</h5>
 			</div>
@@ -283,7 +287,7 @@
 		</div>
 		<form action="${root}/recommandPlace/select.do" method="POST">
 			<div class="questAll">
-				<div class="ques" style="margin-left:20px;">
+				<div class="ques" style="margin-left: 20px;">
 					<p>
 						지 역 :<br> <select id="place_gu"
 							style="color: black; border-radius: 5px;" name="place_gu">
@@ -374,19 +378,19 @@
 			</div>
 		</form>
 		<div id="place"
-			style="border: 1px solid black; width: 100%; height: auto;"></div>
-		<div id="place2" style="font-size: 30px; width: 1000px; height: auto;">
+			style="width: 100%; height: auto;"></div>
+		<div id="place2" style="font-size: 30px; width: 1000px; height: auto; float:left;">
 		</div>
-
-	</div>
-	<div class="ques7" id="addButton"
-		style="display: none; text-align: right; width: 1000px; height: 50px;">
-		<div>
-			<input type="button" id="btn" class="btn btn-warning" value="더보기"
-				onclick="getCourses('${root }','add')">
+		<div id="addButton"
+			style="display: none; width: 900px; height: auto;">
+			<div>
+				<input type="button" id="btn" class="btn btn-primary btn-lg btn-block" value="더보기"
+					onclick="getCourses('${root }','add')">
+			</div>
 		</div>
-
 	</div>
+
+
 	<jsp:include page="/Bottom.jsp" />
 
 	<!-- jQuery -->
