@@ -133,10 +133,10 @@
 	</div>
 	
 	<div style="width:1080px; height:680px; margin-left:auto; margin-right:auto; ">
-		<div class="line1">
+		<div class="line1" style="padding-bottom:15px;">
 			<p class="orangeLine" align="center"></p>
 		</div>
-		<<%-- a href="${root }/placeBoard/newBoardList.do?place_gu=${place_gu}&place_thema=${place_thema}&place_balance=${place_balance}">인인기순으로 보기!/a>>
+		<%-- a href="${root }/placeBoard/newBoardList.do?place_gu=${place_gu}&place_thema=${place_thema}&place_balance=${place_balance}">인인기순으로 보기!/a>>
 			<div class="line1">
 			<p class="orangeLine"></p>
 		</div>
@@ -167,7 +167,7 @@
 				<div align="center">${placeBoard.place_name}</div>
 			</div>
 		</c:forEach>
-	</div>>
+	</div>
 	
 	<div style="width:1080px; text-align:center; margin-left:auto; margin-right:auto;">
 		<c:if test="${count>0}">
