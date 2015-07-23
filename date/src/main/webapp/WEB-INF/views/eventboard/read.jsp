@@ -75,7 +75,7 @@
 		<p class="orangeLine"></p>
 	</div>
 	
-	<div class="line2">
+	<div class="line8">
 		<span>${eventBoard.event_content }</span>
 	</div>
 	<div class="line7">

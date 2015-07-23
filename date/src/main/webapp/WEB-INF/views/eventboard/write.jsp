@@ -34,12 +34,12 @@
 		<input type="hidden" name="sequence_level" value="${sequence_level}"/>
 		<input type="hidden" name="pageNumber" value="${pageNumber}"/>
 		<input type="hidden" name="writer" value="${nickName }"/>
-	
+<!-- 	
 		<div class="line3" style="height:80px;">
 			<span>
 				<h1>이벤트 글쓰기 </h1>
 			</span>
-		</div>
+		</div> -->
 		
 		<div class="line5">
 			<p class="orangeLine"></p>
@@ -66,7 +66,7 @@
 						
 		</div>
 		
-		<div class="line" style="height:510px;">
+		<div class="line" style="height:450px;">
 		
 			<c:if test="${event_code==0 }">
 				<span>

@@ -84,8 +84,7 @@
 						var url=root+"/chatDB.do?chatId=${chatId}&roomName="+inputValue;
 						location.href=url;
 					});
-			});
-		
+			});		
 	}
 	
 	function entranceRoom(root,roomNum,roomName){

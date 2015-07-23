@@ -36,12 +36,12 @@
 		<input type="hidden" name="event_filePath" value="${eventBoard.event_filePath }"/>
 		<input type="hidden" name="event_fileSize" value="${eventBoard.event_fileSize }"/>
 		<input type="hidden" name="writer" value="${eventBoard.writer }"/>
-		
+	<!-- 	
 		<div class="line3" style="height:80px;">
 			<span>
 				<h1>이벤트 글수정 </h1>
 			</span>
-		</div>
+		</div> -->
 		
 		<div class="line">
 			<p class="orangeLine"></p>
@@ -57,7 +57,7 @@
 				<span class="content"><input type="text" size="50" name="event_title" value="${eventBoard.event_title }"/></span>
 		</div>
 		
-		<div class="line" style="height:510px;">
+		<div class="line" style="height:450px;">
 			<span>
 				<textarea name="event_content" id="ir1" rows="22" style="width:645px;">${eventBoard.event_content }</textarea>
 			</span>

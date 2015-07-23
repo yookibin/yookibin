@@ -122,6 +122,13 @@ a:hover {
 	overflow: auto;
 }
 
+.line8{
+	width: 70%;
+	margin-left: 33%;
+	height:800px;
+	overflow: auto;
+}
+
 #readTitle{
 	font-size:30px;
 	font-style:inherit;
