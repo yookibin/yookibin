@@ -17,11 +17,15 @@ function updateToServer(requestRoot,review_code){
 		
 		success : function(data) {
 			if(data==1){
-				alert("수정완료");
-				location.reload();
+				swal({ 
+					  title: "GOOD!",
+					  text: "수정되었습니다.",
+					  type: "success" 
+					  },
+			  function(){
+					location.reload();
+				});
 			}
-			
-			
 		}
 	});
 }

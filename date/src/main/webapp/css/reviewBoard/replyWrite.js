@@ -3,7 +3,18 @@
  */
 function writeToServer(requestRoot, place_code, nickName,id) {
 	if($("#starReply").val()=="선택하세요" || $("#writeReply").val()=="" || $("#writeReply").val()==null){
-		alert("별점 혹은 평점을 선택 해주세요");
+		
+		/*swall({
+			title:"GOOD!",
+			text: "별점 혹은 평점을 선택 해주세요",
+			type: "success"
+		});*/
+		
+		swal({ 
+			  title: "warning!",
+			  text: "별점 혹은 평점을 선택 해주세요.",
+			  type: "warning" 
+			  });
 	}
 	
 	$.ajax({
@@ -18,8 +29,14 @@ function writeToServer(requestRoot, place_code, nickName,id) {
 		},
 		success : function(data) {
 			if(data==1){
-				alert("입력 되었습니다.");
-				location.reload();
+				swal({ 
+					  title: "Good!",
+					  text: "입력이 완료되었습니다.",
+					  type: "success" 
+				},
+			  function(){
+				 location.reload();
+				});	
 			}
 		}
 	});

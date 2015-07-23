@@ -13,6 +13,8 @@
 <script type="text/javascript" src="${root}/css/reviewBoard/replyUpdate.js"></script>
 <script type="text/javascript" src="${root}/css/reviewBoard/focusScript.js"></script>
 <script type="text/javascript" src="${root}/css/jquery.js"></script>
+<script src="${root }/css/sweetalert-master/dist/sweetalert.min.js"></script>
+<link rel="stylesheet" type="text/css" href="${root }/css/sweetalert-master/dist/sweetalert.css"/>
 <title>Insert title here</title>
 <script>
 	var commentCount =("${reviewList.size()}");
@@ -49,7 +51,7 @@
 						<ul>
 							<li class="date_btn"><a href="javascript:sendSNS('fa');"><img src="http://image2.yanolja.com/site/imageFile/images/V2/dateCourse/images/20141028/date_face.png" width="30" height="30" alt="페이스북" /></a></li>
 							<li class="date_btn"><a href="javascript:sendSNS('tw');"><img src="http://image2.yanolja.com/site/imageFile/images/V2/dateCourse/images/20141028/date_twit.png" width="30" height="30" alt="트윗터" /></a></li>
-							<li><button type="button" class="ir" onclick="" alt="찜하기"></button></li>
+							<li><button type="button" onclick="" style="margin-bottom: 21px;"></button></li>
 						</ul>
 					</div>
 					<div class="detail_info">
@@ -206,7 +208,11 @@
 		</div>
 	</div> 
 		<button id="moreComment" onclick="moreComment()" style="display:none">댓글 더 보기 </button>
+		<br/><br/>
+		<jsp:include page="/Bottom.jsp"/>
 	</div>
+	
+	
 	</div>
 </body>
 </html>

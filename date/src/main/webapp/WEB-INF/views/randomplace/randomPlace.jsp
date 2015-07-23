@@ -31,9 +31,8 @@
 .exeDiv{
 	width : 300px;
 	height : 50px;
-	float : left;
 	border : 1px solid blue;
-	margin: 0 0 0 0%;
+	margin: 2% 0 0 35%;
 }
 
 .exDiv{
@@ -41,7 +40,7 @@
 	height : 300px;
 	float : left;
 	border : 1px solid red;
-	margin: 15% 0 0 3%;
+	margin: 12% 0 0 4%;
 }
 
 #re1 {

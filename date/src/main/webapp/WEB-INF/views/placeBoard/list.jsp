@@ -204,6 +204,8 @@
 				<p class="orangeLine" align="center"></p>
 			</div>
 		</div>
+		
+		<jsp:include page="/Bottom.jsp"></jsp:include>
 	</div>
 </body>
 </html>
