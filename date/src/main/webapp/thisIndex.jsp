@@ -115,7 +115,7 @@ function chatStart(root){
  			<div class="menu-B">
 				<div style="width: 120px; height: 30px; float: right; margin: 10px 30px 0 0; font-size: 13px; color: #D2916C;">
 					<span>
-						<a href="${root }/member/login.do" style=" color: #D2916C;"><b>로그인</b></a>｜<a href="${root }/member/login.do" style=" color: #D2916C;"><b>회원가입</b></a>
+						<a href="${root }/member/login.do" style=" color: #D2916C;"><b>로그인</b></a>｜<a href="${root }/member/register.do" style=" color: #D2916C;"><b>회원가입</b></a>
 					</span>
 				</div>
 			</div>  

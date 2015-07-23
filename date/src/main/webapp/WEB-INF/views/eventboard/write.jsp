@@ -7,14 +7,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>이벤트 등록하기</title>
+<script src="${root }/css/sweetalert-master/dist/sweetalert.min.js"></script>
+<link rel="stylesheet" type="text/css" href="${root }/css/sweetalert-master/dist/sweetalert.css">
+
 <script type="text/javascript" src="${root }/smarteditor/js/HuskyEZCreator.js"></script>
 <script type="text/javascript" src="${root }/css/eventBoard/script.js"></script>
 <link href="${root }/css/eventBoard/style.css" rel="stylesheet"/>
 <script src="${root }/css/alertify.js-0.3.11/lib/alertify.min.js"></script>
 <link rel="stylesheet" href="${root }/css/alertify.js-0.3.11/themes/alertify.core.css"/>
 
-<script src="${root }/css/sweetalert-master/dist/sweetalert.min.js"></script>
-<link rel="stylesheet" type="text/css" href="${root }/css/sweetalert-master/dist/sweetalert.css">
 <script type="text/javascript">
 	function eventReset(){
 		history.back(-1);
@@ -113,9 +114,9 @@ ${winner.join_code}      ${winner.id }        ${winner.join_writer }<br/>
 			<input type="submit" class="btn btn-warning" value="글쓰기"/>
 			<input type="reset" class="btn btn-warning" onclick="eventReset()" value="취소"/>
 			<input type="button" class="btn btn-warning" value="목록보기" onclick="location.href='${root}/eventBoard/list.do'"/>
-		</div>
-		
+		</div>		
 	</form>
+	
 	<jsp:include page="/Bottom.jsp"/>	
 </div>
 </body>

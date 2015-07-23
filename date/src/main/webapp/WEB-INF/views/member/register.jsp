@@ -13,6 +13,8 @@
 <!-- alert -->
 <script src="${root }/css/alertify.js-0.3.11/lib/alertify.min.js"></script>
 <link rel="stylesheet" href="${root }/css/alertify.js-0.3.11/themes/alertify.core.css"/>
+<script src="${root }/css/sweetalert-master/dist/sweetalert.min.js"></script>
+<link rel="stylesheet" type="text/css" href="${root }/css/sweetalert-master/dist/sweetalert.css"/>
 
 <link rel="stylesheet" type="text/css" href="${root }/css/member/style.css" />
 

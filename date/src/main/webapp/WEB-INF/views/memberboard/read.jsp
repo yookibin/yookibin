@@ -192,11 +192,11 @@
       </c:forEach>
       </div>
    </div> 
-      <button id="moreComment2" onclick="moreComment()" style="display:none">댓글 더 보기 </button>
+      <button id="moreComment2" onclick="moreComment()" style="display:none">댓글 더 보기 </button><br/>
+      <br/>
+      <jsp:include page="/Bottom.jsp"/>
    </div>
- <jsp:include page="/Bottom.jsp"/>
+ 
 </div>
-<br/>
-  
 </body>
 </html>

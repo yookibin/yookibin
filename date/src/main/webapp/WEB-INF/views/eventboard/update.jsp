@@ -21,6 +21,9 @@
 			history.back(-1);
 		}
 	</script>
+	
+	<script src="${root }/css/sweetalert-master/dist/sweetalert.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="${root }/css/sweetalert-master/dist/sweetalert.css"/>
 </head>
 <body>
 <div class="totalDiv">
