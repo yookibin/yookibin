@@ -169,6 +169,7 @@
         });
     }); */
     </script>
+    <jsp:include page="/Bottom.jsp"/>
 </div>
 </body>
 </html>

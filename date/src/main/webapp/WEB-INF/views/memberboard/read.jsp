@@ -67,7 +67,7 @@
 
 
 
-	<div style="width:1200px; height:1200px; margin-left:auto; margin-right:auto;" >
+	<div style="width:1200px; height:auto; margin-left:auto; margin-right:auto;" >
 	<jsp:include page="/TOP.jsp"/>
 		<div id="wrapbody">
 			<div id="wrap">
@@ -194,6 +194,9 @@
    </div> 
       <button id="moreComment2" onclick="moreComment()" style="display:none">댓글 더 보기 </button>
    </div>
-
+ <jsp:include page="/Bottom.jsp"/>
+</div>
+<br/>
+  
 </body>
 </html>

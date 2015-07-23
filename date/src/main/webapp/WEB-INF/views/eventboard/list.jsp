@@ -145,7 +145,7 @@
         </div>
         <!-- /.col-lg-12 -->
         </c:if>
-        
+        <jsp:include page="/Bottom.jsp"/>
     </div>
 
 

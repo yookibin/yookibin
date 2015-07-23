@@ -85,7 +85,7 @@
 			<button type="button" class="btn btn-warning" onclick="location.href='${root }/eventBoard/list.do?pageNumber=${pageNumber }'">목록보기</button> 
 		</div>
 	</form>
-
+	<jsp:include page="/Bottom.jsp"/>
 </div>	
 
 </body>
