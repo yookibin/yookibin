@@ -121,9 +121,7 @@ ${winner.join_code}      ${winner.id }        ${winner.join_writer }<br/>
 		</div>
 		
 	</form>
-	
-	<jsp:include page="/Bottom.jsp"/>
-	
+		
 </div>
 </body>
 <script type="text/javascript">

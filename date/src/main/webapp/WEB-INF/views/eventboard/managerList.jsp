@@ -225,9 +225,7 @@
                 </div>
             </div>
         </div>  
-        
-        <jsp:include page="/Bottom.jsp"/>
-              
+                      
     </div>
 	
 </body>

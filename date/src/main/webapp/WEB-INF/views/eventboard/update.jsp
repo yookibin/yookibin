@@ -83,9 +83,7 @@
 			<input type="button" value="목록보기" onclick="location.href='${root}/eventBoard/list.do?pageNumber=${pageNumber}'">
 		</div>
 	</form>
-	
-	<jsp:include page="/Bottom.jsp"/>
-	
+		
 </div>
 </body>
 <script type="text/javascript">

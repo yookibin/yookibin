@@ -87,7 +87,7 @@
 	</form>
 
 </div>	
-	<jsp:include page="/Bottom.jsp"/>
+
 </body>
 <script type="text/javascript">
 var oEditors = [];

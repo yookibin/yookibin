@@ -58,9 +58,7 @@
 			<span>글목록</span>
 		</button>			
 	</div>
-	
-	<jsp:include page="/Bottom.jsp"/>
-	
+		
 </div>	
 </body>
 </html>
