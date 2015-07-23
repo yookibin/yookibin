@@ -1,14 +1,19 @@
 h1, div { text-align: center; }
 
 #mypointBody {
-   
-   background-image: linear-gradient(#aaa 25%, #000);}
 
-.racetimes  { text-align: center; }
+background-color: #EAEAEA;
+}
 
-h1 { text-align: center; }
+.racetimes  {
+text-align: center;
+}
 
-.racetimes {border-collapse: collapse;  width: 100%; margin: auto 6em; }
+h1 {
+text-align: center;
+}
+
+.racetimes {border-collapse: collapse;  width: 100%; margin:10px 0 0 0; }
 
 #firstrow, .column { padding: 2.0rem; font-size: 1.8rem; }
 
@@ -23,9 +28,9 @@ h1 { text-align: center; }
    
    transition: .4s ease-in; } 
 
-#firstrow {   border: 0px solid red;         
-         background: hsla(12, 100%, 40%, 0.5); 
-            }
+#firstrow {   
+	/* background: #FFB2F5;  */
+}
 
 .row:nth-child(even) { background: hsla(50, 50%, 80%, 0.7); }
 
@@ -37,18 +42,13 @@ h1 { text-align: center; }
 
 
 .container {
-
-  display: table;
-
+display: table;
 }
 
 .row {
-
-  display: table-row;
+display: table-row;
 }
 
 .column {
-
-  display: table-cell;
-
+display: table-cell;
 }
