@@ -7,46 +7,81 @@ function registerForm(form){
 	
 	if($("input[name='id']").val()==""){
 		//alert("아이디를 입력하세요.");
-		alertify.alert("아이디를 입력하세요");
+		//alertify.alert("아이디를 입력하세요");
+		swal({ 
+			  title: "warning!",
+			  text: "아이디를 입력하세요.",
+			  type: "warning" 
+			 });
 		
 		$("input[name='id']").focus();
 		return false;
 	}
 	
 	if($("input[name='pw']").val()==""){
-		alertify.alert("비밀번호를 입력하세요");
+		//alertify.alert("비밀번호를 입력하세요");
+		swal({ 
+			  title: "warning!",
+			  text: "비밀번호를 입력하세요.",
+			  type: "warning" 
+			 });
 		$("input[name='pw']").focus();
 		return false;
 	}
 	
 	if($("input[name='pw']").val()!=$("input[name='passwordCheck']").val()){
-		alertify.alert("비밀번호를 확인하세요.");
+		//alertify.alert("비밀번호를 확인하세요.");
 		//alert("pw: "+$("input[name='pw']").val()+"  passwordCheck: "+$("input[name='passwordCheck']").val())
+		swal({ 
+			  title: "warning!",
+			  text: "비밀번호를 확인하세요.",
+			  type: "warning" 
+			 });
 		$("input[name='passwordCheck']").val("");
 		$("input[name='passwordCheck']").focus();
 		return false;
 	}
 	
 	if($("input[name='nickName']").val()==""){
-		alertify.alert("닉네임을 입력하세요.");
+		//alertify.alert("닉네임을 입력하세요.");
+		swal({ 
+			  title: "warning!",
+			  text: "닉네임을 입력하세요.",
+			  type: "warning" 
+			 });
 		$("input[name='nickName']").focus();
 		return false;
 	}
 	
 	if($("input[name='age']").val()==""){
-		alertify.alert("나이를 입력하세요.");
+		//alertify.alert("나이를 입력하세요.");
+		swal({ 
+			  title: "warning!",
+			  text: "나이를 입력하세요.",
+			  type: "warning" 
+			 });
 		$("input[name='age']").focus();
 		return false;
 	}
 	
 	if($("input[name='phone']").val()==""){
-		alertify.alert("전화번호를 입력하세요.");
+		//alertify.alert("전화번호를 입력하세요.");
+		swal({ 
+			  title: "warning!",
+			  text: "전화번호를 입력하세요.",
+			  type: "warning" 
+			 });
 		$("input[name='phone']").focus();
 		return false;
 	}
 	
 	if($("select[name='year']").val()==""||$("select[name='month']").val()==""||$("select[name='day']").val()==""){
-		alertify.alert("생년월일을 입력하세요.");
+		//alertify.alert("생년월일을 입력하세요.");
+		swal({ 
+			  title: "warning!",
+			  text: "생년월일을 입력하세요.",
+			  type: "warning" 
+			 });
 		$("select[name='year']").focus();
 		return false;
 	}
@@ -60,13 +95,23 @@ function registerForm(form){
 	}
 	
 	if($("input[name='zipcode']").val()==""){
-		alertify.alert("우편번호를 입력하세요.");
+		//alertify.alert("우편번호를 입력하세요.");
+		swal({ 
+			  title: "warning!",
+			  text: "우편번호를 입력하세요.",
+			  type: "warning" 
+			 });
 		$("input[name='zipcode']").focus();
 		return false;
 	}
 	
 	if($("input[name='addr']").val()==""){
-		alertify.alert("주소를 입력하세요.");
+		//alertify.alert("주소를 입력하세요.");
+		swal({ 
+			  title: "warning!",
+			  text: "주소를 입력하세요.",
+			  type: "warning" 
+			 });
 		$("input[name='addr']").focus();
 		return false;
 	}
@@ -78,7 +123,12 @@ function idCheck(form, root){
 	//alert(form.id.value);
 	if($("input[name='id']").val()==""){
 		/*alert("아이디를 입력하세요.");*/
-		alertify.alert("아이디를 입력하세요");
+		//alertify.alert("아이디를 입력하세요");
+		swal({ 
+			  title: "warning!",
+			  text: "아이디를 입력하세요.",
+			  type: "warning" 
+			 });
 		$("input[name='id']").focus();
 		return false;
 	}
@@ -91,7 +141,12 @@ function idCheck(form, root){
 function nickNameCheck(form, root){
 	
 	if($("input[name='nickName']").val()==""){
-		alertify.alert("닉네임을 입력하세요.");
+		//alertify.alert("닉네임을 입력하세요.");
+		swal({ 
+			  title: "warning!",
+			  text: "닉네임을 입력하세요.",
+			  type: "warning" 
+			 });
 		$("input[name='nickName']").focus();
 		return false;
 	}
