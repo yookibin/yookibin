@@ -104,7 +104,7 @@
 	</div>
 	<div class="form-group">
       <div class="col-lg-10">      
-        <textarea class="form-control" id="data" rows="15" cols="20" disabled="disabled"></textarea>
+        <textarea class="form-control" id="data" rows="15" cols="20" disabled="disabled" style="resize:none; width:510px;"></textarea>
       </div>
     </div>			
 	
