@@ -49,8 +49,6 @@
 						</p>
 	
 						<ul>
-							<li class="date_btn"><a href="javascript:sendSNS('fa');"><img src="http://image2.yanolja.com/site/imageFile/images/V2/dateCourse/images/20141028/date_face.png" width="30" height="30" alt="페이스북" /></a></li>
-							<li class="date_btn"><a href="javascript:sendSNS('tw');"><img src="http://image2.yanolja.com/site/imageFile/images/V2/dateCourse/images/20141028/date_twit.png" width="30" height="30" alt="트윗터" /></a></li>
 							<li><button type="button" onclick="" style="margin-bottom: 21px;"></button></li>
 						</ul>
 					</div>
@@ -75,7 +73,7 @@
 									</li>
 									<li>
 										<b>운영시간</b>
-										<span>${placeBoard.place_time}</span>
+										<span>${placeBoard.place_runtime}</span>
 									</li>
 									
 									<li>
@@ -153,7 +151,7 @@
 					<option value="40">4</option>
 					<option value="50">5</option>
 				</select>
-				<textarea cols="100" rows="3" disabled="disabled">로그인 후 댓글작성 및 평가가 가능합니다.</textarea> 
+				<textarea cols="90" rows="3" disabled="disabled">로그인 후 댓글작성 및 평가가 가능합니다.</textarea> 
 				<input type="button" value="댓글달기" class="button gray medium" />
 			</div>
 		</c:if>

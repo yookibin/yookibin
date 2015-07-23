@@ -8,13 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
-<meta name="author" content="">
-
-<title>Creative - Start Bootstrap Theme</title>
-
-<!-- Bootstrap Core CSS -->
-<link rel="stylesheet" href="${root}/resources/css/bootstrap.min.css"
-	type="text/css">
+<meta  pe="text/css">
 
 <!-- Custom Fonts -->
 <link

@@ -73,7 +73,7 @@
 	width: 880px;
 	height: 28px;
 	text-align:center;
-	margin-left: 15%;
+	margin-left: 13%;
 }
  
 .orangeLine{
@@ -87,7 +87,7 @@
 }
 
 .button {
-	width:110px;
+	width:105px;
 	height:45px;
 	display: inline-block;
 	zoom: 1; /* zoom and *display = ie7 hack for display:inline-block */

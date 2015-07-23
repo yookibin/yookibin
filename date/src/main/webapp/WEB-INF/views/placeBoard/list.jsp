@@ -25,7 +25,7 @@
 	
 			<!-- 지역, 테마, 가격대, 쿠폰 선택박스 -->
 			<form action="${root}/placeBoard/boardList.do">
-			<div id="finderbox" style="height:163px;">
+			<div id="finderbox" style="height:200px;">
 				<div class="finder_inner">
 					<dl class="finder_list_2014" id='locationlist'>
 						<dt><strong><img src="http://image2.yanolja.com/site/imageFile/images/V2/dateCourse/images/20141023/txt_area.png" width="60" height="14" alt="지역" /></strong></dt>
@@ -71,29 +71,24 @@
 									<input type="radio" name="place_thema" value="전체"> 전체
 								</li>
 								<li>
-									<input type="radio" name="place_thema" value="카페"> 카페	
+									<input type="radio" name="place_thema" value="play"> 놀이
 								</li>
 								<li>
-									<input type="radio" name="place_thema" value="영화"> 영화
+									<input type="radio" name="place_thema" value="art"> 미술관
 								</li>
 								<li>
 									<input type="radio" name="place_thema" value="park"> 공원 
 								</li>
 								<li>
-									<input type="radio" name="place_thema" value="쇼핑"> 쇼핑
+									<input type="radio" name="place_thema" value="shopping"> 쇼핑
 								</li>
 								<li>
-									<input type="radio" name="place_thema" value="테마파크"> 테마파크  
+									<input type="radio" name="place_thema" value="concert"> 콘서트  
 								</li>
 								<li>
-									<input type="radio" name="place_thema" value="축제"> 축제	 
+									<input type="radio" name="place_thema" value="theaters"> 영화관 
 								</li>
-								<li>
-									<input type="radio" name="place_thema" value="문화"> 문화
-								</li>
-								<li>
-									<input type="radio" name="place_thema" value="자연명소"> 자연명소
-								</li>
+							
 							</ul>
 						</dd>
 					</dl>
@@ -109,7 +104,6 @@
 									<input type="radio" name="place_balance" value="1만원"> 1만원대
 								</li>
 								<li>
-
 									<input type="radio" name="place_balance" value="2만원"> 2만원대
 								</li>
 								<li>
@@ -199,11 +193,7 @@
 			</ul>
 		</c:if>
 	</div>
-		<div style="width:1080px; height:680px; margin-left:auto; margin-right:auto; ">
-			<div class="line1">
-				<p class="orangeLine" align="center"></p>
-			</div>
-		</div>
+	
 		
 		<jsp:include page="/Bottom.jsp"></jsp:include>
 	</div>

@@ -67,9 +67,6 @@ function chatStart(root){
 .menu-B {
 	width: 1100px;
 	height: 30px;
-	/* margin-left: auto; */
-	/* margin-right: 230px; */
-	/* margin-top: 20px; */
 	text-align: right;
 }
 
