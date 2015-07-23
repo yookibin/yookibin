@@ -12,33 +12,38 @@ import com.java.date.reviewBoared.dto.reviewBoardDto;
 
 @Component
 public class PlacesearchDaoImpl implements PlacesearchDao {
-	
-	@Autowired
-	private SqlSessionTemplate sqlSession;
+   
+   @Autowired
+   private SqlSessionTemplate sqlSession;
 
-	@Override
-	public List<PlaceDto> gutheam(String area, String park) {
-		HashMap<String,Object> hMap=new HashMap<String,Object>();
-		//System.out.println("areass:"+area+park);
-		hMap.put("area", area);
-		hMap.put("park", park);
-		
-		return sqlSession.selectList("dao.placesearchMapper.selectThema",hMap);
-	}
-	
-	@Override
-	public PlaceDto finalthema(String area, String listcode) {
-		HashMap<String,Object> hMap= new HashMap<String,Object>();
-		
-		hMap.put("area", area);
-		hMap.put("listcode", listcode);
-		
-		
-		return sqlSession.selectOne("dao.placesearchMapper.finalthema",hMap);
-	}
-	@Override
-	public int replyInsert(reviewBoardDto replyDto) {
+   @Override
+   public List<PlaceDto> gutheam(String area, String thema) {
+      HashMap<String,Object> hMap=new HashMap<String,Object>();
+      //System.out.println("areass:"+area+park);
+      hMap.put("area", area);
+      hMap.put("thema", thema);
+      
+      return sqlSession.selectList("dao.placesearchMapper.selectThema",hMap);
+   }
+   
+   @Override
+   public PlaceDto finalthema(String area, String listcode) {
+      HashMap<String,Object> hMap= new HashMap<String,Object>();
+      
+      hMap.put("area", area);
+      hMap.put("listcode", listcode);
+      
+      
+      return sqlSession.selectOne("dao.placesearchMapper.finalthema",hMap);
+   }
+   @Override
+   public int replyInsert(reviewBoardDto replyDto) {
 
-		return 0;
-	}
+      return 0;
+   }
+   
+   public int placesearchSave(HashMap<String, Object> hMap) {
+      return sqlSession.insert("dao.placesearchMapper.placesearchSave",hMap);
+   }
+   
 }

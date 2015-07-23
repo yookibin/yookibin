@@ -9,6 +9,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.java.date.member.dto.EventBoardDto;
 import com.java.date.mypage.dto.MypageDto;
 import com.java.date.recommandPlace.dto.SaveCourseDto;
 
@@ -47,10 +48,16 @@ public class MypageDaoImpl implements MypageDao {
 		return sqlSession.selectList("pointcheck", id);
 	}
 
-	@Override
-	public List<MypageDto> usingevent(String id) {
-		logger.info("id3" + id);
-		return sqlSession.selectList("usingevent", id);
-	}
+	   @Override
+	   public List<EventBoardDto> usingevent(String nickName) {
+	      logger.info("usingeventid3" + nickName);
+	      return sqlSession.selectList("usingevent", nickName);
+	   }
+
+	   @Override
+	   public int remainCheck(String id) {
+	      logger.info("remainCheckid" + id);
+	      return sqlSession.selectOne("remainCheck",id);
+	   }
 
 }

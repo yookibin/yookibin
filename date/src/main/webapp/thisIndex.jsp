@@ -84,55 +84,34 @@ function chatStart(root){
 <body>
 	<div class="AllAll">
 		<c:if test="${id==null}">
-			<div class="menu-B">
-				<div
-					style="width: 70px; height: 40px; float: right; margin: 10px 30px 0 0; font-size: 16px; color: #D2916C;">
+ 			<div class="menu-B">
+				<div style="width: 120px; height: 30px; float: right; margin: 10px 30px 0 0; font-size: 13px; color: #D2916C;">
 					<span>
-						<a href="${root }/member/register.do" style=" color: #D2916C;">회원가입</a>
+						<a href="${root }/member/login.do" style=" color: #D2916C;"><b>로그인</b></a>｜<a href="${root }/member/login.do" style=" color: #D2916C;"><b>회원가입</b></a>
 					</span>
 				</div>
-				<div style="width: 50px; height: 40px; float: right; margin: 10px 0 0 0; font-size: 16px; color: #D2916C;">
-					<span>
-						<a href="${root }/member/login.do" style=" color: #D2916C;">로그인</a>
-					</span>
-				</div>
-			</div>
+			</div>  
 		</c:if>
 
 		<c:if test="${id!=null}">
 			<div class="menu-B">
-				<div
-					style="width: 70px; height: 40px; float: right; margin: 10px 30px 0 0; font-size: 16px; color: #D2916C;">
+				<div style="width: 280px; height: 30px; float: right; margin: 10px 30px 0 0; font-size: 13px; color: #D2916C;">
 					<span>
-						<a href="${root }/member/logout.do" style=" color: #D2916C;">로그아웃</a>
+						<a href="${root }/member/logout.do" style=" color: #D2916C;"><b>로그아웃</b></a>｜
+						<a href="${root }/member/update.do?id=${id}" style=" color: #D2916C;"><b>회원수정</b></a>｜
+						<c:if test="${memberLevel!='AA'}">
+							<a href="${root }/member/delete.do" style=" color: #D2916C;"><b>회원탈퇴</b></a>｜
+						</c:if>
+						<a href="${root}/mypage/mycourse.do" style=" color: #D2916C;"><b>마이페이지</b></a>
 					</span>
 				</div>
-				<div style="width: 70px; height: 40px; float: right; margin: 10px 0 0 0; font-size: 16px; color: #D2916C;">
-					<span>
-						<a href="${root }/member/update.do?id=${id}" style=" color: #D2916C;">회원수정</a>
-					</span>
-				</div>
-				<div style="width: 70px; height: 40px; float: right; margin: 10px 0 0 0; font-size: 16px; color: #D2916C;">
-					<span>
-						<a href="${root }/member/delete.do" style=" color: #D2916C;">회원탈퇴</a>
-					</span>
-				</div>
-				<div style="width: 80px; height: 40px; float: right; margin: 10px 0 0 0; font-size: 16px; color: #D2916C;">
-					<span>
-						<a href="${root}/mypage/mycourse.do" style=" color: #D2916C;">마이페이지</a>
-					</span>
-				</div>
+		
 				<c:if test="${memberLevel=='AA'}">
-					<div style="width: 85px; height: 40px; float: right; margin: 10px 0 0 0; font-size: 16px; color: #D2916C;">
+					<div style="width: 450px; height: 30px; float: right; margin: 10px 30px 0 0; font-size: 13px; color: #D2916C;">
 						<span>
-							<a href="${root }/eventBoard/write.do" style="color: #D2916C;">이벤트추가</a>
+							<a href="${root }/eventBoard/write.do" style=" color: #D2916C;"><b>*이벤트추가</b></a>｜
+							<a href="${root }/recommandPlace/insertM.do" style=" color: #D2916C;"><b>장소추가*</b></a>
 						</span>
-					</div>
-					<div style="width: 70px; height: 40px; float: right; margin: 10px 0 0 0; font-size: 16px; color: #D2916C;">
-						<span>
-							<a href="${root }/recommandPlace/insertM.do" style=" color: #D2916C;">장소추가</a>
-						</span>
-						<br />
 					</div>
 				</c:if>
 			</div>
@@ -152,7 +131,7 @@ function chatStart(root){
 		</c:if>
 		<div class="menu-A">
 			<div class="menu-Aa" style="margin: 0 0 0 20px;">
-				<a href="./thisIndex.jsp"> <img alt="" src="${root}/resources/main/logo.gif"
+				<a href="./thisIndex.jsp"> <img alt="" src="${root}/resources/main/logo.png"
 					width="200" height="95">
 				</a>
 			</div>
@@ -302,12 +281,12 @@ function chatStart(root){
 				</button>
 				<ul>
 					<li><div class="event_div" style="background-color: #FFA7A7;"
-							onclick="javascript:events_A('${root}','77','1')">철구를 잡아라 !</div></li>
+							onclick="javascript:events_A('${root}','97','1')">철구를 잡아라 !</div></li>
 					<li><div class="event_div" style="background-color: #98F791;"
-							onclick="javascript:events_A('${root}','78','1')">잠실에 싱크홀이
+							onclick="javascript:events_A('${root}','98','1')">잠실에 싱크홀이
 							?!</div></li>
 					<li><div class="event_div" style="background-color: #36FFFF;"
-							onclick="javascript:events_A('${root}','84','1')">청정도시 상암</div></li>
+							onclick="javascript:events_A('${root}','99','1')">청정도시 상암</div></li>
 				</ul>
 				<button class="next-B" type="button">
 					<img alt="" src="${root}/css/imgSlide/images/rigth.png">

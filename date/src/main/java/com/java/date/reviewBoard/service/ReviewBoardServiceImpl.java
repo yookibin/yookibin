@@ -1,12 +1,23 @@
 package com.java.date.reviewBoard.service;
 
+import java.util.List;
+import java.util.Map;
 import java.util.logging.Logger;
 
 
+
+
+
+
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.java.date.reviewBoard.dao.ReviewBoardDao;
+import com.java.date.reviewBoard.dto.ReviewBoardDto;
 
 @Component
 public class ReviewBoardServiceImpl implements ReviewBoardService {
@@ -58,4 +69,18 @@ public class ReviewBoardServiceImpl implements ReviewBoardService {
 		return reviewBoardDao.replyUpdate(review_code, review_content);
 	}
 	
+	@Override
+	   public void myReviwBoard(ModelAndView mav) {
+	      logger.info("myReviwBoardService------------------");
+	      
+	      Map<String,Object> hmap=mav.getModelMap();
+	      HttpServletRequest request=(HttpServletRequest)hmap.get("request");
+	      
+	      String id=request.getParameter("id");
+	      
+	      List<ReviewBoardDto> myReviwBoard= reviewBoardDao.myReviewGet(id);
+	      
+	      mav.addObject("myReviwBoard",myReviwBoard);
+	      mav.setViewName("reviewBoard/myReviewBoard");
+	   }
 }

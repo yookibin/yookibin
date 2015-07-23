@@ -14,15 +14,7 @@
 <link type="text/css" rel="stylesheet" href="${root}/css/placeBoard/style.css"/>
 <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <style type="text/css">
-#randomPlaceTotal{
-	width:1100px;
-	height:660px;
-	border:2px solid brown; 
-	border-radius:1em/1em;
-}
-
 /* background-image: url("images/darkpattern.png");*/
-
 #randomPlace{
 	width:1100px;
 	margin-left:auto;
@@ -30,8 +22,30 @@
 	text-align: center;
 }
 
+#randomPlaceTotal{
+	border: 2px solid brown;
+	border-radius:1em/1em;
+	height: 700px;
+}
+
+.exeDiv{
+	width : 300px;
+	height : 50px;
+	float : left;
+	border : 1px solid blue;
+	margin: 0 0 0 0%;
+}
+
+.exDiv{
+	width : 300px;
+	height : 300px;
+	float : left;
+	border : 1px solid red;
+	margin: 15% 0 0 3%;
+}
+
 #re1 {
-	width: 330px;
+	width: 350px;
 	height: 50px;
 	border-radius:1em/1em;
 	background-color: #8A4924;
@@ -39,7 +53,7 @@
 }
 
 #re2 {
-	width: 330px;
+	width: 350px;
 	height: 50px;
 	border-radius:1em/1em;
 	background-color: #8A4924;
@@ -88,11 +102,17 @@
 	background-color: #8A4924;
 	color: white;
 }
+
 .place{
+
 	margin-top:5%;
 	border:1px solid blue;
 	width: 60%;
 	height: 250px;
+
+	width: 50%;
+	float:left;
+	height: 300px;
 }
 
 
@@ -102,7 +122,7 @@
 }
 
 #startButton{
-	margin: 48% 0% 0% 0%;
+	margin: 3% 0% 0% 0%;
 	width: 280px;
 	height: 100px;
 	font-size: 25px;
@@ -281,9 +301,12 @@ function randomPlaceEnd(questionAnswer){
 			
 			$("#re1").attr("onclick","javascript:searchPlaces()");
 			
-			$("#re1").val("선택");
+			$("#re1").val("장소저장");
 			$("#re1").attr("onclick","javascript:saveCourses('"+data[0].place_code+"','"+data[1].place_code+"','"+id+"')");
+
 			$("#re2").val("랜덤장소 다시찾기");
+
+			$("#re2").val("다시선택");
 			$("#re2").attr("onclick","javascript:randomPlaceStart(\'"+root+"\','"+reAqustion+"','"+id+"')");
 		},
 		error:function(){
@@ -332,16 +355,20 @@ function saveCourses(place1,place2,id){
 <title>Insert title here</title>
 </head>
 <body>
-	<div id="randomPlace">
 		<jsp:include page="/TOP.jsp"/>
-		<div id="randomPlaceTotal" <%-- style="background:url(${root}/resources/random/random.jpg)" --%>>
+	<div id="randomPlace">
+		<div id="randomPlaceTotal">
 			<div id="randomPlaceResult">
 				<div id="placeDiv"><div id="place"></div></div>
 				<div id="map"></div>
 				<input id="placeMapReset" type="button" value="처음위치로 돌아가기" class="btn btn-default">
 			</div>
 			<div id="randomPlaceMain">
-				<div id="start">
+				<div id="start" style="border:1px solid blue">
+					<div class="exeDiv"></div>
+					<div class="exDiv" style="border:1px solid blue"></div>
+					<div class="exDiv" style="border:1px solid blue"></div>
+					<div class="exDiv" style="border:1px solid blue"></div>
 					<input type="button" value="랜덤 장소 찾으러가기" id="startButton" class="btn btn-default" onclick="randomPlaceStart('${root}',${aquestion},'${id}')"> 
 				</div>
 				<div id="question"></div> 

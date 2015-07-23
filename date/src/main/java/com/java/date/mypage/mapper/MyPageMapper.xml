@@ -15,9 +15,20 @@
       select * from point where id=#{id}      
    </select>
    
-   <select id="usingevent" parameterType="String" resultType="com.java.date.mypage.dto.MypageDto">
-      select * from event where id=#{id}
+   <select id="usingevent" parameterType="String" resultType="com.java.date.member.dto.EventBoardDto">
+   <![CDATA[
+        select * from event_board where writer = #{nickName}
+      ]]>
+      
+
    </select>
+   
+   <select id="remainCheck" parameterType="String" resultType="int">
+   <![CDATA[
+       select point_total from point where id=#{id} and point_code=(select max(point_code) from point where id=#{id})
+   ]]>
+      
+   </select> 
 </mapper>
 
 

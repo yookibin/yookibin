@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.java.date.member.dto.EventBoardDto;
 import com.java.date.mypage.dto.MypageDto;
 import com.java.date.mypage.service.MypageService;
 import com.java.date.recommandPlace.dto.LoadCourseDto;
@@ -71,13 +72,21 @@ public class MypageController {
 	   
 	@RequestMapping("/mypage/usingevent.do")
 	@ResponseBody
-	public List<MypageDto> usingevent(String id){
-		logger.info("usingEvetn Start--------------");
-		System.out.println("Event 된당");
+	public List<EventBoardDto> usingevent(String nickName){
+	  logger.info("usingEvetn Start--------------");
+	  System.out.println("Event 된당");
 	      
-		return mypageService.usingCheck(id);
-	}
+	     return mypageService.usingCheck(nickName);
+	  }
 	
+	@RequestMapping("/mypage/remainPoint.do")
+	   @ResponseBody
+	   public int remainPoint(String id){
+	      logger.info("remainPoint Start--------------");
+	      System.out.println("remainPoint 된당");
+	      
+	      return mypageService.remainCheck(id);
+	   }
 	/*
 	@RequestMapping(value = "/mypage/point.do", method = RequestMethod.GET)
 	public ModelAndView point(HttpServletRequest request,
