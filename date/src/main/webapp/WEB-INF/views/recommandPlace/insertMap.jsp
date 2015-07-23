@@ -255,5 +255,7 @@ textarea {
 			</div>
 		</form>
 	</div>
+	<div style="height:20px;"></div>
+	<jsp:include page="/Bottom.jsp" />
 </body>
 </html>

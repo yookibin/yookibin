@@ -319,11 +319,11 @@ function chatStart(root){
 							<img src="${root}/resources/main/logo1.png" alt="" style="width: 30px; height: 30px; margin-bottom: 5px; display: block; margin-left: auto; margin-right: auto;">
 						</div>
 						
-						<b>©Cheolgucompany</b> 
+						<b>©Cheolgucompany</b>
 					</div>
-					<div class="bt_div_bt">
-					정지혜 P.H 010-4582-0844  /  박종현 P.H 010-2726-0813  /  정희준 P.H 010-4977-4586 / <!-- <br/> -->
-					이진호 P.H 010-9893-3333  /  유기빈 P.H 010-9940-3880  /  정수현 P.H 010-9878-2587
+					<div class="bt_div_bt" style="text-align:center;">
+					정지혜 : 010-4582-0844  /  박종현 : 010-2726-0813  /  정희준 : 010-4977-4586 / <!-- <br/> -->
+					이진호 : 010-9893-3333  /  유기빈 : 010-9940-3880  /  정수현 : 010-9878-2587
 					</div>
 				</div>
 			</div>
