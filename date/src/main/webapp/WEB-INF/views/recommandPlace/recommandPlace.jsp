@@ -236,7 +236,7 @@
 }
 </style>
 </head>
-<body>
+<body style="font-family:Malgun Gothic;">
 	<div style="width: 1050px; margin-left: auto; margin-right: auto;">
 		<jsp:include page="/TOP.jsp" />
 		<table class="table table-striped table-bordered table-hover"
@@ -273,7 +273,7 @@
 		<div class="date_n_finder"
 			style="background: gray; color: white; height:40px;">
 			<div class="date_n_top">
-				<h5 class="date_n_top">
+				<h5 class="date_n_top" style="padding-top:12px;">
 					<span style="color:white;">
 						&nbsp;&nbsp;  <b> ♠ 데이트 코스 추천!</b>
 					</span>
@@ -387,6 +387,7 @@
 		</div>
 
 	</div>
+	<jsp:include page="/Bottom.jsp" />
 
 	<!-- jQuery -->
 	<script

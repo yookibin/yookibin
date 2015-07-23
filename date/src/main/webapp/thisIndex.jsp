@@ -171,8 +171,7 @@ function chatStart(root){
 				<div id="topMenu">
 					<ul>
 						<li class="topMenuLi" style="margin: 0 0 0 14px;"><a
-							class="menuLink"
-							href="http://unikys.tistory.com/category/Programming%20Lecture" style="color: #FFF2E6;">데이트
+							class="menuLink" style="color: #FFF2E6;">데이트
 								코스추천</a>
 							<ul class="submenu" style="z-index: 1;">
 								<li><a href="${root }/recommandPlace/findPlace.do"
@@ -227,17 +226,13 @@ function chatStart(root){
 		</div>
 		<div id="sliderFrame">
 			<div id="slider">
-				<a href="${root}/placeBoard/reviewBoard.do?place_code=kang007"
-					target="_blank"> <img
+				<a href="${root}/placeBoard/reviewBoard.do?place_code=kang007"> <img
 					src="${root}/css/imgSlide/images/amain1.png" alt="전망보고 영화보고~" />
-				</a> <a href="${root}/placeBoard/reviewBoard.do?place_code=jong008"
-					target="_blank"> <img
+				</a> <a href="${root}/placeBoard/reviewBoard.do?place_code=jong008"> <img
 					src="${root}/css/imgSlide/images/amain2.JPG" alt="와 저높은 빌딩은 뭐야~!?" />
-				</a> <a href="${root}/placeBoard/reviewBoard.do?place_code=song014"
-					target="_blank"> <img
+				</a> <a href="${root}/placeBoard/reviewBoard.do?place_code=song014"> <img
 					src="${root}/css/imgSlide/images/amain3.png" alt="롯데월드는 지헤공주와 함께~" />
-				</a> <a href="${root}/placeBoard/reviewBoard.do?place_code=song010"
-					target="_blank"> <img
+				</a> <a href="${root}/placeBoard/reviewBoard.do?place_code=song010"> <img
 					src="${root}/css/imgSlide/images/amain4.png" alt="으헤헤헤헤우하하하하" />
 				</a>
 			</div>
@@ -318,8 +313,7 @@ function chatStart(root){
 				</button>
 			</div>
 		</div>
-			<div class="bt">
-				<div class="bt_div">
+				<div class="bt_div" style="border-top:3px red solid;">
 					<div class="bt_div_cen">	
 						<div class="bt_div_cen_img">
 							<img src="${root}/resources/main/logo1.png" alt="" style="width: 30px; height: 30px; margin-bottom: 5px; display: block; margin-left: auto; margin-right: auto;">
@@ -333,7 +327,6 @@ function chatStart(root){
 					</div>
 				</div>
 			</div>
-	</div>
 
 </body>
 
