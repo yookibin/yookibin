@@ -66,7 +66,7 @@
 						
 		</div>
 		
-		<div class="line" style="height:450px;">
+		<div class="line" style="height:500px;">
 		
 			<c:if test="${event_code==0 }">
 				<span>
