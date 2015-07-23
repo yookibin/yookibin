@@ -45,7 +45,7 @@
 <body>
 	<div class="AllAll">
 		<div class="menu-Aa" style="margin: 0 0 0 20px;">
-				<a href="${root}/thisIndex.jsp"> <img alt="" src="${root}/resources/main/logo.gif"
+				<a href="${root}/thisIndex.jsp"> <img alt="" src="${root}/resources/main/logo.png"
 					width="200" height="95">
 				</a>
 			</div>

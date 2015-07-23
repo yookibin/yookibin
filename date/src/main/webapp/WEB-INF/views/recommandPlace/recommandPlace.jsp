@@ -72,12 +72,14 @@
 							$("#courseSelect").append(courseList);
 
 							var placeList = "";
+							if(data.length < addNumber){
+								addNumber=data.length;
+							}
 							for (var i = 0; i < addNumber; i = i + 1) {
 								placeList += "<div>"
-
 										+ "<div id='title'>"
 										/* + "<div id='title_a'>" */
- 										+ "<div class='imagepluscontainer' style='width: 263px; height: 199px; z-index: 2'>" 
+										+ "<div class='imagepluscontainer' style='width: 263px; height: 199px; z-index: 2'>"
 										+ "<figure class='figurefx default'>"
 										+ "<img src='"+root+data[i].place_photo+"' width='246' height='176'>"
 										+ "<figcaption>" + "<div>";
@@ -136,14 +138,14 @@
 										+ "<br>"
 										+ "</div>"
 										+ "<div id='title_b'>&nbsp;&nbsp;&nbsp;장소이름 : "
-											+ data[i].place_name
-											+ "<br>"
-											+ "&nbsp;&nbsp;&nbsp;가격 : "
-											+ data[i].place_balance
+										+ data[i].place_name
+										+ "<br>"
+										+ "&nbsp;&nbsp;&nbsp;가격 : "
+										+ data[i].place_balance
 										+ "</div>"
 										+ "<div id='"+data[i].place_code+"'>"
 										+ "</div></div></div></div>";
-							}
+								}
 							$("#place2").empty();
 							$("#place").empty();
 							$("#place").append(placeList);
@@ -236,7 +238,7 @@
 }
 </style>
 </head>
-<body style="font-family:Malgun Gothic;">
+<body style="font-family: Malgun Gothic;">
 	<div style="width: 1050px; margin-left: auto; margin-right: auto;">
 		<jsp:include page="/TOP.jsp" />
 		<table class="table table-striped table-bordered table-hover"
@@ -271,11 +273,11 @@
 	</div>
 	<div class="allView">
 		<div class="date_n_finder"
-			style="background: gray; color: white; height:40px;">
+			style="background: gray; color: white; height: 40px;">
 			<div class="date_n_top">
-				<h5 class="date_n_top" style="padding-top:12px;">
-					<span style="color:white;">
-						&nbsp;&nbsp;  <b> ♠ 데이트 코스 추천!</b>
+				<h5 class="date_n_top" style="padding-top: 12px;">
+					<span style="color: white;"> &nbsp;&nbsp; <b> ♠ 데이트 코스
+							추천!</b>
 					</span>
 				</h5>
 			</div>
@@ -283,7 +285,7 @@
 		</div>
 		<form action="${root}/recommandPlace/select.do" method="POST">
 			<div class="questAll">
-				<div class="ques" style="margin-left:20px;">
+				<div class="ques" style="margin-left: 20px;">
 					<p>
 						지 역 :<br> <select id="place_gu"
 							style="color: black; border-radius: 5px;" name="place_gu">
@@ -377,17 +379,15 @@
 			style="border: 1px solid black; width: 100%; height: auto;"></div>
 		<div id="place2" style="font-size: 30px; width: 1000px; height: auto;">
 		</div>
-
-	</div>
-	<div class="ques7" id="addButton"
-		style="display: none; text-align: right; width: 1000px; height: 50px;">
-		<div>
-			<input type="button" id="btn" class="btn btn-warning" value="더보기"
-				onclick="getCourses('${root }','add')">
+		<div class="ques7" id="addButton"
+			style="display: none; text-align: right; width: 1000px; height: auto;">
+				<input type="button" id="btn" class="btn btn-warning"
+					style="width: 1000px; height: 50px;"
+					value="더보기" onclick="getCourses('${root }','add')"><br><br>
+				<jsp:include page="/Bottom.jsp" />
 		</div>
-
 	</div>
-	<jsp:include page="/Bottom.jsp" />
+	
 
 	<!-- jQuery -->
 	<script
@@ -420,7 +420,6 @@
 	</script>
 </body>
 </html>
-
 
 
 

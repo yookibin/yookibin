@@ -3,17 +3,21 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.myPageMapper">
-	<delete id="delete" parameterType="Integer">
-		delete save_courses where num=#{num}
-	</delete>
-	
-	<select id="getMyCourse" parameterType="java.util.Map" resultType="com.java.date.recommandPlace.dto.SaveCourseDto">
-		select * from save_courses where save_cid=#{id} and save_thema=#{like}
-	</select>
-	
-	<select id="pointcheck" parameterType="String" resultType="com.java.date.mypage.dto.MypageDto">
-      select * from point where id=#{id}      
+   <delete id="delete" parameterType="Integer">
+      delete save_courses where num=#{num}
+   </delete>
+   
+   <select id="getMyCourse" parameterType="java.util.Map" resultType="com.java.date.recommandPlace.dto.SaveCourseDto">
+      select * from save_courses where save_cid=#{id} and save_thema=#{like}
    </select>
+   
+   <select id="pointcheck" parameterType="String" resultType="com.java.date.mypage.dto.MypageDto">
+      select * from point where id=#{id} order by point_date ,point_total desc
+
+
+   </select>
+   
+   
    
    <select id="usingevent" parameterType="String" resultType="com.java.date.member.dto.EventBoardDto">
    <![CDATA[
@@ -30,7 +34,6 @@
       
    </select> 
 </mapper>
-
 
 
 

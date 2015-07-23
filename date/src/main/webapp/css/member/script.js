@@ -160,9 +160,7 @@ function zipcodeCheck(form, root){
 	//alert(form.zipcode.value +","+ root);
 	var url=root+"/member/zipcodeCheck.do";
 	//alert(url);
-	window.open(url,"","width=500, height=500");
-	
-	
+	window.open(url,"","width=500, height=500");	
 }
 
 function sendAddress(zipcode, sido, gugun, dong, ri, bunji){

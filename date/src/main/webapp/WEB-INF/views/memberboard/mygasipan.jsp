@@ -45,7 +45,7 @@
    
 </head>
 <body>
-	<jsp:include page="/youAndITop.jsp"/>
+	<jsp:include page="/TOP.jsp"/>
 <div class="totalDiv">	
 <c:if test="${count!=0 }">
 	 <!-- /.row -->
@@ -62,7 +62,7 @@
 						 <center>게시판에 저장된 글이 없습니다.</center>
 					</c:if>
 	
-		<div style="height:400px;">
+		<div style="height:auto;">
             <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                  <thead>
                     <tr>
@@ -136,5 +136,6 @@
         <!-- /.col-lg-12 -->
 		
 	</c:if>
+	<jsp:include page="/Bottom.jsp"/>
 </body>
 </html>
