@@ -13,21 +13,21 @@
 	<!-- 에디터 -->
 	<script type="text/javascript" src="${root }/smarteditor/js/HuskyEZCreator.js"></script>
 	
+	<script src="${root }/css/alertify.js-0.3.11/lib/alertify.min.js"></script>
+	<link rel="stylesheet" href="${root }/css/alertify.js-0.3.11/themes/alertify.core.css"/>
+	
 </head>
 <body>
-<jsp:include page="/youAndITop.jsp"/>
+
 <div class="totalDiv">	
+<jsp:include page="/TOP.jsp"/>
 	<form class="form_style"  action="${root }/memberboard/writeOk.do"  method="post" onsubmit="return doPost(this)" enctype="multipart/form-data">	
 		<%-- <input type="hidden" name="boardNumber" value="${boardNumber}"/> --%>
 		<input type="hidden" name="pageNumber" value="${pageNumber}"/>
 		<input type="hidden" name="board_writer" value="${nickName}"/>
 		<input type="hidden" name="memberLevel" value="${memberLevel}"/>
 		
-		<div class="line3">
-			<span>
-				<h1>추천 글쓰기</h1>
-			</span>
-		</div>
+		
 		
 		<div class="line4">
 			<p class="orangeLine"></p>
@@ -50,9 +50,9 @@
 		</div>
 		
 		<div class="line" style="width:641px; border-width:0px; text-align:center;">
-			<input type="submit" value="확인"/>
-			<input type="reset" value="다시작성"/>
-			<input type="button" value="목록보기" onclick="location.href='${root}/memberboard/list.do'"/>
+			<input  class="btn btn-warning"  type="submit" value="확인"/>
+			<input  class="btn btn-warning"  type="reset" value="다시작성"/>
+			<input  class="btn btn-warning"  type="button" value="목록보기" onclick="location.href='${root}/memberboard/list.do'"/>
 		</div>
 	</form>
 </div>
@@ -80,7 +80,7 @@ nhn.husky.EZCreator.createInIFrame({
 function doPost(form)
 {
 	if((form.board_title.value==null)||(form.board_title.value=="")){
-		alert("제목을 입력하세요.");
+		alertify.alert("제목을 입력하세요.");
 		form.board_title.focus();
 		return false;
 	}

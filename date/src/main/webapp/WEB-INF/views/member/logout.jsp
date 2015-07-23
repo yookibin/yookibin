@@ -26,7 +26,7 @@
 			  type: "success" 
 			  },
 			  function(){
-			    window.location.href ="${root}/member/login.do";
+			    window.location.href ="${root}/thisIndex.jsp";
 			});
 	</script>
 

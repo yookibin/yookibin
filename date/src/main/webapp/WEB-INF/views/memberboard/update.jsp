@@ -12,19 +12,19 @@
 	
 	<!-- 에디터 -->
 	<script type="text/javascript" src="${root}/smarteditor/js/HuskyEZCreator.js"></script>
+	
+	<script src="${root }/css/alertify.js-0.3.11/lib/alertify.min.js"></script>
+	<link rel="stylesheet" href="${root }/css/alertify.js-0.3.11/themes/alertify.core.css"/>
 </head>
 <body>
-	<jsp:include page="/youAndITop.jsp"/>
+	
 	<div class="totalDiv">	
-	<form class="form_style" action="${root}/memberboard/update.do" method="post" onsubmit="return boardUpdate()">
+	<jsp:include page="/TOP.jsp"/>
+	<form class="form_style" action="${root}/memberboard/update.do" method="post" onsubmit="return boardUpdate(this)">
 		<input type="hidden" name="board_num" value="${memberBoard.board_num}"/>
 		<input type="hidden" name="pageNumber" value="${pageNumber}"/>
 		
-		<div class="line3">
-			<span>
-				<h1>추천 글 수정</h1>
-			</span>
-		</div>
+
 		
 		<div class="line4">
 			<p class="orangeLine"></p>
@@ -46,9 +46,9 @@
 		</div>
 		
 		<div class="line" style="width:641px; border-width:0px; text-align:center;">
-			<input type="submit" value="글수정"/>
-			<input type="reset" value="취소"/>
-			<input type="button" value="목록보기" onclick="location.href='${root}/board/list.do?pageNumber=${pageNumber}'">
+			<input  class="btn btn-warning"  type="submit" value="글수정"/>
+			<input  class="btn btn-warning"  type="reset" value="취소"/>
+			<input  class="btn btn-warning"  type="button" value="목록보기" onclick="location.href='${root}/memberboard/list.do?pageNumber=${pageNumber}'">
 		</div>
 	</form>
 	</div>
@@ -73,8 +73,14 @@ nhn.husky.EZCreator.createInIFrame({
     },
     fCreator: "createSEditor2"
 });
-function boardUpdate()
+function boardUpdate(form)
 {
+	
+	if((form.board_title.value==null)||(form.board_title.value=="")){
+		alertify.alert("제목을 입력하세요.");
+		form.board_title.focus();
+		return false;
+	}
 	//에디터의 내용을 실제 Textarea로 가져옴
 	oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD",[]);
 

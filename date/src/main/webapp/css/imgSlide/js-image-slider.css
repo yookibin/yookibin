@@ -132,7 +132,7 @@
 #thumbs img{border:1px solid #DDD; cursor:pointer; width:70px; height:59.5px;}
 
 #thumbs .frame {float:left;padding:2px;border:1px solid #CCC;background:white;border-radius:3px;box-shadow:0 0 3px #BBB;font-size:0;line-height:0;}
-#thumbs .thumb-content {float:left;width:110px;padding-left:18px;}
+#thumbs .thumb-content {float:left;width:110px;padding-left:18px; font-family: Malgun Gothic;}
 
 /* Captions in #thumbs .thumb-content */
 #thumbs .thumb-content p {font-weight:bold; color:#BF5D9B; margin:0 0 3px;padding:0;}

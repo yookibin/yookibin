@@ -720,7 +720,7 @@ dl p span.filter3{position: absolute; top: -3px; left: -22px; background: url(ht
 .section_2{width: 930px; _width: 932px; padding: 25px 0 0 0; border-top: solid 1px #e5e5e5; *zoom: 1;}
 .section_2:after{content:""; visibility:hidden; display:block; clear:both;}
 .date_detail_tab{float: left; width: 720px; margin-right: 12px; _margin-right: 0px;}
-.date_detail_tab2{float: left; width: 720px; margin-right: 12px; _margin-right: 0px; margin-top:40px;}
+.date_detail_tab2{float: left; width: 720px; margin-right: 12px; _margin-right: 0px;}
 .date_tab ul{overflow: hidden; position: relative; width: 929px; height: 40px; background:url(http://image2.yanolja.com/site/imageFile/images/V2/dateCourse/images/20141028/date_tab.png) no-repeat 0 0; background-size: 929px 40px; *zoom: 1;}
 .date_tab ul:after{content:""; visibility:hidden; display:block; clear:both;}
 .date_tab li{position: relative; float: left;}
@@ -1554,6 +1554,7 @@ span.bold{font-weight: bold;}
 #container5:after{content:""; visibility:hidden; display:block; clear:both;}
 #content{position: relative; float: right; z-index: 10; width: 720px; text-align: left; margin-left:5%}
 #content2{position: relative; float: right; width: 758px; text-align: left; border: 1px solid #dbdbdb;}
+#content3{position: relative; z-index: 10; width: 720px; text-align: left; margin-left:5%}
 .menu_box{  position: absolute; left: 0px; top: -75px; width: 200px; height: 25px; background: url(http://image2.yanolja.com/site/imageFile/images/siteInclude/20110218/bg_container_sub2.gif) no-repeat;}
 .snb{float: left; width: 200px; text-align: left;}
 /*

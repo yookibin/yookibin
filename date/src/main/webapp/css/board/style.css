@@ -9,6 +9,14 @@
     
 }
 
+.replyDivp2 {
+	width: 880px;
+	height: 28px;
+	text-align:center;
+	margin-left: 15%;
+	margin-top:1%;
+}
+
 .line5{
 	width: 100%;
 	
@@ -72,7 +80,7 @@
 
 body{
    font-size:12px;
-   font-family:Gulim, dotum, sans-serif;
+   font-family:Malgun Gothic;
 }
 
 a:link {
