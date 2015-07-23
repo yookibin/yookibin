@@ -110,7 +110,8 @@ function chatStart(root){
 					<div style="width: 450px; height: 30px; float: right; margin: 10px 30px 0 0; font-size: 13px; color: #D2916C;">
 						<span>
 							<a href="${root }/eventBoard/write.do" style=" color: #D2916C;"><b>*이벤트추가</b></a>｜
-							<a href="${root }/recommandPlace/insertM.do" style=" color: #D2916C;"><b>장소추가*</b></a>
+							<a href="${root }/recommandPlace/insertM.do" style=" color: #D2916C;"><b>장소추가</b></a>｜
+							<a href="${root }/membermanager/memberManager.do" style=" color: #D2916C;"><b>회원관리*</b></a>
 						</span>
 					</div>
 				</c:if>
