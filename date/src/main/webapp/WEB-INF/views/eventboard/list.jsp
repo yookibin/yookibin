@@ -59,7 +59,7 @@
                     <div class="dataTable_wrapper">
                     	
                     	<c:if test="${memberLevel=='AA' }">
-							<a href="${root }/eventBoard/write.do">글쓰기(운영자만)</a><br/><br/>
+							<a class="btn btn-warning" href="${root }/eventBoard/write.do">글쓰기</a><br/><br/>
 						</c:if>						
 						
 						<c:if test="${count==0 }">

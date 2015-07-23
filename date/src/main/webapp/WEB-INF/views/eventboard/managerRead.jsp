@@ -27,10 +27,10 @@
 	<!-- eventBoard와 pageNumber를 넘겨줌 -->
 	
 	 <input style="margin-left:80%" type="button" align="middle" value="글목록" onclick="location.href='${root}/eventBoard/managerList.do?eventPageNumber=${eventPageNumber }&pageNumber=${pageNumber }&event_code=${event_code }&group_number=${group_number}&sequence_number=${sequence_number}&sequence_level=${sequence_level}'"/>
-	 <div class="line1">
+	 <div class="line7">
 		<p class="orangeLine"></p>
 	</div>
-	 <div class="line1">
+	 <div class="line7">
 		<div class="centers">			
 			<span id="readTitle">${eventMember.join_title }</span>
 		</div>
@@ -40,21 +40,21 @@
 		</div>
 	</div>	
 	
-	<div class="line1">
+	<div class="line7">
 		<p class="orangeLine"></p>
 	</div>
 	
 	<div class="line6">
 		<span>${eventMember.join_content }</span>
 	</div>
-	<div class="line1">
+	<div class="line7">
 		<p class="orangeLine"></p>
 	</div>
 	<div class="line2" style="text-align:center;">	
-		<button type="button" onclick="managerDelFun('${root}','${eventMember.join_code }','${eventMember.event_code }','${eventPageNumber }','${pageNumber }','${group_number }','${sequence_number }','${sequence_level }')">
+		<button type="button" class="btn btn-warning" onclick="managerDelFun('${root}','${eventMember.join_code }','${eventMember.event_code }','${eventPageNumber }','${pageNumber }','${group_number }','${sequence_number }','${sequence_level }')">
 			<span>글삭제</span>
 		</button>
-		<button type="button" onclick="location.href='${root}/eventBoard/managerList.do?eventPageNumber=${eventPageNumber }&pageNumber=${pageNumber }&event_code=${event_code }&group_number=${group_number}&sequence_number=${sequence_number}&sequence_level=${sequence_level}'">
+		<button type="button" class="btn btn-warning" onclick="location.href='${root}/eventBoard/managerList.do?eventPageNumber=${eventPageNumber }&pageNumber=${pageNumber }&event_code=${event_code }&group_number=${group_number}&sequence_number=${sequence_number}&sequence_level=${sequence_level}'">
 			<span>글목록</span>
 		</button>			
 	</div>

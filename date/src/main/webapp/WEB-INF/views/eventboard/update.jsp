@@ -78,9 +78,9 @@
 		</div>
 		
 		<div class="line" style="width:598px; border-width:0px; text-align:center;">
-			<input type="submit" value="글수정"/>
-			<input type="reset" onclick="eventReset()" value="취소"/>
-			<input type="button" value="목록보기" onclick="location.href='${root}/eventBoard/list.do?pageNumber=${pageNumber}'">
+			<input type="submit" class="btn btn-warning" value="글수정"/>
+			<input type="reset" class="btn btn-warning" onclick="eventReset()" value="취소"/>
+			<input type="button" class="btn btn-warning" value="목록보기" onclick="location.href='${root}/eventBoard/list.do?pageNumber=${pageNumber}'">
 		</div>
 	</form>
 		

@@ -80,9 +80,9 @@
 		</div>
 		
 		<div class="line" style="width:598px; border-width:0px; text-align:center;">		
-			<input type="button" value="응모하기" onclick="joinFun('${root}','${event_code }','${pageNumber }','${id }','${event_point }')"/>			
-			<input type="reset" value="다시작성"/>
-			<input type="button" value="목록보기" onclick="location.href='${root }/eventBoard/list.do?pageNumber=${pageNumber }'"/> 
+			<button type="button" class="btn btn-warning" onclick="joinFun('${root}','${event_code }','${pageNumber }','${id }','${event_point }')">응모하기</button>			
+			<button type="button" class="btn btn-warning">다시작성</button>
+			<button type="button" class="btn btn-warning" onclick="location.href='${root }/eventBoard/list.do?pageNumber=${pageNumber }'">목록보기</button> 
 		</div>
 	</form>
 

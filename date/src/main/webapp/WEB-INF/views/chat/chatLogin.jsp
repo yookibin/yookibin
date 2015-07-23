@@ -7,6 +7,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script src="${root }/css/sweetalert-master/dist/sweetalert.min.js"></script>
+<link rel="stylesheet" type="text/css" href="${root }/css/sweetalert-master/dist/sweetalert.css"/>
 <script type="text/javascript" src="<c:url value="/static/jquery.js"/>"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -16,7 +18,12 @@
 <script type="text/javascript">
 	function entrance(root){
 		if($("#chatId").val()==""||$("#chatId").val()==null){
-			alert("닉네임을 입력하세요.");
+			//alert("닉네임을 입력하세요.");
+			swal({ 
+				  title: "warning!",
+				  text: "닉네임을 입력하세요.",
+				  type: "warning" 
+				  });
 			$("#chatId").focus();
 		}else{
 			var url=root+"/chat.do?chatId="+$("#chatId").val();

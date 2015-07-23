@@ -150,9 +150,9 @@
                 <div class="panel-body">
                     <div class="dataTable_wrapper">
 
-						<a href="${root}/eventBoard/list.do?pageNumber=${pageNumber}">이벤트list로 가기</a><br/>
-						<input type="button" value="당첨자 발표 글 쓰기(랜덤당첨)" onclick="randomFun('${root }','${event_code}','${group_number }','${sequence_number }','${sequence_level }','${pageNumber }','${count }','${event_period }')" />
-						<input type="button" value="당첨자 발표 글 쓰기(수동서기)" onclick="noRandomFun('${root }','${event_code}','${group_number }','${sequence_number }','${sequence_level }','${pageNumber }','${count }','${event_period }')" />
+						<a class="btn btn-warning" href="${root}/eventBoard/list.do?pageNumber=${pageNumber}">이벤트list로 가기</a><br/>
+						<button type="button" class="btn btn-warning" onclick="randomFun('${root }','${event_code}','${group_number }','${sequence_number }','${sequence_level }','${pageNumber }','${count }','${event_period }')">당첨자 발표 글 쓰기(랜덤당첨)</button>
+						<button type="button" class="btn btn-warning" onclick="noRandomFun('${root }','${event_code}','${group_number }','${sequence_number }','${sequence_level }','${pageNumber }','${count }','${event_period }')">당첨자 발표 글 쓰기(수동서기)</button>
 						<br/><br/>
 					
 						<c:if test="${count==0 }">		
