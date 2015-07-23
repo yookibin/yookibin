@@ -743,7 +743,8 @@
             </section>
          </div>
 
-      </div>
+      </div><br><br><br>
+      <jsp:include page="/Bottom.jsp" />
    </div>
 </body>
 </html>
