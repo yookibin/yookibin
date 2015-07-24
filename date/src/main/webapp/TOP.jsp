@@ -135,7 +135,7 @@ function chatStart(root){
 					width="190" height="85">
 				</a>
 			</div>
-			<div class="menu-Aa" style="margin: 0 0 0 50xp;">
+			<div class="menu-Aa" style="margin: 0 0 0 50px;">
 				<div class="menu-Aaa">
 					<i class="fa fa-3x fa-diamond wow bounceIn text-primary"></i>
 				</div>
