@@ -62,7 +62,7 @@
 
 		<c:if test="${id!=null}">
 			<div class="menu-B">
-				<div style="width: 305px; height: 30px; float: right; margin: 10px 0 0 0; font-size: 13px; color: #D2916C;">
+				<div style="width: 320px; height: 30px; float: right; margin: 10px 0 0 0; font-size: 13px; color: #D2916C;">
 					<span>
 						<a href="${root }/member/logout.do" style="color: #D2916C;"><b>로그아웃</b></a>｜
 						<a href="${root }/member/update.do?id=${id}" style=" color: #D2916C;"><b>회원수정</b></a>｜
