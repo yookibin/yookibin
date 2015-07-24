@@ -11,8 +11,18 @@ function writeReply(root, board_num, reply_writer){
 		dataType:"text",
 		success:function(data){
 			if(data!=null||data!=""){
-				alert("입력 되었습니다.");
-				location.reload();
+				/*alert("입력 되었습니다.");
+				location.reload();*/
+				
+				swal({ 
+					  title: "success!",
+					  text: "입력되었습니다.",
+					  type: "success" 
+				},
+				 function(){
+					 location.reload();
+				});	
+				
 			}
 			//alert("되나?");
 			/*var split=data.split(",");	//0번지는 글번호 1번지는 답글내용이 됨.
@@ -62,7 +72,7 @@ function deleteReply(reply_num, root){
 		dataType:"text",
 		success:function(data){
 			var reply_num=data;
-			alert(reply_num);
+			// alert(reply_num);
 			
 			$("#"+reply_num).remove();
 			//alert(divBunho);
@@ -114,9 +124,20 @@ function updateReply(reply_num, root){
 			$(inputBtn).attr("value", "수정");
 			$(inputBtn).attr("class", "button2 gray small");
 			$(inputBtn).click(function(){
-				alert("수정완료");
+				swal({ 
+					  title: "success!",
+					  text: "수정성공!",
+					  type: "success" 
+					 },
+				 function(){
+					update(root, reply_num, $(input).val());
+					location.reload();
+				});	
+				
+				
+				/*alert("수정완료");
 				update(root, reply_num, $(input).val());
-				location.reload();
+				location.reload();*/
 			});
 			
 			var inputReset=$("<input/>");
@@ -203,7 +224,14 @@ function recommend(root, board_num, board_recom, pageNumber, recommend_nickName,
 					$("#recom_button>i").text(data);
 				}
 				
-				if(data=="") alertify.alert("추천을 이미 하셨습니다.");
+				if(data=="") {
+					swal({ 
+						  title: "warning!!",
+						  text: "추천을 이미 하셨습니다!",
+						  type: "warning" 
+						 });
+					// alertify.alert("추천을 이미 하셨습니다.");
+				}
 				
 				/*$("#recom_button").attr("disabled", "disabled");*/
 				
@@ -220,7 +248,12 @@ function recommend(root, board_num, board_recom, pageNumber, recommend_nickName,
 function writeFun(root, nickName){
 	//alert(root+","+nickName);
 	if(nickName==null||nickName==""){
-		alert("로그인후 이용가능합니다.");
+		// alert("로그인후 이용가능합니다.");
+		swal({ 
+			  title: "로그인바람!",
+			  text: "로그인후 이용가능합니다!",
+			  type: "warning" 
+			 });
 	}else if(nickName!=null){
 		$("#writeA").attr("href", root+"/memberboard/write.do")
 	}

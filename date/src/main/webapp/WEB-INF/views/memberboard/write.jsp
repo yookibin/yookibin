@@ -86,6 +86,8 @@ function doPost(form)
 		return false;
 	}
 	
+	
+	
 	//에디터의 내용을 실제 Textarea로 가져옴
 	oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD",[]);
 

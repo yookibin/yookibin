@@ -150,6 +150,7 @@
 	    			<label for="inputName" class="col-sm-2 control-label"></label>
 				    <div class="col-sm-6">
 				    	<button type="submit" class="btn btn-primary">회원가입</button>
+				    	<a class="btn btn-primary"  href="${root}/thisIndex.jsp" style="color:white;">가입취소</a>
 	    			</div>
 	    		</div>
 	    	</form>	  

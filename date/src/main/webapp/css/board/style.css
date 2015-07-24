@@ -107,8 +107,8 @@ a:hover {
 
 /* -- WRITE UPDATE STYLE START -------------------------------- */
 .form_style{
-	width:700px; height:420px;
-	margin:auto auto 0% auto;
+	width:700px; height:700px;
+	margin:auto auto 0% 25%;
 	/*border-style:dotted;border-width:1px;border-color:red;*/
 }
 

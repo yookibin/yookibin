@@ -8,6 +8,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Insert title here</title>
+<script src="${root }/css/sweetalert-master/dist/sweetalert.min.js"></script>
+<link rel="stylesheet" type="text/css" href="${root }/css/sweetalert-master/dist/sweetalert.css"/>
 </head>
 <body>
 
@@ -15,14 +17,30 @@
 	
 <c:if test="${check>0}">
 		<script type="text/javascript">
-			location.href="${root}/memberboard/list.do?pageNumber=${pageNumber}";
+			// location.href="${root}/memberboard/list.do?pageNumber=${pageNumber}";
 			// 나중에 read로 이동하게 해야함.
+			swal({ 
+				  title: "GOOD!",
+				  text: "글쓰기를 성공하였습니다.",
+				  type: "success" 
+				  },
+				  function(){
+				    window.location.href ="${root}/memberboard/list.do?pageNumber=${pageNumber}";
+				});
 		</script>
 	</c:if>
 	
 	<c:if test="${check==0 }">
 		<script type="text/javascript">
-			location.href="${root}/memberboard/write.do?pageNumber=${pageNumber}";
+			// location.href="${root}/memberboard/write.do?pageNumber=${pageNumber}";
+			swal({ 
+				  title: "BAD!",
+				  text: "글쓰기를 실패하였습니다.",
+				  type: "error" 
+				  },
+				  function(){
+					  window.location.href ="${root}/memberboard/write.do?pageNumber=${pageNumber}";
+				});
 			
 		</script>
 	</c:if>
