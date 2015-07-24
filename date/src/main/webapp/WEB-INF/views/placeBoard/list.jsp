@@ -25,7 +25,7 @@
 	
 			<!-- 지역, 테마, 가격대, 쿠폰 선택박스 -->
 			<form action="${root}/placeBoard/boardList.do">
-			<div id="finderbox" style="height:200px;">
+			<div id="finderbox" style="height:159px;">
 				<div class="finder_inner">
 					<dl class="finder_list_2014" id='locationlist'>
 						<dt><strong><img src="http://image2.yanolja.com/site/imageFile/images/V2/dateCourse/images/20141023/txt_area.png" width="60" height="14" alt="지역" /></strong></dt>

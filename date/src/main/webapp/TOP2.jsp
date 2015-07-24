@@ -51,64 +51,39 @@
 			</div>
 
 		<c:if test="${id==null}">
-			<div class="menu-B">
-				<div
-					style="width: 70px; height: 40px; float: right; margin: 10px 30px 0 0; font-size: 16px; color: #D2916C;">
-					<span> <a href="${root }/member/register.do"
-						style="color: #D2916C;">회원가입</a>
+ 			<div class="menu-B">
+				<div style="width: 120px; height: 30px; float: right; margin: 10px 30px 0 0; font-size: 13px; color: #D2916C;">
+					<span>
+						<a href="${root }/member/login.do" style=" color: #D2916C;"><b>로그인</b></a>｜<a href="${root }/member/login.do" style=" color: #D2916C;"><b>회원가입</b></a>
 					</span>
 				</div>
-				<div
-					style="width: 50px; height: 40px; float: right; margin: 10px 0 0 0; font-size: 16px; color: #D2916C;">
-					<span> <a href="${root }/member/login.do"
-						style="color: #D2916C;">로그인</a>
-					</span>
-				</div>
-			</div>
+			</div>  
 		</c:if>
 
 		<c:if test="${id!=null}">
 			<div class="menu-B">
-				<div
-					style="width: 70px; height: 40px; float: right; margin: 10px 30px 0 0; font-size: 16px; color: #D2916C;">
-					<span> <a href="${root }/member/logout.do"
-						style="color: #D2916C;">로그아웃</a>
+				<div style="width: 305px; height: 30px; float: right; margin: 10px 0 0 0; font-size: 13px; color: #D2916C;">
+					<span>
+						<a href="${root }/member/logout.do" style="color: #D2916C;"><b>로그아웃</b></a>｜
+						<a href="${root }/member/update.do?id=${id}" style=" color: #D2916C;"><b>회원수정</b></a>｜
+						<c:if test="${memberLevel!='AA'}">
+							<a href="${root }/member/delete.do" style="color: #D2916C;"><b>회원탈퇴</b></a>｜
+						</c:if>
+						<a href="${root}/mypage/mycourse.do" style="color: #D2916C;"><b>마이페이지</b></a>
 					</span>
 				</div>
-				<div
-					style="width: 70px; height: 40px; float: right; margin: 10px 0 0 0; font-size: 16px; color: #D2916C;">
-					<span> <a href="${root }/member/update.do?id=${id}"
-						style="color: #D2916C;">회원수정</a>
-					</span>
-				</div>
-				<div
-					style="width: 70px; height: 40px; float: right; margin: 10px 0 0 0; font-size: 16px; color: #D2916C;">
-					<span> <a href="${root }/member/delete.do"
-						style="color: #D2916C;">회원탈퇴</a>
-					</span>
-				</div>
-				<div
-					style="width: 80px; height: 40px; float: right; margin: 10px 0 0 0; font-size: 16px; color: #D2916C;">
-					<span> <a href="${root}/mypage/mycourse.do"
-						style="color: #D2916C;">마이페이지</a>
-					</span>
-				</div>
+		
 				<c:if test="${memberLevel=='AA'}">
-					<div
-						style="width: 85px; height: 40px; float: right; margin: 10px 0 0 0; font-size: 16px; color: #D2916C;">
-						<span> <a href="${root }/eventBoard/write.do"
-							style="color: #D2916C;">이벤트추가</a>
+					<div style="width: 450px; height: 30px; float: right; margin: 10px 30px 0 0; font-size: 13px; color: #D2916C;">
+						<span>
+							<a href="${root }/eventBoard/write.do" style=" color: #D2916C;"><b>*이벤트추가</b></a>｜
+							<a href="${root }/recommandPlace/insertM.do" style=" color: #D2916C;"><b>장소추가</b></a>｜
+							<a href="${root }/membermanager/memberManager.do" style=" color: #D2916C;"><b>회원관리*</b></a>
 						</span>
-					</div>
-					<div
-						style="width: 70px; height: 40px; float: right; margin: 10px 0 0 0; font-size: 16px; color: #D2916C;">
-						<span> <a href="${root }/recommandPlace/insertM.do"
-							style="color: #D2916C;">장소추가</a>
-						</span> <br />
 					</div>
 				</c:if>
 			</div>
-			<%-- v style="width: 100px; height: 40px; float: right;">
+				<%-- v style="width: 100px; height: 40px; float: right;">
 				<c:if test="${memberLevel=='AA'}">
 					<div style="width: 100px; height: 40px; float: right;">
 						<a href="${root }/eventBoard/write.do"><img alt=""
@@ -120,7 +95,7 @@
 						<br />
 					</div>
 				</c:if>
-			</div> --%>
+			</div> --%> 
 		</c:if>
 	</div>
 </body>

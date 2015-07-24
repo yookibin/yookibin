@@ -37,5 +37,4 @@ function deleteToServer(review_code, requestRoot, review_id, nickName) {
 			swal("BAD", "삭제가 취소 되었습니다.", "error");
 		}
 	});
-	
 }
