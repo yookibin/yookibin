@@ -113,6 +113,5 @@
 			</div>
 		</div>
 	</div>
-	<jsp:include page="/Bottom.jsp" />
 </body>
 </html>

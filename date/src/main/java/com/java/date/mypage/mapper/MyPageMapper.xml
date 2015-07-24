@@ -12,7 +12,7 @@
    </select>
    
    <select id="pointcheck" parameterType="String" resultType="com.java.date.mypage.dto.MypageDto">
-      select * from point where id=#{id} order by point_date ,point_total desc
+      select * from point where id=#{id} order by point_code
 
 
    </select>
