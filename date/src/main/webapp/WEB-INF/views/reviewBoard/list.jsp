@@ -300,7 +300,7 @@
 				</div>
 			</div><br/>
 			<button id="moreComment" onclick="moreComment()" style="display: none;">댓글 더 보기</button>
-			<div id="apple" style="width:800px; height:100px">
+			<div id="apple" style="width:800px; height:150px;">
 			</div><br/><br/><br/>		
 			<jsp:include page="/Bottom.jsp" />
 		</div>
