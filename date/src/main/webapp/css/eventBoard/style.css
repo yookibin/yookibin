@@ -25,9 +25,9 @@ a:hover {
 
 /* -- WRITE UPDATE STYLE START -------------------------------- */
 .form_style{
-	width:700px; height:420px; 
+	width:700px; height:708px; 
 	/* margin:0px 0px 0px 100px */
-	margin:0% auto 0% auto;
+	margin:0% auto 0% 24%;
 	/*border-style:dotted;border-width:1px;border-color:red;*/
 }
 

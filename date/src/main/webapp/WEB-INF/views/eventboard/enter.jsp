@@ -54,11 +54,11 @@
 		<input type="hidden" name="event_point" value="${event_point }"/>
 		<input type="hidden" name="id" value="${id }"/>
 			
-		<div class="line3" style="height:80px;">
+	<!-- 	<div class="line3" style="height:80px;">
 			<span>
 				<h1>이벤트 참가하기 </h1>
 			</span>
-		</div>	
+		</div>	 -->
 		
 		<div class="line5">
 			<p class="orangeLine"></p>

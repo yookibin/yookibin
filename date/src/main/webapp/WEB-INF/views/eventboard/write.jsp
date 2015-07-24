@@ -28,7 +28,7 @@
 	<jsp:include page="/TOP.jsp"/>
 	<br/><br/>
 	
-	<form class="form_style"  action="${root }/eventBoard/write.do"  method="post" onsubmit="return checkForm(this)" enctype="multipart/form-data">	
+	<form class="form_style" action="${root }/eventBoard/write.do"  method="post" onsubmit="return checkForm(this)" enctype="multipart/form-data">	
 		<input type="hidden" name="event_code" value="${event_code}"/>
 		<input type="hidden" name="group_number" value="${group_number}"/>
 		<input type="hidden" name="sequence_number" value="${sequence_number}"/>
