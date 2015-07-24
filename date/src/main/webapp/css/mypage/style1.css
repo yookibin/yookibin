@@ -1,0 +1,159 @@
+/*...........................................................
+
+  Version: 1.0
+  Author: Michela Chiucini
+  Author URI: http://www.webislove.com 
+  			  http://www.colazionedamichy.it
+			  
+.............................................................*/
+
+
+/* General
+..............................................................*/
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, p, blockquote, th, td 
+{ margin : 0; padding : 0; }
+
+h1, h2, h3, h4, h5, h6
+{ font-size : 100%; }
+
+ol, ul
+{ list-style : none; }
+
+address, caption, cite, code, dfn, em, strong, th, var, 
+{ font-style : normal; font-weight:normal; }
+
+table
+{ border-collapse : collapse; border-spacing : 0; }
+
+fieldset, img 
+{ border : 0; }
+
+caption, th 
+{ text-align : left; }
+
+q:before, q:after 
+{ content : ''; }
+
+article, aside, dialog, figure, footer, header, hgroup, nav, section {
+display:block;
+}
+
+
+/* General
+..............................................................*/
+
+html {
+	background : #8ac2e5 url('images/main-bg.png') left top repeat-x;
+}
+
+body { 
+  	text-align : left;
+	font-size : 100%;
+	line-height : 1.5;
+	color : #06103F;
+	font-family : Georgia, serif;
+}
+
+#wrapper{ 
+   	position : relative;
+  	width : 960px;
+  	margin : 0 auto;
+	background : transparent url('images/page-bg.png') 30px 105px no-repeat;
+	z-index : 2;
+}
+
+a{ 
+   	text-decoration : none;
+	color : #02072f;
+	background : #d7d7d7;
+	padding : 1px 5px;
+	border-radius : 5px;
+	-webkit-border-radius : 5px;
+	-moz-border-radius : 5px;
+	-webkit-transition : background-color .5s linear;
+}
+a:hover{ 
+	background : #fff;
+}
+/* Animation
+..............................................................*/
+
+.balloon-container {
+	height : 500px;
+	top : 0px;
+	width : 100%;
+	z-index : 1 ;
+	position : absolute;
+}
+
+@-webkit-keyframes fade
+{
+    0%   { opacity : 0; }
+	10%  { opacity : 1; }
+	80%  { opacity : 1; }
+    100%  { opacity : 0; }
+    
+}
+
+@-webkit-keyframes position {
+	0%   { top : 220px; left : 0%;  }
+	100% { top : 146px; left : 75%;  }
+}
+
+@-webkit-keyframes reduce {
+	0%   { -webkit-transform : scale(1) ;  }
+	40%   { -webkit-transform : scale(1) ;  }
+	60%   { -webkit-transform : scale(0.9) ;  }
+	100% {-webkit-transform : scale(0.5) ;   }
+}
+
+.balloon-container figure img{
+	position : absolute;
+	top : -300px;
+ 	-webkit-animation-name: position, reduce, fade;
+ 	-webkit-animation-duration : 30s;
+ 	-webkit-animation-iteration-count : 1;
+ 	-webkit-animation-direction : normal;
+ 	-webkit-animation-delay : 0s;
+	-webkit-animation-timing-function : ease-in-out;
+	-webkit-transform-origin : 50% -100%;
+}
+
+
+
+/* Branding
+..............................................................*/
+
+h1{
+	font-weight : normal; 
+	font-size : 36px; 
+	line-height : 75px;
+}
+
+.nav li#article{
+	top : 10px;
+	left : 10px;
+}
+
+/* Main content
+..............................................................*/
+
+section.intro{
+	width : 430px;
+	padding-top : 400px;
+	padding-left : 10px;
+}
+
+/* Footer
+..............................................................*/
+
+footer{
+	clear : both;
+}
+
+#page-info{
+	width : 950px;
+	margin : 0 auto;
+	padding : 20px 0 0 10px;
+}

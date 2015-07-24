@@ -72,11 +72,11 @@ public class MypageController {
 	   
 	@RequestMapping("/mypage/usingevent.do")
 	@ResponseBody
-	public List<EventBoardDto> usingevent(String nickName){
+	public List<EventBoardDto> usingevent(String id){
 	  logger.info("usingEvetn Start--------------");
 	  System.out.println("Event 된당");
 	      
-	     return mypageService.usingCheck(nickName);
+	     return mypageService.usingCheck(id);
 	  }
 	
 	@RequestMapping("/mypage/remainPoint.do")

@@ -20,7 +20,7 @@ public interface MypageService {
 	
 	public List<MypageDto> pointCheck(String id);
 	
-	public List<EventBoardDto> usingCheck(String nickName);
+	public List<EventBoardDto> usingCheck(String id);
 
 	public int remainCheck(String id);
 

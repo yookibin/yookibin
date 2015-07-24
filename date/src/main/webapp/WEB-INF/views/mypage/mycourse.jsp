@@ -57,6 +57,13 @@
 <link href="${root}/css/example/mypoint.css" rel="stylesheet">
 
 
+<meta name="description" content="A trip in the sky with CSS3 animations and z-index" />
+<meta name="keywords" content="css3 animations, z-index, -webkit-transition" />
+<meta name="revisit-after" content="10 days" />
+<meta name="robots" content="all"/>
+<meta name="Author" content="Michela Chiucini" />
+
+<link rel="stylesheet" type="text/css" href="${root}/css/mypage/style1.css" media="screen" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
@@ -288,7 +295,7 @@
 
    }
 
-   function usingEvent(root, nickName) {
+   function usingEvent(root, id) {
       //alert("root"+root);
       //alert("nickName"+nickName);
 
@@ -296,17 +303,16 @@
          url : root + "/mypage/usingevent.do",
          type : "post",
          data : {
-            nickName : nickName
+        	 id : id
          },
          success : function(data) {
             console.log(data);
             var str = "";
             for (var i = 0; i < data.length; i++) {
                str += "<div class='row'>" + "<div class='column'>"
-                     + data[i].event_period + "</div>"
+                     + data[i].event_period+"("+data[i].event_progress+")" + "</div>"
                      + "<div class='column'>" + data[i].event_title
-                     + "</div>" + "<div class='column'>"
-                     + data[i].event_progress + "</div>"
+                     + "</div>"
                      + "<div class='column'>" + data[i].event_giveaway
                      + "</div>" + "</div>"
             }
@@ -486,9 +492,9 @@
 
                   <div style="width: 530px; text-align: center;">
 
-                     <div style="width: 150px; float: left;">날짜</div>
-                     <div style="width: 200px; float: left;">포인트 사용 내역</div>
-                     <div style="width: 150px; float: left;">당첨 여부</div>
+                     <div style="width: 150px; float: left;">기간</div>
+                     <div style="width: 200px; float: left;">이벤트명</div>
+                     <div style="width: 150px; float: left;">당첨상품</div>
 
                   </div>
 
@@ -590,7 +596,7 @@
             id="tab2" type="radio" name="tab" /> <input id="tab3" type="radio"
             name="tab" /> <label for="tab1">내 코스 관리</label> <label for="tab2">포인트
             관리</label> <label for="tab3">내 흔적</label>
-         <div class="tab1_content">
+         <div class="tab1_content" style="background-color:#E8FFFF;">
 
             <section class="main">
 
@@ -642,9 +648,22 @@
                   </li>
                </ul>
             </section>
-         </div>
+       
+         
+         <div  style="height:400px; width:1100px;   margin-left:-20px; "> 
+			<div class="balloon-container" style="margin-top:400px;  ">
+				<img src="${root}/resources/img/main-bg.png " alt=""  />
+					<figure>
+					<img src="${root}/resources/img/air-balloon.png" alt=""  />				
+					</figure>
+			</div>
+				
+		</div>
+		</div>
 
-         <div class="tab2_content">
+         
+
+         <div class="tab2_content" style="background-color:#E8FFFF;">
 
             <section class="main">
 
@@ -682,7 +701,7 @@
                            <div class="ch-info-fronts ch-img-6"></div>
                            <div class="ch-info-backs" data-toggle="modal"
                               data-target="#myModal45"
-                              onclick="usingEvent('${root}','${nickName}')">
+                              onclick="usingEvent('${root}','${id}')">
                               <h3>응모한 이벤트</h3>
                               <p>by Eileen Tjan View on usingpoint</p>
 
@@ -693,8 +712,19 @@
 
                </ul>
             </section>
+            
+          <div  style="height:400px; width:1100px;  margin-left:-20px; "> 
+			<div class="balloon-container" style="margin-top:400px;  ">
+				<img src="${root}/resources/img/main-bg.png " alt=""  />
+					<figure>
+					<img src="${root}/resources/img/air-balloon.png" alt=""  />				
+					</figure>
+			</div>
+				
+		</div>
+            
          </div>
-         <div class="tab3_content">
+         <div class="tab3_content" style="background-color:#E8FFFF;">
             <section class="main">
 
                <ul class="ch-grid">
@@ -741,6 +771,16 @@
                   </li>
                </ul>
             </section>
+            <div  style="height:400px; width:1100px;  margin-left:-20px; "> 
+			<div class="balloon-container" style="margin-top:400px;  ">
+				<img src="${root}/resources/img/main-bg.png " alt=""  />
+					<figure>
+					<img src="${root}/resources/img/air-balloon.png" alt=""  />				
+					</figure>
+			</div>
+				
+		</div>
+            
          </div>
 
       </div><br><br><br>

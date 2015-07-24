@@ -19,12 +19,17 @@
    
    
    
-   <select id="usingevent" parameterType="String" resultType="com.java.date.member.dto.EventBoardDto">
-   <![CDATA[
-        select * from event_board where writer = #{nickName}
-      ]]>
-      
-
+   <select id="usingevent" parameterType="String" resultType="Integer">
+        select event_code from event where id = #{id}
+   </select>
+   <select id="usingevent2" parameterType="list" resultType="com.java.date.member.dto.EventBoardDto">
+        select * from event_board 
+		<where>
+			<foreach collection="list" item="item" index="index"
+				separator="or">
+				event_code=#{item}
+			</foreach>
+		</where>
    </select>
    
    <select id="remainCheck" parameterType="String" resultType="int">

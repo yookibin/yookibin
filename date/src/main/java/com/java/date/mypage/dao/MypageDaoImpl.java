@@ -49,9 +49,10 @@ public class MypageDaoImpl implements MypageDao {
 	}
 
 	   @Override
-	   public List<EventBoardDto> usingevent(String nickName) {
-	      logger.info("usingeventid3" + nickName);
-	      return sqlSession.selectList("usingevent", nickName);
+	   public List<EventBoardDto> usingevent(String id) {
+	      logger.info("usingeventid3" + id);
+	      List<Integer> list = sqlSession.selectList("usingevent", id);
+	      return sqlSession.selectList("usingevent2", list);
 	   }
 
 	   @Override
