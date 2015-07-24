@@ -79,7 +79,7 @@
 									<ol>
 										<li id="comment294493">
 											<div class="rp_general">
-												<div class="name">${reviewList.review_id}</div>
+												<div class="name">${reviewList.review_id}(${reviewList.place_name})</div>
 												<div class="date">
 													<span> <fmt:formatDate
 															value="${reviewList.review_date}" />

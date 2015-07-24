@@ -52,6 +52,9 @@
 	<select id="myReviewGet" parameterType="String" resultType="com.java.date.reviewBoard.dto.ReviewBoardDto">
       select * from place_review where review_id=#{id}
    </select>
+	<select id="myReviewGetName" parameterType="String" resultType="String">
+      select place_name from place where place_code=#{place_code}
+   </select>
 	
 
 </mapper>

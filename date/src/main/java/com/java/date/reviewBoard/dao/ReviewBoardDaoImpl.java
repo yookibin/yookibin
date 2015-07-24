@@ -113,8 +113,13 @@ public class ReviewBoardDaoImpl implements ReviewBoardDao {
 	
 	@Override
 	   public List<ReviewBoardDto> myReviewGet(String id) {
-	      
-	      return sqlSession.selectList("dao.reviewBoardMapper.myReviewGet",id);
+		List<ReviewBoardDto> list = sqlSession.selectList("dao.reviewBoardMapper.myReviewGet",id);
+	    for(int i=0;i<list.size();i++){
+	    	String place_code = list.get(i).getPlace_code();
+	    	String place_name = sqlSession.selectOne("dao.reviewBoardMapper.myReviewGetName",place_code);
+	    	list.get(i).setPlace_name(place_name);
+	    }
+		return list;
 	   }
 
 }
