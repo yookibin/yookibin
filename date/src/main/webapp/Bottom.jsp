@@ -40,7 +40,8 @@
 }
 
 .menu-Aaa {
-	margin: 0 0 3px 67px;
+	margin: 0 0 3px 0;
+	text-align: center;
 }
 
 .bt {
