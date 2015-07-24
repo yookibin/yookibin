@@ -14,7 +14,7 @@
 <link type="text/css" rel="stylesheet" href="${root}/css/bootstrap/bootstrap.min.css"/>
 </head>
 <body onload="placeListForm()">
-	<div style="width:1200px; height:auto; margin-left:auto; margin-right:auto;">
+	<div style="width:1100px; height:auto; margin-left:auto; margin-right:auto;">
 	<jsp:include page="/TOP.jsp"/><br/>	
 	
 	<div id="wrapbody" align="center" style="height:300px;">

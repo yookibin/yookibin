@@ -98,9 +98,9 @@
 </script>
 </head>
 <body>
-	<div
-		style="width: 1100px; height: auto; margin-left: auto; margin-right: auto;">
-		<jsp:include page="/TOP.jsp" /><br />
+	<div style="width:1100px; height: auto; margin-left: auto; margin-right: auto;">
+		<jsp:include page="/TOP.jsp"/><br/>
+		
 		<div id="wrapbody">
 			<div id="wrap">
 				<div class="section_1">
@@ -299,14 +299,11 @@
 					</c:forEach>
 				</div>
 			</div><br/>
-			<button id="moreComment" onclick="moreComment()"
-				style="display: none;">댓글 더 보기</button>
-			<div id="apple" style=width:800px;height:100px">
+			<button id="moreComment" onclick="moreComment()" style="display: none;">댓글 더 보기</button>
+			<div id="apple" style="width:800px; height:100px">
 			</div><br/><br/><br/>		
 			<jsp:include page="/Bottom.jsp" />
 		</div>
-
-
 	</div>
 </body>
 </html>
